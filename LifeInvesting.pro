@@ -15,6 +15,7 @@ SOURCES += \
     quizhandler.cpp
 
 HEADERS += \
+    cpptoml.h \
     mainmodel.h \
     mainwindow.h \
     quizhandler.h
@@ -26,3 +27,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    QuestionBanks/example.toml

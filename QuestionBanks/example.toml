@@ -1,0 +1,29 @@
+category = "Example Category"
+
+categoryInfo = "Here is a description of the question category"
+
+learnMore = '''
+We might need a
+"Longer description" with information for the
+user to read and learn about
+
+'''
+
+[[questions]]
+question = "What does IPO stand for?"
+
+choices = [
+"Initial Public Offering",
+"Instant Purchase Order",
+"Investment Portfolio Option",
+"Internal Profit Objective"
+]
+
+answer = "Initial Public Offering"
+difficulty = "easy"
+
+[[questions]]
+question = "If a stock splits 2-for-1, what happens to the share price (assuming all else equal)?"
+choices = ["It doubles", "It halves", "It stays the same", "It drops to zero"]
+answer = "It halves"
+difficulty = "hard"
