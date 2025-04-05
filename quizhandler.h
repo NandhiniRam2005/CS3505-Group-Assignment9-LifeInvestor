@@ -12,6 +12,7 @@ public:
 private:
     void parsingExample();
 
+    void parseQuizFile(std::string quizName);
 signals:
 };
 
