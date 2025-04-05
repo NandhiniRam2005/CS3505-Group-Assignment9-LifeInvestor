@@ -9,6 +9,9 @@ class QuizHandler : public QObject
 public:
     explicit QuizHandler(QObject *parent = nullptr);
 
+private:
+    void parsingExample();
+
 signals:
 };
 

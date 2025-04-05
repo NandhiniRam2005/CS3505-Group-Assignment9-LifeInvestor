@@ -1,12 +1,16 @@
 #include "quizhandler.h"
 #include <cpptoml.h>
+#include <iostream>
 
 QuizHandler::QuizHandler(QObject *parent)
     : QObject{parent}
-{}
+{
+    parsingExample();
+}
 
-void ParsingExample(){
-    auto file = cpptoml::parse_file("example.toml");
+void QuizHandler::parsingExample(){
+    std::string filepath = PROJECT_PATH "QuestionBanks/example.toml";
+    auto file = cpptoml::parse_file(filepath);
     auto questions = file->get_table_array("questions");
 
     for (auto& q : *questions) {
@@ -19,7 +23,11 @@ void ParsingExample(){
             choices = *choices_raw;
         }
 
-        auto diff = q->get_as<std::string>("difficulty");
-        auto reward = q->get_as<int>("reward");
+        std::string diff = *q->get_as<std::string>("difficulty");
+        int reward = *q->get_as<int>("reward");
+        std::cout << text << std::endl;
+        // std::cout << choices_raw << std::endl;
+        std::cout << reward << std::endl;
+
     }
 }
