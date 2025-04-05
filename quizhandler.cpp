@@ -20,6 +20,6 @@ void ParsingExample(){
         }
 
         auto diff = q->get_as<std::string>("difficulty");
-        auto tags = q->get_array_of<std::string>("tags");
+        auto reward = q->get_as<int>("reward");
     }
 }

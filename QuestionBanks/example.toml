@@ -21,9 +21,11 @@ choices = [
 
 answer = "Initial Public Offering"
 difficulty = "easy"
+reward = 100
 
 [[questions]]
 question = "If a stock splits 2-for-1, what happens to the share price (assuming all else equal)?"
 choices = ["It doubles", "It halves", "It stays the same", "It drops to zero"]
 answer = "It halves"
 difficulty = "hard"
+reward = 500
