@@ -15,6 +15,8 @@ MainWindow::MainWindow(MainModel* model, QWidget *parent)
 
     connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
+    connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
+    connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
 }
 
 MainWindow::~MainWindow()
@@ -24,7 +26,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::showQuizData(Question question)
 {
-
     ui->labelQuestion->setText(QString::fromStdString(question.text));
 
     ui->choice1->setText(QString::fromStdString(question.choices[0]));
