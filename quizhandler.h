@@ -33,7 +33,6 @@ public:
      */
     Question getNextQuestion();
 
-
     /**
      * Checks the user selected answer.
      *
@@ -63,6 +62,7 @@ private:
      * Tracker for how many quizQuestions have been answered correctly so far.
      */
     uint numberCorrect;
+
 };
 
 #endif // QUIZHANDLER_H

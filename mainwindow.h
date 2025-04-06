@@ -4,6 +4,7 @@
 #include "mainmodel.h"
 #include "quizhandler.h"
 #include <QMainWindow>
+#include <QButtonGroup>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,9 +22,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QButtonGroup *buttonGroup;
+    Question currentQuestion;
 
 public slots:
     void showQuizData(Question q);
+    void onStartClicked();
+
+signals:
+    void startQuizRequested();
 
 };
 #endif // MAINWINDOW_H

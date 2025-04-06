@@ -41,8 +41,11 @@ signals:
     void quizFinished(uint numberCorrect);
 
     void quizProgress(uint progess);
+
 private:
     QuizHandler* quizHandler;
 };
 
 #endif // MAINMODEL_H
+
+

@@ -80,3 +80,4 @@ uint QuizHandler::getQuestionsAnsweredCorrectly(){
 uint QuizHandler::quizProgress(){
     return (currentQuestion * 100) / quizQuestions.size();
 }
+
