@@ -22,10 +22,9 @@ public:
 
 public slots:
     void parseQuizFile(std::string quizName);
-
     void getNextQuestion();
-
     void checkAnswer(std::string selectedChoice);
+
 private:
     //void parsingExample();
     std::vector<Question> quizQuestions;
@@ -35,6 +34,7 @@ signals:
     void questionParsed(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
     void sendQuestion(Question q);
     void sendResult(bool correct);
+    void quizFinished();
 };
 
 #endif // QUIZHANDLER_H

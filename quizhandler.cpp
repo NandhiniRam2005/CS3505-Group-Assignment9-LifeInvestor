@@ -49,6 +49,7 @@ void QuizHandler::parseQuizFile(std::string quizName)
 }
 void QuizHandler::getNextQuestion(){
     if(currentQuestion > quizQuestions.size()){
+        emit quizFinished();
         throw std::runtime_error("Attempting to access question that does not exist! There are only: " + std::to_string(quizQuestions.size()) + " questions " +
                                  "and you are accessing question: " + std::to_string(currentQuestion));
     }
@@ -58,6 +59,7 @@ void QuizHandler::getNextQuestion(){
     emit sendQuestion(quizQuestions.at(currentQuestion));
     std::cout << "Sent question" << std::endl;
 
+    emit quizFinished();
     currentQuestion++;
 }
 
@@ -69,3 +71,4 @@ void QuizHandler::checkAnswer(std::string selectedAnswer){
         emit sendResult(false);
     }
 }
+

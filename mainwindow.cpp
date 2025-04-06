@@ -1,13 +1,19 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "iostream"
+
 MainWindow::MainWindow(MainModel* model, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    buttonGroup = new QButtonGroup(this);
+    buttonGroup->addButton(ui->choice1);
+    buttonGroup->addButton(ui->choice2);
+    buttonGroup->addButton(ui->choice3);
+    buttonGroup->addButton(ui->choice4);
 
     connect(model, &MainModel::newQuizData, this, &MainWindow::showQuizData);
-    connect(ui->pushButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
+    connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
 }
 
 MainWindow::~MainWindow()
@@ -15,18 +21,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// tryna print to mainwindow for now to test
 void MainWindow::showQuizData(Question question)
 {
-    std::cout << "YOUU" << std::endl;
+    currentQuestion = question;
+
     ui->labelQuestion->setText(QString::fromStdString(question.text));
 
-    if (question.choices.size() >= 4) {
-        ui->radioButton->setText(QString::fromStdString(question.choices[0]));
-        ui->radioButton_2->setText(QString::fromStdString(question.choices[1]));
-        ui->radioButton_3->setText(QString::fromStdString(question.choices[2]));
-        ui->radioButton_4->setText(QString::fromStdString(question.choices[3]));
-    }
+    ui->choice1->setText(QString::fromStdString(question.choices[0]));
+    ui->choice2->setText(QString::fromStdString(question.choices[1]));
+    ui->choice3->setText(QString::fromStdString(question.choices[2]));
+    ui->choice4->setText(QString::fromStdString(question.choices[3]));
 
     ui->labelReward->setText("Reward: " + QString::number(question.reward));
+}
+
+void MainWindow::onStartClicked() {
+    ui->stackedWidget->setCurrentIndex(1);
 }
