@@ -3,7 +3,8 @@
 
 #include <QObject>
 
-struct Question {
+struct Question
+{
     std::string text;
     std::vector<std::string> choices;
     std::string answer;
@@ -77,7 +78,6 @@ private:
      * Tracker for how many quizQuestions have been answered correctly so far.
      */
     uint numberCorrect;
-
 };
 
 #endif // QUIZHANDLER_H

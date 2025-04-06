@@ -3,7 +3,6 @@
 #include <iostream>
 #include <stdexcept>
 
-
 QuizHandler::QuizHandler(QObject *parent)
     : QObject{parent}
 {
@@ -16,7 +15,6 @@ QuizHandler::QuizHandler(QObject *parent)
 
 void QuizHandler::parseQuizFile(std::string quizName)
 {
-
     quizQuestions.clear();
     currentQuestion = 0;
     std::string filepath = PROJECT_PATH "QuestionBanks/" + quizName + ".toml";
@@ -45,39 +43,40 @@ void QuizHandler::parseQuizFile(std::string quizName)
 
         quizQuestions.push_back(question);
     }
-
 }
-Question QuizHandler::getNextQuestion(){
-    if(currentQuestion >= quizQuestions.size()){
+Question QuizHandler::getNextQuestion()
+{
+    if (currentQuestion >= quizQuestions.size()) {
         throw new std::runtime_error("No more questions to access");
     }
     currentQuestion++;
     return quizQuestions.at(currentQuestion - 1);
 }
 
-bool QuizHandler::hasMoreQuestions(){
-    if (currentQuestion >= quizQuestions.size()){
+bool QuizHandler::hasMoreQuestions()
+{
+    if (currentQuestion >= quizQuestions.size()) {
         return false;
     }
     return true;
 }
 
-
-bool QuizHandler::checkAnswer(std::string selectedAnswer){
-    if(selectedAnswer == quizQuestions.at(currentQuestion - 1).answer){
+bool QuizHandler::checkAnswer(std::string selectedAnswer)
+{
+    if (selectedAnswer == quizQuestions.at(currentQuestion - 1).answer) {
         numberCorrect++;
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
 
-uint QuizHandler::getQuestionsAnsweredCorrectly(){
+uint QuizHandler::getQuestionsAnsweredCorrectly()
+{
     return numberCorrect;
 }
 
-uint QuizHandler::quizProgress(){
+uint QuizHandler::quizProgress()
+{
     return (currentQuestion * 100) / quizQuestions.size();
 }
-

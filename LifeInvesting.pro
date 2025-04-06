@@ -10,16 +10,26 @@ CONFIG += c++17
 DEFINES += PROJECT_PATH=\"\\\"$${_PRO_FILE_PWD_}/\\\"\"
 
 SOURCES += \
+    cdaccount.cpp \
+    loan.cpp \
     main.cpp \
     mainmodel.cpp \
     mainwindow.cpp \
-    quizhandler.cpp
+    moneycontainer.cpp \
+    quizhandler.cpp \
+    savingsaccount.cpp \
+    stock.cpp
 
 HEADERS += \
+    cdaccount.h \
     cpptoml.h \
+    loan.h \
     mainmodel.h \
     mainwindow.h \
-    quizhandler.h
+    moneycontainer.h \
+    quizhandler.h \
+    savingsaccount.h \
+    stock.h
 
 FORMS += \
     mainwindow.ui

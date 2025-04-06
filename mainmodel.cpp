@@ -6,25 +6,25 @@ MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {
     quizHandler = new QuizHandler(this);
-
 }
 
-void MainModel::requestQuiz(){
+void MainModel::requestQuiz()
+{
     this->quizHandler->parseQuizFile("example");
     getNextQuestion();
 }
 
-void MainModel::getNextQuestion(){
-    if(quizHandler ->hasMoreQuestions()){
+void MainModel::getNextQuestion()
+{
+    if (quizHandler->hasMoreQuestions()) {
         emit quizProgress(quizHandler->quizProgress());
         emit sendQuestion(quizHandler->getNextQuestion());
-    }
-    else{
+    } else {
         emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly());
     }
 }
 
-void MainModel::checkAnswer(std::string selectedChoice){
+void MainModel::checkAnswer(std::string selectedChoice)
+{
     emit sendResult(quizHandler->checkAnswer(selectedChoice));
 }
-

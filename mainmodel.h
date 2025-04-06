@@ -43,9 +43,7 @@ signals:
     void quizProgress(uint progess);
 
 private:
-    QuizHandler* quizHandler;
+    QuizHandler *quizHandler;
 };
 
 #endif // MAINMODEL_H
-
-

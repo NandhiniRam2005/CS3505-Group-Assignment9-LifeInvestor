@@ -1,10 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QButtonGroup>
+#include <QMainWindow>
 #include "mainmodel.h"
 #include "quizhandler.h"
-#include <QMainWindow>
-#include <QButtonGroup>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,6 +35,5 @@ public slots:
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
-
 };
 #endif // MAINWINDOW_H

@@ -1,9 +1,10 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include "iostream"
+#include "ui_mainwindow.h"
 
-MainWindow::MainWindow(MainModel* model, QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(MainModel *model, QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     buttonGroup = new QButtonGroup(this);
@@ -11,7 +12,6 @@ MainWindow::MainWindow(MainModel* model, QWidget *parent)
     buttonGroup->addButton(ui->choice2);
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
-
 
     connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
@@ -32,8 +32,9 @@ void MainWindow::showQuizData(Question question)
 {
     ui->resultLabel->setText("");
 
-    if(buttonGroup->checkedButton()){
-        buttonGroup->setExclusive(false);  // Temporarily allow no selection so that we can unselect the prev radio button.
+    if (buttonGroup->checkedButton()) {
+        buttonGroup->setExclusive(
+            false); // Temporarily allow no selection so that we can unselect the prev radio button.
         buttonGroup->checkedButton()->setChecked(false);
         buttonGroup->setExclusive(true);
     }
@@ -48,25 +49,28 @@ void MainWindow::showQuizData(Question question)
     ui->labelReward->setText("Reward: " + QString::number(question.reward));
 }
 
-void MainWindow::onStartClicked() {
+void MainWindow::onStartClicked()
+{
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::submitHelper(){
-    QAbstractButton* selected = buttonGroup->checkedButton();
+void MainWindow::submitHelper()
+{
+    QAbstractButton *selected = buttonGroup->checkedButton();
     std::string selectedText = (selected->text()).toStdString();
     emit sendAnswer(selectedText);
 }
 
-void MainWindow::displayResult(bool result){
-    if(result){
+void MainWindow::displayResult(bool result)
+{
+    if (result) {
         ui->resultLabel->setText("CORRECT!!");
-    }
-    else{
+    } else {
         ui->resultLabel->setText("Incorrect!!!");
     }
 }
 
-void MainWindow::updateProgress(uint progress){
+void MainWindow::updateProgress(uint progress)
+{
     ui->quizProgress->setValue(progress);
 }
