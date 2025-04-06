@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "mainmodel.h"
+#include "quizhandler.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -22,7 +23,7 @@ private:
     Ui::MainWindow *ui;
 
 public slots:
-    void showQuizData(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
+    void showQuizData(Question q);
 
 };
 #endif // MAINWINDOW_H

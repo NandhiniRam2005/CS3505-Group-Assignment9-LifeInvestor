@@ -1,12 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "iostream"
 MainWindow::MainWindow(MainModel* model, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     connect(model, &MainModel::newQuizData, this, &MainWindow::showQuizData);
+    connect(ui->pushButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
 }
 
 MainWindow::~MainWindow()
@@ -15,16 +16,17 @@ MainWindow::~MainWindow()
 }
 
 // tryna print to mainwindow for now to test
-void MainWindow::showQuizData(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward)
+void MainWindow::showQuizData(Question question)
 {
-    ui->labelQuestion->setText(QString::fromStdString(question));
+    std::cout << "YOUU" << std::endl;
+    ui->labelQuestion->setText(QString::fromStdString(question.text));
 
-    if (choices.size() >= 4) {
-        ui->radioButton->setText(QString::fromStdString(choices[0]));
-        ui->radioButton_2->setText(QString::fromStdString(choices[1]));
-        ui->radioButton_3->setText(QString::fromStdString(choices[2]));
-        ui->radioButton_4->setText(QString::fromStdString(choices[3]));
+    if (question.choices.size() >= 4) {
+        ui->radioButton->setText(QString::fromStdString(question.choices[0]));
+        ui->radioButton_2->setText(QString::fromStdString(question.choices[1]));
+        ui->radioButton_3->setText(QString::fromStdString(question.choices[2]));
+        ui->radioButton_4->setText(QString::fromStdString(question.choices[3]));
     }
 
-    ui->labelReward->setText("Reward: " + QString::number(reward));
+    ui->labelReward->setText("Reward: " + QString::number(question.reward));
 }

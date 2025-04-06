@@ -2,6 +2,7 @@
 #define MAINMODEL_H
 
 #include <QObject>
+#include "quizhandler.h"
 
 class MainModel : public QObject
 {
@@ -10,10 +11,15 @@ public:
     explicit MainModel(QObject *parent = nullptr);
 
 public slots:
-    void handleQuestion(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
+    void handleQuestion(Question q);
+
+    //TEMPORARY SLOT ADDED FOR TESTING.
+    void requestQuiz();
 
 signals:
-    void newQuizData(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
+    void newQuizData(Question q);
+private:
+    QuizHandler* quizHandler;
 };
 
 #endif // MAINMODEL_H

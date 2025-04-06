@@ -5,12 +5,17 @@
 MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {
-    QuizHandler *quizHandler = new QuizHandler(this);
-    connect(quizHandler, &QuizHandler::questionParsed, this, &MainModel::handleQuestion);
+    quizHandler = new QuizHandler(this);
+    connect(quizHandler, &QuizHandler::sendQuestion, this, &MainModel::handleQuestion);
+
 }
 
-void MainModel::handleQuestion(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward) {
-    std::cout << "In handleQuestion: " << question << std::endl;
-    emit newQuizData(question, choices, answer, reward);
+void MainModel::handleQuestion(Question question) {
+    std::cout << "In handleQuestion: " << std::endl;
+    emit newQuizData(question);
+}
+void MainModel::requestQuiz(){
+    this->quizHandler->parseQuizFile("example");
+    this->quizHandler->getNextQuestion();
 }
 
