@@ -25,6 +25,8 @@ private:
     QButtonGroup *buttonGroup;
     Question currentQuestion;
 
+    double currentMoney;
+
     QVector<double> stockBalances;
     QVector<double> loanBalances;
     double savingsBalance;
@@ -44,6 +46,8 @@ public slots:
     void updateStockBalances(QVector<double> newBalances);
 
     void updateLoanBalances(QVector<double> newBalances);
+
+    void updateCurrentMoney(double newAmount);
 
 signals:
     void startQuizRequested();

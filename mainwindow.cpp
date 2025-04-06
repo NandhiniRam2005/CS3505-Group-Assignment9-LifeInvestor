@@ -5,7 +5,7 @@
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-{
+{    
     ui->setupUi(this);
     buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(ui->choice1);
@@ -97,18 +97,23 @@ void MainWindow::updateProgress(uint progress)
     ui->quizProgress->setValue(progress);
 }
 
-void MainWindow::updateSavingsBalance(double newBalance) {
+void MainWindow::updateCurrentMoney(double newAmount) {
+    currentMoney = newAmount;
+}
 
+void MainWindow::updateSavingsBalance(double newBalance) {
+    savingsBalance = newBalance;
 }
 
 void MainWindow::updateCDBalance(double newBalance) {
-
+    cdBalance = newBalance;
 }
 
 void MainWindow::updateStockBalances(QVector<double> newBalances) {
-
+    stockBalances = newBalances;
 }
 
 void MainWindow::updateLoanBalances(QVector<double> newBalances) {
-
+    loanBalances = newBalances;
 }
+

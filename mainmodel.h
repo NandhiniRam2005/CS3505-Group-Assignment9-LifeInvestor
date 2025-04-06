@@ -72,10 +72,12 @@ signals:
 
     void updateLoanBalances(QVector<double> newBalances);
 
+    void updateCurrentMoney(double newAmount);
+
 private:
     QuizHandler *quizHandler;
 
-    double currentBalance;
+    double currentMoney;
     int creditScore;
     int currentYear;
 

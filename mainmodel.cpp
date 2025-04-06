@@ -7,7 +7,7 @@ MainModel::MainModel(QObject *parent)
 {
     quizHandler = new QuizHandler(this);
 
-    currentBalance = 0;
+    currentMoney = 0;
     creditScore = 0;
     currentYear = 1;
 
@@ -42,35 +42,35 @@ void MainModel::checkAnswer(std::string selectedChoice)
 }
 
 void MainModel::depositToSavings(double amount) {
-
+    emit updateSavingsBalance(0);
 }
 
 void MainModel::depositToCD(double amount) {
-
+    emit updateCDBalance(0);
 }
 
 void MainModel::buyStock(double amount, int stockNumber) {
-
+    emit updateStockBalances({});
 }
 
 void MainModel::depositToLoan(double amount, int loanNumber) {
-
+    emit updateLoanBalances({});
 }
 
 void MainModel::withdrawFromSavings(double amount) {
-
+    emit updateSavingsBalance(0);
 }
 
 void MainModel::withdrawFromCD(double amount) {
-
+    emit updateCDBalance(0);
 }
 
 void MainModel::sellStock(double amount, int stockNumber) {
-
+    emit updateStockBalances({});
 }
 
 void MainModel::withdrawFromLoan(double amount, int loanNumber) {
-
+    emit updateLoanBalances({});
 }
 
 void MainModel::nextYear() {
