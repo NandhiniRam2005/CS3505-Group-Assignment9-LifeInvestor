@@ -19,5 +19,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+public slots:
+    void showQuizData(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
+
 };
 #endif // MAINWINDOW_H

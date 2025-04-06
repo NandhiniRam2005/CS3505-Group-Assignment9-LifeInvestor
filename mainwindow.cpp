@@ -12,3 +12,8 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::showQuizData(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward)
+{
+    // update quiz.ui's labels/buttons
+}

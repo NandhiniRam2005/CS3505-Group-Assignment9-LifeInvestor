@@ -14,6 +14,7 @@ private:
 
     void parseQuizFile(std::string quizName);
 signals:
+    void questionParsed(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
 };
 
 #endif // QUIZHANDLER_H

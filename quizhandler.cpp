@@ -28,7 +28,7 @@ void QuizHandler::parsingExample()
         std::string diff = *q->get_as<std::string>("difficulty");
         int reward = *q->get_as<int>("reward");
         std::cout << text << std::endl;
-        for(auto& choice : choices){
+        for (auto &choice : choices) {
             std::cout << choice << std::endl;
         }
         std::cout << reward << std::endl;
@@ -53,9 +53,11 @@ void QuizHandler::parseQuizFile(std::string quizName)
         std::string diff = *q->get_as<std::string>("difficulty");
         int reward = *q->get_as<int>("reward");
         std::cout << text << std::endl;
-        for(auto& choice : choices){
+        for (auto &choice : choices) {
             std::cout << choice << std::endl;
         }
         std::cout << reward << std::endl;
+
+        emit questionParsed(text, choices, answer, reward);
     }
 }
