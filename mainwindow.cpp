@@ -29,6 +29,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::showQuizData(Question question)
 {
+    ui->resultLabel->setText("");
+
+    if(buttonGroup->checkedButton()){
+        buttonGroup->setExclusive(false);  // Temporarily allow no selection so that we can unselect the prev radio button.
+        buttonGroup->checkedButton()->setChecked(false);
+        buttonGroup->setExclusive(true);
+    }
+
     ui->labelQuestion->setText(QString::fromStdString(question.text));
 
     ui->choice1->setText(QString::fromStdString(question.choices[0]));
