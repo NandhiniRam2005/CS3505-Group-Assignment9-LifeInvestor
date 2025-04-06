@@ -22,8 +22,7 @@ HEADERS += \
     quizhandler.h
 
 FORMS += \
-    mainwindow.ui \
-    quiz.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
