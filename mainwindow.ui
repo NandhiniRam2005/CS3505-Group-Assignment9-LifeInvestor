@@ -159,6 +159,19 @@
        <string>TextLabel</string>
       </property>
      </widget>
+     <widget class="QLabel" name="resultLabel">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>380</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

@@ -17,6 +17,9 @@ MainWindow::MainWindow(MainModel* model, QWidget *parent)
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
+    connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
+    connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
+    connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
 }
 
 MainWindow::~MainWindow()
@@ -38,4 +41,19 @@ void MainWindow::showQuizData(Question question)
 
 void MainWindow::onStartClicked() {
     ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::submitHelper(){
+    QAbstractButton* selected = buttonGroup->checkedButton();
+    std::string selectedText = (selected->text()).toStdString();
+    emit sendAnswer(selectedText);
+}
+
+void MainWindow::displayResult(bool result){
+    if(result){
+        ui->resultLabel->setText("CORRECT!!");
+    }
+    else{
+        ui->resultLabel->setText("Incorrect!!!");
+    }
 }

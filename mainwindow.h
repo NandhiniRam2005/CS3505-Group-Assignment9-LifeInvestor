@@ -28,9 +28,12 @@ private:
 public slots:
     void showQuizData(Question q);
     void onStartClicked();
+    void submitHelper();
+    void displayResult(bool result);
 
 signals:
     void startQuizRequested();
+    void sendAnswer(std::string answer);
 
 };
 #endif // MAINWINDOW_H
