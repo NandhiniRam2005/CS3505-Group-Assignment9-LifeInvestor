@@ -8,7 +8,8 @@ QuizHandler::QuizHandler(QObject *parent)
     : QObject{parent}
 {
     currentQuestion = 0;
-    //parsingExample();
+    numberCorrect = 0;
+    // parsingExample();
     // parseQuizFile("example");
     // getNextQuestion();
 }
@@ -44,28 +45,38 @@ void QuizHandler::parseQuizFile(std::string quizName)
 
         quizQuestions.push_back(question);
     }
-    std::cout << "Finished parsing" << std::endl;
 
 }
-void QuizHandler::getNextQuestion(){
-    if(currentQuestion > quizQuestions.size()){
-        throw std::runtime_error("Attempting to access question that does not exist! There are only: " + std::to_string(quizQuestions.size()) + " questions " +
-                                 "and you are accessing question: " + std::to_string(currentQuestion));
+Question QuizHandler::getNextQuestion(){
+    if(currentQuestion >= quizQuestions.size()){
+        throw new std::runtime_error("No more questions to access");
     }
-
-    std::cout << "Sending question" << std::endl;
-    std::cout << quizQuestions.at(currentQuestion).text << std::endl;
-    emit sendQuestion(quizQuestions.at(currentQuestion));
-    std::cout << "Sent question" << std::endl;
-
     currentQuestion++;
+    return quizQuestions.at(currentQuestion - 1);
 }
 
-void QuizHandler::checkAnswer(std::string selectedAnswer){
+bool QuizHandler::hasMoreQuestions(){
+    if (currentQuestion >= quizQuestions.size()){
+        return false;
+    }
+    return true;
+}
+
+
+bool QuizHandler::checkAnswer(std::string selectedAnswer){
     if(selectedAnswer == quizQuestions.at(currentQuestion - 1).answer){
-        emit sendResult(true);
+        numberCorrect++;
+        return true;
     }
     else{
-        emit sendResult(false);
+        return false;
     }
+}
+
+uint QuizHandler::getQuestionsAnsweredCorrectly(){
+    return numberCorrect;
+}
+
+uint QuizHandler::quizProgress(){
+    return (currentQuestion * 100) / quizQuestions.size();
 }

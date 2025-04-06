@@ -11,13 +11,36 @@ public:
     explicit MainModel(QObject *parent = nullptr);
 
 public slots:
-    void handleQuestion(Question q);
-
     //TEMPORARY SLOT ADDED FOR TESTING.
     void requestQuiz();
 
+    void checkAnswer(std::string selectedChoice);
+
+    void getNextQuestion();
+
 signals:
-    void newQuizData(Question q);
+    /**
+     * Sends a question out for the view to display
+     *
+     * @param q - The question to be displayed
+     */
+    void sendQuestion(Question q);
+
+    /**
+     * Alerts the view as to whether the quiz question is correct.
+     *
+     * @param correct
+     */
+    void sendResult(bool correct);
+
+    /**
+     * Alerts the view that the quiz has been completed as well as how many were answered correctly
+     *
+     * @param numberCorrect - The number of correctly answered quizQuestions.
+     */
+    void quizFinished(uint numberCorrect);
+
+    void quizProgress(uint progess);
 private:
     QuizHandler* quizHandler;
 };

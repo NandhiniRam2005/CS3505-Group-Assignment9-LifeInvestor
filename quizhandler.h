@@ -20,21 +20,49 @@ class QuizHandler : public QObject
 public:
     explicit QuizHandler(QObject *parent = nullptr);
 
-public slots:
+    /**
+     * Parses a quiz toml file for usage when a quiz is started
+     *
+     * @param quizName - The name of the quiz.
+     */
     void parseQuizFile(std::string quizName);
 
-    void getNextQuestion();
+    /**
+     * Gets the next quiz question or completes the quiz depending on if the quiz has been
+     * completed
+     */
+    Question getNextQuestion();
 
-    void checkAnswer(std::string selectedChoice);
+
+    /**
+     * Checks the user selected answer.
+     *
+     * @param selectedChoice - The answer selected by the user.
+     * @return - If the user was correct or not.
+     */
+    bool checkAnswer(std::string selectedChoice);
+
+    bool hasMoreQuestions();
+
+    uint getQuestionsAnsweredCorrectly();
+
+    uint quizProgress();
+
 private:
-    //void parsingExample();
+    /**
+     * A collection of all the quizQuestions parsed.
+     */
     std::vector<Question> quizQuestions;
+
+    /**
+     * Index for the quiz currently is.
+     */
     uint currentQuestion;
 
-signals:
-    void questionParsed(const std::string &question, const  std::vector<std::string> &choices, const std::string &answer, int reward);
-    void sendQuestion(Question q);
-    void sendResult(bool correct);
+    /**
+     * Tracker for how many quizQuestions have been answered correctly so far.
+     */
+    uint numberCorrect;
 };
 
 #endif // QUIZHANDLER_H

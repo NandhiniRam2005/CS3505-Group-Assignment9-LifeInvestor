@@ -6,7 +6,7 @@ MainWindow::MainWindow(MainModel* model, QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(model, &MainModel::newQuizData, this, &MainWindow::showQuizData);
+    connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
     connect(ui->pushButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
 }
 
@@ -18,7 +18,6 @@ MainWindow::~MainWindow()
 // tryna print to mainwindow for now to test
 void MainWindow::showQuizData(Question question)
 {
-    std::cout << "YOUU" << std::endl;
     ui->labelQuestion->setText(QString::fromStdString(question.text));
 
     if (question.choices.size() >= 4) {
