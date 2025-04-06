@@ -3,6 +3,10 @@
 
 #include <QObject>
 #include "quizhandler.h"
+#include "savingsaccount.h"
+#include "loan.h"
+#include "cdaccount.h"
+#include "stock.h"
 
 class MainModel : public QObject
 {
@@ -17,6 +21,24 @@ public slots:
     void checkAnswer(std::string selectedChoice);
 
     void getNextQuestion();
+
+    void depositToSavings(double amount);
+
+    void depositToCD(double amount);
+
+    void buyStock(double amount, int stockNumber);
+
+    void depositToLoan(double amount, int loanNumber);
+
+    void withdrawFromSavings(double amount);
+
+    void withdrawFromCD(double amount);
+
+    void sellStock(double amount, int stockNumber);
+
+    void withdrawFromLoan(double amount, int loanNumber);
+
+    void nextYear();
 
 signals:
     /**
@@ -42,8 +64,28 @@ signals:
 
     void quizProgress(uint progess);
 
+    void updateSavingsBalance(double newBalance);
+
+    void updateCDBalance(double newBalance);
+
+    void updateStockBalances(QVector<double> newBalances);
+
+    void updateLoanBalances(QVector<double> newBalances);
+
 private:
     QuizHandler *quizHandler;
+
+    double currentBalance;
+    int creditScore;
+    int currentYear;
+
+    SavingsAccount* savingsAccount;
+
+    CDAccount* cdAccount;
+
+    QVector<Loan> loans;
+
+    QVector<Stock> stocks;
 };
 
 #endif // MAINMODEL_H

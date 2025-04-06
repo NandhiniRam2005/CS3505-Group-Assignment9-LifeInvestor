@@ -21,6 +21,28 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
     connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
     connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
+
+    // connection for nextYear
+    connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
+
+    // connections for depositing
+    connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
+    connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
+    connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
+    connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
+
+    // connections for withdrawing
+    connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
+    connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
+    connect(this, &MainWindow::withdrawFromLoan, model, &MainModel::withdrawFromLoan);
+    connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
+
+    // connections for updating MainWindow values
+    connect(model, &MainModel::updateSavingsBalance, this, &MainWindow::updateSavingsBalance);
+    connect(model, &MainModel::updateCDBalance, this, &MainWindow::updateCDBalance);
+    connect(model, &MainModel::updateStockBalances, this, &MainWindow::updateStockBalances);
+    connect(model, &MainModel::updateLoanBalances, this, &MainWindow::updateLoanBalances);
+
 }
 
 MainWindow::~MainWindow()
@@ -73,4 +95,20 @@ void MainWindow::displayResult(bool result)
 void MainWindow::updateProgress(uint progress)
 {
     ui->quizProgress->setValue(progress);
+}
+
+void MainWindow::updateSavingsBalance(double newBalance) {
+
+}
+
+void MainWindow::updateCDBalance(double newBalance) {
+
+}
+
+void MainWindow::updateStockBalances(QVector<double> newBalances) {
+
+}
+
+void MainWindow::updateLoanBalances(QVector<double> newBalances) {
+
 }

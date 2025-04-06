@@ -25,6 +25,11 @@ private:
     QButtonGroup *buttonGroup;
     Question currentQuestion;
 
+    QVector<double> stockBalances;
+    QVector<double> loanBalances;
+    double savingsBalance;
+    double cdBalance;
+
 public slots:
     void showQuizData(Question q);
     void onStartClicked();
@@ -32,8 +37,34 @@ public slots:
     void displayResult(bool result);
     void updateProgress(uint progress);
 
+    void updateSavingsBalance(double newBalance);
+
+    void updateCDBalance(double newBalance);
+
+    void updateStockBalances(QVector<double> newBalances);
+
+    void updateLoanBalances(QVector<double> newBalances);
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
+
+    void depositToSavings(double amount);
+
+    void depositToCD(double amount);
+
+    void buyStock(double amount, int stockNumber);
+
+    void depositToLoan(double amount, int loanNumber);
+
+    void withdrawFromSavings(double amount);
+
+    void withdrawFromCD(double amount);
+
+    void sellStock(double amount, int stockNumber);
+
+    void withdrawFromLoan(double amount, int loanNumber);
+
+    void nextYear();
 };
 #endif // MAINWINDOW_H
