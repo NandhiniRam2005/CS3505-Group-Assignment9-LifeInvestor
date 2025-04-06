@@ -20,6 +20,7 @@ MainWindow::MainWindow(MainModel* model, QWidget *parent)
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
     connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
     connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
+    connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
 }
 
 MainWindow::~MainWindow()
@@ -64,4 +65,8 @@ void MainWindow::displayResult(bool result){
     else{
         ui->resultLabel->setText("Incorrect!!!");
     }
+}
+
+void MainWindow::updateProgress(uint progress){
+    ui->quizProgress->setValue(progress);
 }

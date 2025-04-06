@@ -30,6 +30,7 @@ public slots:
     void onStartClicked();
     void submitHelper();
     void displayResult(bool result);
+    void updateProgress(uint progress);
 
 signals:
     void startQuizRequested();

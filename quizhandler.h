@@ -41,10 +41,25 @@ public:
      */
     bool checkAnswer(std::string selectedChoice);
 
+    /**
+     * Checks to see if the quiz has any more questions
+     *
+     * @return - if the quiz has any more questions
+     */
     bool hasMoreQuestions();
 
+    /**
+     * Once the quiz is completed the number answered correctly should be returned.
+     *
+     * @return - The number of quiz questions answered correctly
+     */
     uint getQuestionsAnsweredCorrectly();
 
+    /**
+     * The current progress of the quiz as an unsigned int percentage.
+     *
+     * @return - The quiz progress as an unsigned int percentage (1-100)
+     */
     uint quizProgress();
 
 private:
