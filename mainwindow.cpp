@@ -13,6 +13,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     buttonGroup->addButton(ui->choice2);
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
+    ui->balance->hide();
 
     confettiView = new ConfettiView(this);
     confettiView->hide();
@@ -28,13 +29,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
-    connect(ui->continueButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame);});
+    connect(ui->continueButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame); ui->balance->show();});
     connect(ui->App1, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->Stocks);});
     connect(ui->stocksBackButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame);});
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
     connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
     connect(ui->settingsButton, &QPushButton::clicked, this, [this] () {
         ui->settingsButton->hide();
+        ui->balance->hide();
         emit settingsOpened(ui->stackedWidget->currentWidget());
         ui->stackedWidget->setCurrentWidget(ui->Settings);
     });
@@ -140,11 +142,14 @@ void MainWindow::returnToGame(QWidget* currentWidget)
         throw std::runtime_error("return page could not be found.");
     }
     ui->settingsButton->show();
+    if(returnPage != "Start" && returnPage != "quizEnd")
+        ui->balance->show();
 }
 
 void MainWindow::onStartClicked()
 {
     hidePhone();
+    ui->balance->show();
     ui->stackedWidget->setCurrentWidget(ui->Quiz);
 }
 
@@ -208,7 +213,8 @@ void MainWindow::enableSubmitButton(bool checked) {
 }
 
 void MainWindow::showEndScreen() {
+    ui->balance->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
-    ui->endLabel->setText("Quiz done! yay");
+    ui->endLabel->setText("Quiz done! yay\n here is the recap (there is no recap)");
 }
 
