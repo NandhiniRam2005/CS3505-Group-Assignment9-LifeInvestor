@@ -9,6 +9,17 @@ or in a different format if needed
 '''
 
 [[questions]]
+question = "When taking a quiz, a question will be displayed here. Answer correctly to receive the bonus cash"
+choices = ["answer",
+"answer",
+"answer",
+"answer"]
+answer = "answer"
+why = "A was listed as the correct answer. Here you will see the result of your answer along with the explination as to what the correct answer is."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
 question = "What does 'IPO' stand for?"
 
 choices = [
@@ -25,7 +36,10 @@ reward = 100
 
 [[questions]]
 question = "If a stock splits 2-for-1, what happens to the share price (assuming all else equal)?"
-choices = ["It doubles", "It halves", "It stays the same", "It drops to zero"]
+choices = ["It doubles",
+"It halves",
+"It stays the same",
+"It drops to zero"]
 answer = "It halves"
 why = "Stock splits increase the number of shares, but the value of the company stays the same, so the share price will be cut in half."
 difficulty = "hard"

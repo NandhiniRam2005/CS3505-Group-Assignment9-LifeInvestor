@@ -9,7 +9,7 @@ MainModel::MainModel(QObject *parent)
 
     currentMoney = 0;
     creditScore = 0;
-    currentYear = 1;
+    currentYear = 0;
 
     savingsAccount = new SavingsAccount(0);
 
