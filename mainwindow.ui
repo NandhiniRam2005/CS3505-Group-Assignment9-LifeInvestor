@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -48,7 +48,7 @@
         <x>180</x>
         <y>200</y>
         <width>431</width>
-        <height>16</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -164,14 +164,17 @@
      <widget class="QLabel" name="labelQuestion">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>100</x>
         <y>70</y>
-        <width>291</width>
+        <width>581</width>
         <height>101</height>
        </rect>
       </property>
       <property name="text">
        <string>TextLabel</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="resultLabel">
