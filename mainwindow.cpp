@@ -29,6 +29,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
     connect(ui->continueButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame);});
+    connect(ui->App1, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->Stocks);});
+    connect(ui->stocksBackButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame);});
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
     connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
     connect(ui->settingsButton, &QPushButton::clicked, this, [this] () {
@@ -132,6 +134,8 @@ void MainWindow::returnToGame(QWidget* currentWidget)
         ui->stackedWidget->setCurrentWidget(ui->quizEnd);
     } else if(returnPage == "mainGame") {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    } else if(returnPage == "Stocks") {
+        ui->stackedWidget->setCurrentWidget(ui->Stocks);
     } else {
         throw std::runtime_error("return page could not be found.");
     }
