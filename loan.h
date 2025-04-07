@@ -9,7 +9,9 @@ private:
     double interestRate;
 
 public:
-    Loan(double balance, double interestRate);
+    Loan(double interestRate, double balance);
+
+    bool deposit(double amount) override;
 
     void nextYear() override;
 };

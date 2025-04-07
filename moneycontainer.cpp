@@ -2,15 +2,16 @@
 
 MoneyContainer::MoneyContainer() {}
 
-void MoneyContainer::deposit(double amount) {
+bool MoneyContainer::deposit(double amount) {
     balance += amount;
+    return true;
 }
 
-double MoneyContainer::withdraw(double amount) {
+bool MoneyContainer::withdraw(double amount) {
     if (balance < amount)
-        amount -= balance;
+        return false;
     balance -= amount;
-    return amount;
+    return true;
 }
 
 double MoneyContainer::getBalance() {

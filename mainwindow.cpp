@@ -71,7 +71,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // connections for updating MainWindow values
     connect(model, &MainModel::updateSavingsBalance, this, &MainWindow::updateSavingsBalance);
-    connect(model, &MainModel::updateCDBalance, this, &MainWindow::updateCDBalance);
+    connect(model, &MainModel::updateCDBalances, this, &MainWindow::updateCDBalances);
     connect(model, &MainModel::updateStockBalances, this, &MainWindow::updateStockBalances);
     connect(model, &MainModel::updateLoanBalances, this, &MainWindow::updateLoanBalances);
 
@@ -198,8 +198,8 @@ void MainWindow::updateSavingsBalance(double newBalance) {
     savingsBalance = newBalance;
 }
 
-void MainWindow::updateCDBalance(double newBalance) {
-    cdBalance = newBalance;
+void MainWindow::updateCDBalances(QVector<double> newBalances) {
+    cdBalances = newBalances;
 }
 
 void MainWindow::updateStockBalances(QVector<double> newBalances) {
