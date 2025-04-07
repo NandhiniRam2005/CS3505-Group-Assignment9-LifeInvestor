@@ -27,7 +27,6 @@ void MainModel::requestQuiz()
 void MainModel::getNextQuestion()
 {
     if (quizHandler->hasMoreQuestions()) {
-        emit quizProgress(quizHandler->quizProgress());
         emit sendQuestion(quizHandler->getNextQuestion());
     } else {
         emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly());
@@ -38,6 +37,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
 {
     bool result = quizHandler->checkAnswer(selectedChoice);
     std::string why = quizHandler->getCurrentQuestionWhy();
+    emit quizProgress(quizHandler->quizProgress());
     emit sendResult(result, why);
 }
 
