@@ -1,0 +1,20 @@
+category = "Example Category"
+
+categoryInfo = "Here is a description of the question category"
+
+learnMore = '''
+We could put learning information here
+
+or in a different format if needed
+'''
+
+[[questions]]
+question = "When taking a quiz, a question will be displayed here. Answer correctly to receive the bonus cash"
+choices = ["answer",
+"answer",
+"answer",
+"answer"]
+answer = "answer"
+why = "A was listed as the correct answer. Here you will see the result of your answer along with the explination as to what the correct answer is."
+difficulty = "easy"
+reward = 100

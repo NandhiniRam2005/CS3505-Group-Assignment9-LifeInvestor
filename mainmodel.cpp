@@ -47,6 +47,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
     std::string why = quizHandler->getCurrentQuestionWhy();
     emit quizProgress(quizHandler->quizProgress());
     emit sendResult(result, why);
+    emit quizProgress(quizHandler->quizProgress());
 }
 
 void MainModel::depositToSavings(double amount) {
