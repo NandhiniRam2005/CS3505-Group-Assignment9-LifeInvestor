@@ -66,6 +66,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
     connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
+    connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
 
     // connections for updating MainWindow values
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
@@ -206,7 +207,7 @@ void MainWindow::updateStock(int stockNumber, double newBalance) {
 
 }
 
-void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate) {
+void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft) {
 
 }
 

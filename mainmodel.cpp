@@ -8,7 +8,7 @@ MainModel::MainModel(QObject *parent)
     quizHandler = new QuizHandler(this);
 
     currentMoney = 0;
-    creditScore = 0;
+    creditScore = 750;
     currentYear = 0;
 
     savingsAccount = new SavingsAccount(0.0041);
@@ -17,9 +17,8 @@ MainModel::MainModel(QObject *parent)
     cdAccounts.push_back(CDAccount(0.039, 3, 500));
     cdAccounts.push_back(CDAccount(0.036, 5, 500));
 
-    loans.push_back(Loan(0.067, 100));
-    loans.push_back(Loan(0.067, 1000));
-    loans.push_back(Loan(0.067, 1000000));
+    loans.push_back(Loan(0.067, 100, 0, 5));
+    loans.push_back(Loan(0.067, 1000, 600, 5));
 
     stocks.push_back(Stock());
     stocks.push_back(Stock());
@@ -88,7 +87,7 @@ void MainModel::depositToLoan(double amount, int loanNumber) {
     if (loans[loanNumber].deposit(amount) && amount <= currentMoney) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
-        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
+        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getInterestRate(), loans[loanNumber].getAvailable(), loans[loanNumber].getYearsLeft());
     }
     else
         emit showErrorMessage("Input amount cannot be removed from the loan");
@@ -124,14 +123,28 @@ void MainModel::sellStock(double amount, int stockNumber) {
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
+void MainModel::activateLoan(int loanNumber) {
+    if (loans[loanNumber].activate()) {
+        currentMoney += -loans[loanNumber].getBalance();
+        emit updateBalance(currentMoney);
+        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getInterestRate(), loans[loanNumber].getAvailable(), loans[loanNumber].getYearsLeft());
+    }
+    else
+        emit showErrorMessage("The loan cannot be activated");
+}
+
 void MainModel::nextYear() {
     savingsAccount->nextYear();
     for (MoneyContainer container : cdAccounts)
         container.nextYear();
     for (MoneyContainer container : stocks)
         container.nextYear();
-    for (MoneyContainer container : loans)
-        container.nextYear();
+    for (Loan loan : loans) {
+        loan.nextYear();
+        loan.setAvailable(creditScore);
+        if (loan.getYearsLeft() < 0)
+            endGame();
+    }
 }
 
 void MainModel::settingsOpened(QWidget* currentWidget) {
@@ -145,4 +158,8 @@ void MainModel::settingsClosed() {
 void MainModel::addFunds(double amount) {
     currentMoney += amount;
     emit updateBalance(currentMoney);
+}
+
+void MainModel ::endGame() {
+
 }

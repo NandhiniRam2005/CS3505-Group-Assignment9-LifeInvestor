@@ -36,6 +36,8 @@ public slots:
 
     void sellStock(double amount, int stockNumber);
 
+    void activateLoan(int loanNumber);
+
     void nextYear();
 
     void settingsOpened(QWidget* currentWidget);
@@ -72,7 +74,7 @@ signals:
 
     void updateStock(int stockNumber, double newBalance);
 
-    void updateLoan(int loanNumber, double newBalance, double interestRate);
+    void updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
 
     void returnToGame(QWidget* currentWidget);
 
@@ -97,6 +99,8 @@ private:
     QVector<Stock> stocks;
 
     void addFunds(double amount);
+
+    void endGame();
 };
 
 #endif // MAINMODEL_H

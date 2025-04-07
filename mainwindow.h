@@ -47,7 +47,7 @@ public slots:
 
     void updateStock(int stockNumber, double newBalance);
 
-    void updateLoan(int loanNumber, double newBalance, double interestRate);
+    void updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
 
     void updateBalance(double newAmount);
 
@@ -80,6 +80,8 @@ signals:
     void withdrawFromCD(double amount, int cdNumber);
 
     void sellStock(double amount, int stockNumber);
+
+    void activateLoan(int loanNumber);
 
     void nextYear();
 
