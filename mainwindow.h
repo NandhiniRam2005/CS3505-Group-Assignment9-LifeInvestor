@@ -73,7 +73,7 @@ signals:
 
     void depositToCD(double amount, int cdNumber);
 
-    void buyStock(double amount, int stockNumber);
+    void buyStock(int numberOfShares, int stockNumber);
 
     void depositToLoan(double amount, int loanNumber);
 
@@ -81,7 +81,7 @@ signals:
 
     void withdrawFromCD(double amount, int cdNumber);
 
-    void sellStock(double amount, int stockNumber);
+    void sellStock(int numberOfShares, int stockNumber);
 
     void activateLoan(int loanNumber);
 

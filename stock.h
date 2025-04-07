@@ -9,18 +9,17 @@
 class Stock : public MoneyContainer
 {
 private:
-    double currentValue;
-    QVector<double> pastValues;
-    // add variables to control how stock changes
+    double value;
+    double variance;
+    double trend;
 
 public:
-    Stock(); // add stock variables
+    Stock(double value, double variance, double trend);
 
     void nextYear() override;
 
-    double getCurrentValue();
+    double getValue();
 
-    QVector<double> getPastValues();
 };
 
 #endif // STOCK_H

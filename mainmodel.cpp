@@ -20,9 +20,9 @@ MainModel::MainModel(QObject *parent)
     loans.push_back(Loan(0.067, 100, 0, 5));
     loans.push_back(Loan(0.067, 1000, 600, 5));
 
-    stocks.push_back(Stock());
-    stocks.push_back(Stock());
-    stocks.push_back(Stock());
+    stocks.push_back(Stock(20, 0.5, 0.2));
+    stocks.push_back(Stock(100, 0.1, 0.1));
+    stocks.push_back(Stock(500, 0.3, -0.1));
 }
 
 void MainModel::requestQuiz()
@@ -73,7 +73,8 @@ void MainModel::depositToCD(double amount, int cdNumber) {
         emit showErrorMessage("Input amount cannot be deposited");
 }
 
-void MainModel::buyStock(double amount, int stockNumber) {
+void MainModel::buyStock(int numberOfShares, int stockNumber) {
+    double amount = numberOfShares * stocks[stockNumber].getValue();
     if (stocks[stockNumber].deposit(amount) && amount <= currentMoney) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
@@ -113,7 +114,8 @@ void MainModel::withdrawFromCD(double amount, int cdNumber) {
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::sellStock(double amount, int stockNumber) {
+void MainModel::sellStock(int numberOfShares, int stockNumber) {
+    double amount = numberOfShares * stocks[stockNumber].getValue();
     if (stocks[stockNumber].withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
