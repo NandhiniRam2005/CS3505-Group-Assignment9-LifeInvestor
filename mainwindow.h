@@ -49,6 +49,10 @@ public slots:
 
     void updateCurrentMoney(double newAmount);
 
+    void showEndScreen();
+
+    void enableSubmitButton(bool checked);
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);

@@ -7,11 +7,18 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     , ui(new Ui::MainWindow)
 {    
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentWidget(ui->Start);
     buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(ui->choice1);
     buttonGroup->addButton(ui->choice2);
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
+
+    // connections for buttons to enable submitting
+    connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    connect(ui->choice2, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    connect(ui->choice3, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    connect(ui->choice4, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
 
     connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
@@ -21,6 +28,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
     connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
     connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
+
+    connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
 
     // connection for nextYear
     connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
@@ -54,12 +63,20 @@ void MainWindow::showQuizData(Question question)
 {
     ui->resultLabel->setText("");
 
+    ui->choice1->setEnabled(true);
+    ui->choice2->setEnabled(true);
+    ui->choice3->setEnabled(true);
+    ui->choice4->setEnabled(true);
+
     if (buttonGroup->checkedButton()) {
         buttonGroup->setExclusive(
             false); // Temporarily allow no selection so that we can unselect the prev radio button.
         buttonGroup->checkedButton()->setChecked(false);
         buttonGroup->setExclusive(true);
     }
+
+    ui->submitButton->setEnabled(false);
+    ui->nextButton->setEnabled(false);
 
     ui->labelQuestion->setText(QString::fromStdString(question.text));
 
@@ -73,7 +90,7 @@ void MainWindow::showQuizData(Question question)
 
 void MainWindow::onStartClicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+     ui->stackedWidget->setCurrentWidget(ui->Quiz);
 }
 
 void MainWindow::submitHelper()
@@ -81,6 +98,14 @@ void MainWindow::submitHelper()
     QAbstractButton *selected = buttonGroup->checkedButton();
     std::string selectedText = (selected->text()).toStdString();
     emit sendAnswer(selectedText);
+
+    ui->choice1->setEnabled(false);
+    ui->choice2->setEnabled(false);
+    ui->choice3->setEnabled(false);
+    ui->choice4->setEnabled(false);
+
+    ui->submitButton->setEnabled(false);
+    ui->nextButton->setEnabled(true);
 }
 
 void MainWindow::displayResult(bool result)
@@ -115,5 +140,16 @@ void MainWindow::updateStockBalances(QVector<double> newBalances) {
 
 void MainWindow::updateLoanBalances(QVector<double> newBalances) {
     loanBalances = newBalances;
+}
+
+void MainWindow::enableSubmitButton(bool checked) {
+    if (checked) {
+        ui->submitButton->setEnabled(true);
+    }
+}
+
+void MainWindow::showEndScreen() {
+    ui->stackedWidget->setCurrentWidget(ui->quizEnd);
+    ui->endLabel->setText("Quiz done! yay");
 }
 

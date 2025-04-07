@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -38,6 +38,21 @@
       </property>
       <property name="text">
        <string>start game</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="quizEnd">
+     <widget class="QLabel" name="endLabel">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>200</y>
+        <width>431</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -72,7 +87,7 @@
         <rect>
          <x>40</x>
          <y>40</y>
-         <width>99</width>
+         <width>191</width>
          <height>20</height>
         </rect>
        </property>
@@ -85,7 +100,7 @@
         <rect>
          <x>40</x>
          <y>80</y>
-         <width>99</width>
+         <width>251</width>
          <height>20</height>
         </rect>
        </property>
@@ -98,7 +113,7 @@
         <rect>
          <x>310</x>
          <y>40</y>
-         <width>99</width>
+         <width>191</width>
          <height>20</height>
         </rect>
        </property>
@@ -111,7 +126,7 @@
         <rect>
          <x>310</x>
          <y>80</y>
-         <width>99</width>
+         <width>221</width>
          <height>20</height>
         </rect>
        </property>
@@ -194,7 +209,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>
