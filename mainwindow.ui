@@ -23,6 +23,12 @@
       <height>531</height>
      </rect>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
     <property name="currentIndex">
      <number>2</number>
     </property>
@@ -143,6 +149,10 @@
       </property>
       <property name="text">
        <string>Settings</string>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/icons/icons/test.png</normaloff>:/icons/icons/test.png</iconset>
       </property>
      </widget>
      <widget class="Line" name="line_3">
@@ -266,84 +276,6 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="App1">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>620</x>
-        <y>170</y>
-        <width>50</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="resources.qrc">
-        <normaloff>:/icons/icons/test.png</normaloff>
-        <disabledoff>:/icons/icons/blank.png</disabledoff>
-        <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/test.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>50</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="App2">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>690</x>
-        <y>170</y>
-        <width>50</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="resources.qrc">
-        <normaloff>:/icons/icons/lock.png</normaloff>
-        <disabledoff>:/icons/icons/blank.png</disabledoff>
-        <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>50</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>500</y>
-        <width>113</width>
-        <height>24</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="Line" name="line_2">
       <property name="geometry">
        <rect>
@@ -414,6 +346,224 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QWidget" name="Apps" native="true">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>160</y>
+        <width>181</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <widget class="QPushButton" name="App1">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/stockApp.png</normaloff>
+         <disabledoff>:/icons/icons/blank.png</disabledoff>
+         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/stockApp.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="App2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>30</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/lock.png</normaloff>
+         <disabledoff>:/icons/icons/blank.png</disabledoff>
+         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="App3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/lock.png</normaloff>
+         <disabledoff>:/icons/icons/blank.png</disabledoff>
+         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="App4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>100</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/lock.png</normaloff>
+         <disabledoff>:/icons/icons/blank.png</disabledoff>
+         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="App5">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>170</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/lock.png</normaloff>
+         <disabledoff>:/icons/icons/blank.png</disabledoff>
+         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="App6">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>170</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/icons/icons/lock.png</normaloff>
+         <disabledoff>:/icons/icons/blank.png</disabledoff>
+         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
      <zorder>dial</zorder>
      <zorder>label</zorder>
@@ -422,14 +572,12 @@
      <zorder>progressBar</zorder>
      <zorder>settingsButton</zorder>
      <zorder>line_3</zorder>
-     <zorder>Phone</zorder>
      <zorder>spinBox</zorder>
-     <zorder>App1</zorder>
-     <zorder>App2</zorder>
-     <zorder>lineEdit</zorder>
      <zorder>line_2</zorder>
      <zorder>openPhoneButton</zorder>
+     <zorder>Apps</zorder>
     </widget>
+    <widget class="QWidget" name="settingsPage"/>
     <widget class="QWidget" name="Quiz">
      <widget class="QLabel" name="labelReward">
       <property name="geometry">

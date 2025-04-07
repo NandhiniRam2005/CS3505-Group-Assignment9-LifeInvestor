@@ -4,5 +4,7 @@
         <file>icons/test.png</file>
         <file>icons/blank.png</file>
         <file>icons/lock.png</file>
+        <file>icons/stockApp.png</file>
+        <file>icons/settingsBackground.jpg</file>
     </qresource>
 </RCC>

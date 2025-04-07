@@ -102,16 +102,20 @@ void MainWindow::displayPhone()
     ui->openPhoneButton->setDisabled(true);
     ui->Phone->setEnabled(true);
     ui->closePhoneButton->setEnabled(true);
+    ui->Apps->setEnabled(true);
     ui->App1->setEnabled(true);
     ui->App2->setEnabled(true);
+    ui->App3->setEnabled(true);
+    ui->App4->setEnabled(true);
+    ui->App5->setEnabled(true);
+    ui->App6->setEnabled(true);
 }
 
 void MainWindow::hidePhone()
 {
     ui->Phone->setDisabled(true);
     ui->closePhoneButton->setDisabled(true);
-    ui->App1->setDisabled(true);
-    ui->App2->setDisabled(true);
+    ui->Apps->setDisabled(true);
     ui->openPhoneButton->setEnabled(true);
 }
 
