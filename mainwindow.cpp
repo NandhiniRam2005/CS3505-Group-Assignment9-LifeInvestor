@@ -175,7 +175,8 @@ void MainWindow::displayResult(bool result, std::string explanation)
     if (result) {
         ui->resultLabel->setText("<span style='color: green; font-weight: bold;'>CORRECT!!</span>");
         confettiView->startConfettiAnimation();
-        emit addFunds(100);
+        int questionReward = 100;
+        emit addFunds(questionReward);
     } else {
         QString formattedText = "<span style='color: red; font-weight: bold;'>Incorrect!!!</span><br>"
                                 "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
