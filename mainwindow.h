@@ -38,7 +38,7 @@ public slots:
     void showQuizData(Question q);
     void onStartClicked();
     void submitHelper();
-    void displayResult(bool result);
+    void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
 
     void updateSavingsBalance(double newBalance);

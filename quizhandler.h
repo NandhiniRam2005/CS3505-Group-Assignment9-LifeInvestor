@@ -34,6 +34,8 @@ public:
      */
     Question getNextQuestion();
 
+    std::string getCurrentQuestionWhy();
+
     /**
      * Checks the user selected answer.
      *

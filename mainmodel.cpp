@@ -38,7 +38,9 @@ void MainModel::getNextQuestion()
 
 void MainModel::checkAnswer(std::string selectedChoice)
 {
-    emit sendResult(quizHandler->checkAnswer(selectedChoice));
+    bool result = quizHandler->checkAnswer(selectedChoice);
+    std::string why = quizHandler->getCurrentQuestionWhy();
+    emit sendResult(result, why);
 }
 
 void MainModel::depositToSavings(double amount) {

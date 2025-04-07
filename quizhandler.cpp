@@ -53,6 +53,11 @@ Question QuizHandler::getNextQuestion()
     return quizQuestions.at(currentQuestion - 1);
 }
 
+std::string QuizHandler::getCurrentQuestionWhy()
+{
+    return quizQuestions[currentQuestion - 1].why;
+}
+
 bool QuizHandler::hasMoreQuestions()
 {
     if (currentQuestion >= quizQuestions.size()) {

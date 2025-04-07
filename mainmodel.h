@@ -53,7 +53,7 @@ signals:
      *
      * @param correct
      */
-    void sendResult(bool correct);
+    void sendResult(bool result, std::string explanation);
 
     /**
      * Alerts the view that the quiz has been completed as well as how many were answered correctly

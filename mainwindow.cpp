@@ -111,13 +111,13 @@ void MainWindow::submitHelper()
     ui->nextButton->setEnabled(true);
 }
 
-void MainWindow::displayResult(bool result)
+void MainWindow::displayResult(bool result, std::string explanation)
 {
     if (result) {
         ui->resultLabel->setText("CORRECT!!");
         confettiView->startAnimation();
     } else {
-        ui->resultLabel->setText("Incorrect!!!");
+        ui->resultLabel->setText("Incorrect!!!\n\nExplanation: " + QString::fromStdString(explanation));
     }
 }
 
