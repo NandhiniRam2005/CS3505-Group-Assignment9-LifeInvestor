@@ -9,6 +9,8 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 DEFINES += PROJECT_PATH=\"\\\"$${_PRO_FILE_PWD_}/\\\"\"
 
+RESOURCES += resources.qrc
+
 SOURCES += \
     Box2D/Collision/Shapes/b2ChainShape.cpp \
     Box2D/Collision/Shapes/b2CircleShape.cpp \
