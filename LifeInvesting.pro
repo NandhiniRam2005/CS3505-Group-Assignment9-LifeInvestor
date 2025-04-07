@@ -140,4 +140,5 @@ DISTFILES += \
     QuestionBanks/example.toml
 
 RESOURCES += \
+    resources.qrc \
     resources.qrc
