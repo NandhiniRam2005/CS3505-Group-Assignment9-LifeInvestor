@@ -44,6 +44,8 @@ public slots:
 
     void settingsClosed();
 
+    void addFunds(double amount);
+
 signals:
     /**
      * Sends a question out for the view to display
@@ -79,6 +81,8 @@ signals:
     void updateCurrentMoney(double newAmount);
 
     void returnToGame(QWidget* currentWidget);
+
+    void updateBalance(double newBalance);
 
 private:
     QuizHandler *quizHandler;

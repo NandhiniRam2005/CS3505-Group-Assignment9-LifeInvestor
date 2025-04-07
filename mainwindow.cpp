@@ -60,6 +60,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
     connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
     connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
+    connect(model, &MainModel::updateBalance, this, &MainWindow::updateBalance);
+    connect(this, &MainWindow::addFunds, model, &MainModel::addFunds);
 
     // connections for withdrawing
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
@@ -173,6 +175,7 @@ void MainWindow::displayResult(bool result, std::string explanation)
     if (result) {
         ui->resultLabel->setText("<span style='color: green; font-weight: bold;'>CORRECT!!</span>");
         confettiView->startConfettiAnimation();
+        emit addFunds(100);
     } else {
         QString formattedText = "<span style='color: red; font-weight: bold;'>Incorrect!!!</span><br>"
                                 "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
@@ -186,8 +189,9 @@ void MainWindow::updateProgress(uint progress)
     ui->quizProgress->setValue(progress);
 }
 
-void MainWindow::updateCurrentMoney(double newAmount) {
+void MainWindow::updateBalance(double newAmount) {
     currentMoney = newAmount;
+    ui->balance->setText("$"+QString::number(currentMoney));
 }
 
 void MainWindow::updateSavingsBalance(double newBalance) {

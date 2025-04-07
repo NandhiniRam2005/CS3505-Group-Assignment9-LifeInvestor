@@ -49,7 +49,7 @@ public slots:
 
     void updateLoanBalances(QVector<double> newBalances);
 
-    void updateCurrentMoney(double newAmount);
+    void updateBalance(double newAmount);
 
     void showEndScreen();
 
@@ -64,6 +64,8 @@ public slots:
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
+
+    void addFunds(double amount);
 
     void depositToSavings(double amount);
 

@@ -85,3 +85,8 @@ void MainModel::settingsOpened(QWidget* currentWidget) {
 void MainModel::settingsClosed() {
     emit returnToGame(this->currentWidget);
 }
+
+void MainModel::addFunds(double amount) {
+    currentMoney += amount;
+    emit updateBalance(currentMoney);
+}
