@@ -15,8 +15,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     buttonGroup->addButton(ui->choice4);
     ui->balance->hide();
 
-    confettiView = new ConfettiView(this);
-    confettiView->hide();
+    animationView = new AnimationView(this);
+    animationView->hide();
 
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
@@ -177,13 +177,13 @@ void MainWindow::displayResult(bool result, std::string explanation)
 {
     if (result) {
         ui->resultLabel->setText("<span style='color: green; font-weight: bold;'>CORRECT!!</span>");
-        confettiView->startConfettiAnimation();
+        animationView->startConfettiAnimation();
         levelPassSound->play();
     } else {
         QString formattedText = "<span style='color: red; font-weight: bold;'>Incorrect!!!</span><br>"
                                 "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
         ui->resultLabel->setText(formattedText);
-        confettiView->startRainAnimation();
+        animationView->startRainAnimation();
     }
 }
 

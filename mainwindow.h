@@ -33,7 +33,7 @@ private:
     QVector<double> loanBalances;
     double savingsBalance;
     QVector<double> cdBalances;
-    ConfettiView* confettiView;
+    AnimationView* animationView;
     QSoundEffect* levelPassSound;
 
 public slots:

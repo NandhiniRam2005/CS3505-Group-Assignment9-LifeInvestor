@@ -8,21 +8,21 @@
 #include <QVector>
 #include <Box2D/Box2D.h>
 
-class Confetti {
+class Animation {
 public:
-    Confetti(b2Body* body, QColor color, QSize size);
-    ~Confetti();
-    b2Body *body;
+    Animation(b2Body* body, QColor color, QSize size);
+    ~Animation();
+    b2Body* body;
     QColor color;
     QSize size;
 };
 
-class ConfettiView : public QWidget
+class AnimationView : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ConfettiView(QWidget *parent = nullptr);
+    explicit AnimationView(QWidget *parent = nullptr);
     void startConfettiAnimation();
     void startRainAnimation();
     void stopConfettiAnimation();
@@ -34,8 +34,8 @@ protected:
 private:
     b2World world;
     QTimer* timer;
-    QVector<Confetti*> confettiList;
-    QVector<Confetti*> rainList;
+    QVector<Animation*> confettiList;
+    QVector<Animation*> rainList;
     double scale;
 
     void clearConfetti();

@@ -3,13 +3,11 @@
 #include <QRandomGenerator>
 #include <QTimer>
 
-Confetti::Confetti(b2Body* body, QColor color, QSize size)
-    : body(body), color(color), size(size) {}
+Animation::Animation(b2Body* body, QColor color, QSize size): body(body), color(color), size(size) {}
 
-Confetti::~Confetti() {
-}
+Animation::~Animation() {}
 
-ConfettiView::ConfettiView(QWidget *parent)
+AnimationView::AnimationView(QWidget *parent)
     : QWidget(parent), world(b2Vec2(0.3f, 9.8f)), timer(new QTimer(this)), scale(20.0)
 {
     setGeometry(parent->rect());
@@ -22,7 +20,7 @@ ConfettiView::ConfettiView(QWidget *parent)
     hide();
 }
 
-void ConfettiView::startConfettiAnimation()
+void AnimationView::startConfettiAnimation()
 {
     stopConfettiAnimation();
 
@@ -60,16 +58,16 @@ void ConfettiView::startConfettiAnimation()
 
         QColor color = QColor(red, green, blue);
         QSize size(5, 5);
-        confettiList.push_back(new Confetti(body, color, size));
+        confettiList.push_back(new Animation(body, color, size));
     }
 
     show();
     timer->start(16);
 
-    QTimer::singleShot(3000, this, &ConfettiView::stopConfettiAnimation);
+    QTimer::singleShot(3000, this, &AnimationView::stopConfettiAnimation);
 }
 
-void ConfettiView::startRainAnimation()
+void AnimationView::startRainAnimation()
 {
     stopRainAnimation();
 
@@ -100,51 +98,51 @@ void ConfettiView::startRainAnimation()
 
         QColor color(0, 0, 255);  // Blue color for rain
         QSize size(1, 10);
-        rainList.push_back(new Confetti(body, color, size));
+        rainList.push_back(new Animation(body, color, size));
     }
 
     show();
     timer->start(16);
 
-    QTimer::singleShot(3000, this, &ConfettiView::stopRainAnimation);
+    QTimer::singleShot(3000, this, &AnimationView::stopRainAnimation);
 }
 
-void ConfettiView::stopConfettiAnimation()
+void AnimationView::stopConfettiAnimation()
 {
     timer->stop();
     clearConfetti();
     hide();
 }
 
-void ConfettiView::stopRainAnimation()
+void AnimationView::stopRainAnimation()
 {
     timer->stop();
     clearRain();
     hide();
 }
 
-void ConfettiView::clearConfetti()
+void AnimationView::clearConfetti()
 {
-    for (Confetti* confetti : confettiList) {
+    for (Animation* confetti : confettiList) {
         world.DestroyBody(confetti->body);
         delete confetti;
     }
     confettiList.clear();
 }
 
-void ConfettiView::clearRain()
+void AnimationView::clearRain()
 {
-    for (Confetti* rainDrop : rainList) {
+    for (Animation* rainDrop : rainList) {
         world.DestroyBody(rainDrop->body);
         delete rainDrop;
     }
     rainList.clear();
 }
 
-void ConfettiView::paintEvent(QPaintEvent *)
+void AnimationView::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    for (Confetti* confetti : confettiList) {
+    for (Animation* confetti : confettiList) {
         b2Vec2 pos = confetti->body->GetPosition();
         QPoint center(pos.x * scale, pos.y * scale);
         QRect rect(center.x(), center.y(), confetti->size.width(), confetti->size.height());
@@ -153,7 +151,7 @@ void ConfettiView::paintEvent(QPaintEvent *)
         painter.drawRect(rect);
     }
 
-    for (Confetti* rain : rainList) {
+    for (Animation* rain : rainList) {
         b2Vec2 pos = rain->body->GetPosition();
         QPoint center(pos.x * scale, pos.y * scale);
         QRect rect(center.x(), center.y(), rain->size.width(), rain->size.height());
