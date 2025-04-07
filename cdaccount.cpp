@@ -1,7 +1,7 @@
 #include "cdaccount.h"
 
-CDAccount::CDAccount(double interestRate, int yearsRemaining) : MoneyContainer(), interestRate(interestRate), yearsRemaining(yearsRemaining){
-
+CDAccount::CDAccount(double interestRate, int termLength) : MoneyContainer(), interestRate(interestRate), termLength(termLength){
+    yearsRemaining = 0;
 }
 
 void CDAccount::nextYear() {
@@ -13,5 +13,20 @@ void CDAccount::nextYear() {
 double CDAccount::withdraw(double amount) {
     if (yearsRemaining > 0)
         return 0;
-    MoneyContainer::withdraw(amount);
+    return MoneyContainer::withdraw(amount);
+}
+
+void CDAccount::deposit(double amount) {
+    if (yearsRemaining == 0 && balance == 0) {
+        MoneyContainer::deposit(amount);
+        yearsRemaining = termLength;
+    }
+}
+
+int CDAccount::getTermLength() {
+    return termLength;
+}
+
+int CDAccount::getYearsRemaining() {
+    return yearsRemaining;
 }
