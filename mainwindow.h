@@ -37,7 +37,6 @@ private:
 public slots:
     void showQuizData(Question q);
     void onStartClicked();
-    void openMainGame();
     void submitHelper();
     void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
@@ -60,6 +59,8 @@ public slots:
 
     void hidePhone();
 
+    void returnToGame(QWidget* currentWidget);
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
@@ -81,5 +82,7 @@ signals:
     void withdrawFromLoan(double amount, int loanNumber);
 
     void nextYear();
+
+    void settingsOpened(QWidget* currentWidget);
 };
 #endif // MAINWINDOW_H

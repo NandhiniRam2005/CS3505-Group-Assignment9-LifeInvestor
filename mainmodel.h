@@ -40,6 +40,10 @@ public slots:
 
     void nextYear();
 
+    void settingsOpened(QWidget* currentWidget);
+
+    void settingsClosed();
+
 signals:
     /**
      * Sends a question out for the view to display
@@ -74,12 +78,15 @@ signals:
 
     void updateCurrentMoney(double newAmount);
 
+    void returnToGame(QWidget* currentWidget);
+
 private:
     QuizHandler *quizHandler;
 
     double currentMoney;
     int creditScore;
     int currentYear;
+    QWidget* currentWidget;
 
     SavingsAccount* savingsAccount;
 

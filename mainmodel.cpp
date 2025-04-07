@@ -79,3 +79,10 @@ void MainModel::nextYear() {
 
 }
 
+void MainModel::settingsOpened(QWidget* currentWidget) {
+    this->currentWidget = currentWidget;
+}
+
+void MainModel::settingsClosed() {
+    emit returnToGame(this->currentWidget);
+}

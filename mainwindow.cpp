@@ -28,9 +28,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
-    connect(ui->continueButton, &QPushButton::clicked, this, &MainWindow::openMainGame);
-    connect(ui->settingsBackButton, &QPushButton::clicked, this, &MainWindow::openMainGame);
-
+    connect(ui->continueButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame);});
+    connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
+    connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
+    connect(ui->settingsButton, &QPushButton::clicked, this, [this] () {
+        ui->settingsButton->hide();
+        emit settingsOpened(ui->stackedWidget->currentWidget());
+        ui->stackedWidget->setCurrentWidget(ui->Settings);
+    });
+    connect(ui->settingsBackButton, &QPushButton::clicked, model, &MainModel::settingsClosed);
 
     // phone connections
     connect(ui->openPhoneButton, &QPushButton::clicked, this, &MainWindow::displayPhone);
@@ -101,34 +107,41 @@ void MainWindow::showQuizData(Question question)
 
 void MainWindow::displayPhone()
 {
-    ui->openPhoneButton->setDisabled(true);
-    ui->Phone->setEnabled(true);
-    ui->closePhoneButton->setEnabled(true);
-    ui->Apps->setEnabled(true);
-    ui->App1->setEnabled(true);
-    ui->App2->setEnabled(true);
-    ui->App3->setEnabled(true);
-    ui->App4->setEnabled(true);
-    ui->App5->setEnabled(true);
-    ui->App6->setEnabled(true);
+    ui->openPhoneButton->hide();
+    ui->Phone->show();
+    ui->closePhoneButton->show();
+    ui->Apps->show();
 }
 
 void MainWindow::hidePhone()
 {
-    ui->Phone->setDisabled(true);
-    ui->closePhoneButton->setDisabled(true);
-    ui->Apps->setDisabled(true);
-    ui->openPhoneButton->setEnabled(true);
+    ui->Phone->hide();
+    ui->closePhoneButton->hide();
+    ui->Apps->hide();
+    ui->openPhoneButton->show();
+}
+
+void MainWindow::returnToGame(QWidget* currentWidget)
+{
+    QString returnPage = currentWidget->objectName();
+    if(returnPage == "Start") {
+        ui->stackedWidget->setCurrentWidget(ui->Start);
+    } else if(returnPage == "Quiz") {
+        ui->stackedWidget->setCurrentWidget(ui->Quiz);
+    } else if(returnPage == "quizEnd") {
+        ui->stackedWidget->setCurrentWidget(ui->quizEnd);
+    } else if(returnPage == "mainGame") {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    } else {
+        throw std::runtime_error("return page could not be found.");
+    }
+    ui->settingsButton->show();
 }
 
 void MainWindow::onStartClicked()
 {
-     ui->stackedWidget->setCurrentWidget(ui->Quiz);
-}
-
-void MainWindow::openMainGame()
-{
-    ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    hidePhone();
+    ui->stackedWidget->setCurrentWidget(ui->Quiz);
 }
 
 void MainWindow::submitHelper()

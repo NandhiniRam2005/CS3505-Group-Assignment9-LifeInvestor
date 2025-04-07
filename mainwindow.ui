@@ -138,23 +138,6 @@
        <number>24</number>
       </property>
      </widget>
-     <widget class="QPushButton" name="settingsButton">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>75</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Settings</string>
-      </property>
-      <property name="icon">
-       <iconset resource="resources.qrc">
-        <normaloff>:/icons/icons/test.png</normaloff>:/icons/icons/test.png</iconset>
-      </property>
-     </widget>
      <widget class="Line" name="line_3">
       <property name="geometry">
        <rect>
@@ -170,7 +153,7 @@
      </widget>
      <widget class="QPushButton" name="Phone">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -240,7 +223,7 @@
      </widget>
      <widget class="QPushButton" name="closePhoneButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -348,7 +331,7 @@
      </widget>
      <widget class="QWidget" name="Apps" native="true">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -360,7 +343,7 @@
       </property>
       <widget class="QPushButton" name="App1">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -394,7 +377,7 @@
       </widget>
       <widget class="QPushButton" name="App2">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -428,7 +411,7 @@
       </widget>
       <widget class="QPushButton" name="App3">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -462,7 +445,7 @@
       </widget>
       <widget class="QPushButton" name="App4">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -496,7 +479,7 @@
       </widget>
       <widget class="QPushButton" name="App5">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -530,7 +513,7 @@
       </widget>
       <widget class="QPushButton" name="App6">
        <property name="enabled">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="geometry">
         <rect>
@@ -570,14 +553,13 @@
      <zorder>line</zorder>
      <zorder>verticalSlider</zorder>
      <zorder>progressBar</zorder>
-     <zorder>settingsButton</zorder>
      <zorder>line_3</zorder>
      <zorder>spinBox</zorder>
      <zorder>line_2</zorder>
      <zorder>openPhoneButton</zorder>
      <zorder>Apps</zorder>
     </widget>
-    <widget class="QWidget" name="settingsPage">
+    <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">
       <property name="geometry">
        <rect>
@@ -648,8 +630,8 @@
      <widget class="QPushButton" name="settingsBackButton">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>10</y>
+        <x>10</x>
+        <y>40</y>
         <width>91</width>
         <height>41</height>
        </rect>
@@ -842,7 +824,33 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QPushButton" name="settingsButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Settings</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/icons/icons/test.png</normaloff>
+      <disabledoff>:/icons/icons/blank.png</disabledoff>
+      <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/test.png</iconset>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -852,8 +860,13 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuLife_Investing_for_gang">
+    <property name="title">
+     <string>Life Investing for heisler</string>
+    </property>
+   </widget>
+   <addaction name="menuLife_Investing_for_gang"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="resources.qrc"/>
