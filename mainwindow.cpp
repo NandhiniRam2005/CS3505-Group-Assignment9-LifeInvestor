@@ -28,6 +28,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
+    connect(ui->continueButton, &QPushButton::clicked, this, &MainWindow::onContinueClicked);
     connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
     connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
     connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
@@ -94,6 +95,11 @@ void MainWindow::showQuizData(Question question)
 void MainWindow::onStartClicked()
 {
      ui->stackedWidget->setCurrentWidget(ui->Quiz);
+}
+
+void MainWindow::onContinueClicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->mainGame);
 }
 
 void MainWindow::submitHelper()
