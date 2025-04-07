@@ -1,7 +1,7 @@
 #include "loan.h"
 
 Loan::Loan(double interestRate, double balance) : MoneyContainer(), interestRate(interestRate){
-    this->balance = balance;
+    this->balance = -balance;
 }
 
 void Loan::nextYear() {
