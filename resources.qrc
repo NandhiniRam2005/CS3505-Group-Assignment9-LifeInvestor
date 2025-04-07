@@ -7,4 +7,7 @@
         <file>icons/stockApp.png</file>
         <file>icons/settingsBackground.jpg</file>
     </qresource>
+    <qresource prefix="/sounds">
+        <file>sounds/level-up-sound.wav</file>
+    </qresource>
 </RCC>

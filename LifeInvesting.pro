@@ -1,4 +1,6 @@
 QT       += core gui
+QT       += multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -59,8 +61,8 @@ SOURCES += \
     Box2D/Dynamics/b2World.cpp \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
+    animationview.cpp \
     cdaccount.cpp \
-    confettiview.cpp \
     loan.cpp \
     main.cpp \
     mainmodel.cpp \
@@ -118,8 +120,8 @@ HEADERS += \
     Box2D/Dynamics/b2World.h \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
+    animationview.h \
     cdaccount.h \
-    confettiview.h \
     cpptoml.h \
     loan.h \
     mainmodel.h \

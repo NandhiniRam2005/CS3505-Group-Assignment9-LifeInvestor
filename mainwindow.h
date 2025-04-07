@@ -3,9 +3,10 @@
 
 #include <QButtonGroup>
 #include <QMainWindow>
+#include <QSoundEffect>
 #include "mainmodel.h"
 #include "quizhandler.h"
-#include "confettiview.h"
+#include "animationview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -32,7 +33,8 @@ private:
     QVector<double> loanBalances;
     double savingsBalance;
     QVector<double> cdBalances;
-    ConfettiView* confettiView;
+    AnimationView* animationView;
+    QSoundEffect* levelPassSound;
 
 public slots:
     void showQuizData(Question q);
