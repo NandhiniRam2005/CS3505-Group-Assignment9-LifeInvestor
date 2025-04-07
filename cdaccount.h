@@ -7,10 +7,10 @@ class CDAccount : public MoneyContainer
 {
 private:
     double interestRate;
-    // add some withdraw limit IDK how CDs work
+    int yearsRemaining;
 
 public:
-    CDAccount(double interestRate);
+    CDAccount(double interestRate, int yearsRemaining);
 
     void nextYear() override;
 

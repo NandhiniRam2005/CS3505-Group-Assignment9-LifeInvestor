@@ -13,8 +13,6 @@ MainModel::MainModel(QObject *parent)
 
     savingsAccount = new SavingsAccount(0);
 
-    cdAccount = new CDAccount(0);
-
     stocks.push_back(Stock());
     stocks.push_back(Stock());
     stocks.push_back(Stock());
@@ -39,6 +37,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
 {
     bool result = quizHandler->checkAnswer(selectedChoice);
     std::string why = quizHandler->getCurrentQuestionWhy();
+    emit quizProgress(quizHandler->quizProgress());
     emit sendResult(result, why);
     emit quizProgress(quizHandler->quizProgress());
 }

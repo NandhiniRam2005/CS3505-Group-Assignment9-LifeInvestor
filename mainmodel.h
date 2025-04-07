@@ -90,7 +90,7 @@ private:
 
     SavingsAccount* savingsAccount;
 
-    CDAccount* cdAccount;
+    QVector<CDAccount> cdAccounts;
 
     QVector<Loan> loans;
 
