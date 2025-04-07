@@ -29,6 +29,11 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
     connect(ui->continueButton, &QPushButton::clicked, this, &MainWindow::onContinueClicked);
+
+    // phone connections
+    connect(ui->openPhoneButton, &QPushButton::clicked, this, &MainWindow::displayPhone);
+    connect(ui->closePhoneButton, &QPushButton::clicked, this, &MainWindow::hidePhone);
+
     connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
     connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
     connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
@@ -90,6 +95,24 @@ void MainWindow::showQuizData(Question question)
     ui->choice4->setText(QString::fromStdString(question.choices[3]));
 
     ui->labelReward->setText("Reward: " + QString::number(question.reward));
+}
+
+void MainWindow::displayPhone()
+{
+    ui->openPhoneButton->setDisabled(true);
+    ui->Phone->setEnabled(true);
+    ui->closePhoneButton->setEnabled(true);
+    ui->App1->setEnabled(true);
+    ui->App2->setEnabled(true);
+}
+
+void MainWindow::hidePhone()
+{
+    ui->Phone->setDisabled(true);
+    ui->closePhoneButton->setDisabled(true);
+    ui->App1->setDisabled(true);
+    ui->App2->setDisabled(true);
+    ui->openPhoneButton->setEnabled(true);
 }
 
 void MainWindow::onStartClicked()

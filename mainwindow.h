@@ -56,6 +56,10 @@ public slots:
 
     void enableSubmitButton(bool checked);
 
+    void displayPhone();
+
+    void hidePhone();
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
