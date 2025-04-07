@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -894,18 +894,18 @@
       <property name="styleSheet">
        <string notr="true">QPushButton {
         color: white;
-        background-color: #4CAF50;
-        border: 2px solid #FFD700;
-        border-radius: 10px; 
+        background-color: blue;
+        border: 2px solid black;
+        border-radius: 15px; 
         padding: 10px 20px;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         text-align: center;
     }
 
     QPushButton:hover {
         background-color: #45a049; 
-        border: 2px solid #ffcc00;
+        border: 2px solid green;
     }
 
     QPushButton:pressed {
