@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -679,8 +679,8 @@
      <widget class="QLabel" name="labelReward">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>380</y>
+        <x>120</x>
+        <y>340</y>
         <width>431</width>
         <height>41</height>
        </rect>
@@ -799,14 +799,17 @@
      <widget class="QLabel" name="resultLabel">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>380</y>
-        <width>251</width>
-        <height>41</height>
+        <x>120</x>
+        <y>370</y>
+        <width>271</width>
+        <height>121</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QProgressBar" name="quizProgress">

@@ -162,10 +162,12 @@ void MainWindow::submitHelper()
 void MainWindow::displayResult(bool result, std::string explanation)
 {
     if (result) {
-        ui->resultLabel->setText("CORRECT!!");
+        ui->resultLabel->setText("<span style='color: green; font-weight: bold;'>CORRECT!!</span>");
         confettiView->startAnimation();
     } else {
-        ui->resultLabel->setText("Incorrect!!!\nExplanation: " + QString::fromStdString(explanation));
+        QString formattedText = "<span style='color: red; font-weight: bold;'>Incorrect!!!</span><br>"
+                                "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
+        ui->resultLabel->setText(formattedText);
     }
 }
 
