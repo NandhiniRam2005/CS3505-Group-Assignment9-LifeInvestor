@@ -35,6 +35,11 @@ void ConfettiView::startAnimation()
         // Call the body factory which allocates memory for the ground body from a pool and creates the ground box shape (also from a pool).
         b2Body *body = world.CreateBody(&bodyDef);
 
+
+        float vx = -1.5f + QRandomGenerator::global()->generateDouble() * 3.0f; // Horizontal speed
+        float vy = QRandomGenerator::global()->generateDouble();  // Small downward speed
+        body->SetLinearVelocity(b2Vec2(vx, vy));
+
         // Define the ground box shape.
         b2PolygonShape shape;
         shape.SetAsBox(0.03f, 0.03f);
