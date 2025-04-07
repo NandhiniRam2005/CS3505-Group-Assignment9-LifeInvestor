@@ -36,8 +36,6 @@ public slots:
 
     void sellStock(double amount, int stockNumber);
 
-    void withdrawFromLoan(double amount, int loanNumber);
-
     void nextYear();
 
     void settingsOpened(QWidget* currentWidget);

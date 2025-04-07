@@ -124,16 +124,6 @@ void MainModel::sellStock(double amount, int stockNumber) {
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::withdrawFromLoan(double amount, int loanNumber) {
-    if (loans[loanNumber].withdraw(amount)) {
-        currentMoney += amount;
-        emit updateBalance(currentMoney);
-        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
-    }
-    else
-        emit showErrorMessage("Input amount cannot be added to the loan");
-}
-
 void MainModel::nextYear() {
     savingsAccount->nextYear();
     for (MoneyContainer container : cdAccounts)

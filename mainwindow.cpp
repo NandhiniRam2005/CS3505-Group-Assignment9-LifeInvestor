@@ -65,7 +65,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     // connections for withdrawing
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
     connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
-    connect(this, &MainWindow::withdrawFromLoan, model, &MainModel::withdrawFromLoan);
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
 
     // connections for updating MainWindow values
