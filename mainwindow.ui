@@ -174,17 +174,33 @@
      <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>310</y>
-        <width>80</width>
-        <height>24</height>
+        <x>60</x>
+        <y>380</y>
+        <width>131</width>
+        <height>231</height>
        </rect>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
       <property name="icon">
-       <iconset theme="QIcon::ThemeIcon::AddressBookNew"/>
+       <iconset>
+        <normaloff>icons/phone.png</normaloff>icons/phone.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>250</width>
+        <height>250</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -344,7 +360,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>
