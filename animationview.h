@@ -1,5 +1,5 @@
-#ifndef CONFETTIVIEW_H
-#define CONFETTIVIEW_H
+#ifndef ANIMATIONVIEW_H
+#define ANIMATIONVIEW_H
 
 #include <QWidget>
 #include <QTimer>
@@ -42,4 +42,4 @@ private:
     void clearRain();
 };
 
-#endif // CONFETTIVIEW_H
+#endif // ANIMATIONVIEW_H

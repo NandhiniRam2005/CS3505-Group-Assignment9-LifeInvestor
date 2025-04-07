@@ -1,4 +1,4 @@
-#include "confettiview.h"
+#include "animationview.h"
 #include <QPainter>
 #include <QRandomGenerator>
 #include <QTimer>
