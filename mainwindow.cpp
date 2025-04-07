@@ -123,7 +123,7 @@ void MainWindow::displayResult(bool result, std::string explanation)
         ui->resultLabel->setText("CORRECT!!");
         confettiView->startAnimation();
     } else {
-        ui->resultLabel->setText("Incorrect!!!\n\nExplanation: " + QString::fromStdString(explanation));
+        ui->resultLabel->setText("Incorrect!!!\nExplanation: " + QString::fromStdString(explanation));
     }
 }
 
