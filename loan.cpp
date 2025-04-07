@@ -5,5 +5,5 @@ Loan::Loan(double startingBalance, double interestRate) : MoneyContainer(), inte
 }
 
 void Loan::nextYear() {
-
+    balance = balance + balance * interestRate;
 }

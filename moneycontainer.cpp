@@ -3,15 +3,18 @@
 MoneyContainer::MoneyContainer() {}
 
 void MoneyContainer::deposit(double amount) {
-
+    balance += amount;
 }
 
 double MoneyContainer::withdraw(double amount) {
-    return 0;
+    if (balance < amount)
+        amount -= balance;
+    balance -= amount;
+    return amount;
 }
 
 double MoneyContainer::getBalance() {
-    return 0;
+    return balance;
 }
 
 void MoneyContainer::nextYear() {
