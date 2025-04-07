@@ -14,6 +14,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
 
+    confettiView = new ConfettiView(this);
+    confettiView->hide();
+
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
     connect(ui->choice2, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
@@ -112,6 +115,7 @@ void MainWindow::displayResult(bool result)
 {
     if (result) {
         ui->resultLabel->setText("CORRECT!!");
+        confettiView->startAnimation();
     } else {
         ui->resultLabel->setText("Incorrect!!!");
     }

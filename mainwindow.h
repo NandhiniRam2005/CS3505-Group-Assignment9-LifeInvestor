@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include "mainmodel.h"
 #include "quizhandler.h"
+#include "confettiview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,6 +32,7 @@ private:
     QVector<double> loanBalances;
     double savingsBalance;
     double cdBalance;
+    ConfettiView* confettiView;
 
 public slots:
     void showQuizData(Question q);

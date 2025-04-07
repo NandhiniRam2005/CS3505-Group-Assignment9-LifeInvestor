@@ -1,0 +1,97 @@
+#include "confettiview.h"
+#include <QPainter>
+#include <QRandomGenerator>
+#include <QTimer>
+
+Confetti::Confetti(b2Body* body, QColor color, QSize size)
+    : body(body), color(color), size(size) {}
+
+Confetti::~Confetti() {
+}
+
+ConfettiView::ConfettiView(QWidget *parent)
+    : QWidget(parent), world(b2Vec2(0.3f, 9.8f)), timer(new QTimer(this)), scale(20.0)
+{
+    setGeometry(parent->rect());
+
+    connect(timer, &QTimer::timeout, this, [this]() {
+        world.Step(1.0f / 60.0f, 4, 2);
+        update();
+    });
+
+    hide();
+}
+
+void ConfettiView::startAnimation()
+{
+    stopAnimation();
+
+    for (int i = 0; i < 50; ++i) {
+        // Define the ground body.
+        b2BodyDef bodyDef;
+        bodyDef.type = b2_dynamicBody;
+        bodyDef.position.Set(QRandomGenerator::global()->bounded(width()) / scale, 0);
+
+        // Call the body factory which allocates memory for the ground body from a pool and creates the ground box shape (also from a pool).
+        b2Body *body = world.CreateBody(&bodyDef);
+
+        // Define the ground box shape.
+        b2PolygonShape shape;
+        shape.SetAsBox(0.03f, 0.03f);
+
+        // Define the dynamic body fixture.
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &shape;
+        fixtureDef.density = 1.0f;
+        fixtureDef.friction = 0.3f;
+        fixtureDef.restitution = 0.9f;
+
+        body->CreateFixture(&fixtureDef);
+
+        // Random color chooser for the confetti
+        QRandomGenerator *generator = QRandomGenerator::global();
+        int red = generator->bounded(256);
+        int green = generator->bounded(256);
+        int blue = generator->bounded(256);
+
+        QColor color = QColor(red, green, blue);
+        QSize size(5, 5);
+        confettiList.push_back(new Confetti(body, color, size));
+    }
+
+    show();
+    timer->start(16);
+
+    QTimer::singleShot(3000, this, &ConfettiView::stopAnimation);
+}
+
+void ConfettiView::stopAnimation()
+{
+    timer->stop();
+    clearConfetti();
+    hide();
+}
+
+void ConfettiView::clearConfetti()
+{
+    for (Confetti* confetti : confettiList) {
+        world.DestroyBody(confetti->body);
+        delete confetti;
+    }
+    confettiList.clear();
+}
+
+void ConfettiView::paintEvent(QPaintEvent *)
+{
+    QPainter painter(this);
+    for (Confetti* confetti : confettiList) {
+        b2Vec2 pos = confetti->body->GetPosition();
+        QPoint center(pos.x * scale, pos.y * scale);
+        QRect rect(center.x(), center.y(), confetti->size.width(), confetti->size.height());
+        painter.setBrush(confetti->color);
+        painter.setPen(Qt::NoPen);
+        painter.drawRect(rect);
+    }
+}
+
+

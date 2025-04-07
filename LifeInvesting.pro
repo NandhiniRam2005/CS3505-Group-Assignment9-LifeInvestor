@@ -57,6 +57,7 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     cdaccount.cpp \
+    confettiview.cpp \
     loan.cpp \
     main.cpp \
     mainmodel.cpp \
@@ -115,6 +116,7 @@ HEADERS += \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
     cdaccount.h \
+    confettiview.h \
     cpptoml.h \
     loan.h \
     mainmodel.h \
@@ -136,3 +138,6 @@ DISTFILES += \
     Box2D/Box2DConfig.cmake \
     Box2D/CMakeLists.txt \
     QuestionBanks/example.toml
+
+RESOURCES += \
+    resources.qrc
