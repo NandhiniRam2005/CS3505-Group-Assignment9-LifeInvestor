@@ -55,35 +55,35 @@ void MainModel::checkAnswer(std::string selectedChoice)
 }
 
 void MainModel::depositToSavings(double amount) {
-    emit updateSavingsBalance(0);
+    emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
 }
 
 void MainModel::depositToCD(double amount, int cdNumber) {
-    emit updateCDBalances({});
+    emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
 }
 
 void MainModel::buyStock(double amount, int stockNumber) {
-    emit updateStockBalances({});
+    emit updateStock(stockNumber, stocks[stockNumber].getBalance());
 }
 
 void MainModel::depositToLoan(double amount, int loanNumber) {
-    emit updateLoanBalances({});
+    emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
 }
 
 void MainModel::withdrawFromSavings(double amount) {
-    emit updateSavingsBalance(0);
+    emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
 }
 
 void MainModel::withdrawFromCD(double amount, int cdNumber) {
-    emit updateCDBalances({});
+    emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
 }
 
 void MainModel::sellStock(double amount, int stockNumber) {
-    emit updateStockBalances({});
+    emit updateStock(stockNumber, stocks[stockNumber].getBalance());
 }
 
 void MainModel::withdrawFromLoan(double amount, int loanNumber) {
-    emit updateLoanBalances({});
+    emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
 }
 
 void MainModel::nextYear() {

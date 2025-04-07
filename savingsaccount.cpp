@@ -7,3 +7,7 @@ SavingsAccount::SavingsAccount(double interestRate) : MoneyContainer(), interest
 void SavingsAccount::nextYear() {
     balance = balance + balance * interestRate;
 }
+
+double SavingsAccount::getInterestRate() {
+    return interestRate;
+}

@@ -27,6 +27,10 @@ bool CDAccount::deposit(double amount) {
     return false;
 }
 
+double CDAccount::getInterestRate() {
+    return interestRate;
+}
+
 int CDAccount::getTermLength() {
     return termLength;
 }

@@ -41,13 +41,13 @@ public slots:
     void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
 
-    void updateSavingsBalance(double newBalance);
+    void updateSavings(double newBalance, double interestRate);
 
-    void updateCDBalances(QVector<double> newBalances);
+    void updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft);
 
-    void updateStockBalances(QVector<double> newBalances);
+    void updateStock(int stockNumber, double newBalance);
 
-    void updateLoanBalances(QVector<double> newBalances);
+    void updateLoan(int loanNumber, double newBalance, double interestRate);
 
     void updateBalance(double newAmount);
 

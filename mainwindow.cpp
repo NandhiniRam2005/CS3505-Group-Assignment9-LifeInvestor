@@ -69,10 +69,10 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
 
     // connections for updating MainWindow values
-    connect(model, &MainModel::updateSavingsBalance, this, &MainWindow::updateSavingsBalance);
-    connect(model, &MainModel::updateCDBalances, this, &MainWindow::updateCDBalances);
-    connect(model, &MainModel::updateStockBalances, this, &MainWindow::updateStockBalances);
-    connect(model, &MainModel::updateLoanBalances, this, &MainWindow::updateLoanBalances);
+    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
+    connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
+    connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
+    connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
 
 }
 
@@ -192,21 +192,22 @@ void MainWindow::updateBalance(double newAmount) {
     ui->balance->setText("$"+QString::number(currentMoney));
 }
 
-void MainWindow::updateSavingsBalance(double newBalance) {
-    savingsBalance = newBalance;
+void MainWindow::updateSavings(double newBalance, double interestRate) {
+
 }
 
-void MainWindow::updateCDBalances(QVector<double> newBalances) {
-    cdBalances = newBalances;
+void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft) {
+
 }
 
-void MainWindow::updateStockBalances(QVector<double> newBalances) {
-    stockBalances = newBalances;
+void MainWindow::updateStock(int stockNumber, double newBalance) {
+
 }
 
-void MainWindow::updateLoanBalances(QVector<double> newBalances) {
-    loanBalances = newBalances;
+void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate) {
+
 }
+
 
 void MainWindow::enableSubmitButton(bool checked) {
     if (checked) {

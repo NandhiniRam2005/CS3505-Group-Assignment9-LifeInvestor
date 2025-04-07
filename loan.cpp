@@ -8,6 +8,10 @@ void Loan::nextYear() {
     balance = balance + balance * interestRate;
 }
 
+double Loan::getInterestRate() {
+    return interestRate;
+}
+
 bool Loan::deposit(double amount) {
     if (balance + amount > 0)
         return false;

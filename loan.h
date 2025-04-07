@@ -14,6 +14,8 @@ public:
     bool deposit(double amount) override;
 
     void nextYear() override;
+
+    double getInterestRate();
 };
 
 #endif // LOAN_H

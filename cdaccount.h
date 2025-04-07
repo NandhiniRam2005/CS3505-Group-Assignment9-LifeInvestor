@@ -20,6 +20,8 @@ public:
 
     bool withdraw(double amount) override;
 
+    double getInterestRate();
+
     int getTermLength();
 
     int getYearsRemaining();

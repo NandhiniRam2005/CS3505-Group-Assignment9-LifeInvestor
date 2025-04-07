@@ -11,6 +11,8 @@ private:
 public:
     SavingsAccount(double interestRate);
 
+    double getInterestRate();
+
     void nextYear() override;
 };
 
