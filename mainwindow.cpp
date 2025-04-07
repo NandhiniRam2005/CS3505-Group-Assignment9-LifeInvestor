@@ -74,6 +74,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
     connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
 
+    // connection for showing error messages
+    connect(model, &MainModel::showErrorMessage, this, &MainWindow::showErrorMessage);
+
 }
 
 MainWindow::~MainWindow()
@@ -208,6 +211,9 @@ void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRa
 
 }
 
+void MainWindow::showErrorMessage(QString errorMessage) {
+
+}
 
 void MainWindow::enableSubmitButton(bool checked) {
     if (checked) {

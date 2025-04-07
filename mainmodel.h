@@ -80,6 +80,8 @@ signals:
 
     void updateBalance(double newBalance);
 
+    void showErrorMessage(QString errorMessage);
+
 private:
     QuizHandler *quizHandler;
 

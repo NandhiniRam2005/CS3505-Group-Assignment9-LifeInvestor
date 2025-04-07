@@ -55,39 +55,93 @@ void MainModel::checkAnswer(std::string selectedChoice)
 }
 
 void MainModel::depositToSavings(double amount) {
-    emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    if (savingsAccount->deposit(amount) && amount <= currentMoney) {
+        currentMoney -= amount;
+        emit updateBalance(currentMoney);
+        emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be deposited");
 }
 
 void MainModel::depositToCD(double amount, int cdNumber) {
-    emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+    if (cdAccounts[cdNumber].deposit(amount) && amount <= currentMoney) {
+        currentMoney -= amount;
+        emit updateBalance(currentMoney);
+        emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be deposited");
 }
 
 void MainModel::buyStock(double amount, int stockNumber) {
-    emit updateStock(stockNumber, stocks[stockNumber].getBalance());
+    if (stocks[stockNumber].deposit(amount) && amount <= currentMoney) {
+        currentMoney -= amount;
+        emit updateBalance(currentMoney);
+        emit updateStock(stockNumber, stocks[stockNumber].getBalance());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be bought");
 }
 
 void MainModel::depositToLoan(double amount, int loanNumber) {
-    emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
+    if (loans[loanNumber].deposit(amount) && amount <= currentMoney) {
+        currentMoney -= amount;
+        emit updateBalance(currentMoney);
+        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be removed from the loan");
 }
 
 void MainModel::withdrawFromSavings(double amount) {
-    emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    if (savingsAccount->withdraw(amount)) {
+        currentMoney += amount;
+        emit updateBalance(currentMoney);
+        emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
 void MainModel::withdrawFromCD(double amount, int cdNumber) {
-    emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+    if (cdAccounts[cdNumber].withdraw(amount)) {
+        currentMoney += amount;
+        emit updateBalance(currentMoney);
+        emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
 void MainModel::sellStock(double amount, int stockNumber) {
-    emit updateStock(stockNumber, stocks[stockNumber].getBalance());
+    if (stocks[stockNumber].withdraw(amount)) {
+        currentMoney += amount;
+        emit updateBalance(currentMoney);
+        emit updateStock(stockNumber, stocks[stockNumber].getBalance());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
 void MainModel::withdrawFromLoan(double amount, int loanNumber) {
-    emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
+    if (loans[loanNumber].withdraw(amount)) {
+        currentMoney += amount;
+        emit updateBalance(currentMoney);
+        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getBalance());
+    }
+    else
+        emit showErrorMessage("Input amount cannot be added to the loan");
 }
 
 void MainModel::nextYear() {
-
+    savingsAccount->nextYear();
+    for (MoneyContainer container : cdAccounts)
+        container.nextYear();
+    for (MoneyContainer container : stocks)
+        container.nextYear();
+    for (MoneyContainer container : loans)
+        container.nextYear();
 }
 
 void MainModel::settingsOpened(QWidget* currentWidget) {

@@ -61,6 +61,8 @@ public slots:
 
     void returnToGame(QWidget* currentWidget);
 
+    void showErrorMessage(QString errorMessage);
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
