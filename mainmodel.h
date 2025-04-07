@@ -24,7 +24,7 @@ public slots:
 
     void depositToSavings(double amount);
 
-    void depositToCD(double amount);
+    void depositToCD(double amount, int cdNumber);
 
     void buyStock(double amount, int stockNumber);
 
@@ -32,7 +32,7 @@ public slots:
 
     void withdrawFromSavings(double amount);
 
-    void withdrawFromCD(double amount);
+    void withdrawFromCD(double amount, int cdNumber);
 
     void sellStock(double amount, int stockNumber);
 
@@ -70,7 +70,7 @@ signals:
 
     void updateSavingsBalance(double newBalance);
 
-    void updateCDBalance(double newBalance);
+    void updateCDBalances(QVector<double> newBalances);
 
     void updateStockBalances(QVector<double> newBalances);
 

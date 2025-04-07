@@ -54,8 +54,8 @@ void MainModel::depositToSavings(double amount) {
     emit updateSavingsBalance(0);
 }
 
-void MainModel::depositToCD(double amount) {
-    emit updateCDBalance(0);
+void MainModel::depositToCD(double amount, int cdNumber) {
+    emit updateCDBalances({});
 }
 
 void MainModel::buyStock(double amount, int stockNumber) {
@@ -70,8 +70,8 @@ void MainModel::withdrawFromSavings(double amount) {
     emit updateSavingsBalance(0);
 }
 
-void MainModel::withdrawFromCD(double amount) {
-    emit updateCDBalance(0);
+void MainModel::withdrawFromCD(double amount, int cdNumber) {
+    emit updateCDBalances({});
 }
 
 void MainModel::sellStock(double amount, int stockNumber) {
