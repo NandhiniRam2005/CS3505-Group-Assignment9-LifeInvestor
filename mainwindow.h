@@ -65,8 +65,6 @@ signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
 
-    void addFunds(double amount);
-
     void depositToSavings(double amount);
 
     void depositToCD(double amount, int cdNumber);

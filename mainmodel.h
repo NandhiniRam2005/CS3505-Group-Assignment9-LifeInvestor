@@ -44,8 +44,6 @@ public slots:
 
     void settingsClosed();
 
-    void addFunds(double amount);
-
 signals:
     /**
      * Sends a question out for the view to display
@@ -97,6 +95,8 @@ private:
     QVector<Loan> loans;
 
     QVector<Stock> stocks;
+
+    void addFunds(double amount);
 };
 
 #endif // MAINMODEL_H
