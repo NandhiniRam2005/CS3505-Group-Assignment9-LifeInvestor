@@ -28,7 +28,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
-    connect(ui->continueButton, &QPushButton::clicked, this, &MainWindow::onContinueClicked);
+    connect(ui->continueButton, &QPushButton::clicked, this, &MainWindow::openMainGame);
+    connect(ui->settingsBackButton, &QPushButton::clicked, this, &MainWindow::openMainGame);
+
 
     // phone connections
     connect(ui->openPhoneButton, &QPushButton::clicked, this, &MainWindow::displayPhone);
@@ -124,7 +126,7 @@ void MainWindow::onStartClicked()
      ui->stackedWidget->setCurrentWidget(ui->Quiz);
 }
 
-void MainWindow::onContinueClicked()
+void MainWindow::openMainGame()
 {
     ui->stackedWidget->setCurrentWidget(ui->mainGame);
 }

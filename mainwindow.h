@@ -37,7 +37,7 @@ private:
 public slots:
     void showQuizData(Question q);
     void onStartClicked();
-    void onContinueClicked();
+    void openMainGame();
     void submitHelper();
     void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
