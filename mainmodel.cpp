@@ -11,7 +11,15 @@ MainModel::MainModel(QObject *parent)
     creditScore = 0;
     currentYear = 0;
 
-    savingsAccount = new SavingsAccount(0);
+    savingsAccount = new SavingsAccount(0.0041);
+
+    cdAccounts.push_back(CDAccount(0.041, 2, 1000));
+    cdAccounts.push_back(CDAccount(0.039, 3, 500));
+    cdAccounts.push_back(CDAccount(0.036, 5, 500));
+
+    loans.push_back(Loan(0.067, 100));
+    loans.push_back(Loan(0.067, 1000));
+    loans.push_back(Loan(0.067, 1000000));
 
     stocks.push_back(Stock());
     stocks.push_back(Stock());

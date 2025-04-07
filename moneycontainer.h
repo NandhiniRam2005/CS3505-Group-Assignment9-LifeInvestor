@@ -11,9 +11,11 @@ public:
 
     double getBalance();
 
-    virtual void deposit(double amount);
+    // returns true if the deposit was successful
+    virtual bool deposit(double amount);
 
-    virtual double withdraw(double amount);
+    // returns true if the withdraw was successful
+    virtual bool withdraw(double amount);
 
     virtual void nextYear();
 

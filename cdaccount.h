@@ -8,20 +8,24 @@ class CDAccount : public MoneyContainer
 private:
     double interestRate;
     int termLength;
+    double minimumDeposit;
     int yearsRemaining;
 
 public:
-    CDAccount(double interestRate, int termLength);
+    CDAccount(double interestRate, int termLength, double minimumDeposit);
 
     void nextYear() override;
 
-    void deposit(double amount) override;
+    bool deposit(double amount) override;
 
-    double withdraw(double amount) override;
+    bool withdraw(double amount) override;
 
     int getTermLength();
 
     int getYearsRemaining();
+
+    double getMinimumDeposit();
+
 };
 
 #endif // CDACCOUNT_H
