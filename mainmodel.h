@@ -78,8 +78,6 @@ signals:
 
     void updateLoanBalances(QVector<double> newBalances);
 
-    void updateCurrentMoney(double newAmount);
-
     void returnToGame(QWidget* currentWidget);
 
     void updateBalance(double newBalance);

@@ -36,6 +36,8 @@ public:
 
     std::string getCurrentQuestionWhy();
 
+    int getCurrentQuestionReward();
+
     /**
      * Checks the user selected answer.
      *

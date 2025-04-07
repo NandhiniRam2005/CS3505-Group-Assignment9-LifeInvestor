@@ -58,6 +58,11 @@ std::string QuizHandler::getCurrentQuestionWhy()
     return quizQuestions[currentQuestion - 1].why;
 }
 
+int QuizHandler::getCurrentQuestionReward()
+{
+    return quizQuestions[currentQuestion - 1].reward;
+}
+
 bool QuizHandler::hasMoreQuestions()
 {
     if (currentQuestion >= quizQuestions.size()) {

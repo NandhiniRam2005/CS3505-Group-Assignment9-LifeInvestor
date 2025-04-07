@@ -46,8 +46,12 @@ void MainModel::checkAnswer(std::string selectedChoice)
     bool result = quizHandler->checkAnswer(selectedChoice);
     std::string why = quizHandler->getCurrentQuestionWhy();
     emit quizProgress(quizHandler->quizProgress());
-    emit sendResult(result, why);
     emit quizProgress(quizHandler->quizProgress());
+    emit sendResult(result, why);
+    if(result) {
+        addFunds(quizHandler->getCurrentQuestionReward());
+        emit updateBalance(currentMoney);
+    }
 }
 
 void MainModel::depositToSavings(double amount) {
