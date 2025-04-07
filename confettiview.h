@@ -23,8 +23,10 @@ class ConfettiView : public QWidget
 
 public:
     explicit ConfettiView(QWidget *parent = nullptr);
-    void startAnimation();
-    void stopAnimation();
+    void startConfettiAnimation();
+    void startRainAnimation();
+    void stopConfettiAnimation();
+    void stopRainAnimation();
 
 protected:
     void paintEvent(QPaintEvent* event) override;
@@ -33,9 +35,11 @@ private:
     b2World world;
     QTimer* timer;
     QVector<Confetti*> confettiList;
+    QVector<Confetti*> rainList;
     double scale;
 
     void clearConfetti();
+    void clearRain();
 };
 
 #endif // CONFETTIVIEW_H

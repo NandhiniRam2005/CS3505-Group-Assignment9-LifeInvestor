@@ -163,11 +163,12 @@ void MainWindow::displayResult(bool result, std::string explanation)
 {
     if (result) {
         ui->resultLabel->setText("<span style='color: green; font-weight: bold;'>CORRECT!!</span>");
-        confettiView->startAnimation();
+        confettiView->startConfettiAnimation();
     } else {
         QString formattedText = "<span style='color: red; font-weight: bold;'>Incorrect!!!</span><br>"
                                 "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
         ui->resultLabel->setText(formattedText);
+        confettiView->startRainAnimation();
     }
 }
 
