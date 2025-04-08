@@ -36,8 +36,8 @@
      <widget class="QPushButton" name="startButton">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>290</y>
+        <x>320</x>
+        <y>310</y>
         <width>171</width>
         <height>61</height>
        </rect>
@@ -54,7 +54,7 @@
        <rect>
         <x>-10</x>
         <y>10</y>
-        <width>791</width>
+        <width>811</width>
         <height>571</height>
        </rect>
       </property>
