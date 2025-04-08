@@ -1,0 +1,137 @@
+category = "Savings"
+
+categoryInfo = "This category covers questions related to savings accounts, how they work, and strategies for saving money."
+
+learnMore = '''
+A savings account is a type of deposit account offered by banks and credit unions where you can earn interest on your deposits. It’s a safe way to store money while earning a small return.
+'''
+
+[[questions]]
+question = "What is a savings account?"
+choices = [
+"A type of investment account",
+"A bank account that earns interest on deposits",
+"A checking account with no fees",
+"A loan account for personal expenses"
+]
+answer = "A bank account that earns interest on deposits"
+why = "A savings account is a low-risk account where individuals deposit money and earn interest over time."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is the primary benefit of a savings account?"
+choices = [
+"Earning interest on the deposited money",
+"Access to credit loans",
+"Investment opportunities in stocks",
+"Free monthly withdrawals"
+]
+answer = "Earning interest on the deposited money"
+why = "The primary benefit of a savings account is that it allows the account holder to earn interest on their deposited funds."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is a high-yield savings account?"
+choices = [
+"A savings account with a higher interest rate than a standard savings account",
+"A savings account with no fees",
+"A savings account that allows you to withdraw money instantly",
+"A checking account that pays interest"
+]
+answer = "A savings account with a higher interest rate than a standard savings account"
+why = "High-yield savings accounts offer a higher interest rate compared to regular savings accounts, helping you earn more on your balance."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is the typical interest rate range for a savings account?"
+choices = [
+"0.01% to 5% annually",
+"1% to 10% annually",
+"5% to 20% annually",
+"0.1% to 1% annually"
+]
+answer = "0.01% to 5% annually"
+why = "Savings account interest rates typically range from 0.01% to 5%, depending on the bank, account type, and market conditions."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is compound interest?"
+choices = [
+"Interest calculated only on the original principal amount",
+"Interest calculated on both the initial principal and the accumulated interest",
+"Interest added at the end of the loan term",
+"Interest paid in monthly installments"
+]
+answer = "Interest calculated on both the initial principal and the accumulated interest"
+why = "Compound interest is interest that is calculated not only on the original principal but also on the interest that has been added to the account."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is the FDIC?"
+choices = [
+"A government agency that insures savings accounts",
+"A type of interest rate on savings accounts",
+"A bank that offers high-yield savings accounts",
+"A term for early withdrawal penalties"
+]
+answer = "A government agency that insures savings accounts"
+why = "The Federal Deposit Insurance Corporation (FDIC) insures deposits in banks up to $250,000, protecting the account holder in case of bank failure."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is a money market account?"
+choices = [
+"A high-interest savings account that may have higher minimum balance requirements",
+"A checking account with no fees",
+"A type of short-term loan",
+"A savings account with no interest"
+]
+answer = "A high-interest savings account that may have higher minimum balance requirements"
+why = "A money market account is similar to a savings account but typically offers a higher interest rate and may require a higher minimum balance."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "How can a savings account help with emergency funds?"
+choices = [
+"By providing access to high-risk investments",
+"By providing a safe, accessible place to store money for unexpected expenses",
+"By offering loans with low interest rates",
+"By providing long-term growth opportunities"
+]
+answer = "By providing a safe, accessible place to store money for unexpected expenses"
+why = "A savings account is ideal for an emergency fund because it provides a secure place to store money that can be easily accessed when needed."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is the difference between a savings account and a checking account?"
+choices = [
+"A checking account earns more interest than a savings account",
+"A savings account is used for everyday transactions, while a checking account is for saving money",
+"A checking account is meant for daily transactions, while a savings account is for saving money and earning interest",
+"A checking account has a fixed interest rate"
+]
+answer = "A checking account is meant for daily transactions, while a savings account is for saving money and earning interest"
+why = "Checking accounts are typically used for everyday spending and transactions, while savings accounts are designed for saving and earning interest."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "Why is it important to have a savings account?"
+choices = [
+"To have access to unlimited funds",
+"To store money securely and earn interest over time",
+"To get loans at a lower interest rate",
+"To access investment opportunities"
+]
+answer = "To store money securely and earn interest over time"
+why = "A savings account offers a secure way to store money while earning interest, which can help build wealth over time."
+difficulty = "easy"
+reward = 100
