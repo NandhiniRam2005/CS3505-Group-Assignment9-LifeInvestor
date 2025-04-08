@@ -82,6 +82,16 @@ private:
      * Tracker for how many quizQuestions have been answered correctly so far.
      */
     uint numberCorrect;
+
+    template <typename T>
+    void scrambleVector(std::vector<T>& vector){
+        std::srand(std::time(nullptr));
+        for(size_t i = 0; i<vector.size(); i++){
+            size_t swapIndex = std::rand() % vector.size();
+            std::swap(vector[i], vector[swapIndex]);
+        }
+
+    }
 };
 
 #endif // QUIZHANDLER_H

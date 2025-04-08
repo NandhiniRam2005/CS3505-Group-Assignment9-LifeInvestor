@@ -2,6 +2,8 @@
 #include <cpptoml.h>
 #include <iostream>
 #include <stdexcept>
+#include <cstdlib>
+#include <ctime>
 
 QuizHandler::QuizHandler(QObject *parent)
     : QObject{parent}
@@ -20,7 +22,6 @@ void QuizHandler::parseQuizFile(std::string quizName)
     std::string filepath = PROJECT_PATH "QuestionBanks/" + quizName + ".toml";
     auto file = cpptoml::parse_file(filepath);
     auto questions = file->get_table_array("questions");
-
     for (auto &q : *questions) {
         Question question;
         std::string text = *q->get_as<std::string>("question");
@@ -35,6 +36,7 @@ void QuizHandler::parseQuizFile(std::string quizName)
             choices = *choices_raw;
             question.choices = choices;
         }
+        scrambleVector(question.choices);
 
         std::string diff = *q->get_as<std::string>("difficulty");
         question.difficulty = diff;
@@ -43,6 +45,7 @@ void QuizHandler::parseQuizFile(std::string quizName)
 
         quizQuestions.push_back(question);
     }
+    scrambleVector(quizQuestions);
 }
 Question QuizHandler::getNextQuestion()
 {
