@@ -62,6 +62,7 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     animationview.cpp \
+    bank.cpp \
     cdaccount.cpp \
     loan.cpp \
     main.cpp \
@@ -121,6 +122,7 @@ HEADERS += \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
     animationview.h \
+    bank.h \
     cdaccount.h \
     cpptoml.h \
     loan.h \
@@ -132,6 +134,7 @@ HEADERS += \
     stock.h
 
 FORMS += \
+    depositWindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
