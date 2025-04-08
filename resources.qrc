@@ -6,6 +6,14 @@
         <file>icons/lock.png</file>
         <file>icons/stockApp.png</file>
         <file>icons/settingsBackground.jpg</file>
+        <file>icons/meter.png</file>
+        <file>icons/arrow.png</file>
+        <file>icons/stockdown.jpg</file>
+        <file>icons/stock.png</file>
+        <file>icons/stockbad.jpg</file>
+        <file>icons/middleArrow.png</file>
+        <file>icons/stockArrow.png</file>
+        <file>icons/arrowLeft.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
