@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>10</y>
       <width>801</width>
       <height>531</height>
      </rect>
@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -839,10 +839,6 @@
         <height>23</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">QProgressBar {border: 2px solid rgb(128, 128, 128); border-radius: 5px; background-color: rgb(60, 60, 60); text-align: center; color: white;}
-        QProgressBar::chunk {background-color: rgb(34, 139, 34); border-radius: 5px;}</string>
-      </property>
       <property name="value">
        <number>0</number>
       </property>
@@ -862,24 +858,11 @@
      </widget>
     </widget>
     <widget class="QWidget" name="Stocks">
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>230</y>
-        <width>49</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Stonks</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="stocksBackButton">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>230</y>
+        <x>0</x>
+        <y>490</y>
         <width>121</width>
         <height>41</height>
        </rect>
@@ -924,6 +907,918 @@
       <property name="text">
        <string>&lt;~ BACK</string>
       </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>130</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>170</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>260</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>310</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>400</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>440</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Risk</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Risk</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>410</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Risk</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reward</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>450</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reward</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reward</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>90</y>
+        <width>371</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/stock.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>230</y>
+        <width>371</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/stockbad.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>370</y>
+        <width>371</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/stock.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>270</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/middleArrow.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>320</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/middleArrow.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>410</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/stockArrow.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>450</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/stockArrow.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="arrowLeftRiskOne">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>140</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/arrowLeft.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="arrowLeftRewardOne">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>180</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/arrowLeft.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>230</y>
+        <width>173</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="StockTwoBuyLayout">
+       <item>
+        <widget class="QLabel" name="purchaseStockTwoLabel">
+         <property name="text">
+          <string>Buy:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="purchaseStockTwoSpin"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="purchaseStockTwoButton">
+         <property name="text">
+          <string>Purchase</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>370</y>
+        <width>173</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="StockThreeBuyLayout">
+       <item>
+        <widget class="QLabel" name="purchaseStockThreeLabe">
+         <property name="text">
+          <string>Buy:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="purchaseStockThreeSpin"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="purchaseStockThreeButton">
+         <property name="text">
+          <string>Purchase</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>260</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="PriceStockTwoLayout">
+       <item>
+        <widget class="QLabel" name="totalPriceStockThree_2">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="totalPriceStockThree">
+         <property name="font">
+          <font>
+           <family>Proxima Nova</family>
+           <pointsize>20</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>400</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="PriceStockThreeLayout">
+       <item>
+        <widget class="QLabel" name="totalPriceStockTwoLabel_2">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="totalPriceStockTwo_2">
+         <property name="font">
+          <font>
+           <family>Proxima Nova</family>
+           <pointsize>20</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>300</y>
+        <width>138</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="sellLayoutStockTwo">
+       <item>
+        <widget class="QLabel" name="sellLabelStockTwo">
+         <property name="text">
+          <string>Sell:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sellSpinStockTwo"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sellButtonStockTwo">
+         <property name="text">
+          <string>Sell</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>440</y>
+        <width>138</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="sellLayoutStockThree">
+       <item>
+        <widget class="QLabel" name="sellLabelStockThree">
+         <property name="text">
+          <string>Sell:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sellSpinStockThree"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sellButtonStockThree">
+         <property name="text">
+          <string>Sell</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="Line" name="line_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>210</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>350</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_6">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>130</y>
+        <width>261</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_7">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>290</y>
+        <width>261</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_8">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>430</y>
+        <width>261</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>180</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="SellingPriceStockOneLayout">
+       <item>
+        <widget class="QLabel" name="sellingTotalPriceStockOneLabel">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="sellingTotalPriceStockOne">
+         <property name="font">
+          <font>
+           <family>Proxima Nova</family>
+           <pointsize>20</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_8">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>330</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="SellingPriceStockTwoLayout">
+       <item>
+        <widget class="QLabel" name="sellingTotalPriceStockTwoLabel">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="sellingTotalPriceStockTwo">
+         <property name="font">
+          <font>
+           <family>Proxima Nova</family>
+           <pointsize>20</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>470</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="SellingPriceStockThreeLayout">
+       <item>
+        <widget class="QLabel" name="sellingTotalPriceStockThreeLabel">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="sellingTotalPriceStockThree">
+         <property name="font">
+          <font>
+           <family>Proxima Nova</family>
+           <pointsize>20</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stock ONE Name</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_24">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>230</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stock TWO Name</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>380</y>
+        <width>131</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Stock THREE Name</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>80</y>
+        <width>173</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="stockOneBuyLayout">
+       <item>
+        <widget class="QLabel" name="purchaseStockOneLabel">
+         <property name="text">
+          <string>Buy:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="purchaseStockOneSpin"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="purchaseStockOneButton">
+         <property name="text">
+          <string>Purchase</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>110</y>
+        <width>71</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="PriceStockOneLayout">
+       <item>
+        <widget class="QLabel" name="totalPriceStockOneLabel">
+         <property name="text">
+          <string>Price:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="totalPriceStockOne">
+         <property name="font">
+          <font>
+           <family>Proxima Nova</family>
+           <pointsize>20</pointsize>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>140</y>
+        <width>138</width>
+        <height>33</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="sellLayoutStockOne">
+       <item>
+        <widget class="QLabel" name="sellLabelStockOne">
+         <property name="text">
+          <string>Sell:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="sellSpinStockOne"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sellButtonStockOne">
+         <property name="text">
+          <string>Sell</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
@@ -993,7 +1888,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
