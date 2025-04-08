@@ -55,6 +55,8 @@ public slots:
 
     void updateStockPriceDisplay(double amount, int stockNumber);
 
+    void updateSellingStockPriceDisplay(double amount, int stockNumber, bool tooMany);
+
     void showEndScreen();
 
     void enableSubmitButton(bool checked);
@@ -90,6 +92,9 @@ signals:
     void nextYear();
 
     void requestPriceOfXStocks(int numberOfShares, int stockNumber);
+
+    void requestSellingPriceOfXStocks(int numberOfShares, int stockNumber);
+
 
     void settingsOpened(QWidget* currentWidget);
 };

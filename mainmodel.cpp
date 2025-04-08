@@ -92,6 +92,14 @@ void MainModel::sendPriceOfXStocks(int numberOfShares, int stockNumber){
     emit sendPriceOfStocks(amount, stockNumber);
 }
 
+void MainModel::sendSellingPriceOfXStocks(int numberOfShares, int stockNumber){
+    double stockValue = stocks[stockNumber].getValue();
+    qDebug() << stockValue;
+    double amount = numberOfShares * stocks[stockNumber].getValue();
+    bool tooMany = amount > stocks[stockNumber].getBalance(); // NEED TO CHANGE TO numberOfShares > AMMOUNT OF STOCK OWNED
+    emit sendSellingPriceOfStocks(amount, stockNumber, tooMany);
+}
+
 void MainModel::depositToLoan(double amount, int loanNumber) {
     if (loans[loanNumber].deposit(amount) && amount <= currentMoney) {
         currentMoney -= amount;

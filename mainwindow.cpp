@@ -85,23 +85,33 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     // Buys stock
     connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]()-> void{
        emit buyStock(ui->purchaseStockOneSpin->value(), 0);
+        ui->purchaseStockOneSpin->setValue(0);
+
     });
     connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]()-> void{
         emit buyStock(ui->purchaseStockTwoSpin->value(), 1);
+        ui->purchaseStockTwoSpin->setValue(0);
     });
     connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]()-> void{
         emit buyStock(ui->purchaseStockThreeSpin->value(), 2);
+        ui->purchaseStockThreeSpin->setValue(0);
+
     });
 
     // Sell Stock
     connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]()-> void{
         emit sellStock(ui->sellSpinStockOne->value(), 0);
+        ui->sellSpinStockOne->setValue(0);
+
     });
     connect(ui->sellButtonStockTwo, &QPushButton::clicked, this, [&]()-> void{
         emit sellStock(ui->sellSpinStockTwo->value(), 1);
+        ui->sellSpinStockTwo->setValue(0);
     });
     connect(ui->sellButtonStockThree, &QPushButton::clicked, this, [&]()-> void{
         emit sellStock(ui->sellSpinStockThree->value(), 2);
+        ui->sellSpinStockThree->setValue(0);
+
     });
 
     // Update price buying
@@ -116,7 +126,21 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     connect(this, &MainWindow::requestPriceOfXStocks, model, &MainModel::sendPriceOfXStocks);
     connect(model, &MainModel::sendPriceOfStocks, this, &MainWindow::updateStockPriceDisplay);
-    // View protection of selling/buying
+
+    //Update price selling
+    connect(ui->sellSpinStockOne, &QSpinBox::valueChanged, this, [&]()->void{
+        emit requestSellingPriceOfXStocks(ui->sellSpinStockOne->value(), 0);
+    });
+    connect(ui->sellSpinStockTwo, &QSpinBox::valueChanged, this, [&]()->void{
+        emit requestSellingPriceOfXStocks(ui->sellSpinStockTwo->value(), 1);
+    });
+    connect(ui->sellSpinStockThree, &QSpinBox::valueChanged, this, [&]()->void{
+        emit requestSellingPriceOfXStocks(ui->sellSpinStockThree->value(), 2);
+    });
+
+    connect(this, &MainWindow::requestSellingPriceOfXStocks, model, &MainModel::sendSellingPriceOfXStocks);
+    connect(model, &MainModel::sendSellingPriceOfStocks, this, &MainWindow::updateSellingStockPriceDisplay);
+    // View protection of selling/buying is done in update price label...
 }
 
 MainWindow::~MainWindow()
@@ -313,6 +337,53 @@ void MainWindow::updateStockPriceDisplay(double amount, int stockNumber){
         default:{
             break;
         }
+    }
+}
+
+void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, bool tooMany){
+    switch(stockNumber){
+    case 0:{
+        ui->sellingTotalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
+        if(tooMany){
+            ui->sellingTotalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
+            ui->sellButtonStockOne->setEnabled(false);
+        }
+        else{
+            ui->sellingTotalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
+            ui->sellButtonStockOne->setEnabled(true);
+        }
+        ui->sellingTotalPriceStockOne->adjustSize();
+        break;
+    }
+    case 1:{
+        ui->sellingTotalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
+        if(tooMany){
+            ui->sellingTotalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
+            ui->sellButtonStockTwo->setEnabled(false);
+        }
+        else{
+            ui->sellingTotalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
+            ui->sellButtonStockTwo->setEnabled(true);
+        }
+        ui->sellingTotalPriceStockTwo->adjustSize();
+        break;
+    }
+    case 2:{
+        ui->sellingTotalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
+        if(tooMany){
+            ui->sellingTotalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
+            ui->sellButtonStockThree->setEnabled(false);
+        }
+        else{
+            ui->sellingTotalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
+            ui->sellButtonStockThree->setEnabled(true);
+        }
+        ui->sellingTotalPriceStockThree->adjustSize();
+        break;
+    }
+    default:{
+        break;
+    }
     }
 }
 

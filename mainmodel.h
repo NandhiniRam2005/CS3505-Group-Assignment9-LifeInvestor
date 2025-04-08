@@ -44,6 +44,9 @@ public slots:
 
     void sendPriceOfXStocks(int numberOfStocks, int stockNumber);
 
+    void sendSellingPriceOfXStocks(int numberOfStocks, int stockNumber);
+
+
     void settingsClosed();
 
 signals:
@@ -79,6 +82,8 @@ signals:
     void updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
 
     void sendPriceOfStocks(double price, int stockNumber);
+
+    void sendSellingPriceOfStocks(double price, int stockNumber, bool tooMany);
 
     void returnToGame(QWidget* currentWidget);
 
