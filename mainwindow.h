@@ -69,6 +69,8 @@ public slots:
 
     void showErrorMessage(QString errorMessage);
 
+    void revalidateAllStockDisplays();
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);
@@ -95,6 +97,9 @@ signals:
 
     void requestSellingPriceOfXStocks(int numberOfShares, int stockNumber);
 
+    void revalidateStockDisplay();
+
+    void revalidateSpecificStockDisplay(int amount, int stockNumber);
 
     void settingsOpened(QWidget* currentWidget);
 };

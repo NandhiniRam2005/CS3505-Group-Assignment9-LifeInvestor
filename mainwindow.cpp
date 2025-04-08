@@ -84,19 +84,23 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // Buys stock
     connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]()-> void{
-       emit buyStock(ui->purchaseStockOneSpin->value(), 0);
+        emit buyStock(ui->purchaseStockOneSpin->value(), 0);
         ui->purchaseStockOneSpin->setValue(0);
-
+        emit revalidateStockDisplay();
     });
     connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]()-> void{
         emit buyStock(ui->purchaseStockTwoSpin->value(), 1);
         ui->purchaseStockTwoSpin->setValue(0);
+        emit revalidateStockDisplay();
     });
     connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]()-> void{
         emit buyStock(ui->purchaseStockThreeSpin->value(), 2);
         ui->purchaseStockThreeSpin->setValue(0);
-
+        emit revalidateStockDisplay();
     });
+
+    connect(this, &MainWindow::revalidateStockDisplay, this, &MainWindow::revalidateAllStockDisplays);
+    connect(this, &MainWindow::revalidateSpecificStockDisplay, this, &MainWindow::updateStockPriceDisplay);
 
     // Sell Stock
     connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]()-> void{
@@ -293,7 +297,7 @@ void MainWindow::showEndScreen() {
 }
 
 void MainWindow::updateStockPriceDisplay(double amount, int stockNumber){
-    qDebug() << "Amount:" << amount;
+    qDebug() << "Updating";
     switch(stockNumber){
         case 0:{
             ui->totalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
@@ -385,6 +389,17 @@ void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, 
         break;
     }
     }
+}
+
+void MainWindow::revalidateAllStockDisplays(){
+    qDebug() << "Revalidating...";
+
+    emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
+    emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
+
+    emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
+
+
 }
 
 

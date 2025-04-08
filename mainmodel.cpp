@@ -86,15 +86,11 @@ void MainModel::buyStock(int numberOfShares, int stockNumber) {
 }
 
 void MainModel::sendPriceOfXStocks(int numberOfShares, int stockNumber){
-    double stockValue = stocks[stockNumber].getValue();
-    qDebug() << stockValue;
     double amount = numberOfShares * stocks[stockNumber].getValue();
     emit sendPriceOfStocks(amount, stockNumber);
 }
 
 void MainModel::sendSellingPriceOfXStocks(int numberOfShares, int stockNumber){
-    double stockValue = stocks[stockNumber].getValue();
-    qDebug() << stockValue;
     double amount = numberOfShares * stocks[stockNumber].getValue();
     bool tooMany = amount > stocks[stockNumber].getBalance(); // NEED TO CHANGE TO numberOfShares > AMMOUNT OF STOCK OWNED
     emit sendSellingPriceOfStocks(amount, stockNumber, tooMany);
