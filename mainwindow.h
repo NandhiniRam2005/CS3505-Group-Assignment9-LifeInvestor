@@ -70,6 +70,7 @@ public slots:
     void showErrorMessage(QString errorMessage);
 
     void revalidateAllStockDisplays();
+    void displayDepositPage();
 
 signals:
     void startQuizRequested();

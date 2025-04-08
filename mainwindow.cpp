@@ -173,6 +173,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->withdrawCDButton, &QPushButton::clicked, this, [this] {
         emit withdrawFromCD(ui->cdAccountSelector->currentIndex());
     });
+
+    connect(ui->App3, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Bank);
+    });
+
+    connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -436,4 +444,7 @@ void MainWindow::revalidateAllStockDisplays(){
 
 }
 
+void MainWindow::displayDepositPage() {
+    // depositWindow.show();
+}
 

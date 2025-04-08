@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
+      <y>0</y>
       <width>801</width>
       <height>531</height>
      </rect>
@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -369,7 +369,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/stockApp.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/stockApp.png</iconset>
@@ -403,7 +403,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -437,7 +437,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -471,7 +471,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -505,7 +505,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -539,7 +539,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="resources.qrc">
+        <iconset>
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -582,7 +582,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/settingsBackground.jpg</pixmap>
+       <pixmap>:/icons/icons/settingsBackground.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -839,6 +839,10 @@
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QProgressBar {border: 2px solid rgb(128, 128, 128); border-radius: 5px; background-color: rgb(60, 60, 60); text-align: center; color: white;}
+        QProgressBar::chunk {background-color: rgb(34, 139, 34); border-radius: 5px;}</string>
+      </property>
       <property name="value">
        <number>0</number>
       </property>
@@ -921,7 +925,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+       <pixmap>:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -940,7 +944,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+       <pixmap>:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -959,7 +963,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+       <pixmap>:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -978,7 +982,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+       <pixmap>:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -997,7 +1001,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+       <pixmap>:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1016,7 +1020,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
+       <pixmap>:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1113,7 +1117,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/stock.png</pixmap>
+       <pixmap>:/icons/icons/stock.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1132,7 +1136,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/stockBad.png</pixmap>
+       <pixmap>:/icons/icons/stockBad.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1151,7 +1155,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/stock.png</pixmap>
+       <pixmap>:/icons/icons/stock.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1170,7 +1174,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/middleArrow.png</pixmap>
+       <pixmap>:/icons/icons/middleArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1189,7 +1193,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/middleArrow.png</pixmap>
+       <pixmap>:/icons/icons/middleArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1208,7 +1212,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/stockArrow.png</pixmap>
+       <pixmap>:/icons/icons/stockArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1227,7 +1231,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/stockArrow.png</pixmap>
+       <pixmap>:/icons/icons/stockArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1246,7 +1250,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/arrowLeft.png</pixmap>
+       <pixmap>:/icons/icons/arrowLeft.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1265,7 +1269,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/arrowLeft.png</pixmap>
+       <pixmap>:/icons/icons/arrowLeft.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1338,7 +1342,7 @@
         <x>540</x>
         <y>410</y>
         <width>121</width>
-        <height>26</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="PriceStockTwoLayout" stretch="1,0">
@@ -1384,7 +1388,7 @@
         <x>550</x>
         <y>260</y>
         <width>111</width>
-        <height>26</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="PriceStockThreeLayout" stretch="1,0">
@@ -1429,7 +1433,7 @@
        <rect>
         <x>550</x>
         <y>300</y>
-        <width>138</width>
+        <width>167</width>
         <height>33</height>
        </rect>
       </property>
@@ -1458,7 +1462,7 @@
        <rect>
         <x>540</x>
         <y>440</y>
-        <width>138</width>
+        <width>167</width>
         <height>33</height>
        </rect>
       </property>
@@ -1566,7 +1570,7 @@
         <x>550</x>
         <y>180</y>
         <width>111</width>
-        <height>26</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="SellingPriceStockOneLayout" stretch="1,0">
@@ -1612,7 +1616,7 @@
         <x>550</x>
         <y>330</y>
         <width>121</width>
-        <height>26</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="SellingPriceStockTwoLayout" stretch="1,0">
@@ -1658,7 +1662,7 @@
         <x>540</x>
         <y>470</y>
         <width>121</width>
-        <height>26</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="SellingPriceStockThreeLayout" stretch="1,0">
@@ -1772,7 +1776,7 @@
         <x>550</x>
         <y>110</y>
         <width>111</width>
-        <height>26</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="PriceStockOneLayout" stretch="1,0">
@@ -1820,7 +1824,7 @@
        <rect>
         <x>550</x>
         <y>140</y>
-        <width>138</width>
+        <width>167</width>
         <height>33</height>
        </rect>
       </property>
@@ -2008,6 +2012,162 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="Bank">
+     <widget class="QLabel" name="balance">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>20</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Proxima Nova</family>
+        <pointsize>20</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: green;
+    font-weight: bold;
+}</string>
+      </property>
+      <property name="text">
+       <string>$0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="checingAccountLabel">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>150</y>
+        <width>211</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Checking Account</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="savingAccountLabel">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>150</y>
+        <width>201</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Savings Account</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="checkingAccountAmount">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>250</y>
+        <width>63</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>$ 0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="savingsAccountAmount">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>240</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>$ 0</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="checkingDepositButton">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>320</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deposit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="savingsDepositButton">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>320</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deposit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="checkingWithdrawButton">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>400</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Withdraw</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="savingsWithdrawButton">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>400</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Withdraw</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QPushButton" name="settingsButton">
     <property name="enabled">
@@ -2028,43 +2188,13 @@
      <string>Settings</string>
     </property>
     <property name="icon">
-     <iconset resource="resources.qrc">
+     <iconset>
       <normaloff>:/icons/icons/test.png</normaloff>
       <disabledoff>:/icons/icons/blank.png</disabledoff>
       <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/test.png</iconset>
     </property>
     <property name="flat">
      <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="balance">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>20</y>
-      <width>181</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Proxima Nova</family>
-      <pointsize>20</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel {
-    color: green;
-    font-weight: bold;
-}</string>
-    </property>
-    <property name="text">
-     <string>$0</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -2075,7 +2205,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
@@ -2086,8 +2216,6 @@
    <addaction name="menuLife_Investing_for_gang"/>
   </widget>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
