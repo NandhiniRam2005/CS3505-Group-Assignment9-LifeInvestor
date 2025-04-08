@@ -75,10 +75,10 @@ void MainModel::depositToCD(double amount, int cdNumber) {
 
 void MainModel::buyStock(int numberOfShares, int stockNumber) {
     double amount = numberOfShares * stocks[stockNumber].getValue();
-    if (stocks[stockNumber].deposit(amount) && amount <= currentMoney) {
+    if (stocks[stockNumber].deposit(numberOfShares) && amount <= currentMoney) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
-        emit updateStock(stockNumber, stocks[stockNumber].getBalance());
+        emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
     }
     else
         emit showErrorMessage("Input amount cannot be bought");
@@ -91,7 +91,7 @@ void MainModel::sendPriceOfXStocks(int numberOfShares, int stockNumber){
 
 void MainModel::sendSellingPriceOfXStocks(int numberOfShares, int stockNumber){
     double amount = numberOfShares * stocks[stockNumber].getValue();
-    bool tooMany = amount > stocks[stockNumber].getBalance(); // NEED TO CHANGE TO numberOfShares > AMMOUNT OF STOCK OWNED
+    bool tooMany = numberOfShares > stocks[stockNumber].getBalance();
     emit sendSellingPriceOfStocks(amount, stockNumber, tooMany);
 }
 
@@ -129,10 +129,10 @@ void MainModel::withdrawFromCD(int cdNumber) {
 
 void MainModel::sellStock(int numberOfShares, int stockNumber) {
     double amount = numberOfShares * stocks[stockNumber].getValue();
-    if (stocks[stockNumber].withdraw(amount)) {
+    if (stocks[stockNumber].withdraw(numberOfShares)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
-        emit updateStock(stockNumber, stocks[stockNumber].getBalance());
+        emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
     }
     else
         emit showErrorMessage("Input amount cannot be withdrawn");
@@ -157,7 +157,7 @@ void MainModel::nextYear() {
     }
     for (int i = 0; i < stocks.count(); i++) {
         stocks[i].nextYear();
-        emit updateStock(i, stocks[i].getBalance());
+        emit updateStock(i, stocks[i].getMoneyBalance());
     }
     for (int i = 0; i < loans.count(); i++) {
         loans[i].nextYear();
