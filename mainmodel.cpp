@@ -13,7 +13,6 @@ MainModel::MainModel(QObject *parent)
     currentYear = 0;
 
     savingsAccount = new SavingsAccount(0.0041);
-
     cdAccounts.push_back(CDAccount(0.041, 2, 1000));
     cdAccounts.push_back(CDAccount(0.039, 3, 500));
     cdAccounts.push_back(CDAccount(0.036, 5, 500));
@@ -151,15 +150,21 @@ void MainModel::activateLoan(int loanNumber) {
 
 void MainModel::nextYear() {
     savingsAccount->nextYear();
-    for (MoneyContainer container : cdAccounts)
-        container.nextYear();
-    for (MoneyContainer container : stocks)
-        container.nextYear();
-    for (Loan loan : loans) {
-        loan.nextYear();
-        loan.setAvailable(creditScore);
-        if (loan.getYearsLeft() < 0)
+    emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    for (int i = 0; i < cdAccounts.count(); i++) {
+        cdAccounts[i].nextYear();
+        emit updateCD(i, cdAccounts[i].getBalance(), cdAccounts[i].getInterestRate(), cdAccounts[i].getTermLength(), cdAccounts[i].getMinimumDeposit(), cdAccounts[i].getYearsRemaining());
+    }
+    for (int i = 0; i < stocks.count(); i++) {
+        stocks[i].nextYear();
+        emit updateStock(i, stocks[i].getBalance());
+    }
+    for (int i = 0; i < loans.count(); i++) {
+        loans[i].nextYear();
+        loans[i].setAvailable(creditScore);
+        if (loans[i].getYearsLeft() < 0)
             endGame();
+        emit updateLoan(i, loans[i].getBalance(), loans[i].getInterestRate(), loans[i].getAvailable(), loans[i].getYearsLeft());
     }
 }
 
