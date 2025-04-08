@@ -15,6 +15,7 @@
         <file>icons/stockArrow.png</file>
         <file>icons/arrowLeft.png</file>
         <file>icons/stockBad.png</file>
+        <file>icons/lifeInvestIcon.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

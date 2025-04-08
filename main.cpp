@@ -8,6 +8,8 @@ int main(int argc, char *argv[])
     qRegisterMetaType<Question>("Question");
     MainModel model;
     MainWindow window(&model);
+    QIcon icon(":///icons/icons/lifeInvestIcon.png");
+    a.setWindowIcon(icon);
     window.show();
     return a.exec();
 }
