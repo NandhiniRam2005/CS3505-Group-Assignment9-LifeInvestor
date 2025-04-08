@@ -145,6 +145,13 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::requestSellingPriceOfXStocks, model, &MainModel::sendSellingPriceOfXStocks);
     connect(model, &MainModel::sendSellingPriceOfStocks, this, &MainWindow::updateSellingStockPriceDisplay);
     // View protection of selling/buying is done in update price label...
+
+    connect(ui->App2, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->CD);
+    });
+    connect(ui->cdBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
 }
 
 MainWindow::~MainWindow()
