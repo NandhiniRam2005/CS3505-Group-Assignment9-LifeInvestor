@@ -96,7 +96,7 @@ void AnimationView::startRainAnimation()
 
         body->CreateFixture(&fixtureDef);
 
-        QColor color(0, 0, 255);  // Blue color for rain
+        QColor color(69,170, 241);  // Blue color for rain
         QSize size(1, 10);
         rainList.push_back(new Animation(body, color, size));
     }
