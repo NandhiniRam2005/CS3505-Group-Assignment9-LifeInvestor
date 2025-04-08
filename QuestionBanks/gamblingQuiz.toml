@@ -1,0 +1,137 @@
+category = "Gambling"
+
+categoryInfo = "This category covers the risks of gambling, why it can be harmful, and how to make informed decisions regarding gambling behaviors."
+
+learnMore = '''
+Gambling involves risking money or valuables on an event with an uncertain outcome, typically with the hope of winning more money. While it can seem like a fun activity, gambling can have serious financial, emotional, and psychological consequences if not approached carefully.
+'''
+
+[[questions]]
+question = "What is a common risk of gambling?"
+choices = [
+"Losing more money than you can afford",
+"Improving your financial situation",
+"Winning large amounts of money consistently",
+"Building a reliable source of income"
+]
+answer = "Losing more money than you can afford"
+why = "One of the most common risks of gambling is losing money, sometimes more than you can afford, which can lead to financial instability."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is 'chasing losses' in gambling?"
+choices = [
+"Trying to win back money that was lost by continuing to gamble",
+"Setting a winning goal for every gambling session",
+"Taking breaks to avoid gambling addiction",
+"Cash rewards given to frequent gamblers"
+]
+answer = "Trying to win back money that was lost by continuing to gamble"
+why = "Chasing losses is a dangerous behavior where gamblers try to recover lost money by gambling more, often leading to even larger losses."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "How can gambling negatively affect relationships?"
+choices = [
+"By creating trust and financial issues due to excessive gambling",
+"By promoting shared financial success",
+"By encouraging open communication about finances",
+"By ensuring everyone is always financially secure"
+]
+answer = "By creating trust and financial issues due to excessive gambling"
+why = "Gambling can create financial strain and emotional distress, damaging relationships by causing trust issues and disagreements over money."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "Why is gambling addictive?"
+choices = [
+"Because of the rush of excitement that comes with betting",
+"Because it is a form of reliable investment",
+"Because it provides guaranteed returns",
+"Because it offers long-term financial stability"
+]
+answer = "Because of the rush of excitement that comes with betting"
+why = "Gambling triggers the brain's reward system, releasing dopamine, which creates a feeling of excitement and can lead to addictive behavior."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What can excessive gambling lead to?"
+choices = [
+"Improved financial situation and stable income",
+"Financial problems, stress, and mental health issues",
+"Better decision-making and financial planning",
+"Increased social connections and happiness"
+]
+answer = "Financial problems, stress, and mental health issues"
+why = "Excessive gambling can lead to severe financial problems, stress, and mental health issues such as anxiety, depression, and even addiction."
+difficulty = "hard"
+reward = 300
+
+[[questions]]
+question = "How can gambling affect your financial health?"
+choices = [
+"By encouraging better savings habits",
+"By making it difficult to budget and manage finances",
+"By providing a consistent source of income",
+"By encouraging wise investment strategies"
+]
+answer = "By making it difficult to budget and manage finances"
+why = "Gambling can interfere with managing personal finances, making it hard to budget properly and often leading to overspending and debt."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is the best way to deal with a gambling problem?"
+choices = [
+"Continue gambling to try to win back losses",
+"Seek professional help or counseling",
+"Take out a loan to recover lost money",
+"Increase your betting amounts to improve chances of winning"
+]
+answer = "Seek professional help or counseling"
+why = "The best way to deal with a gambling problem is to seek professional help, such as therapy or counseling, to address the underlying issues."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What is 'gambling debt'?"
+choices = [
+"Money borrowed to fund gambling activities that can't be repaid",
+"Money saved for future investments",
+"A loan from a friend to help pay bills",
+"A tax owed to the government from gambling winnings"
+]
+answer = "Money borrowed to fund gambling activities that can't be repaid"
+why = "Gambling debt occurs when someone borrows money to continue gambling and cannot repay the money, often spiraling into financial crisis."
+difficulty = "hard"
+reward = 300
+
+[[questions]]
+question = "What is a key warning sign of gambling addiction?"
+choices = [
+"Always feeling in control of the situation",
+"Frequently gambling larger amounts despite losses",
+"Only gambling when you have a guaranteed return",
+"Cutting down on gambling after each loss"
+]
+answer = "Frequently gambling larger amounts despite losses"
+why = "A warning sign of gambling addiction is when a person keeps gambling larger amounts of money to recoup losses, leading to a destructive cycle."
+difficulty = "hard"
+reward = 350
+
+[[questions]]
+question = "What can you do to prevent gambling problems?"
+choices = [
+"Set clear limits on your gambling activities and stick to them",
+"Ignore your losses and continue playing",
+"Maximize your bets to win larger amounts",
+"Only gamble when you're feeling emotional or stressed"
+]
+answer = "Set clear limits on your gambling activities and stick to them"
+why = "Setting and sticking to clear limits on gambling can help you avoid falling into unhealthy habits and ensure it remains a controlled activity."
+difficulty = "medium"
+reward = 250

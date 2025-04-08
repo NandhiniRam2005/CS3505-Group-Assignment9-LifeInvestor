@@ -1,0 +1,137 @@
+category = "Loans"
+
+categoryInfo = "This category covers questions related to various types of loans, their terms, and how they work."
+
+learnMore = '''
+A loan is a sum of money borrowed from a lender that is expected to be paid back with interest over a set period of time. Different loans come with varying terms, interest rates, and repayment schedules.
+'''
+
+[[questions]]
+question = "What is a loan?"
+choices = [
+"A sum of money borrowed with an agreement to repay with interest",
+"Money given to a person without any repayment required",
+"A government grant that doesn't need to be paid back",
+"A reward for good credit history"
+]
+answer = "A sum of money borrowed with an agreement to repay with interest"
+why = "A loan is money that is borrowed from a lender with the understanding that it will be paid back, often with interest, over a set period."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is interest on a loan?"
+choices = [
+"The principal amount borrowed",
+"The fee charged by the lender for borrowing the money",
+"The total amount borrowed including repayment",
+"Extra payments made after the loan term ends"
+]
+answer = "The fee charged by the lender for borrowing the money"
+why = "Interest is the cost of borrowing money, typically calculated as a percentage of the principal loan amount."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is the term of a loan?"
+choices = [
+"The interest rate charged for the loan",
+"The amount of money borrowed",
+"The time period over which the loan is to be repaid",
+"The security used to back the loan"
+]
+answer = "The time period over which the loan is to be repaid"
+why = "The term refers to the length of time agreed upon to repay the loan, which can range from months to years."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is the difference between secured and unsecured loans?"
+choices = [
+"Secured loans have collateral, while unsecured loans do not",
+"Unsecured loans have a lower interest rate",
+"Secured loans are only available for individuals with bad credit",
+"Unsecured loans can be paid back early without penalty"
+]
+answer = "Secured loans have collateral, while unsecured loans do not"
+why = "Secured loans require an asset (like a house or car) as collateral, while unsecured loans do not require any collateral."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is a mortgage?"
+choices = [
+"A loan used to purchase real estate",
+"A loan used for business expenses",
+"A type of personal loan with no collateral",
+"A loan for purchasing stocks"
+]
+answer = "A loan used to purchase real estate"
+why = "A mortgage is a loan specifically used to buy real estate, typically secured by the property itself."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is the principal amount of a loan?"
+choices = [
+"The total amount paid back over the loan term",
+"The amount borrowed before interest",
+"The interest rate applied to the loan",
+"The monthly repayment amount"
+]
+answer = "The amount borrowed before interest"
+why = "The principal is the original amount of money borrowed, excluding interest and other charges."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is an APR (Annual Percentage Rate)?"
+choices = [
+"The interest rate charged annually, including fees",
+"The monthly payment for a loan",
+"The total amount borrowed over a year",
+"The time period for which the loan is valid"
+]
+answer = "The interest rate charged annually, including fees"
+why = "APR is the total interest and fees charged on a loan annually, expressed as a percentage of the loan amount."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is a payday/shark loan?"
+choices = [
+"A short-term loan intended to be repaid with your next paycheck",
+"A loan for buying a car",
+"A loan used for purchasing a home",
+"A loan that can be paid back over several years"
+]
+answer = "A short-term loan intended to be repaid with your next paycheck"
+why = "A payday loan is a short-term, high-interest loan typically due on the borrower’s next payday."
+difficulty = "hard"
+reward = 300
+
+[[questions]]
+question = "What is a loan default?"
+choices = [
+"Paying off the loan early",
+"Failure to make the required payments on a loan",
+"Making all payments on time",
+"A loan with a very high interest rate"
+]
+answer = "Failure to make the required payments on a loan"
+why = "Defaulting on a loan occurs when the borrower fails to make the required payments as agreed upon in the loan contract."
+difficulty = "hard"
+reward = 400
+
+[[questions]]
+question = "What is a co-signer on a loan?"
+choices = [
+"A person who is responsible for repaying the loan if the primary borrower fails to do so",
+"A person who only provides collateral for the loan",
+"A person who receives part of the loan amount",
+"A person who guarantees the loan will be repaid on time"
+]
+answer = "A person who is responsible for repaying the loan if the primary borrower fails to do so"
+why = "A co-signer agrees to repay the loan if the primary borrower defaults, and their credit is at risk if payments are missed."
+difficulty = "medium"
+reward = 250
