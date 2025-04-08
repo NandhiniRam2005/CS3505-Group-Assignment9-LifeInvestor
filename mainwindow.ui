@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -731,8 +731,18 @@
         <height>131</height>
        </rect>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+    background-color: #2b6a74;
+    border: 1px solid white;
+    border-radius: 15px;
+}</string>
+      </property>
       <property name="title">
-       <string>GroupBox</string>
+       <string/>
       </property>
       <widget class="QRadioButton" name="choice1">
        <property name="geometry">
@@ -881,6 +891,37 @@
        <string>Quiz 0.0: tutorial</string>
       </property>
      </widget>
+     <widget class="QLabel" name="backgroundQuiz">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>811</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/plainBg.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>backgroundQuiz</zorder>
+     <zorder>labelReward</zorder>
+     <zorder>choicesLayout</zorder>
+     <zorder>submitButton</zorder>
+     <zorder>nextButton</zorder>
+     <zorder>labelQuestion</zorder>
+     <zorder>resultLabel</zorder>
+     <zorder>quizProgress</zorder>
+     <zorder>label_4</zorder>
     </widget>
     <widget class="QWidget" name="Stocks">
      <widget class="QPushButton" name="stocksBackButton">
