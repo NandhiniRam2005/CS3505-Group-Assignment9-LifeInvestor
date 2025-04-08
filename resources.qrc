@@ -18,6 +18,8 @@
         <file>icons/lifeInvestIcon.png</file>
         <file>icons/lifeInvestor.png</file>
         <file>icons/plainBg.png</file>
+        <file>icons/start.png</file>
+        <file>icons/startClick.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

@@ -181,6 +181,12 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
 
 
+    // Start button connections for pressed
+    connect(ui->startButton, &QPushButton::pressed, [=]() {
+        ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
+        ui->startButton->setIconSize(QSize(300, 400));
+    });
+
 }
 
 MainWindow::~MainWindow()
