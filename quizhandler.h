@@ -12,6 +12,15 @@ struct Question
     std::string difficulty;
     int reward;
 };
+enum class QuizCategory{
+    cds = 0,
+    example = 1,
+    gambling = 2,
+    loans = 3,
+    savings = 4,
+    tutorial = 5,
+    mixOfAll = 6
+};
 
 Q_DECLARE_METATYPE(Question)
 
@@ -22,11 +31,12 @@ public:
     explicit QuizHandler(QObject *parent = nullptr);
 
     /**
-     * Parses a quiz toml file for usage when a quiz is started
+     * Creates a quiz given the category and the length of the quiz
      *
-     * @param quizName - The name of the quiz.
+     * @param category - The category of the quiz
+     * @param quizLength - The length of the quiz
      */
-    void parseQuizFile(std::string quizName);
+    void createQuiz(QuizCategory category, uint quizLength);
 
     /**
      * Gets the next quiz question or completes the quiz depending on if the quiz has been
@@ -82,7 +92,18 @@ private:
      * Tracker for how many quizQuestions have been answered correctly so far.
      */
     uint numberCorrect;
+    /**
+     * Tracker for how long the quiz should be i.e how many questions should be asked.
+     */
+    uint quizLength;
 
+    static const std::array<std::string, 7> quizFileNames;
+
+
+    /**
+     * Scrambles the elements in a given vector into a random order.
+     * @param vector the vector to scramble.
+     */
     template <typename T>
     void scrambleVector(std::vector<T>& vector){
         std::srand(std::time(nullptr));
@@ -92,6 +113,20 @@ private:
         }
 
     }
+    /**
+     * Returns the filepath to the the quiz file of a given Quiz Category
+     * @param category The QuizCategory to use
+     * @return The filepath of that Quiz Category
+     */
+    std::string getFilePath(QuizCategory category);
+
+    /**
+     * Parses the files and returns all quiz questions in a given Quiz Category
+     * @param category The QuizCategory to use
+     * @return A vector of all Questions in that category.
+     */
+    std::vector<Question> getAllQuestionsFromCategory(QuizCategory category);
+
 };
 
 #endif // QUIZHANDLER_H

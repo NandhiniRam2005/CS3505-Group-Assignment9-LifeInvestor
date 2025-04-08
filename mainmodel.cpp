@@ -27,7 +27,7 @@ MainModel::MainModel(QObject *parent)
 
 void MainModel::requestQuiz()
 {
-    this->quizHandler->parseQuizFile("example");
+    this->quizHandler->createQuiz(QuizCategory::example, 2);
     getNextQuestion();
 }
 
