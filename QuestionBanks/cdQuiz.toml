@@ -1,0 +1,138 @@
+category = "Certificates of Deposit (CDs)"
+
+categoryInfo = "This category covers questions related to Certificates of Deposit, their characteristics, and how they work."
+
+learnMore = '''
+A Certificate of Deposit (CD) is a savings account offered by banks that provides a fixed interest rate for a specified term. Early withdrawal typically incurs a penalty.
+(We should add more here)
+'''
+
+[[questions]]
+question = "What is a Certificate of Deposit (CD)?"
+choices = [
+"An investment that provides a fixed interest rate for a set period of time",
+"A type of savings account with no interest",
+"A short-term loan to the bank",
+"A bond issued by the government"
+]
+answer = "An investment that provides a fixed interest rate for a set period of time"
+why = "A CD is a time deposit offered by banks that pays a fixed interest rate for a predetermined term."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What happens if you withdraw money from a CD before its maturity date?"
+choices = [
+"You may face an early withdrawal penalty",
+"You can withdraw without any penalty",
+"You get a higher interest rate",
+"The interest rate is reduced"
+]
+answer = "You may face an early withdrawal penalty"
+why = "Withdrawing funds before the maturity date of a CD usually results in a penalty, which can affect both the principal and interest earned."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is the typical term length for a CD?"
+choices = [
+"1 month to 10 years",
+"1 year to 5 years",
+"1 week to 3 months",
+"1 day to 1 year"
+]
+answer = "1 month to 10 years"
+why = "CDs can have terms ranging from as short as one month to as long as 10 years, though terms of 1 year to 5 years are common."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is the primary risk of investing in a CD?"
+choices = [
+"Risk of early withdrawal penalties",
+"Risk of interest rate fluctuations",
+"Risk of default by the bank",
+"Risk of inflation"
+]
+answer = "Risk of early withdrawal penalties"
+why = "The main risk associated with CDs is the penalty for early withdrawal, which can reduce the return on investment."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "How do interest rates on CDs compare to regular savings accounts?"
+choices = [
+"CD interest rates are typically higher",
+"CD interest rates are typically lower",
+"CD interest rates are the same",
+"CDs have no interest"
+]
+answer = "CD interest rates are typically higher"
+why = "CDs generally offer higher interest rates than regular savings accounts in exchange for locking up the funds for a fixed period."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is a CD ladder?"
+choices = [
+"A strategy for withdrawing money early without penalty",
+"A strategy for diversifying interest rates by having multiple CDs with different maturity dates",
+"A type of CD with no interest rate",
+"A way to avoid inflation"
+]
+answer = "A strategy for diversifying interest rates by having multiple CDs with different maturity dates"
+why = "A CD ladder is a strategy where you invest in several CDs with different maturity dates, allowing for periodic access to funds and potentially higher overall returns."
+difficulty = "hard"
+reward = 400
+
+[[questions]]
+question = "Can you access your funds in a CD anytime?"
+choices = [
+"Yes, but there may be a penalty",
+"No, the funds are locked until maturity",
+"Yes, with no penalty",
+"Only on specific dates"
+]
+answer = "No, the funds are locked until maturity"
+why = "The funds in a CD are typically locked until the maturity date, and early withdrawal may result in penalties."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What happens at the end of a CD’s term?"
+choices = [
+"The principal and interest are withdrawn automatically",
+"The principal is reinvested into a new CD",
+"It is renewed at a lower interest rate",
+"The funds remain in the account indefinitely"
+]
+answer = "The principal and interest are withdrawn automatically"
+why = "At the end of the term, the CD typically matures, and the principal along with any earned interest is either paid out or rolled into a new CD, depending on the account terms."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is the Federal Deposit Insurance Corporation (FDIC)?"
+choices = [
+"A government agency that insures bank deposits",
+"A bank that sells CDs",
+"A type of interest rate on a CD",
+"A tool for calculating CD returns"
+]
+answer = "A government agency that insures bank deposits"
+why = "The FDIC insures bank deposits up to $250,000 per depositor, providing protection against bank failure."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "Which of the following is true about interest on CDs?"
+choices = [
+"Interest is always paid monthly",
+"Interest can be compounded or paid at maturity depending on the CD",
+"Interest is paid daily",
+"Interest is taxed at a higher rate"
+]
+answer = "Interest can be compounded or paid at maturity depending on the CD"
+why = "CDs may offer interest that is either compounded periodically or paid out at the time of maturity. The specific terms depend on the CD agreement."
+difficulty = "easy"
+reward = 100
