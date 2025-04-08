@@ -54,7 +54,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
 }
 
 void MainModel::depositToSavings(double amount) {
-    if (savingsAccount->deposit(amount) && amount <= currentMoney) {
+    if (amount <= currentMoney && savingsAccount->deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
@@ -64,7 +64,7 @@ void MainModel::depositToSavings(double amount) {
 }
 
 void MainModel::depositToCD(double amount, int cdNumber) {
-    if (cdAccounts[cdNumber].deposit(amount) && amount <= currentMoney) {
+    if (amount <= currentMoney && cdAccounts[cdNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
@@ -75,7 +75,7 @@ void MainModel::depositToCD(double amount, int cdNumber) {
 
 void MainModel::buyStock(int numberOfShares, int stockNumber) {
     double amount = numberOfShares * stocks[stockNumber].getValue();
-    if (stocks[stockNumber].deposit(numberOfShares) && amount <= currentMoney) {
+    if (amount <= currentMoney && stocks[stockNumber].deposit(numberOfShares)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
@@ -96,7 +96,7 @@ void MainModel::sendSellingPriceOfXStocks(int numberOfShares, int stockNumber){
 }
 
 void MainModel::depositToLoan(double amount, int loanNumber) {
-    if (loans[loanNumber].deposit(amount) && amount <= currentMoney) {
+    if (amount <= currentMoney && loans[loanNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getInterestRate(), loans[loanNumber].getAvailable(), loans[loanNumber].getYearsLeft());
