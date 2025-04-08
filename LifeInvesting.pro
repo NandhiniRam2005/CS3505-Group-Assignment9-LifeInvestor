@@ -142,5 +142,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     Box2D/Box2DConfig.cmake \
     Box2D/CMakeLists.txt \
+    QuestionBanks/cdQuiz.toml \
     QuestionBanks/example.toml \
+    QuestionBanks/gamblingQuiz.toml \
+    QuestionBanks/generalQuiz.toml \
+    QuestionBanks/loansQuiz.toml \
+    QuestionBanks/savingsQuiz.toml \
     QuestionBanks/tutorialQuiz.toml
