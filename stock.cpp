@@ -13,5 +13,5 @@ void Stock::nextYear() {
 }
 
 double Stock::getValue() {
-    return 0;
+    return value;
 }

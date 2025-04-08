@@ -53,6 +53,8 @@ public slots:
 
     void updateBalance(double newAmount);
 
+    void updateStockPriceDisplay(double amount, int stockNumber);
+
     void showEndScreen();
 
     void enableSubmitButton(bool checked);
@@ -86,6 +88,8 @@ signals:
     void activateLoan(int loanNumber);
 
     void nextYear();
+
+    void requestPriceOfXStocks(int numberOfShares, int stockNumber);
 
     void settingsOpened(QWidget* currentWidget);
 };

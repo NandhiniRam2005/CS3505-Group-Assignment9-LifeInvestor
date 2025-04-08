@@ -79,6 +79,44 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     levelPassSound = new QSoundEffect(this);
     levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+
+    // connections for buying and selling stock
+
+    // Buys stock
+    connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]()-> void{
+       emit buyStock(ui->purchaseStockOneSpin->value(), 0);
+    });
+    connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]()-> void{
+        emit buyStock(ui->purchaseStockTwoSpin->value(), 1);
+    });
+    connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]()-> void{
+        emit buyStock(ui->purchaseStockThreeSpin->value(), 2);
+    });
+
+    // Sell Stock
+    connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]()-> void{
+        emit sellStock(ui->sellSpinStockOne->value(), 0);
+    });
+    connect(ui->sellButtonStockTwo, &QPushButton::clicked, this, [&]()-> void{
+        emit sellStock(ui->sellSpinStockTwo->value(), 1);
+    });
+    connect(ui->sellButtonStockThree, &QPushButton::clicked, this, [&]()-> void{
+        emit sellStock(ui->sellSpinStockThree->value(), 2);
+    });
+
+    // Update price buying
+    connect(ui->purchaseStockOneSpin, &QSpinBox::valueChanged, this, [&]()->void{
+        emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
+    });
+    connect(ui->purchaseStockTwoSpin, &QSpinBox::valueChanged, this, [&]()->void{
+        emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
+    });
+    connect(ui->purchaseStockThreeSpin, &QSpinBox::valueChanged, this, [&]()->void{
+        emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
+    });
+    connect(this, &MainWindow::requestPriceOfXStocks, model, &MainModel::sendPriceOfXStocks);
+    connect(model, &MainModel::sendPriceOfStocks, this, &MainWindow::updateStockPriceDisplay);
+    // View protection of selling/buying
 }
 
 MainWindow::~MainWindow()
@@ -229,4 +267,53 @@ void MainWindow::showEndScreen() {
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
     ui->endLabel->setText("Quiz done! yay\n here is the recap (there is no recap)");
 }
+
+void MainWindow::updateStockPriceDisplay(double amount, int stockNumber){
+    qDebug() << "Amount:" << amount;
+    switch(stockNumber){
+        case 0:{
+            ui->totalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
+            if(amount > currentMoney){
+                ui->totalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
+                ui->purchaseStockOneButton->setEnabled(false);
+            }
+            else{
+                ui->totalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
+                ui->purchaseStockOneButton->setEnabled(true);
+            }
+            ui->totalPriceStockOne->adjustSize();
+            break;
+        }
+        case 1:{
+            ui->totalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
+            if(amount > currentMoney){
+                ui->totalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
+                ui->purchaseStockTwoButton->setEnabled(false);
+            }
+            else{
+                ui->totalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
+                ui->purchaseStockTwoButton->setEnabled(true);
+            }
+            ui->totalPriceStockTwo->adjustSize();
+            break;
+        }
+        case 2:{
+            ui->totalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
+            if(amount > currentMoney){
+                ui->totalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
+                ui->purchaseStockThreeButton->setEnabled(false);
+            }
+            else{
+                ui->totalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
+                ui->purchaseStockThreeButton->setEnabled(true);
+            }
+            ui->totalPriceStockTwo->adjustSize();
+            break;
+        }
+        default:{
+            break;
+        }
+    }
+}
+
 

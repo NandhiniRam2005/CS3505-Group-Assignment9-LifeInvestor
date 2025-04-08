@@ -1,5 +1,6 @@
 #include "mainmodel.h"
 #include "quizhandler.h"
+#include <QtCore/qdebug.h>
 #include <iostream>
 
 MainModel::MainModel(QObject *parent)
@@ -82,6 +83,13 @@ void MainModel::buyStock(int numberOfShares, int stockNumber) {
     }
     else
         emit showErrorMessage("Input amount cannot be bought");
+}
+
+void MainModel::sendPriceOfXStocks(int numberOfShares, int stockNumber){
+    double stockValue = stocks[stockNumber].getValue();
+    qDebug() << stockValue;
+    double amount = numberOfShares * stocks[stockNumber].getValue();
+    emit sendPriceOfStocks(amount, stockNumber);
 }
 
 void MainModel::depositToLoan(double amount, int loanNumber) {

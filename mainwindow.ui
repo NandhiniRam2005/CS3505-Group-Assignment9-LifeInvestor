@@ -1280,7 +1280,10 @@
         <height>33</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="StockTwoBuyLayout">
+      <layout class="QHBoxLayout" name="StockTwoBuyLayout" stretch="1,0,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="purchaseStockTwoLabel">
          <property name="text">
@@ -1309,7 +1312,7 @@
         <height>33</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="StockThreeBuyLayout">
+      <layout class="QHBoxLayout" name="StockThreeBuyLayout" stretch="1,0,0">
        <item>
         <widget class="QLabel" name="purchaseStockThreeLabe">
          <property name="text">
@@ -1332,13 +1335,16 @@
      <widget class="QWidget" name="layoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>260</y>
-        <width>71</width>
+        <x>540</x>
+        <y>410</y>
+        <width>121</width>
         <height>26</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="PriceStockTwoLayout">
+      <layout class="QHBoxLayout" name="PriceStockTwoLayout" stretch="1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="totalPriceStockThree_2">
          <property name="text">
@@ -1375,13 +1381,16 @@
      <widget class="QWidget" name="layoutWidget_4">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>400</y>
-        <width>71</width>
+        <x>550</x>
+        <y>260</y>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="PriceStockThreeLayout">
+      <layout class="QHBoxLayout" name="PriceStockThreeLayout" stretch="1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="totalPriceStockTwoLabel_2">
          <property name="text">
@@ -1390,7 +1399,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="totalPriceStockTwo_2">
+        <widget class="QLabel" name="totalPriceStockTwo">
          <property name="font">
           <font>
            <family>Proxima Nova</family>
@@ -1556,11 +1565,14 @@
        <rect>
         <x>550</x>
         <y>180</y>
-        <width>71</width>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="SellingPriceStockOneLayout">
+      <layout class="QHBoxLayout" name="SellingPriceStockOneLayout" stretch="1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="sellingTotalPriceStockOneLabel">
          <property name="text">
@@ -1599,11 +1611,14 @@
        <rect>
         <x>550</x>
         <y>330</y>
-        <width>71</width>
+        <width>121</width>
         <height>26</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="SellingPriceStockTwoLayout">
+      <layout class="QHBoxLayout" name="SellingPriceStockTwoLayout" stretch="1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="sellingTotalPriceStockTwoLabel">
          <property name="text">
@@ -1642,11 +1657,14 @@
        <rect>
         <x>540</x>
         <y>470</y>
-        <width>71</width>
+        <width>121</width>
         <height>26</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="SellingPriceStockThreeLayout">
+      <layout class="QHBoxLayout" name="SellingPriceStockThreeLayout" stretch="1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="sellingTotalPriceStockThreeLabel">
          <property name="text">
@@ -1753,11 +1771,14 @@
        <rect>
         <x>550</x>
         <y>110</y>
-        <width>71</width>
+        <width>111</width>
         <height>26</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="PriceStockOneLayout">
+      <layout class="QHBoxLayout" name="PriceStockOneLayout" stretch="1,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+       </property>
        <item>
         <widget class="QLabel" name="totalPriceStockOneLabel">
          <property name="text">
@@ -1786,6 +1807,9 @@
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
