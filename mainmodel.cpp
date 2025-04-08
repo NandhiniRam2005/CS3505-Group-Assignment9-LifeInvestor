@@ -116,14 +116,16 @@ void MainModel::withdrawFromSavings(double amount) {
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::withdrawFromCD(double amount, int cdNumber) {
-    if (cdAccounts[cdNumber].withdraw(amount)) {
+void MainModel::withdrawFromCD(int cdNumber) {
+    double amount = cdAccounts[cdNumber].getBalance();
+
+    if(cdAccounts[cdNumber].withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
         emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+    } else {
+        emit showErrorMessage("Cannot withdraw from CD - still in term period");
     }
-    else
-        emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
 void MainModel::sellStock(int numberOfShares, int stockNumber) {

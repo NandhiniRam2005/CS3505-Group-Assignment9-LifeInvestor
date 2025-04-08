@@ -32,7 +32,7 @@ public slots:
 
     void withdrawFromSavings(double amount);
 
-    void withdrawFromCD(double amount, int cdNumber);
+    void withdrawFromCD(int cdNumber);
 
     void sellStock(int numberOfShares, int stockNumber);
 

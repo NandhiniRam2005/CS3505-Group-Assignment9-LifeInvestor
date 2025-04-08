@@ -85,7 +85,7 @@ signals:
 
     void withdrawFromSavings(double amount);
 
-    void withdrawFromCD(double amount, int cdNumber);
+    void withdrawFromCD(int cdNumber);
 
     void sellStock(int numberOfShares, int stockNumber);
 
@@ -102,5 +102,7 @@ signals:
     void revalidateSpecificStockDisplay(int amount, int stockNumber);
 
     void settingsOpened(QWidget* currentWidget);
+
+    void requestCDInfo(int cdNumber);
 };
 #endif // MAINWINDOW_H

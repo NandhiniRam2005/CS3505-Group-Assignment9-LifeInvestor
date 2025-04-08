@@ -1997,6 +1997,16 @@
        <string>Deposit</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="cdInputAmount">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>230</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="settingsButton">

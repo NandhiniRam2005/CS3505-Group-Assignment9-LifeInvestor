@@ -146,11 +146,32 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(model, &MainModel::sendSellingPriceOfStocks, this, &MainWindow::updateSellingStockPriceDisplay);
     // View protection of selling/buying is done in update price label...
 
+
+    // Connect CD page signals
     connect(ui->App2, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->CD);
     });
+
     connect(ui->cdBackButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    for(int i = 0; i < 3; i++) {
+        QString accountName = "CD Account " + QString::number(i + 1);
+        ui->cdAccountSelector->addItem(accountName);
+    }
+
+    connect(ui->depositCDButton, &QPushButton::clicked, this, [this] {
+        bool doubleConverted;
+        double amount = ui->cdInputAmount->text().toDouble(&doubleConverted);
+        if(doubleConverted) {
+            emit depositToCD(amount, ui->cdAccountSelector->currentIndex());
+            ui->cdInputAmount->clear();
+        }
+    });
+
+    connect(ui->withdrawCDButton, &QPushButton::clicked, this, [this] {
+        emit withdrawFromCD(ui->cdAccountSelector->currentIndex());
     });
 }
 
@@ -276,7 +297,13 @@ void MainWindow::updateSavings(double newBalance, double interestRate) {
 }
 
 void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft) {
+    ui->cdBalanceLabel->setText("$" + QString::number(newBalance, 'f', 2));
+    ui->cdInterestLabel->setText(QString::number(interestRate * 100, 'f', 1) + "%");
+    ui->cdTermLabel->setText(QString::number(termlength));
+    ui->cdYearsLeftLabel->setText(QString::number(yearsLeft));
+    ui->cdMinDepositLabel->setText("$" + QString::number(minimumDeposit, 'f', 2));
 
+    ui->withdrawCDButton->setEnabled(yearsLeft == 0);
 }
 
 void MainWindow::updateStock(int stockNumber, double newBalance) {
