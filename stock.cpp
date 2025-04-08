@@ -15,3 +15,21 @@ void Stock::nextYear() {
 double Stock::getValue() {
     return value;
 }
+
+int Stock::getNumberOwned() {
+    return numberOwned;
+}
+
+bool Stock::deposit(double amount) {
+    if ((amount / value) != std::floor(amount / value))
+        return false;
+    numberOwned += amount / value;
+    return MoneyContainer::deposit(amount);
+}
+
+bool Stock::withdraw(double amount) {
+    if ((amount / value) != std::floor(amount / value))
+        return false;
+    numberOwned -= amount / value;
+    return MoneyContainer::withdraw(amount);
+}
