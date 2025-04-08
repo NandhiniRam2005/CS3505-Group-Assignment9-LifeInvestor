@@ -285,11 +285,11 @@ void MainWindow::submitHelper()
 void MainWindow::displayResult(bool result, std::string explanation)
 {
     if (result) {
-        ui->resultLabel->setText("<span style='color: green; font-weight: bold;'>CORRECT!!</span>");
+        ui->resultLabel->setText("<span style='color: #4ea912; font-weight: bold;'>CORRECT!!</span>");
         animationView->startConfettiAnimation();
         levelPassSound->play();
     } else {
-        QString formattedText = "<span style='color: red; font-weight: bold;'>Incorrect!!!</span><br>"
+        QString formattedText = "<span style='color: #d34e32; font-weight: bold;'>Incorrect!!!</span><br>"
                                 "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
         ui->resultLabel->setText(formattedText);
         animationView->startRainAnimation();
