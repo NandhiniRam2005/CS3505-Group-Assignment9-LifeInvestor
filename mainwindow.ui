@@ -30,14 +30,14 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>240</y>
+        <x>310</x>
+        <y>290</y>
         <width>171</width>
         <height>61</height>
        </rect>
@@ -49,6 +49,27 @@
        <string>start game</string>
       </property>
      </widget>
+     <widget class="QLabel" name="titleBackground">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>10</y>
+        <width>791</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/lifeInvestor.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>titleBackground</zorder>
+     <zorder>startButton</zorder>
     </widget>
     <widget class="QWidget" name="quizEnd">
      <widget class="QLabel" name="endLabel">
@@ -369,7 +390,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/icons/icons/stockApp.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/stockApp.png</iconset>
@@ -403,7 +424,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -437,7 +458,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -471,7 +492,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -505,7 +526,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -539,7 +560,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/icons/icons/lock.png</normaloff>
          <disabledoff>:/icons/icons/blank.png</disabledoff>
          <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
@@ -582,7 +603,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/settingsBackground.jpg</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/settingsBackground.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -925,7 +946,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/meter.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -944,7 +965,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/meter.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -963,7 +984,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/meter.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -982,7 +1003,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/meter.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1001,7 +1022,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/meter.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1020,7 +1041,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/meter.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/meter.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1117,7 +1138,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/stock.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/stock.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1136,7 +1157,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/stockBad.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/stockBad.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1155,7 +1176,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/stock.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/stock.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1174,7 +1195,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/middleArrow.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/middleArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1193,7 +1214,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/middleArrow.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/middleArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1212,7 +1233,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/stockArrow.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/stockArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1231,7 +1252,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/stockArrow.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/stockArrow.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1250,7 +1271,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/arrowLeft.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/arrowLeft.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1269,7 +1290,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/icons/icons/arrowLeft.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/arrowLeft.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -2188,7 +2209,7 @@
      <string>Settings</string>
     </property>
     <property name="icon">
-     <iconset>
+     <iconset resource="resources.qrc">
       <normaloff>:/icons/icons/test.png</normaloff>
       <disabledoff>:/icons/icons/blank.png</disabledoff>
       <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/test.png</iconset>
@@ -2205,7 +2226,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
@@ -2216,6 +2237,8 @@
    <addaction name="menuLife_Investing_for_gang"/>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
