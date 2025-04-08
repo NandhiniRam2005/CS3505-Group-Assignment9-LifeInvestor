@@ -18,6 +18,12 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     animationView = new AnimationView(this);
     animationView->hide();
 
+    ui->quizProgress->setStyleSheet( QString(
+        "QProgressBar {border: 2px solid rgb(128, 128, 128); border-radius: 5px; background-color: rgb(60, 60, 60); text-align: center; color: white;}"
+        "QProgressBar::chunk {background-color: rgb(34, 139, 34); border-radius: 5px;}"
+        ));
+
+
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
     connect(ui->choice2, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
