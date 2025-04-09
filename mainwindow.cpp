@@ -375,7 +375,10 @@ void MainWindow::updateProgress(uint progress)
 void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
-    ui->balance->setText("$" + QString::number(currentMoney));
+    if (currentMoney == std::floor(currentMoney))
+        ui->balance->setText("$" + QString::number(currentMoney, 'f', 0));
+    else
+        ui->balance->setText("$" + QString::number(currentMoney, 'f', 2));
 }
 
 void MainWindow::updateSavings(double newBalance, double interestRate)
