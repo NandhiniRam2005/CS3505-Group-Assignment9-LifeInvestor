@@ -183,6 +183,8 @@ void MainModel::activateLoan(int loanNumber)
 
 void MainModel::nextYear()
 {
+    currentYear++;
+
     QVector<double> initialTotals;
     QVector<double> newTotals;
     double initialCounter;
@@ -249,7 +251,7 @@ void MainModel::nextYear()
     for (int i = 0; i < 5; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
-    emit newYear(newTotals, initialTotals);
+    emit newYear(newTotals, initialTotals, currentYear);
 }
 
 void MainModel::settingsOpened(QWidget *currentWidget)

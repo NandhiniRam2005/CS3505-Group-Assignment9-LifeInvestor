@@ -100,7 +100,7 @@ signals:
 
     void showErrorMessage(QString errorMessage);
 
-    void newYear(QVector<double> newTotals, QVector<double> changes);
+    void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
 
 private:
     QuizHandler *quizHandler;
