@@ -19,6 +19,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     animationView = new AnimationView(this);
     animationView->hide();
 
+    ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0}, {0,0,0,0,0}));
+
     // Experimental gif stuff, not permanent
     QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
     ui->bankGif->setMovie(bankMovie);
@@ -243,7 +245,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // Sounds
     levelPassSound = new QSoundEffect(this);
-    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));    
 }
 
 MainWindow::~MainWindow()
@@ -580,40 +582,31 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
     reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
     if (changes[4] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[4], 'f', 2));
-    else if (changes[4] == 0)
-        reportString.append("<font color='gray'> +$" + QString::number(changes[4], 'f', 0));
-    else
+    else if (changes[4] < 0)
         reportString.append("<font color='red'> $" + QString::number(changes[4], 'f', 2));
 
     // Add savings account
     reportString.append("</font></td></tr><tr><td><b>Savings Account: </b></td><td> $" + QString::number(newTotals[0], 'f', 2));
     if (changes[0] > 0)
         reportString.append("<font color='green'>+$" + QString::number(changes[0], 'f', 2));
-    else
-        reportString.append("<font color='gray'> +$" + QString::number(changes[0], 'f', 0));
 
     // Add cd accounts
     reportString.append("</font></td></tr><tr><td><b>CDs Total: </b></td><td> $" + QString::number(newTotals[1], 'f', 2));
     if (changes[1] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[1], 'f', 2));
-    else
-        reportString.append("<font color='gray'> +$" + QString::number(changes[1], 'f', 0));
 
     // Add stocks
     reportString.append("</font></td></tr><tr><td><b>Stocks Total: </b></td><td> $" + QString::number(newTotals[2], 'f', 2));
     if (changes[2] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[2], 'f', 2));
-    else if (changes[2] == 0)
-        reportString.append("<font color='gray'> +$" + QString::number(changes[2], 'f', 0));
-    else
+    else if (changes[2] < 0)
         reportString.append("<font color='red'> $" + QString::number(changes[2], 'f', 2));
 
     // Add loans
     reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[3], 'f', 2));
     if (changes[3] < 0)
-        reportString.append("<font color='red'> $" + QString::number(changes[3], 'f', 2) + "</font></td></tr>");
-    else
-        reportString.append("<font color='gray'> -$" + QString::number(changes[3], 'f', 0) + "</font></td></tr>");
+        reportString.append("<font color='red'> $" + QString::number(changes[3], 'f', 2));
+    reportString.append("</font></td></tr>");
 
     return reportString;
 }
