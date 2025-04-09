@@ -162,15 +162,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // Connect CD page signals
 
-    connect(this, &MainWindow::requestCDInfo, model, &MainModel::updateCDInformation);
-    connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
-
     connect(ui->App2, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->CD);
         for (int i = 0; i < 3; ++i) {
             emit requestCDInfo(i);
         }
     });
+
+    connect(this, &MainWindow::requestCDInfo, model, &MainModel::updateCDInformation);
 
     connect(ui->cdBackButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
