@@ -18,10 +18,12 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     startScreenView = new StartScreenView(ui->Start);
     startScreenView->stackUnder(ui->startButton);
-    startScreenView->setGeometry(ui->Start->rect());
+    startScreenView->setGeometry(this->rect());
     startScreenView->show();
 
-    animationView = new AnimationView(this);
+    animationView = new AnimationView(ui->Quiz);
+    animationView->setGeometry(this->rect());
+    animationView->stackUnder(ui->choicesLayout);
     animationView->hide();
 
     ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0}, {0,0,0,0,0}));
