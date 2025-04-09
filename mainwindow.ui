@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -2205,7 +2205,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd1TermLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>90</y>
         <width>151</width>
         <height>41</height>
@@ -2218,7 +2218,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd1YearsLeftLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>140</y>
         <width>181</width>
         <height>41</height>
@@ -2231,7 +2231,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd1MinDepositLabel">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>360</x>
         <y>100</y>
         <width>161</width>
         <height>16</height>
@@ -2244,10 +2244,10 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="cd1WithdrawButton">
       <property name="geometry">
        <rect>
-        <x>680</x>
+        <x>690</x>
         <y>100</y>
         <width>81</width>
-        <height>51</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
@@ -2257,8 +2257,8 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="cd1DepositButton">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>100</y>
+        <x>560</x>
+        <y>120</y>
         <width>71</width>
         <height>51</height>
        </rect>
@@ -2296,7 +2296,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd2TermLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>210</y>
         <width>171</width>
         <height>41</height>
@@ -2309,7 +2309,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd2YearsLeftLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>260</y>
         <width>191</width>
         <height>41</height>
@@ -2322,7 +2322,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd2MinDepositLabel">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>360</x>
         <y>220</y>
         <width>161</width>
         <height>16</height>
@@ -2335,8 +2335,8 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="cd2DepositButton">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>220</y>
+        <x>560</x>
+        <y>250</y>
         <width>71</width>
         <height>51</height>
        </rect>
@@ -2348,10 +2348,10 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="cd2WithdrawButton">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>220</y>
+        <x>690</x>
+        <y>230</y>
         <width>81</width>
-        <height>51</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
@@ -2387,7 +2387,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd3TermLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>330</y>
         <width>181</width>
         <height>41</height>
@@ -2400,7 +2400,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd3YearsLeftLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>210</x>
         <y>380</y>
         <width>181</width>
         <height>41</height>
@@ -2413,7 +2413,7 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd3MinDepositLabel">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>360</x>
         <y>340</y>
         <width>171</width>
         <height>16</height>
@@ -2426,8 +2426,8 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="cd3DepositButton">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>350</y>
+        <x>560</x>
+        <y>370</y>
         <width>71</width>
         <height>51</height>
        </rect>
@@ -2439,10 +2439,10 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="cd3WithdrawButton">
       <property name="geometry">
        <rect>
-        <x>680</x>
+        <x>690</x>
         <y>350</y>
         <width>81</width>
-        <height>51</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
@@ -2499,6 +2499,36 @@ border-radius: 5px;}</string>
       </property>
       <property name="orientation">
        <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cd1DepositInput">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>90</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cd2DepositInput">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>220</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cd3DepositInput">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>340</y>
+        <width>113</width>
+        <height>21</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -2765,7 +2795,7 @@ border-radius: 5px;}</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>36</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">

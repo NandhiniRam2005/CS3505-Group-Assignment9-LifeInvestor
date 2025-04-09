@@ -185,9 +185,25 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         emit withdrawFromCD(2);
     });
 
-    connect(ui->cd1DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-    connect(ui->cd2DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-    connect(ui->cd3DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    // connect(ui->cd1DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    // connect(ui->cd2DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    // connect(ui->cd3DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+
+    connect(ui->cd1DepositButton, &QPushButton::clicked, this, [this]() {
+        double amount = ui->cd1DepositInput->text().toDouble();
+        emit depositToCD(amount, 0);
+        ui->cd1DepositInput->clear();
+    });
+    connect(ui->cd2DepositButton, &QPushButton::clicked, this, [this]() {
+        double amount = ui->cd2DepositInput->text().toDouble();
+        emit depositToCD(amount, 1);
+        ui->cd2DepositInput->clear();
+    });
+    connect(ui->cd3DepositButton, &QPushButton::clicked, this, [this]() {
+        double amount = ui->cd3DepositInput->text().toDouble();
+        emit depositToCD(amount, 2);
+        ui->cd3DepositInput->clear();
+    });
 
 
     //App 3 -savings
