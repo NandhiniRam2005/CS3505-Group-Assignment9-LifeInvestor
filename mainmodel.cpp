@@ -112,6 +112,7 @@ void MainModel::depositToLoan(double amount, int loanNumber)
                         loans[loanNumber].getBalance(),
                         loans[loanNumber].getInterestRate(),
                         loans[loanNumber].getAvailable(),
+                        loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
     } else
         emit showErrorMessage("Input amount cannot be removed from the loan");
@@ -176,6 +177,7 @@ void MainModel::activateLoan(int loanNumber)
                         loans[loanNumber].getBalance(),
                         loans[loanNumber].getInterestRate(),
                         loans[loanNumber].getAvailable(),
+                        loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
     } else
         emit showErrorMessage("The loan cannot be activated");
@@ -237,6 +239,7 @@ void MainModel::nextYear()
                         loans[i].getBalance(),
                         loans[i].getInterestRate(),
                         loans[i].getAvailable(),
+                        loans[i].getActive(),
                         loans[i].getYearsLeft());
     }
     initialTotals.push_back(initialCounter);
