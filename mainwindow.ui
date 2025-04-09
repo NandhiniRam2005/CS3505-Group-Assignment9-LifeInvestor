@@ -1185,7 +1185,6 @@ border-radius: 5px;}</string>
       </property>
      </widget>
      <zorder>backgroundQuiz</zorder>
-     <zorder>labelReward</zorder>
      <zorder>choicesLayout</zorder>
      <zorder>submitButton</zorder>
      <zorder>nextButton</zorder>
@@ -1193,6 +1192,7 @@ border-radius: 5px;}</string>
      <zorder>resultLabel</zorder>
      <zorder>quizProgress</zorder>
      <zorder>label_4</zorder>
+     <zorder>labelReward</zorder>
     </widget>
     <widget class="QWidget" name="Stocks">
      <widget class="QPushButton" name="stocksBackButton">
