@@ -565,35 +565,56 @@ void MainWindow::readSavingsAmount()
 
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes)
 {
+    ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
+
+}
+
+QString MainWindow::generateReportString(QVector<double> newTotals, QVector<double> changes) {
     QString reportString;
 
-    reportString.append("Yearly Report: \n\n");
+    reportString.append("<font size='4'><b>Yearly Report: </b></font>");
+
+    reportString.append("<table>");
 
     // Add net worth to the string
-    reportString.append("Net Worth: " + QString::number(newTotals[4], 'f', 2));
-    if (changes[4] >= 0)
-        reportString.append(" (+" + QString::number(changes[4], 'f', 2) + ")\n");
+    reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
+    if (changes[4] > 0)
+        reportString.append("<font color='green'> +$" + QString::number(changes[4], 'f', 2));
+    else if (changes[4] == 0)
+        reportString.append("<font color='gray'> +$" + QString::number(changes[4], 'f', 0));
     else
-        reportString.append(" (" + QString::number(changes[4], 'f', 2) + ")\n");
+        reportString.append("<font color='red'> $" + QString::number(changes[4], 'f', 2));
 
     // Add savings account
-    reportString.append("Savings Account: " + QString::number(newTotals[0], 'f', 2) + " (+"
-                        + QString::number(changes[0], 'f', 2) + ")\n");
+    reportString.append("</font></td></tr><tr><td><b>Savings Account: </b></td><td> $" + QString::number(newTotals[0], 'f', 2));
+    if (changes[0] > 0)
+        reportString.append("<font color='green'>+$" + QString::number(changes[0], 'f', 2));
+    else
+        reportString.append("<font color='gray'> +$" + QString::number(changes[0], 'f', 0));
 
     // Add cd accounts
-    reportString.append("CD Accounts Total: " + QString::number(newTotals[1], 'f', 2) + " (+"
-                        + QString::number(changes[1], 'f', 2) + ")\n");
+    reportString.append("</font></td></tr><tr><td><b>CDs Total: </b></td><td> $" + QString::number(newTotals[1], 'f', 2));
+    if (changes[1] > 0)
+        reportString.append("<font color='green'> +$" + QString::number(changes[1], 'f', 2));
+    else
+        reportString.append("<font color='gray'> +$" + QString::number(changes[1], 'f', 0));
 
     // Add stocks
-    reportString.append("Stocks Total: " + QString::number(newTotals[2], 'f', 2));
-    if (changes[2] >= 0)
-        reportString.append(" (+" + QString::number(changes[2], 'f', 2) + ")\n");
+    reportString.append("</font></td></tr><tr><td><b>Stocks Total: </b></td><td> $" + QString::number(newTotals[2], 'f', 2));
+    if (changes[2] > 0)
+        reportString.append("<font color='green'> +$" + QString::number(changes[2], 'f', 2));
+    else if (changes[2] == 0)
+        reportString.append("<font color='gray'> +$" + QString::number(changes[2], 'f', 0));
     else
-        reportString.append(" (" + QString::number(changes[2], 'f', 2) + ")\n");
+        reportString.append("<font color='red'> $" + QString::number(changes[2], 'f', 2));
 
     // Add loans
-    reportString.append("Loans Total: " + QString::number(newTotals[3]) + " ("
-                        + QString::number(changes[3], 'f', 2) + ")\n");
+    reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[3], 'f', 2));
+    if (changes[3] < 0)
+        reportString.append("<font color='red'> $" + QString::number(changes[3], 'f', 2) + "</font></td></tr>");
+    else
+        reportString.append("<font color='gray'> -$" + QString::number(changes[3], 'f', 0) + "</font></td></tr>");
 
-    ui->yearlyReportLabel->setText(reportString);
+    return reportString;
 }
+

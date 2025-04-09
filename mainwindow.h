@@ -38,6 +38,8 @@ private:
     QSoundEffect *levelPassSound;
     DepositWindow depositWindow;
 
+    QString generateReportString(QVector<double> newTotals, QVector<double> changes);
+
 public slots:
     void showQuizData(Question q);
     void onStartClicked();
