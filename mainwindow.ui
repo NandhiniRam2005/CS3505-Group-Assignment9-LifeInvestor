@@ -278,9 +278,9 @@ V</string>
      <zorder>littlefloorshadow</zorder>
      <zorder>bankGif</zorder>
      <zorder>wallet</zorder>
-     <zorder>startButton</zorder>
      <zorder>howToPlay</zorder>
      <zorder>shake</zorder>
+     <zorder>startButton</zorder>
     </widget>
     <widget class="QWidget" name="quizEnd">
      <widget class="QLabel" name="endLabel">

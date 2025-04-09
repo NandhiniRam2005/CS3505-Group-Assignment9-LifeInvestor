@@ -38,6 +38,7 @@ private:
     AnimationView *animationView;
     StartScreenView *startScreenView;
     QSoundEffect *levelPassSound;
+    QSoundEffect *levelFailSound;
     DepositWindow depositWindow;
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);

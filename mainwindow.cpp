@@ -18,7 +18,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // Create StartScreenView
     startScreenView = new StartScreenView(ui->Start);
-    startScreenView->setGeometry(ui->Start->rect());
 
     // Key settings:
     startScreenView->setAttribute(Qt::WA_TranslucentBackground);
@@ -254,7 +253,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // Sounds
     levelPassSound = new QSoundEffect(this);
-    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));    
+    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+    levelFailSound = new QSoundEffect(this);
+    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
 }
 
 MainWindow::~MainWindow()
@@ -364,6 +365,7 @@ void MainWindow::displayResult(bool result, std::string explanation)
               + QString::fromStdString(explanation) + "</span>";
         ui->resultLabel->setText(formattedText);
         animationView->startRainAnimation();
+        levelFailSound->play();
     }
 }
 
