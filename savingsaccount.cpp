@@ -7,7 +7,7 @@ SavingsAccount::SavingsAccount(double interestRate)
 
 void SavingsAccount::nextYear()
 {
-    balance = balance + balance * (1 + interestRate);
+    balance = balance + balance * interestRate;
 }
 
 double SavingsAccount::getInterestRate()

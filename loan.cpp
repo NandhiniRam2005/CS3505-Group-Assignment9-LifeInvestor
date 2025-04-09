@@ -21,7 +21,7 @@ void Loan::nextYear()
             balance = startingBalance;
             yearsLeft = termLength;
         } else {
-            balance = balance + balance * (1 + interestRate);
+            balance = balance + balance * interestRate;
             yearsLeft -= 1;
             if (yearsLeft <= 0)
                 active = false;
