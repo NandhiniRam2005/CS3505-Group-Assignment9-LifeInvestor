@@ -95,9 +95,10 @@ void StartScreenView::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    QPixmap moneyBagPixmap(":/icons/icons/test.png");
+    QPixmap moneyBagPixmap(":/icons/icons/test.png");  // Ensure this image is listed in your .qrc file
+
     if (moneyBagPixmap.isNull()) {
-        // If the pixmap isn't available, use a fallback drawing
+        // Fallback: draw a simple ellipse if pixmap not found
         painter.setBrush(Qt::yellow);
         painter.setPen(Qt::darkYellow);
         for (b2Body* bag : moneyBags) {
@@ -106,15 +107,30 @@ void StartScreenView::paintEvent(QPaintEvent *) {
             painter.drawEllipse(QPointF(pos.x * scale, pos.y * scale), radius, radius);
         }
     } else {
-        // Draw the money bag for each physics object.
+        // For each money bag, apply the rotation corresponding to the physics body's angle.
         for (b2Body* bag : moneyBags) {
             b2Vec2 pos = bag->GetPosition();
             float size = 2.0f * scale;
-            QRect rect(pos.x * scale - size/2, pos.y * scale - size/2, size, size);
+            float angle = bag->GetAngle() * (180.0f / b2_pi); // Convert radians to degrees
+
+            // Save the current painter state
+            painter.save();
+
+            // Translate to the center of the money bag
+            painter.translate(pos.x * scale, pos.y * scale);
+            // Rotate the painter by the body's angle
+            painter.rotate(angle);
+
+            // Draw the money bag pixmap centered at the origin.
+            QRect rect(-size/2, -size/2, size, size);
             painter.drawPixmap(rect, moneyBagPixmap);
+
+            // Restore the painter's state for the next drawing operation.
+            painter.restore();
         }
     }
 }
+
 
 void StartScreenView::mousePressEvent(QMouseEvent *event)
 {
