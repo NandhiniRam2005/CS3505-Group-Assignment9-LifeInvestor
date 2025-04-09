@@ -672,7 +672,7 @@ V</string>
        </rect>
       </property>
       <property name="text">
-       <string>Continue To Next Year</string>
+       <string>End Year 1</string>
       </property>
      </widget>
      <widget class="QLabel" name="yearlyReportLabel">
