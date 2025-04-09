@@ -16,12 +16,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     buttonGroup->addButton(ui->choice4);
     ui->balance->hide();
 
-    // Create StartScreenView
     startScreenView = new StartScreenView(ui->Start);
-
-    // Key settings:
-    startScreenView->setAttribute(Qt::WA_TranslucentBackground);
-    startScreenView->stackUnder(ui->startButton);  // Behind buttons
+    startScreenView->stackUnder(ui->startButton);
+    startScreenView->setGeometry(ui->Start->rect());
     startScreenView->show();
 
     animationView = new AnimationView(this);
