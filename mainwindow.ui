@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -2875,6 +2875,7 @@ border-radius: 5px;}</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="Loans"/>
    </widget>
    <widget class="QPushButton" name="settingsButton">
     <property name="enabled">
