@@ -23,7 +23,7 @@ StartScreenView::~StartScreenView() {
 
 void StartScreenView::initializePhysics() {
     cleanupPhysics();
-    world = new b2World(b2Vec2(0.0f, 9.8f));
+    world = new b2World(b2Vec2(0.0f, 30.8f));
     createBoundaries();
     createMoneyBags();
     physicsTimer->start(16);
@@ -83,10 +83,9 @@ void StartScreenView::createMoneyBags() {
 
         b2FixtureDef fixture;
         fixture.shape = &circle;
-        fixture.density = 0.7f;
+        fixture.density = 5.0f;
         fixture.restitution = 0.6f;
         bag->CreateFixture(&fixture);
-
         moneyBags.push_back(bag);
     }
 }
