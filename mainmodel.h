@@ -94,6 +94,8 @@ signals:
 
     void showErrorMessage(QString errorMessage);
 
+    void sendYearTotals(QVector<double> newTotals, QVector<double> changes);
+
 private:
     QuizHandler *quizHandler;
 

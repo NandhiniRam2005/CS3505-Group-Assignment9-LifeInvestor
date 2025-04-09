@@ -208,7 +208,10 @@ void MainModel::nextYear() {
 
     // Calculate changes between years
     for (int i = 0; i < 5; i++)
-        newTotals[i] -= initialTotals[i];
+        initialTotals[i] = -(initialTotals[i] - newTotals[i]);
+
+    emit sendYearTotals(newTotals, initialTotals);
+
 }
 
 void MainModel::settingsOpened(QWidget* currentWidget) {
