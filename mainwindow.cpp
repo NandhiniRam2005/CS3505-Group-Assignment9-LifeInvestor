@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "iostream"
 #include "ui_mainwindow.h"
+#include <QMovie>
 
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
@@ -17,6 +18,10 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     animationView = new AnimationView(this);
     animationView->hide();
+
+    QMovie *movie = new QMovie(":/gifs/gifs/moneyStart.gif");
+    ui->startGif->setMovie(movie);
+    movie->start();
 
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);

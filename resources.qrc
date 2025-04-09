@@ -24,4 +24,7 @@
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
     </qresource>
+    <qresource prefix="/gifs">
+        <file>gifs/moneyStart.gif</file>
+    </qresource>
 </RCC>
