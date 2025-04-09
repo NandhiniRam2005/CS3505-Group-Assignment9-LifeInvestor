@@ -256,6 +256,11 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
     levelFailSound = new QSoundEffect(this);
     levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
+
+    //App 4 - LOANS connecytions
+    connect(ui->App4, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Loans);
+    });
 }
 
 MainWindow::~MainWindow()
