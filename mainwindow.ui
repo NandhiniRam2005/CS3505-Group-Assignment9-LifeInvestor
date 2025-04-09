@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -2070,6 +2070,60 @@ border-radius: 5px;}</string>
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="ownedStockOne">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>200</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Amount Owned: 0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ownedStockTwo">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>340</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Amount Owned: 0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ownedStockThree">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>490</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Amount Owned: 0</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="CD">
      <widget class="QPushButton" name="cdBackButton">
@@ -2641,7 +2695,7 @@ border-radius: 5px;}</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>33</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">

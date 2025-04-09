@@ -86,6 +86,8 @@ signals:
 
     void sendSellingPriceOfStocks(double price, int stockNumber, bool tooMany);
 
+    void numberOfStocksOwned(uint amount, int stockNumber);
+
     void returnToGame(QWidget* currentWidget);
 
     void updateBalance(double newBalance);

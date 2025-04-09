@@ -129,6 +129,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     });
 
+    connect(model, &MainModel::numberOfStocksOwned, this, &MainWindow::updateStockAmountOwned);
+
     // Update price buying
     connect(ui->purchaseStockOneSpin, &QSpinBox::valueChanged, this, [&]()->void{
         emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
@@ -388,7 +390,6 @@ void MainWindow::showEndScreen() {
 }
 
 void MainWindow::updateStockPriceDisplay(double amount, int stockNumber){
-    qDebug() << "Updating";
     switch(stockNumber){
         case 0:{
             ui->totalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
@@ -483,14 +484,32 @@ void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, 
 }
 
 void MainWindow::revalidateAllStockDisplays(){
-    qDebug() << "Revalidating...";
-
     emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
     emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
 
     emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
 
+}
 
+void MainWindow::updateStockAmountOwned(uint amount, int stockNumber){
+    qDebug() << "updating Amount owned to: " << amount;
+    switch(stockNumber){
+        case 0:{
+            ui->ownedStockOne->setText("Amount Owned: " + QString::number(amount));
+            break;
+        }
+        case 1:{
+            ui->ownedStockTwo->setText("Amount Owned: " + QString::number(amount));
+            break;
+        }
+        case 2:{
+            ui->ownedStockThree->setText("Amount Owned: " + QString::number(amount));
+            break;
+        }
+        default:{
+            break;
+        }
+    }
 }
 
 void MainWindow::displayDepositPage() {
