@@ -2031,7 +2031,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>130</y>
+        <y>140</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -2122,7 +2122,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>250</y>
+        <y>260</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -2148,7 +2148,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>590</x>
-        <y>210</y>
+        <y>220</y>
         <width>71</width>
         <height>51</height>
        </rect>
@@ -2161,7 +2161,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>680</x>
-        <y>210</y>
+        <y>220</y>
         <width>81</width>
         <height>51</height>
        </rect>
@@ -2213,7 +2213,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>260</x>
-        <y>370</y>
+        <y>380</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -2239,7 +2239,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>590</x>
-        <y>330</y>
+        <y>350</y>
         <width>71</width>
         <height>51</height>
        </rect>
@@ -2252,13 +2252,65 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>680</x>
-        <y>330</y>
+        <y>350</y>
         <width>81</width>
         <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Withdraw</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_10">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>180</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_11">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>310</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_12">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_13">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>430</y>
+        <width>801</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
     </widget>
