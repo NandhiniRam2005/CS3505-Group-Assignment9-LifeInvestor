@@ -16,11 +16,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     buttonGroup->addButton(ui->choice4);
     ui->balance->hide();
 
-    // Add start screen physics view
+    // Create StartScreenView
     startScreenView = new StartScreenView(ui->Start);
     startScreenView->setGeometry(ui->Start->rect());
-    startScreenView->lower(); // Place behind other widgets
-    startScreenView->setAttribute(Qt::WA_TransparentForMouseEvents, false);
+
+    // Key settings:
+    startScreenView->setAttribute(Qt::WA_TranslucentBackground);
+    startScreenView->stackUnder(ui->startButton);  // Behind buttons
+    startScreenView->show();
 
     animationView = new AnimationView(this);
     animationView->hide();

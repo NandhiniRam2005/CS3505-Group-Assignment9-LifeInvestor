@@ -86,31 +86,46 @@ void StartScreenView::paintEvent(QPaintEvent *) {
     }
 }
 
-// Mouse event handlers
-void StartScreenView::mousePressEvent(QMouseEvent *event) {
+void StartScreenView::mousePressEvent(QMouseEvent *event)
+{
     if(!ballBody) return;
 
+    // Convert to physics coordinates
     b2Vec2 mousePos(event->pos().x()/scale, event->pos().y()/scale);
+
     if(ballBody->GetFixtureList()->TestPoint(mousePos)) {
+        // Handle ball drag
         dragging = true;
         ballBody->SetAwake(false);
         dragStart = mousePos;
+        event->accept();  // Mark event as handled
+    } else {
+        // Pass through other clicks
+        event->ignore();
     }
 }
 
-void StartScreenView::mouseMoveEvent(QMouseEvent *event) {
+void StartScreenView::mouseMoveEvent(QMouseEvent *event)
+{
     if(dragging && ballBody) {
         b2Vec2 mousePos(event->pos().x()/scale, event->pos().y()/scale);
         ballBody->SetTransform(mousePos, 0);
+        event->accept();
+    } else {
+        event->ignore();
     }
 }
 
-void StartScreenView::mouseReleaseEvent(QMouseEvent *) {
+void StartScreenView::mouseReleaseEvent(QMouseEvent *event)
+{
     if(dragging && ballBody) {
         dragging = false;
         ballBody->SetAwake(true);
         b2Vec2 velocity = ballBody->GetPosition() - dragStart;
         ballBody->SetLinearVelocity(8.0f * velocity);
+        event->accept();
+    } else {
+        event->ignore();
     }
 }
 
