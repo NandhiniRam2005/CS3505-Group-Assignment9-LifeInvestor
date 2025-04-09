@@ -566,16 +566,34 @@ void MainWindow::readSavingsAmount()
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes)
 {
     QString reportString;
-    reportString.append("Yearly Report: \n");
-    reportString.append("Net Worth: " + QString::number(newTotals[4], 'f', 2) + " (+"
-                        + QString::number(changes[4], 'f', 2) + ")\n");
+
+    reportString.append("Yearly Report: \n\n");
+
+    // Add net worth to the string
+    reportString.append("Net Worth: " + QString::number(newTotals[4], 'f', 2));
+    if (changes[4] >= 0)
+        reportString.append(" (+" + QString::number(changes[4], 'f', 2) + ")\n");
+    else
+        reportString.append(" (" + QString::number(changes[4], 'f', 2) + ")\n");
+
+    // Add savings account
     reportString.append("Savings Account: " + QString::number(newTotals[0], 'f', 2) + " (+"
                         + QString::number(changes[0], 'f', 2) + ")\n");
+
+    // Add cd accounts
     reportString.append("CD Accounts Total: " + QString::number(newTotals[1], 'f', 2) + " (+"
                         + QString::number(changes[1], 'f', 2) + ")\n");
-    reportString.append("Stocks Total: " + QString::number(newTotals[2], 'f', 2) + " (+"
-                        + QString::number(changes[2], 'f', 2) + ")\n");
+
+    // Add stocks
+    reportString.append("Stocks Total: " + QString::number(newTotals[2], 'f', 2));
+    if (changes[2] >= 0)
+        reportString.append(" (+" + QString::number(changes[2], 'f', 2) + ")\n");
+    else
+        reportString.append(" (" + QString::number(changes[2], 'f', 2) + ")\n");
+
+    // Add loans
     reportString.append("Loans Total: " + QString::number(newTotals[3]) + " ("
                         + QString::number(changes[3], 'f', 2) + ")\n");
+
     ui->yearlyReportLabel->setText(reportString);
 }
