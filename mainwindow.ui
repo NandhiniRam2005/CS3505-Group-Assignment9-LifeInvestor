@@ -270,7 +270,10 @@ V</string>
        </rect>
       </property>
       <property name="text">
-       <string>This is the Main Game Page</string>
+       <string>YEAR 1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="Line" name="line">
@@ -2798,7 +2801,6 @@ border-radius: 5px;}</string>
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -2815,6 +2817,7 @@ border-radius: 5px;}</string>
    </widget>
    <addaction name="menuLife_Investing_for_gang"/>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="resources.qrc"/>
