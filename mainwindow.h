@@ -36,6 +36,7 @@ private:
     QVector<double> cdBalances;
     AnimationView* animationView;
     QSoundEffect* levelPassSound;
+    QSoundEffect* startSound;
     DepositWindow depositWindow;
 
 public slots:
