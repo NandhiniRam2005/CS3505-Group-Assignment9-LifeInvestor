@@ -189,6 +189,10 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         emit withdrawFromCD(2);
     });
 
+    connect(ui->cd1DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    connect(ui->cd2DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    connect(ui->cd3DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+
 
     //App 3 -savings
 
