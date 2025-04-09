@@ -156,23 +156,59 @@ void MainModel::activateLoan(int loanNumber) {
 }
 
 void MainModel::nextYear() {
+    QVector<double> initialTotals;
+    QVector<double> newTotals;
+    double initialCounter;
+    double newCounter;
+
+    initialTotals.push_back(savingsAccount->getBalance());
     savingsAccount->nextYear();
+    newTotals.push_back(savingsAccount->getBalance());
     emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+
+    initialCounter = 0;
+    newCounter = 0;
     for (int i = 0; i < cdAccounts.count(); i++) {
+        initialCounter += cdAccounts[i].getBalance();
         cdAccounts[i].nextYear();
+        newCounter += cdAccounts[i].getBalance();
         emit updateCD(i, cdAccounts[i].getBalance(), cdAccounts[i].getInterestRate(), cdAccounts[i].getTermLength(), cdAccounts[i].getMinimumDeposit(), cdAccounts[i].getYearsRemaining());
     }
+    initialTotals.push_back(initialCounter);
+    newTotals.push_back(newCounter);
+
+    initialCounter = 0;
+    newCounter = 0;
     for (int i = 0; i < stocks.count(); i++) {
+        initialCounter += stocks[i].getMoneyBalance();
         stocks[i].nextYear();
+        newCounter += stocks[i].getMoneyBalance();
         emit updateStock(i, stocks[i].getMoneyBalance());
     }
+    initialTotals.push_back(initialCounter);
+    newTotals.push_back(newCounter);
+
+    initialCounter = 0;
+    newCounter = 0;
     for (int i = 0; i < loans.count(); i++) {
+        initialCounter += loans[i].getBalance();
         loans[i].nextYear();
+        newCounter += loans[i].getBalance();
         loans[i].setAvailable(creditScore);
         if (loans[i].getYearsLeft() < 0)
             endGame();
         emit updateLoan(i, loans[i].getBalance(), loans[i].getInterestRate(), loans[i].getAvailable(), loans[i].getYearsLeft());
     }
+    initialTotals.push_back(initialCounter);
+    newTotals.push_back(newCounter);
+
+    // Calculate net worths
+    initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2] + initialTotals[3]);
+    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]);
+
+    // Calculate changes between years
+    for (int i = 0; i < 5; i++)
+        newTotals[i] -= initialTotals[i];
 }
 
 void MainModel::settingsOpened(QWidget* currentWidget) {
