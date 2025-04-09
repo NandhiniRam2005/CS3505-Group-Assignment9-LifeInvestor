@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -600,6 +600,19 @@
        </property>
       </widget>
      </widget>
+     <widget class="QPushButton" name="nextYearButton">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>490</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Continue To Next Year</string>
+      </property>
+     </widget>
      <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
      <zorder>dial</zorder>
@@ -612,6 +625,7 @@
      <zorder>line_2</zorder>
      <zorder>openPhoneButton</zorder>
      <zorder>Apps</zorder>
+     <zorder>nextYearButton</zorder>
     </widget>
     <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">
@@ -2507,7 +2521,7 @@ border-radius: 5px;}</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>33</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
