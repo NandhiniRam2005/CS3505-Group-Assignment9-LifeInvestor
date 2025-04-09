@@ -479,6 +479,6 @@ void MainWindow::revalidateAllStockDisplays(){
 }
 
 void MainWindow::displayDepositPage() {
-    // depositWindow.show();
+    depositWindow.show();
 }
 
