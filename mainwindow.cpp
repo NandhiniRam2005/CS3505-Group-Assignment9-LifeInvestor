@@ -93,8 +93,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     // connection for showing error messages
     connect(model, &MainModel::showErrorMessage, this, &MainWindow::showErrorMessage);
 
-    levelPassSound = new QSoundEffect(this);
-    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+
 
     // connections for buying and selling stock
 
@@ -209,6 +208,12 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->startButton->setIconSize(QSize(300, 400));
     });
 
+    // Sounds
+    levelPassSound = new QSoundEffect(this);
+    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+
+    startSound = new QSoundEffect(this);
+    startSound->setSource(QUrl("qrc:/sounds/sounds/cha-ching.wav"));
 }
 
 MainWindow::~MainWindow()
@@ -287,6 +292,7 @@ void MainWindow::onStartClicked()
     hidePhone();
     ui->balance->show();
     ui->stackedWidget->setCurrentWidget(ui->Quiz);
+    startSound->play();
 }
 
 void MainWindow::submitHelper()
