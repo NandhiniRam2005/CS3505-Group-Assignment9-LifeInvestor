@@ -688,7 +688,7 @@ V</string>
        <rect>
         <x>320</x>
         <y>470</y>
-        <width>231</width>
+        <width>241</width>
         <height>61</height>
        </rect>
       </property>
@@ -725,7 +725,7 @@ V</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/mainBackground.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/mainBackground.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
