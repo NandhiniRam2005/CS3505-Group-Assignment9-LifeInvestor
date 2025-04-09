@@ -1,6 +1,8 @@
 #include "moneycontainer.h"
 
-MoneyContainer::MoneyContainer() {}
+MoneyContainer::MoneyContainer() {
+    balance = 0;
+}
 
 bool MoneyContainer::deposit(double amount)
 {
