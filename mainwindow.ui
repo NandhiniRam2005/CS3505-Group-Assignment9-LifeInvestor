@@ -807,8 +807,8 @@ V</string>
        <bool>true</bool>
       </property>
      </widget>
-     <zorder>line_3</zorder>
      <zorder>mainBackground</zorder>
+     <zorder>line_3</zorder>
      <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
      <zorder>currentYear</zorder>
