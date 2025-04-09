@@ -36,7 +36,6 @@ private:
     QVector<double> cdBalances;
     AnimationView* animationView;
     QSoundEffect* levelPassSound;
-    QSoundEffect* startSound;
     DepositWindow depositWindow;
 
 public slots:
@@ -76,6 +75,7 @@ public slots:
 
     void revalidateAllStockDisplays();
     void displayDepositPage();
+    void readSavingsAmount();
 
 signals:
     void startQuizRequested();
@@ -110,6 +110,7 @@ signals:
     void settingsOpened(QWidget* currentWidget);
 
     void requestCDInfo(int cdNumber);
+    void amountRead(int amount);
 
 };
 #endif // MAINWINDOW_H

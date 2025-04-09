@@ -196,7 +196,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->stackedWidget->setCurrentWidget(ui->Bank);
     });
 
-    connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    // connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+
+    connect(ui->bankBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::readSavingsAmount);
+    connect(this, &MainWindow::amountRead, model, &MainModel::depositToSavings);
+    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
 
 
     // Start button connections for pressed
@@ -209,8 +217,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     levelPassSound = new QSoundEffect(this);
     levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
 
-    startSound = new QSoundEffect(this);
-    startSound->setSource(QUrl("qrc:/sounds/sounds/cha-ching.wav"));
 }
 
 MainWindow::~MainWindow()
@@ -289,7 +295,6 @@ void MainWindow::onStartClicked()
     hidePhone();
     ui->balance->show();
     ui->stackedWidget->setCurrentWidget(ui->Quiz);
-    startSound->play();
 }
 
 void MainWindow::submitHelper()
@@ -332,7 +337,7 @@ void MainWindow::updateBalance(double newAmount) {
 }
 
 void MainWindow::updateSavings(double newBalance, double interestRate) {
-
+    ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
 }
 
 void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft) {
@@ -513,5 +518,11 @@ void MainWindow::updateStockAmountOwned(uint amount, int stockNumber){
 
 void MainWindow::displayDepositPage() {
     depositWindow.show();
+}
+
+void MainWindow::readSavingsAmount() {
+    double updatedSavings = ui->savingsDepositInput->text().toDouble();
+    emit amountRead(updatedSavings);
+
 }
 

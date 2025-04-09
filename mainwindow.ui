@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -160,7 +160,7 @@ V</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset resource="resources.qrc">
+       <iconset>
         <normaloff>:/icons/icons/wallet.png</normaloff>:/icons/icons/wallet.png</iconset>
       </property>
       <property name="iconSize">
@@ -195,7 +195,7 @@ V</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset resource="resources.qrc">
+       <iconset>
         <normaloff>:/icons/icons/shake.png</normaloff>:/icons/icons/shake.png</iconset>
       </property>
       <property name="iconSize">
@@ -2627,6 +2627,76 @@ border-radius: 5px;}</string>
        <string>Withdraw</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="bankBackButton">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>460</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe Script</family>
+        <pointsize>-1</pointsize>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+        color: white;
+        background-color: blue;
+        border: 2px solid black;
+        border-radius: 15px; 
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    QPushButton:hover {
+        background-color: #45a049; 
+        border: 2px solid green;
+    }
+
+    QPushButton:pressed {
+        background-color: #388e3c; 
+        border: 2px solid #e6b800;
+    }
+
+    QPushButton:focus {
+        outline: none;
+    }</string>
+      </property>
+      <property name="text">
+       <string>&lt;~ BACK</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="savingsDepositInput">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>320</y>
+        <width>161</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="savingsWithdrawInput">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>400</y>
+        <width>161</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="settingsButton">
@@ -2695,7 +2765,7 @@ border-radius: 5px;}</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
