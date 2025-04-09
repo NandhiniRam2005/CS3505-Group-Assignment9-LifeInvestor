@@ -11,26 +11,31 @@ public:
     ~StartScreenView();
 
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    void paintEvent(QPaintEvent *) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
-    void showEvent(QShowEvent *event) override;
-    void hideEvent(QHideEvent *event) override;
-    void resizeEvent(QResizeEvent *event) override;
+    void showEvent(QShowEvent *) override;
+    void hideEvent(QHideEvent *) override;
+    void resizeEvent(QResizeEvent *) override;
 
 private:
     void initializePhysics();
     void cleanupPhysics();
     void createBoundaries();
-    void createBall();
+    void createMoneyBags();
 
-    b2World* world = nullptr;
-    b2Body* ballBody = nullptr;
-    QTimer* physicsTimer;
-    const float scale = 20.0f;
+    b2World *world = nullptr;
+    std::vector<b2Body*> moneyBags;
+    QTimer *physicsTimer = nullptr;
+
+    // For dragging a money bag:
     bool dragging = false;
-    b2Vec2 dragStart;
+    b2Body *draggedBag = nullptr;
+    b2Vec2 draggedStart;
+
+    // Scale factor for physics to pixels conversion
+    const float scale = 30.0f;
 };
 
 #endif // STARTSCREENVIEW_H

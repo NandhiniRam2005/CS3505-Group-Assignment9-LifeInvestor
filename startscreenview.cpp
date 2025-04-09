@@ -2,15 +2,17 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QTimer>
+#include <QPixmap>
 
 StartScreenView::StartScreenView(QWidget *parent)
-    : QWidget(parent), physicsTimer(new QTimer(this))
+    : QWidget(parent), physicsTimer(new QTimer(this)), draggedBag(nullptr)
 {
     setAttribute(Qt::WA_TranslucentBackground);
     setMouseTracking(true);
 
     connect(physicsTimer, &QTimer::timeout, [this]() {
-        if(world) world->Step(1.0f/60.0f, 6, 2);
+        if (world)
+            world->Step(1.0f/60.0f, 6, 2);
         update();
     });
 }
@@ -23,17 +25,21 @@ void StartScreenView::initializePhysics() {
     cleanupPhysics();
     world = new b2World(b2Vec2(0.0f, 9.8f));
     createBoundaries();
-    createBall();
+    createMoneyBags();
     physicsTimer->start(16);
 }
 
 void StartScreenView::cleanupPhysics() {
     physicsTimer->stop();
-    if(world) {
+    if (world) {
+        for (b2Body* bag : moneyBags) {
+            world->DestroyBody(bag);
+        }
+        moneyBags.clear();
         delete world;
         world = nullptr;
     }
-    ballBody = nullptr;
+    draggedBag = nullptr;
 }
 
 void StartScreenView::createBoundaries() {
@@ -41,82 +47,99 @@ void StartScreenView::createBoundaries() {
     b2Body* boundaries = world->CreateBody(&boundaryDef);
 
     b2EdgeShape edge;
-    float w = width()/scale;
-    float h = height()/scale;
+    float w = width() / scale;
+    float h = height() / scale;
 
-    edge.Set(b2Vec2(0,0), b2Vec2(0,h));  // Left
+    // Left boundary
+    edge.Set(b2Vec2(0,0), b2Vec2(0, h));
     boundaries->CreateFixture(&edge, 0);
-    edge.Set(b2Vec2(w,0), b2Vec2(w,h));  // Right
+
+    // Right boundary
+    edge.Set(b2Vec2(w,0), b2Vec2(w, h));
     boundaries->CreateFixture(&edge, 0);
-    edge.Set(b2Vec2(0,h), b2Vec2(w,h));  // Bottom
+
+    // Bottom boundary
+    edge.Set(b2Vec2(0, h), b2Vec2(w, h));
     boundaries->CreateFixture(&edge, 0);
-    edge.Set(b2Vec2(0,0), b2Vec2(w,0));  // Top
+
+    // Top boundary
+    edge.Set(b2Vec2(0,0), b2Vec2(w, 0));
     boundaries->CreateFixture(&edge, 0);
 }
 
-void StartScreenView::createBall() {
-    b2BodyDef ballDef;
-    ballDef.type = b2_dynamicBody;
-
-    // Position the ball in the center of the view
+void StartScreenView::createMoneyBags() {
     float centerX = width() / (2.0f * scale);
-    float centerY = height() / (4.0f * scale); // Start higher up for better effect
+    float centerY = height() / (4.0f * scale);
 
-    ballDef.position.Set(centerX, centerY);
-    ballBody = world->CreateBody(&ballDef);
+    // Create three money bags and space them out horizontally.
+    for (int i = 0; i < 3; ++i) {
+        b2BodyDef bagDef;
+        bagDef.type = b2_dynamicBody;
+        bagDef.position.Set(centerX + (i - 1) * 2.5f, centerY);
+        b2Body* bag = world->CreateBody(&bagDef);
 
-    b2CircleShape circle;
-    circle.m_radius = 1.0f;
+        b2CircleShape circle;
+        circle.m_radius = 1.0f;
 
-    b2FixtureDef fixture;
-    fixture.shape = &circle;
-    fixture.density = 0.7f;
-    fixture.restitution = 0.6f;
-    ballBody->CreateFixture(&fixture);
+        b2FixtureDef fixture;
+        fixture.shape = &circle;
+        fixture.density = 0.7f;
+        fixture.restitution = 0.6f;
+        bag->CreateFixture(&fixture);
+
+        moneyBags.push_back(bag);
+    }
 }
 
 void StartScreenView::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    if(ballBody) {
-        b2Vec2 pos = ballBody->GetPosition();
-        float radius = 1.0f * scale;
-
-        QRadialGradient grad(pos.x*scale, pos.y*scale, radius);
-        grad.setColorAt(0, QColor(255, 215, 0));
-        grad.setColorAt(1, QColor(184, 134, 11));
-
-        painter.setBrush(grad);
+    QPixmap moneyBagPixmap(":/icons/icons/test.png");
+    if (moneyBagPixmap.isNull()) {
+        // If the pixmap isn't available, use a fallback drawing
+        painter.setBrush(Qt::yellow);
         painter.setPen(Qt::darkYellow);
-        painter.drawEllipse(QPointF(pos.x*scale, pos.y*scale), radius, radius);
+        for (b2Body* bag : moneyBags) {
+            b2Vec2 pos = bag->GetPosition();
+            float radius = 1.0f * scale;
+            painter.drawEllipse(QPointF(pos.x * scale, pos.y * scale), radius, radius);
+        }
+    } else {
+        // Draw the money bag for each physics object.
+        for (b2Body* bag : moneyBags) {
+            b2Vec2 pos = bag->GetPosition();
+            float size = 2.0f * scale;
+            QRect rect(pos.x * scale - size/2, pos.y * scale - size/2, size, size);
+            painter.drawPixmap(rect, moneyBagPixmap);
+        }
     }
 }
 
 void StartScreenView::mousePressEvent(QMouseEvent *event)
 {
-    if(!ballBody) return;
+    // Convert the mouse position to physics coordinates.
+    b2Vec2 mousePos(event->pos().x() / scale, event->pos().y() / scale);
 
-    // Convert to physics coordinates
-    b2Vec2 mousePos(event->pos().x()/scale, event->pos().y()/scale);
-
-    if(ballBody->GetFixtureList()->TestPoint(mousePos)) {
-        // Handle ball drag
-        dragging = true;
-        ballBody->SetAwake(false);
-        dragStart = mousePos;
-        event->accept();  // Mark event as handled
-    } else {
-        // Pass through other clicks
-        event->ignore();
+    // Check each money bag to see if it was clicked.
+    for (b2Body* bag : moneyBags) {
+        if (bag->GetFixtureList() && bag->GetFixtureList()->TestPoint(mousePos)) {
+            dragging = true;
+            draggedBag = bag;
+            draggedStart = mousePos;  // Record the drag start position.
+            draggedBag->SetAwake(false);
+            event->accept();
+            return;
+        }
     }
+    event->ignore();
 }
 
 void StartScreenView::mouseMoveEvent(QMouseEvent *event)
 {
-    if(dragging && ballBody) {
-        b2Vec2 mousePos(event->pos().x()/scale, event->pos().y()/scale);
-        ballBody->SetTransform(mousePos, 0);
+    if (dragging && draggedBag) {
+        b2Vec2 mousePos(event->pos().x() / scale, event->pos().y() / scale);
+        draggedBag->SetTransform(mousePos, 0);
         event->accept();
     } else {
         event->ignore();
@@ -125,18 +148,19 @@ void StartScreenView::mouseMoveEvent(QMouseEvent *event)
 
 void StartScreenView::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(dragging && ballBody) {
+    if (dragging && draggedBag) {
         dragging = false;
-        ballBody->SetAwake(true);
-        b2Vec2 velocity = ballBody->GetPosition() - dragStart;
-        ballBody->SetLinearVelocity(8.0f * velocity);
+        draggedBag->SetAwake(true);
+        b2Vec2 velocity = draggedBag->GetPosition() - draggedStart;
+        draggedBag->SetLinearVelocity(8.0f * velocity);
+        draggedBag = nullptr;
         event->accept();
     } else {
         event->ignore();
     }
 }
 
-// Lifecycle management
+// Lifecycle management: When shown, hidden, or resized, update the physics world.
 void StartScreenView::showEvent(QShowEvent *) { initializePhysics(); }
 void StartScreenView::hideEvent(QHideEvent *) { cleanupPhysics(); }
 void StartScreenView::resizeEvent(QResizeEvent *) { initializePhysics(); }
