@@ -27,10 +27,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         bankMovie->setPaused(true); // Freeze on the last frame
     });
     bankMovie->start();
-    QMovie *movie = new QMovie(":/gifs/gifs/moneyStart.gif");
-    ui->startGif->setMovie(movie);
-    movie->setScaledSize(ui->startGif->size());
-    movie->start();
 
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
