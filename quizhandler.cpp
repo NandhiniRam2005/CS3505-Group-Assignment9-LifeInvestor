@@ -6,7 +6,7 @@
 #include <ctime>
 
 
-const std::array<std::string, 7> QuizHandler::quizFileNames = {
+const std::array<std::string, 6> QuizHandler::quizFileNames = {
     "cdQuiz",
     "example",
     "gamblingQuiz",

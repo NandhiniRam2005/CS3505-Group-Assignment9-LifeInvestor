@@ -97,7 +97,7 @@ private:
      */
     uint quizLength;
 
-    static const std::array<std::string, 7> quizFileNames;
+    static const std::array<std::string, 6> quizFileNames;
 
 
     /**

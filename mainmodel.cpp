@@ -27,7 +27,7 @@ MainModel::MainModel(QObject *parent)
 
 void MainModel::requestQuiz()
 {
-    this->quizHandler->createQuiz(QuizCategory::mixOfAll, 10);
+    this->quizHandler->createQuiz(QuizCategory::example, 2);
     getNextQuestion();
 }
 
