@@ -400,19 +400,6 @@ V</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="Line" name="line_2">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>90</y>
-        <width>61</width>
-        <height>371</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Orientation::Vertical</enum>
-      </property>
-     </widget>
      <widget class="QPushButton" name="openPhoneButton">
       <property name="enabled">
        <bool>true</bool>
@@ -807,31 +794,13 @@ V</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_28">
-      <property name="geometry">
-       <rect>
-        <x>570</x>
-        <y>170</y>
-        <width>181</width>
-        <height>241</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Maybe you buy stuff over here or sum</string>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
      <zorder>mainBackground</zorder>
-     <zorder>label_28</zorder>
      <zorder>line_3</zorder>
      <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
      <zorder>currentYear</zorder>
      <zorder>line</zorder>
      <zorder>progressBar</zorder>
-     <zorder>line_2</zorder>
      <zorder>openPhoneButton</zorder>
      <zorder>Apps</zorder>
      <zorder>nextYearButton</zorder>
