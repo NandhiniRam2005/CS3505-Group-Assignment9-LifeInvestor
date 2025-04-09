@@ -156,6 +156,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
     });
 
+    connect(ui->cd1WithdrawButton, &QPushButton::clicked, this, [this]() {
+        emit withdrawFromCD(0);
+    });
+    connect(ui->cd2WithdrawButton, &QPushButton::clicked, this, [this]() {
+        emit withdrawFromCD(1);
+    });
+    connect(ui->cd3WithdrawButton, &QPushButton::clicked, this, [this]() {
+        emit withdrawFromCD(2);
+    });
 
 
     //App 3 -savings
@@ -297,6 +306,32 @@ void MainWindow::updateSavings(double newBalance, double interestRate) {
 }
 
 void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft) {
+    switch(cdNumber) {
+    case 0:
+        ui->cd1BalanceLabel->setText("Balance: $" + QString::number(newBalance, 'f', 2));
+        ui->cd1InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2) + "%");
+        ui->cd1TermLabel->setText("Term: " + QString::number(termlength) + " yrs");
+        ui->cd1YearsLeftLabel->setText("Years Left: " + QString::number(yearsLeft));
+        ui->cd1MinDepositLabel->setText("Min Deposit: $" + QString::number(minimumDeposit, 'f', 2));
+        ui->cd1WithdrawButton->setEnabled(yearsLeft == 0);
+        break;
+    case 1:
+        ui->cd2BalanceLabel->setText("Balance: $" + QString::number(newBalance, 'f', 2));
+        ui->cd2InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2) + "%");
+        ui->cd2TermLabel->setText("Term: " + QString::number(termlength) + " yrs");
+        ui->cd2YearsLeftLabel->setText("Years Left: " + QString::number(yearsLeft));
+        ui->cd2MinDepositLabel->setText("Min Deposit: $" + QString::number(minimumDeposit, 'f', 2));
+        ui->cd2WithdrawButton->setEnabled(yearsLeft == 0);
+        break;
+    case 2:
+        ui->cd3BalanceLabel->setText("Balance: $" + QString::number(newBalance, 'f', 2));
+        ui->cd3InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2) + "%");
+        ui->cd3TermLabel->setText("Term: " + QString::number(termlength) + " yrs");
+        ui->cd3YearsLeftLabel->setText("Years Left: " + QString::number(yearsLeft));
+        ui->cd3MinDepositLabel->setText("Min Deposit: $" + QString::number(minimumDeposit, 'f', 2));
+        ui->cd3WithdrawButton->setEnabled(yearsLeft == 0);
+        break;
+    }
 }
 
 void MainWindow::updateStock(int stockNumber, double newBalance) {

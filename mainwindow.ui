@@ -2017,9 +2017,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd1TermLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>240</x>
         <y>90</y>
-        <width>91</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -2030,9 +2030,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd1YearsLeftLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>240</x>
         <y>140</y>
-        <width>111</width>
+        <width>181</width>
         <height>41</height>
        </rect>
       </property>
@@ -2043,9 +2043,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd1MinDepositLabel">
       <property name="geometry">
        <rect>
-        <x>460</x>
+        <x>410</x>
         <y>100</y>
-        <width>58</width>
+        <width>161</width>
         <height>16</height>
        </rect>
       </property>
@@ -2108,9 +2108,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd2TermLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>240</x>
         <y>210</y>
-        <width>91</width>
+        <width>171</width>
         <height>41</height>
        </rect>
       </property>
@@ -2121,9 +2121,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd2YearsLeftLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>240</x>
         <y>260</y>
-        <width>111</width>
+        <width>191</width>
         <height>41</height>
        </rect>
       </property>
@@ -2134,9 +2134,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd2MinDepositLabel">
       <property name="geometry">
        <rect>
-        <x>460</x>
+        <x>410</x>
         <y>220</y>
-        <width>58</width>
+        <width>161</width>
         <height>16</height>
        </rect>
       </property>
@@ -2199,9 +2199,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd3TermLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>240</x>
         <y>330</y>
-        <width>91</width>
+        <width>181</width>
         <height>41</height>
        </rect>
       </property>
@@ -2212,9 +2212,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd3YearsLeftLabel">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>240</x>
         <y>380</y>
-        <width>111</width>
+        <width>181</width>
         <height>41</height>
        </rect>
       </property>
@@ -2225,9 +2225,9 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="cd3MinDepositLabel">
       <property name="geometry">
        <rect>
-        <x>460</x>
+        <x>410</x>
         <y>340</y>
-        <width>58</width>
+        <width>171</width>
         <height>16</height>
        </rect>
       </property>
