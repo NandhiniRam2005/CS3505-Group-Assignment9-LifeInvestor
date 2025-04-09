@@ -13,12 +13,13 @@ MainModel::MainModel(QObject *parent)
     currentYear = 0;
 
     savingsAccount = new SavingsAccount(0.004);
-    cdAccounts.push_back(CDAccount(0.041, 2, 1000));
-    cdAccounts.push_back(CDAccount(0.039, 3, 500));
-    cdAccounts.push_back(CDAccount(0.036, 5, 500));
 
-    loans.push_back(Loan(0.067, 100, 0, 5));
-    loans.push_back(Loan(0.067, 1000, 600, 5));
+    cdAccounts.push_back(CDAccount(0.035, 2, 500));
+    cdAccounts.push_back(CDAccount(0.040, 4, 750));
+    cdAccounts.push_back(CDAccount(0.045, 5, 1000));
+
+    loans.push_back(Loan(0.36, 10000, 0, 5));
+    loans.push_back(Loan(0.067, 10000, 650, 5));
 
     stocks.push_back(Stock(20, 0.5, 1.2));
     stocks.push_back(Stock(100, 0.1, 1.1));
