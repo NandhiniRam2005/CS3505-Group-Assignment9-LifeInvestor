@@ -20,9 +20,9 @@ MainModel::MainModel(QObject *parent)
     loans.push_back(Loan(0.067, 100, 0, 5));
     loans.push_back(Loan(0.067, 1000, 600, 5));
 
-    stocks.push_back(Stock(20, 0.5, 0.2));
-    stocks.push_back(Stock(100, 0.1, 0.1));
-    stocks.push_back(Stock(500, 0.3, -0.1));
+    stocks.push_back(Stock(20, 0.5, 1.2));
+    stocks.push_back(Stock(100, 0.1, 1.1));
+    stocks.push_back(Stock(500, 0.3, 0.9));
 
 }
 
