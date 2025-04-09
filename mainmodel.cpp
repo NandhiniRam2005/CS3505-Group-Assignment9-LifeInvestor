@@ -199,7 +199,12 @@ void MainModel::nextYear()
         initialCounter += cdAccounts[i].getBalance();
         cdAccounts[i].nextYear();
         newCounter += cdAccounts[i].getBalance();
-        emit updateCD(i, cdAccounts[i].getBalance(), cdAccounts[i].getInterestRate(), cdAccounts[i].getTermLength(), cdAccounts[i].getMinimumDeposit(), cdAccounts[i].getYearsRemaining());
+        emit updateCD(i,
+                      cdAccounts[i].getBalance(),
+                      cdAccounts[i].getInterestRate(),
+                      cdAccounts[i].getTermLength(),
+                      cdAccounts[i].getMinimumDeposit(),
+                      cdAccounts[i].getYearsRemaining());
     }
     initialTotals.push_back(initialCounter);
     newTotals.push_back(newCounter);
@@ -226,13 +231,18 @@ void MainModel::nextYear()
         loans[i].setAvailable(creditScore);
         if (loans[i].getYearsLeft() < 0)
             endGame();
-        emit updateLoan(i, loans[i].getBalance(), loans[i].getInterestRate(), loans[i].getAvailable(), loans[i].getYearsLeft());
+        emit updateLoan(i,
+                        loans[i].getBalance(),
+                        loans[i].getInterestRate(),
+                        loans[i].getAvailable(),
+                        loans[i].getYearsLeft());
     }
     initialTotals.push_back(initialCounter);
     newTotals.push_back(newCounter);
 
     // Calculate net worths
-    initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2] + initialTotals[3]);
+    initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2]
+                            + initialTotals[3]);
     newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]);
 
     // Calculate changes between years

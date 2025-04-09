@@ -44,7 +44,8 @@ bool Loan::getAvailable()
     return available;
 }
 
-bool Loan::getActive() {
+bool Loan::getActive()
+{
     return active;
 }
 

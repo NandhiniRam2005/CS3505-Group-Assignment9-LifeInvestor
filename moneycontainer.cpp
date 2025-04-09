@@ -1,6 +1,7 @@
 #include "moneycontainer.h"
 
-MoneyContainer::MoneyContainer() {
+MoneyContainer::MoneyContainer()
+{
     balance = 0;
 }
 
