@@ -23,6 +23,7 @@ MainModel::MainModel(QObject *parent)
     stocks.push_back(Stock(20, 0.5, 0.2));
     stocks.push_back(Stock(100, 0.1, 0.1));
     stocks.push_back(Stock(500, 0.3, -0.1));
+
 }
 
 void MainModel::requestQuiz()
@@ -125,6 +126,10 @@ void MainModel::withdrawFromCD(int cdNumber) {
     } else {
         emit showErrorMessage("Cannot withdraw from CD - still in term period");
     }
+}
+
+void MainModel::updateCDInformation(int cdNumber) {
+    emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
 }
 
 void MainModel::sellStock(int numberOfShares, int stockNumber) {

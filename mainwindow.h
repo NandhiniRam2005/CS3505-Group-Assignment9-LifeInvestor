@@ -105,5 +105,6 @@ signals:
     void settingsOpened(QWidget* currentWidget);
 
     void requestCDInfo(int cdNumber);
+
 };
 #endif // MAINWINDOW_H

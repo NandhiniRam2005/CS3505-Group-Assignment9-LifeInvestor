@@ -46,6 +46,7 @@ public slots:
 
     void sendSellingPriceOfXStocks(int numberOfStocks, int stockNumber);
 
+    void updateCDInformation(int cdNumber);
 
     void settingsClosed();
 
