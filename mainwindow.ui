@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>590</height>
+    <height>530</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2852,23 +2852,6 @@ border-radius: 5px;}</string>
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>33</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuLife_Investing_for_gang">
-    <property name="title">
-     <string>Life Investing for heisler</string>
-    </property>
-   </widget>
-   <addaction name="menuLife_Investing_for_gang"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="resources.qrc"/>
