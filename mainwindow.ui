@@ -293,9 +293,9 @@ V</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>431</y>
+        <y>451</y>
         <width>801</width>
-        <height>81</height>
+        <height>61</height>
        </rect>
       </property>
       <property name="orientation">
@@ -406,7 +406,7 @@ V</string>
         <x>530</x>
         <y>90</y>
         <width>61</width>
-        <height>501</height>
+        <height>371</height>
        </rect>
       </property>
       <property name="orientation">
@@ -686,10 +686,10 @@ V</string>
      <widget class="QPushButton" name="nextYearButton">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>470</y>
+        <x>280</x>
+        <y>480</y>
         <width>241</width>
-        <height>61</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -807,7 +807,24 @@ V</string>
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>170</y>
+        <width>181</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Maybe you buy stuff over here or sum</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
      <zorder>mainBackground</zorder>
+     <zorder>label_28</zorder>
      <zorder>line_3</zorder>
      <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
