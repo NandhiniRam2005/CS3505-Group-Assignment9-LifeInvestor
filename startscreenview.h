@@ -32,7 +32,8 @@ private:
     // For dragging a money bag:
     bool dragging = false;
     b2Body *draggedBag = nullptr;
-    b2Vec2 draggedStart;
+    b2Vec2 lastDragPos;
+    b2Vec2 prevDragPos;
 
     // Scale factor for physics to pixels conversion
     const float scale = 30.0f;

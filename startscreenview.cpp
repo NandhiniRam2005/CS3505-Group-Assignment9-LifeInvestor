@@ -131,10 +131,9 @@ void StartScreenView::paintEvent(QPaintEvent *) {
     }
 }
 
-
 void StartScreenView::mousePressEvent(QMouseEvent *event)
 {
-    // Convert the mouse position to physics coordinates.
+    // Convert the mouse position to physics world coordinates.
     b2Vec2 mousePos(event->pos().x() / scale, event->pos().y() / scale);
 
     // Check each money bag to see if it was clicked.
@@ -142,7 +141,9 @@ void StartScreenView::mousePressEvent(QMouseEvent *event)
         if (bag->GetFixtureList() && bag->GetFixtureList()->TestPoint(mousePos)) {
             dragging = true;
             draggedBag = bag;
-            draggedStart = mousePos;  // Record the drag start position.
+            // Initialize drag positions.
+            lastDragPos = mousePos;
+            prevDragPos = mousePos;
             draggedBag->SetAwake(false);
             event->accept();
             return;
@@ -155,6 +156,10 @@ void StartScreenView::mouseMoveEvent(QMouseEvent *event)
 {
     if (dragging && draggedBag) {
         b2Vec2 mousePos(event->pos().x() / scale, event->pos().y() / scale);
+        // Record the previous drag position before updating.
+        prevDragPos = lastDragPos;
+        lastDragPos = mousePos;
+        // Update the money bag's position to the current mouse position.
         draggedBag->SetTransform(mousePos, 0);
         event->accept();
     } else {
@@ -167,7 +172,9 @@ void StartScreenView::mouseReleaseEvent(QMouseEvent *event)
     if (dragging && draggedBag) {
         dragging = false;
         draggedBag->SetAwake(true);
-        b2Vec2 velocity = draggedBag->GetPosition() - draggedStart;
+        // Compute the velocity based on the difference between the last two positions.
+        b2Vec2 velocity = lastDragPos - prevDragPos;
+        // Apply a scaling factor to enhance or reduce the throwing strength.
         draggedBag->SetLinearVelocity(8.0f * velocity);
         draggedBag = nullptr;
         event->accept();
