@@ -258,6 +258,30 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->App4, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Loans);
     });
+
+    connect(ui->loanBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    connect(ui->activateLoan1Button, &QPushButton::clicked, this, [this]() {
+        emit activateLoan(0);
+    });
+    connect(ui->activateLoan2Button, &QPushButton::clicked, this, [this]() {
+        emit activateLoan(1);
+    });
+
+    connect(ui->payLoan1Button, &QPushButton::clicked, this, [this]() {
+        double amount = ui->loan1PaymentInput->text().toDouble();
+        emit depositToLoan(amount, 0);
+        ui->loan1PaymentInput->clear();
+    });
+    connect(ui->payLoan2Button, &QPushButton::clicked, this, [this]() {
+        double amount = ui->loan2PaymentInput->text().toDouble();
+        emit depositToLoan(amount, 1);
+        ui->loan2PaymentInput->clear();
+    });
+
+
 }
 
 MainWindow::~MainWindow()
@@ -430,9 +454,45 @@ void MainWindow::updateCD(int cdNumber,
 
 void MainWindow::updateStock(int stockNumber, double newBalance) {}
 
-void MainWindow::updateLoan(
-    int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft)
-{}
+void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate, bool available, bool active, int yearsLeft){
+    QString balanceText = QString::number(newBalance, 'f', 2);
+    QString status;
+
+    if(loanNumber == 0) {
+        ui->loan1Balance->setText("$" + balanceText);
+        ui->loan1InterestRate->setText(QString::number(interestRate*100, 'f', 1) + "%");
+        ui->loan1YearsLeft->setText(QString::number(yearsLeft));
+
+        if(available && !active) {
+            ui->activateLoan1Button->setEnabled(true);
+            status = "Available";
+        } else if(active) {
+            status = "Active";
+            ui->activateLoan1Button->setEnabled(false);
+        } else {
+            status = "Unavailable";
+            ui->activateLoan1Button->setEnabled(false);
+        }
+        ui->loan1AvailabilityStatus->setText(status);
+    }
+    else {
+        ui->loan2Balance->setText("$" + balanceText);
+        ui->loan2InterestRate->setText(QString::number(interestRate*100, 'f', 1) + "%");
+        ui->loan2YearsLeft->setText(QString::number(yearsLeft));
+
+        if(available && !active) {
+            ui->activateLoan2Button->setEnabled(true);
+            status = "Available";
+        } else if(active) {
+            status = "Active";
+            ui->activateLoan2Button->setEnabled(false);
+        } else {
+            status = "Unavailable";
+            ui->activateLoan2Button->setEnabled(false);
+        }
+        ui->loan2AvailabilityStatus->setText(status);
+    }
+}
 
 void MainWindow::showErrorMessage(QString errorMessage) {}
 

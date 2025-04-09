@@ -86,7 +86,7 @@ signals:
     void updateStock(int stockNumber, double newBalance);
 
     void updateLoan(
-        int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
+        int loanNumber, double newBalance, double interestRate, bool available,  bool active, int yearsLeft);
 
     void sendPriceOfStocks(double price, int stockNumber);
 
