@@ -8,6 +8,7 @@
 #include "depositwindow.h"
 #include "mainmodel.h"
 #include "quizhandler.h"
+#include "startscreenview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,6 +36,7 @@ private:
     double savingsBalance;
     QVector<double> cdBalances;
     AnimationView *animationView;
+    StartScreenView *startScreenView;
     QSoundEffect *levelPassSound;
     DepositWindow depositWindow;
 

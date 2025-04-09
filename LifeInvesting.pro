@@ -72,6 +72,7 @@ SOURCES += \
     moneycontainer.cpp \
     quizhandler.cpp \
     savingsaccount.cpp \
+    startscreenview.cpp \
     stock.cpp
 
 HEADERS += \
@@ -133,6 +134,7 @@ HEADERS += \
     moneycontainer.h \
     quizhandler.h \
     savingsaccount.h \
+    startscreenview.h \
     stock.h
 
 FORMS += \
