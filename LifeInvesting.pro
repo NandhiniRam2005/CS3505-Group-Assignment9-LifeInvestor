@@ -64,6 +64,7 @@ SOURCES += \
     animationview.cpp \
     bank.cpp \
     cdaccount.cpp \
+    depositwindow.cpp \
     loan.cpp \
     main.cpp \
     mainmodel.cpp \
@@ -125,6 +126,7 @@ HEADERS += \
     bank.h \
     cdaccount.h \
     cpptoml.h \
+    depositwindow.h \
     loan.h \
     mainmodel.h \
     mainwindow.h \
@@ -134,7 +136,7 @@ HEADERS += \
     stock.h
 
 FORMS += \
-    depositWindow.ui \
+    depositwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
