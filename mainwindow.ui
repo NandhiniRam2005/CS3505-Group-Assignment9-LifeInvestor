@@ -42,10 +42,10 @@
      <widget class="QPushButton" name="startButton">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>370</y>
-        <width>161</width>
-        <height>51</height>
+        <x>40</x>
+        <y>430</y>
+        <width>201</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="cursor">
@@ -70,8 +70,8 @@
       </property>
       <property name="iconSize">
        <size>
-        <width>150</width>
-        <height>200</height>
+        <width>200</width>
+        <height>250</height>
        </size>
       </property>
      </widget>
@@ -81,10 +81,10 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>-60</y>
-        <width>821</width>
-        <height>601</height>
+        <x>-20</x>
+        <y>-15</y>
+        <width>857</width>
+        <height>600</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -123,9 +123,9 @@
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>190</y>
+        <y>220</y>
         <width>161</width>
-        <height>181</height>
+        <height>221</height>
        </rect>
       </property>
       <property name="text">
@@ -136,6 +136,7 @@ Don't be a bum
 get you bread up 
 'get yo cred up
 when yo dumass feel ready hit da start button
+I
 I
 I
 V</string>
@@ -243,8 +244,8 @@ V</string>
      <zorder>littlefloorshadow</zorder>
      <zorder>bankGif</zorder>
      <zorder>wallet</zorder>
-     <zorder>howToPlay</zorder>
      <zorder>startButton</zorder>
+     <zorder>howToPlay</zorder>
     </widget>
     <widget class="QWidget" name="quizEnd">
      <widget class="QLabel" name="endLabel">

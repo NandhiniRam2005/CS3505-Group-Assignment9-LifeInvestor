@@ -247,7 +247,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     // Start button connections for pressed
     connect(ui->startButton, &QPushButton::pressed, [=]() {
         ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
-        ui->startButton->setIconSize(QSize(150, 200));
+        ui->startButton->setIconSize(QSize(200, 250));
     });
 
     // Sounds
