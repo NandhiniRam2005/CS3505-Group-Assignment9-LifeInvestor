@@ -148,7 +148,6 @@ DISTFILES += \
     QuestionBanks/cdQuiz.toml \
     QuestionBanks/example.toml \
     QuestionBanks/gamblingQuiz.toml \
-    QuestionBanks/generalQuiz.toml \
     QuestionBanks/loansQuiz.toml \
     QuestionBanks/savingsQuiz.toml \
     QuestionBanks/tutorialQuiz.toml

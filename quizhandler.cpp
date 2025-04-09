@@ -10,7 +10,6 @@ const std::array<std::string, 7> QuizHandler::quizFileNames = {
     "cdQuiz",
     "example",
     "gamblingQuiz",
-    "generalQuiz",
     "loansQuiz",
     "savingsQuiz",
     "tutorialQuiz"
