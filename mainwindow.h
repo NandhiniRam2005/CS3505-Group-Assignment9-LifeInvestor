@@ -124,5 +124,7 @@ signals:
 
     void requestCDInfo(int cdNumber);
     void amountRead(int amount);
+
+    void requestLoanInfo(int loanNumber);
 };
 #endif // MAINWINDOW_H
