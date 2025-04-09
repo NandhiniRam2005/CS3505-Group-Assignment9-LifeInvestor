@@ -556,7 +556,7 @@ V</string>
        <property name="geometry">
         <rect>
          <x>100</x>
-         <y>30</y>
+         <y>28</y>
          <width>50</width>
          <height>50</height>
         </rect>
@@ -569,14 +569,12 @@ V</string>
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/icons/icons/lock.png</normaloff>
-         <disabledoff>:/icons/icons/blank.png</disabledoff>
-         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+         <normaloff>:/icons/icons/cdApp.png</normaloff>:/icons/icons/cdApp.png</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>50</width>
-         <height>50</height>
+         <width>45</width>
+         <height>45</height>
         </size>
        </property>
        <property name="flat">
@@ -603,9 +601,7 @@ V</string>
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/icons/icons/lock.png</normaloff>
-         <disabledoff>:/icons/icons/blank.png</disabledoff>
-         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/lock.png</iconset>
+         <normaloff>:/icons/icons/bank.png</normaloff>:/icons/icons/bank.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -2809,7 +2805,7 @@ border-radius: 5px;}</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
