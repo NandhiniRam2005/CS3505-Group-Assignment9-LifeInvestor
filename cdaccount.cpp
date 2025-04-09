@@ -7,6 +7,7 @@ CDAccount::CDAccount(double interestRate, int termLength, double minimumDeposit)
     this->termLength = termLength;
     this->minimumDeposit = minimumDeposit;
     yearsRemaining = 0;
+    balance = 0.0;
 }
 
 void CDAccount::nextYear()
