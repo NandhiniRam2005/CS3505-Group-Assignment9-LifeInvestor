@@ -27,6 +27,7 @@
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
+        <file>sounds/wrong.wav</file>
     </qresource>
     <qresource prefix="/gifs">
         <file>gifs/moneyStart.gif</file>
