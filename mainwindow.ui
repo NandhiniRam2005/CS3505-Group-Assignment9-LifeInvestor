@@ -30,7 +30,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1358,7 +1358,7 @@ border-radius: 5px;}</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/stockBad.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/StockDown.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -2765,7 +2765,7 @@ border-radius: 5px;}</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>36</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLife_Investing_for_gang">
