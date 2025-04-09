@@ -50,6 +50,8 @@ public slots:
 
     void settingsClosed();
 
+    void handleLoanInfoRequest(int loanNumber);
+
 signals:
     /**
      * Sends a question out for the view to display

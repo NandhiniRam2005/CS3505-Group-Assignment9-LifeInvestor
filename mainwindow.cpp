@@ -257,7 +257,11 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     //App 4 - LOANS connecytions
     connect(ui->App4, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Loans);
+        emit requestLoanInfo(0);
+        emit requestLoanInfo(1);
     });
+
+    connect(this, &MainWindow::requestLoanInfo, model, &MainModel::handleLoanInfoRequest);
 
     connect(ui->loanBackButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);

@@ -274,4 +274,14 @@ void MainModel::addFunds(double amount)
     emit updateBalance(currentMoney);
 }
 
+void MainModel::handleLoanInfoRequest(int loanNumber) {
+    Loan &loan = loans[loanNumber];
+    emit updateLoan(loanNumber,
+                    loan.getBalance(),
+                    loan.getInterestRate(),
+                    loan.getAvailable(),
+                    loan.getActive(),
+                    loan.getYearsLeft());
+}
+
 void MainModel ::endGame() {}
