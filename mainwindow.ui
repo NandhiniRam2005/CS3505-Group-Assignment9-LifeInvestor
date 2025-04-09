@@ -250,11 +250,16 @@ V</string>
      <widget class="QLabel" name="currentYear">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>20</y>
+        <x>630</x>
+        <y>-20</y>
         <width>151</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>YEAR 1</string>
@@ -274,19 +279,6 @@ V</string>
       </property>
       <property name="orientation">
        <enum>Qt::Orientation::Horizontal</enum>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="progressBar">
-      <property name="geometry">
-       <rect>
-        <x>680</x>
-        <y>10</y>
-        <width>118</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="value">
-       <number>24</number>
       </property>
      </widget>
      <widget class="Line" name="line_3">
@@ -800,7 +792,6 @@ V</string>
      <zorder>closePhoneButton</zorder>
      <zorder>currentYear</zorder>
      <zorder>line</zorder>
-     <zorder>progressBar</zorder>
      <zorder>openPhoneButton</zorder>
      <zorder>Apps</zorder>
      <zorder>nextYearButton</zorder>
