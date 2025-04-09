@@ -52,7 +52,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
 
-    // connection for nextYear
+    // connections for nextYear
+    connect(ui->nextYearButton, &QPushButton::clicked, model, &MainModel::nextYear);
+    // TODO - add connection to start a new quiz when nextYearButton is clicked
     connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
 
     // connections for depositing
