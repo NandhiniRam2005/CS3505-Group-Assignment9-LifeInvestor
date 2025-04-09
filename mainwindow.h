@@ -60,6 +60,8 @@ public slots:
 
     void updateSellingStockPriceDisplay(double amount, int stockNumber, bool tooMany);
 
+    void updateStockAmountOwned(uint amount, int stockNumber);
+
     void showEndScreen();
 
     void enableSubmitButton(bool checked);

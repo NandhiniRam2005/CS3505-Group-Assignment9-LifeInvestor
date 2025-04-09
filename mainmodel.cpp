@@ -80,6 +80,7 @@ void MainModel::buyStock(int numberOfShares, int stockNumber) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
+        emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
     }
     else
         emit showErrorMessage("Input amount cannot be bought");
@@ -138,6 +139,7 @@ void MainModel::sellStock(int numberOfShares, int stockNumber) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
+        emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
     }
     else
         emit showErrorMessage("Input amount cannot be withdrawn");
