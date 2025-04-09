@@ -50,12 +50,19 @@ void StartScreenView::createBoundaries() {
     boundaries->CreateFixture(&edge, 0);
     edge.Set(b2Vec2(0,h), b2Vec2(w,h));  // Bottom
     boundaries->CreateFixture(&edge, 0);
+    edge.Set(b2Vec2(0,0), b2Vec2(w,0));  // Top
+    boundaries->CreateFixture(&edge, 0);
 }
 
 void StartScreenView::createBall() {
     b2BodyDef ballDef;
     ballDef.type = b2_dynamicBody;
-    ballDef.position.Set(width()/2/scale, 50/scale);
+
+    // Position the ball in the center of the view
+    float centerX = width() / (2.0f * scale);
+    float centerY = height() / (4.0f * scale); // Start higher up for better effect
+
+    ballDef.position.Set(centerX, centerY);
     ballBody = world->CreateBody(&ballDef);
 
     b2CircleShape circle;

@@ -22,8 +22,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     startScreenView->show();
 
     animationView = new AnimationView(ui->Quiz);
-    animationView->setGeometry(this->rect());
     animationView->stackUnder(ui->choicesLayout);
+    animationView->setGeometry(this->rect());
     animationView->hide();
 
     ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0}, {0,0,0,0,0}));
