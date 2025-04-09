@@ -1,6 +1,6 @@
 #include "depositwindow.h"
-#include "ui_depositwindow.h"
 #include <QMessageBox>
+#include "ui_depositwindow.h"
 
 DepositWindow::DepositWindow(QWidget *parent)
     : QWidget(parent)
@@ -18,7 +18,8 @@ DepositWindow::~DepositWindow()
     delete ui;
 }
 
-void DepositWindow::handleOkButton() {
+void DepositWindow::handleOkButton()
+{
     QString input = ui->plainTextEdit->toPlainText().trimmed();
     bool ok;
     double amount = input.toDouble(&ok);
@@ -32,6 +33,7 @@ void DepositWindow::handleOkButton() {
     this->hide();
 }
 
-void DepositWindow::handleCancelButton() {
+void DepositWindow::handleCancelButton()
+{
     this->hide();
 }

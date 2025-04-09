@@ -1,6 +1,6 @@
 #include "mainmodel.h"
-#include "quizhandler.h"
 #include <QtCore/qdebug.h>
+#include "quizhandler.h"
 #include <iostream>
 
 MainModel::MainModel(QObject *parent)
@@ -23,7 +23,6 @@ MainModel::MainModel(QObject *parent)
     stocks.push_back(Stock(20, 0.5, 1.2));
     stocks.push_back(Stock(100, 0.1, 1.1));
     stocks.push_back(Stock(500, 0.3, 0.9));
-
 }
 
 void MainModel::requestQuiz()
@@ -48,114 +47,142 @@ void MainModel::checkAnswer(std::string selectedChoice)
     emit quizProgress(quizHandler->quizProgress());
     emit quizProgress(quizHandler->quizProgress());
     emit sendResult(result, why);
-    if(result) {
+    if (result) {
         addFunds(quizHandler->getCurrentQuestionReward());
         emit updateBalance(currentMoney);
     }
 }
 
-void MainModel::depositToSavings(double amount) {
+void MainModel::depositToSavings(double amount)
+{
     if (amount <= currentMoney && savingsAccount->deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
-    }
-    else
+    } else
         emit showErrorMessage("Input amount cannot be deposited");
 }
 
-void MainModel::depositToCD(double amount, int cdNumber) {
+void MainModel::depositToCD(double amount, int cdNumber)
+{
     if (amount <= currentMoney && cdAccounts[cdNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
-        emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
-    }
-    else
+        emit updateCD(cdNumber,
+                      cdAccounts[cdNumber].getBalance(),
+                      cdAccounts[cdNumber].getInterestRate(),
+                      cdAccounts[cdNumber].getTermLength(),
+                      cdAccounts[cdNumber].getMinimumDeposit(),
+                      cdAccounts[cdNumber].getYearsRemaining());
+    } else
         emit showErrorMessage("Input amount cannot be deposited");
 }
 
-void MainModel::buyStock(int numberOfShares, int stockNumber) {
+void MainModel::buyStock(int numberOfShares, int stockNumber)
+{
     double amount = numberOfShares * stocks[stockNumber].getValue();
     if (amount <= currentMoney && stocks[stockNumber].deposit(numberOfShares)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
         emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
-    }
-    else
+    } else
         emit showErrorMessage("Input amount cannot be bought");
 }
 
-void MainModel::sendPriceOfXStocks(int numberOfShares, int stockNumber){
+void MainModel::sendPriceOfXStocks(int numberOfShares, int stockNumber)
+{
     double amount = numberOfShares * stocks[stockNumber].getValue();
     emit sendPriceOfStocks(amount, stockNumber);
 }
 
-void MainModel::sendSellingPriceOfXStocks(int numberOfShares, int stockNumber){
+void MainModel::sendSellingPriceOfXStocks(int numberOfShares, int stockNumber)
+{
     double amount = numberOfShares * stocks[stockNumber].getValue();
     bool tooMany = numberOfShares > stocks[stockNumber].getBalance();
     emit sendSellingPriceOfStocks(amount, stockNumber, tooMany);
 }
 
-void MainModel::depositToLoan(double amount, int loanNumber) {
+void MainModel::depositToLoan(double amount, int loanNumber)
+{
     if (amount <= currentMoney && loans[loanNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
-        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getInterestRate(), loans[loanNumber].getAvailable(), loans[loanNumber].getYearsLeft());
-    }
-    else
+        emit updateLoan(loanNumber,
+                        loans[loanNumber].getBalance(),
+                        loans[loanNumber].getInterestRate(),
+                        loans[loanNumber].getAvailable(),
+                        loans[loanNumber].getYearsLeft());
+    } else
         emit showErrorMessage("Input amount cannot be removed from the loan");
 }
 
-void MainModel::withdrawFromSavings(double amount) {
+void MainModel::withdrawFromSavings(double amount)
+{
     if (savingsAccount->withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
-    }
-    else
+    } else
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::withdrawFromCD(int cdNumber) {
+void MainModel::withdrawFromCD(int cdNumber)
+{
     double amount = cdAccounts[cdNumber].getBalance();
 
-    if(cdAccounts[cdNumber].withdraw(amount)) {
+    if (cdAccounts[cdNumber].withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
-        emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+        emit updateCD(cdNumber,
+                      cdAccounts[cdNumber].getBalance(),
+                      cdAccounts[cdNumber].getInterestRate(),
+                      cdAccounts[cdNumber].getTermLength(),
+                      cdAccounts[cdNumber].getMinimumDeposit(),
+                      cdAccounts[cdNumber].getYearsRemaining());
     } else {
         emit showErrorMessage("Cannot withdraw from CD - still in term period");
     }
 }
 
-void MainModel::updateCDInformation(int cdNumber) {
-    emit updateCD(cdNumber, cdAccounts[cdNumber].getBalance(), cdAccounts[cdNumber].getInterestRate(), cdAccounts[cdNumber].getTermLength(), cdAccounts[cdNumber].getMinimumDeposit(), cdAccounts[cdNumber].getYearsRemaining());
+void MainModel::updateCDInformation(int cdNumber)
+{
+    emit updateCD(cdNumber,
+                  cdAccounts[cdNumber].getBalance(),
+                  cdAccounts[cdNumber].getInterestRate(),
+                  cdAccounts[cdNumber].getTermLength(),
+                  cdAccounts[cdNumber].getMinimumDeposit(),
+                  cdAccounts[cdNumber].getYearsRemaining());
 }
 
-void MainModel::sellStock(int numberOfShares, int stockNumber) {
+void MainModel::sellStock(int numberOfShares, int stockNumber)
+{
     double amount = numberOfShares * stocks[stockNumber].getValue();
     if (stocks[stockNumber].withdraw(numberOfShares)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
         emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
-    }
-    else
+    } else
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::activateLoan(int loanNumber) {
+void MainModel::activateLoan(int loanNumber)
+{
     if (loans[loanNumber].activate()) {
         currentMoney += -loans[loanNumber].getBalance();
         emit updateBalance(currentMoney);
-        emit updateLoan(loanNumber, loans[loanNumber].getBalance(), loans[loanNumber].getInterestRate(), loans[loanNumber].getAvailable(), loans[loanNumber].getYearsLeft());
-    }
-    else
+        emit updateLoan(loanNumber,
+                        loans[loanNumber].getBalance(),
+                        loans[loanNumber].getInterestRate(),
+                        loans[loanNumber].getAvailable(),
+                        loans[loanNumber].getYearsLeft());
+    } else
         emit showErrorMessage("The loan cannot be activated");
 }
 
-void MainModel::nextYear() {
+void MainModel::nextYear()
+{
     QVector<double> initialTotals;
     QVector<double> newTotals;
     double initialCounter;
@@ -191,9 +218,11 @@ void MainModel::nextYear() {
     initialCounter = 0;
     newCounter = 0;
     for (int i = 0; i < loans.count(); i++) {
-        initialCounter += loans[i].getBalance();
-        loans[i].nextYear();
-        newCounter += loans[i].getBalance();
+        if (loans[i].getActive()) {
+            initialCounter += loans[i].getBalance();
+            loans[i].nextYear();
+            newCounter += loans[i].getBalance();
+        }
         loans[i].setAvailable(creditScore);
         if (loans[i].getYearsLeft() < 0)
             endGame();
@@ -210,23 +239,23 @@ void MainModel::nextYear() {
     for (int i = 0; i < 5; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
-    emit sendYearTotals(newTotals, initialTotals);
-
+    emit newYear(newTotals, initialTotals);
 }
 
-void MainModel::settingsOpened(QWidget* currentWidget) {
+void MainModel::settingsOpened(QWidget *currentWidget)
+{
     this->currentWidget = currentWidget;
 }
 
-void MainModel::settingsClosed() {
+void MainModel::settingsClosed()
+{
     emit returnToGame(this->currentWidget);
 }
 
-void MainModel::addFunds(double amount) {
+void MainModel::addFunds(double amount)
+{
     currentMoney += amount;
     emit updateBalance(currentMoney);
 }
 
-void MainModel ::endGame() {
-
-}
+void MainModel ::endGame() {}

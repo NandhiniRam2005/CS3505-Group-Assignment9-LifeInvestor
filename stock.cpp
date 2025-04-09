@@ -1,22 +1,25 @@
 #include "stock.h"
 #include <QRandomGenerator>
 
-
-Stock::Stock(double value, double variance, double trend) : MoneyContainer() {
+Stock::Stock(double value, double variance, double trend)
+    : MoneyContainer()
+{
     this->value = value;
     this->variance = variance;
     this->trend = trend;
 }
 
-void Stock::nextYear() {
+void Stock::nextYear()
+{
     value *= (trend - variance) + QRandomGenerator::global()->generateDouble() * 2 * variance;
 }
 
-double Stock::getValue() {
+double Stock::getValue()
+{
     return value;
 }
 
-double Stock::getMoneyBalance() {
+double Stock::getMoneyBalance()
+{
     return value * balance;
 }
-

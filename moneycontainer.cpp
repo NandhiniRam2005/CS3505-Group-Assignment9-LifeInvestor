@@ -2,22 +2,23 @@
 
 MoneyContainer::MoneyContainer() {}
 
-bool MoneyContainer::deposit(double amount) {
+bool MoneyContainer::deposit(double amount)
+{
     balance += amount;
     return true;
 }
 
-bool MoneyContainer::withdraw(double amount) {
+bool MoneyContainer::withdraw(double amount)
+{
     if (balance < amount)
         return false;
     balance -= amount;
     return true;
 }
 
-double MoneyContainer::getBalance() {
+double MoneyContainer::getBalance()
+{
     return balance;
 }
 
-void MoneyContainer::nextYear() {
-
-}
+void MoneyContainer::nextYear() {}

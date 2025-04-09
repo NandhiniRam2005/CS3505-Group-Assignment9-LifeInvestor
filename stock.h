@@ -1,10 +1,8 @@
 #ifndef STOCK_H
 #define STOCK_H
 
-#include "moneycontainer.h"
 #include <QVector>
-
-
+#include "moneycontainer.h"
 
 class Stock : public MoneyContainer
 {

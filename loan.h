@@ -27,6 +27,8 @@ public:
 
     bool getAvailable();
 
+    bool getActive();
+
     void setAvailable(int creditScore);
 
     bool activate();

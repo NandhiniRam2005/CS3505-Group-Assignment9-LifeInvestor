@@ -27,7 +27,6 @@ public:
     int getYearsRemaining();
 
     double getMinimumDeposit();
-
 };
 
 #endif // CDACCOUNT_H

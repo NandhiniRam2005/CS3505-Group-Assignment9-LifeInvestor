@@ -3,12 +3,19 @@
 #include <QRandomGenerator>
 #include <QTimer>
 
-Animation::Animation(b2Body* body, QColor color, QSize size): body(body), color(color), size(size) {}
+Animation::Animation(b2Body *body, QColor color, QSize size)
+    : body(body)
+    , color(color)
+    , size(size)
+{}
 
 Animation::~Animation() {}
 
 AnimationView::AnimationView(QWidget *parent)
-    : QWidget(parent), world(b2Vec2(0.3f, 9.8f)), timer(new QTimer(this)), scale(20.0)
+    : QWidget(parent)
+    , world(b2Vec2(0.3f, 9.8f))
+    , timer(new QTimer(this))
+    , scale(20.0)
 {
     setGeometry(parent->rect());
 
@@ -34,7 +41,7 @@ void AnimationView::startConfettiAnimation()
         b2Body *body = world.CreateBody(&bodyDef);
 
         float vx = -1.5f + QRandomGenerator::global()->generateDouble() * 3.0f; // Horizontal speed
-        float vy = QRandomGenerator::global()->generateDouble();  // Small downward speed
+        float vy = QRandomGenerator::global()->generateDouble(); // Small downward speed
         body->SetLinearVelocity(b2Vec2(vx, vy));
 
         // Define the ground box shape.
@@ -80,7 +87,7 @@ void AnimationView::startRainAnimation()
         // Call the body factory which allocates memory for the ground body from a pool and creates the ground box shape (also from a pool).
         b2Body *body = world.CreateBody(&bodyDef);
 
-        float vy = QRandomGenerator::global()->generateDouble() * 75;  // downward speed
+        float vy = QRandomGenerator::global()->generateDouble() * 75; // downward speed
         body->SetLinearVelocity(b2Vec2(0, vy));
 
         // Define the ground box shape.
@@ -96,7 +103,7 @@ void AnimationView::startRainAnimation()
 
         body->CreateFixture(&fixtureDef);
 
-        QColor color(69,170, 241);  // Blue color for rain
+        QColor color(69, 170, 241); // Blue color for rain
         QSize size(1, 10);
         rainList.push_back(new Animation(body, color, size));
     }
@@ -123,7 +130,7 @@ void AnimationView::stopRainAnimation()
 
 void AnimationView::clearConfetti()
 {
-    for (Animation* confetti : confettiList) {
+    for (Animation *confetti : confettiList) {
         world.DestroyBody(confetti->body);
         delete confetti;
     }
@@ -132,7 +139,7 @@ void AnimationView::clearConfetti()
 
 void AnimationView::clearRain()
 {
-    for (Animation* rainDrop : rainList) {
+    for (Animation *rainDrop : rainList) {
         world.DestroyBody(rainDrop->body);
         delete rainDrop;
     }
@@ -142,7 +149,7 @@ void AnimationView::clearRain()
 void AnimationView::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    for (Animation* confetti : confettiList) {
+    for (Animation *confetti : confettiList) {
         b2Vec2 pos = confetti->body->GetPosition();
         QPoint center(pos.x * scale, pos.y * scale);
         QRect rect(center.x(), center.y(), confetti->size.width(), confetti->size.height());
@@ -151,7 +158,7 @@ void AnimationView::paintEvent(QPaintEvent *)
         painter.drawRect(rect);
     }
 
-    for (Animation* rain : rainList) {
+    for (Animation *rain : rainList) {
         b2Vec2 pos = rain->body->GetPosition();
         QPoint center(pos.x * scale, pos.y * scale);
         QRect rect(center.x(), center.y(), rain->size.width(), rain->size.height());
@@ -160,5 +167,3 @@ void AnimationView::paintEvent(QPaintEvent *)
         painter.drawRect(rect);
     }
 }
-
-

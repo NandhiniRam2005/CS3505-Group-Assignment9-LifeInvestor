@@ -1,12 +1,12 @@
 #include "mainwindow.h"
+#include <QMovie>
 #include "iostream"
 #include "ui_mainwindow.h"
-#include <QMovie>
 
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-{    
+{
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->Start);
     buttonGroup = new QButtonGroup(this);
@@ -39,12 +39,19 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
-    connect(ui->continueButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame); ui->balance->show();});
-    connect(ui->App1, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->Stocks);});
-    connect(ui->stocksBackButton, &QPushButton::clicked, this, [this] () {ui->stackedWidget->setCurrentWidget(ui->mainGame);});
+    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+        ui->balance->show();
+    });
+    connect(ui->App1, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Stocks);
+    });
+    connect(ui->stocksBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
     connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
-    connect(ui->settingsButton, &QPushButton::clicked, this, [this] () {
+    connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
         ui->settingsButton->hide();
         ui->balance->hide();
         emit settingsOpened(ui->stackedWidget->currentWidget());
@@ -64,8 +71,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // connections for nextYear
     connect(ui->nextYearButton, &QPushButton::clicked, model, &MainModel::nextYear);
-    // TODO - add connection to start a new quiz when nextYearButton is clicked
     connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
+    connect(model, &MainModel::newYear, this, &MainWindow::newYear);
 
     // connections for depositing
     connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
@@ -89,76 +96,83 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     // connection for showing error messages
     connect(model, &MainModel::showErrorMessage, this, &MainWindow::showErrorMessage);
 
-
-
     // connections for buying and selling stock
 
     // Buys stock
-    connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]()-> void{
+    connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]() -> void {
         emit buyStock(ui->purchaseStockOneSpin->value(), 0);
         ui->purchaseStockOneSpin->setValue(0);
         emit revalidateStockDisplay();
     });
-    connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]()-> void{
+    connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]() -> void {
         emit buyStock(ui->purchaseStockTwoSpin->value(), 1);
         ui->purchaseStockTwoSpin->setValue(0);
         emit revalidateStockDisplay();
     });
-    connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]()-> void{
+    connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]() -> void {
         emit buyStock(ui->purchaseStockThreeSpin->value(), 2);
         ui->purchaseStockThreeSpin->setValue(0);
         emit revalidateStockDisplay();
     });
 
-    connect(this, &MainWindow::revalidateStockDisplay, this, &MainWindow::revalidateAllStockDisplays);
-    connect(this, &MainWindow::revalidateSpecificStockDisplay, this, &MainWindow::updateStockPriceDisplay);
+    connect(this,
+            &MainWindow::revalidateStockDisplay,
+            this,
+            &MainWindow::revalidateAllStockDisplays);
+    connect(this,
+            &MainWindow::revalidateSpecificStockDisplay,
+            this,
+            &MainWindow::updateStockPriceDisplay);
 
     // Sell Stock
-    connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]()-> void{
+    connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]() -> void {
         emit sellStock(ui->sellSpinStockOne->value(), 0);
         ui->sellSpinStockOne->setValue(0);
-
     });
-    connect(ui->sellButtonStockTwo, &QPushButton::clicked, this, [&]()-> void{
+    connect(ui->sellButtonStockTwo, &QPushButton::clicked, this, [&]() -> void {
         emit sellStock(ui->sellSpinStockTwo->value(), 1);
         ui->sellSpinStockTwo->setValue(0);
     });
-    connect(ui->sellButtonStockThree, &QPushButton::clicked, this, [&]()-> void{
+    connect(ui->sellButtonStockThree, &QPushButton::clicked, this, [&]() -> void {
         emit sellStock(ui->sellSpinStockThree->value(), 2);
         ui->sellSpinStockThree->setValue(0);
-
     });
 
     connect(model, &MainModel::numberOfStocksOwned, this, &MainWindow::updateStockAmountOwned);
 
     // Update price buying
-    connect(ui->purchaseStockOneSpin, &QSpinBox::valueChanged, this, [&]()->void{
+    connect(ui->purchaseStockOneSpin, &QSpinBox::valueChanged, this, [&]() -> void {
         emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
     });
-    connect(ui->purchaseStockTwoSpin, &QSpinBox::valueChanged, this, [&]()->void{
+    connect(ui->purchaseStockTwoSpin, &QSpinBox::valueChanged, this, [&]() -> void {
         emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
     });
-    connect(ui->purchaseStockThreeSpin, &QSpinBox::valueChanged, this, [&]()->void{
+    connect(ui->purchaseStockThreeSpin, &QSpinBox::valueChanged, this, [&]() -> void {
         emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
     });
     connect(this, &MainWindow::requestPriceOfXStocks, model, &MainModel::sendPriceOfXStocks);
     connect(model, &MainModel::sendPriceOfStocks, this, &MainWindow::updateStockPriceDisplay);
 
     //Update price selling
-    connect(ui->sellSpinStockOne, &QSpinBox::valueChanged, this, [&]()->void{
+    connect(ui->sellSpinStockOne, &QSpinBox::valueChanged, this, [&]() -> void {
         emit requestSellingPriceOfXStocks(ui->sellSpinStockOne->value(), 0);
     });
-    connect(ui->sellSpinStockTwo, &QSpinBox::valueChanged, this, [&]()->void{
+    connect(ui->sellSpinStockTwo, &QSpinBox::valueChanged, this, [&]() -> void {
         emit requestSellingPriceOfXStocks(ui->sellSpinStockTwo->value(), 1);
     });
-    connect(ui->sellSpinStockThree, &QSpinBox::valueChanged, this, [&]()->void{
+    connect(ui->sellSpinStockThree, &QSpinBox::valueChanged, this, [&]() -> void {
         emit requestSellingPriceOfXStocks(ui->sellSpinStockThree->value(), 2);
     });
 
-    connect(this, &MainWindow::requestSellingPriceOfXStocks, model, &MainModel::sendSellingPriceOfXStocks);
-    connect(model, &MainModel::sendSellingPriceOfStocks, this, &MainWindow::updateSellingStockPriceDisplay);
+    connect(this,
+            &MainWindow::requestSellingPriceOfXStocks,
+            model,
+            &MainModel::sendSellingPriceOfXStocks);
+    connect(model,
+            &MainModel::sendSellingPriceOfStocks,
+            this,
+            &MainWindow::updateSellingStockPriceDisplay);
     // View protection of selling/buying is done in update price label...
-
 
     // Connect CD page signals
 
@@ -205,7 +219,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->cd3DepositInput->clear();
     });
 
-
     //App 3 -savings
 
     connect(ui->App3, &QPushButton::clicked, this, [this]() {
@@ -222,7 +235,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::amountRead, model, &MainModel::depositToSavings);
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
 
-
     // Start button connections for pressed
     connect(ui->startButton, &QPushButton::pressed, [=]() {
         ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
@@ -232,7 +244,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     // Sounds
     levelPassSound = new QSoundEffect(this);
     levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
-
 }
 
 MainWindow::~MainWindow()
@@ -285,24 +296,24 @@ void MainWindow::hidePhone()
     ui->openPhoneButton->show();
 }
 
-void MainWindow::returnToGame(QWidget* currentWidget)
+void MainWindow::returnToGame(QWidget *currentWidget)
 {
     QString returnPage = currentWidget->objectName();
-    if(returnPage == "Start") {
+    if (returnPage == "Start") {
         ui->stackedWidget->setCurrentWidget(ui->Start);
-    } else if(returnPage == "Quiz") {
+    } else if (returnPage == "Quiz") {
         ui->stackedWidget->setCurrentWidget(ui->Quiz);
-    } else if(returnPage == "quizEnd") {
+    } else if (returnPage == "quizEnd") {
         ui->stackedWidget->setCurrentWidget(ui->quizEnd);
-    } else if(returnPage == "mainGame") {
+    } else if (returnPage == "mainGame") {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
-    } else if(returnPage == "Stocks") {
+    } else if (returnPage == "Stocks") {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     } else {
         throw std::runtime_error("return page could not be found.");
     }
     ui->settingsButton->show();
-    if(returnPage != "Start" && returnPage != "quizEnd")
+    if (returnPage != "Start" && returnPage != "quizEnd")
         ui->balance->show();
 }
 
@@ -331,12 +342,15 @@ void MainWindow::submitHelper()
 void MainWindow::displayResult(bool result, std::string explanation)
 {
     if (result) {
-        ui->resultLabel->setText("<span style='color: #4ea912; font-weight: bold;'>CORRECT!!</span>");
+        ui->resultLabel->setText(
+            "<span style='color: #4ea912; font-weight: bold;'>CORRECT!!</span>");
         animationView->startConfettiAnimation();
         levelPassSound->play();
     } else {
-        QString formattedText = "<span style='color: #d34e32; font-weight: bold;'>Incorrect!!!</span><br>"
-                                "<span style='color: black;'>Explanation: " + QString::fromStdString(explanation) + "</span>";
+        QString formattedText
+            = "<span style='color: #d34e32; font-weight: bold;'>Incorrect!!!</span><br>"
+              "<span style='color: black;'>Explanation: "
+              + QString::fromStdString(explanation) + "</span>";
         ui->resultLabel->setText(formattedText);
         animationView->startRainAnimation();
     }
@@ -347,20 +361,29 @@ void MainWindow::updateProgress(uint progress)
     ui->quizProgress->setValue(progress);
 }
 
-void MainWindow::updateBalance(double newAmount) {
+void MainWindow::updateBalance(double newAmount)
+{
     currentMoney = newAmount;
-    ui->balance->setText("$"+QString::number(currentMoney));
+    ui->balance->setText("$" + QString::number(currentMoney));
 }
 
-void MainWindow::updateSavings(double newBalance, double interestRate) {
+void MainWindow::updateSavings(double newBalance, double interestRate)
+{
     ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
 }
 
-void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft) {
-    switch(cdNumber) {
+void MainWindow::updateCD(int cdNumber,
+                          double newBalance,
+                          double interestRate,
+                          int termlength,
+                          double minimumDeposit,
+                          int yearsLeft)
+{
+    switch (cdNumber) {
     case 0:
         ui->cd1BalanceLabel->setText("Balance: $" + QString::number(newBalance, 'f', 2));
-        ui->cd1InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2) + "%");
+        ui->cd1InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2)
+                                      + "%");
         ui->cd1TermLabel->setText("Term: " + QString::number(termlength) + " yrs");
         ui->cd1YearsLeftLabel->setText("Years Left: " + QString::number(yearsLeft));
         ui->cd1MinDepositLabel->setText("Min Deposit: $" + QString::number(minimumDeposit, 'f', 2));
@@ -368,7 +391,8 @@ void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, 
         break;
     case 1:
         ui->cd2BalanceLabel->setText("Balance: $" + QString::number(newBalance, 'f', 2));
-        ui->cd2InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2) + "%");
+        ui->cd2InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2)
+                                      + "%");
         ui->cd2TermLabel->setText("Term: " + QString::number(termlength) + " yrs");
         ui->cd2YearsLeftLabel->setText("Years Left: " + QString::number(yearsLeft));
         ui->cd2MinDepositLabel->setText("Min Deposit: $" + QString::number(minimumDeposit, 'f', 2));
@@ -376,7 +400,8 @@ void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, 
         break;
     case 2:
         ui->cd3BalanceLabel->setText("Balance: $" + QString::number(newBalance, 'f', 2));
-        ui->cd3InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2) + "%");
+        ui->cd3InterestLabel->setText("Interest: " + QString::number(interestRate * 100, 'f', 2)
+                                      + "%");
         ui->cd3TermLabel->setText("Term: " + QString::number(termlength) + " yrs");
         ui->cd3YearsLeftLabel->setText("Years Left: " + QString::number(yearsLeft));
         ui->cd3MinDepositLabel->setText("Min Deposit: $" + QString::number(minimumDeposit, 'f', 2));
@@ -385,160 +410,165 @@ void MainWindow::updateCD(int cdNumber, double newBalance, double interestRate, 
     }
 }
 
-void MainWindow::updateStock(int stockNumber, double newBalance) {
+void MainWindow::updateStock(int stockNumber, double newBalance) {}
 
-}
+void MainWindow::updateLoan(
+    int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft)
+{}
 
-void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft) {
+void MainWindow::showErrorMessage(QString errorMessage) {}
 
-}
-
-void MainWindow::showErrorMessage(QString errorMessage) {
-
-}
-
-void MainWindow::enableSubmitButton(bool checked) {
+void MainWindow::enableSubmitButton(bool checked)
+{
     if (checked) {
         ui->submitButton->setEnabled(true);
     }
 }
 
-void MainWindow::showEndScreen() {
+void MainWindow::showEndScreen()
+{
     ui->balance->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
     ui->endLabel->setText("Quiz done! yay\n here is the recap (there is no recap)");
 }
 
-void MainWindow::updateStockPriceDisplay(double amount, int stockNumber){
-    switch(stockNumber){
-        case 0:{
-            ui->totalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
-            if(amount > currentMoney){
-                ui->totalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
-                ui->purchaseStockOneButton->setEnabled(false);
-            }
-            else{
-                ui->totalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
-                ui->purchaseStockOneButton->setEnabled(true);
-            }
-            ui->totalPriceStockOne->adjustSize();
-            break;
+void MainWindow::updateStockPriceDisplay(double amount, int stockNumber)
+{
+    switch (stockNumber) {
+    case 0: {
+        ui->totalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
+        if (amount > currentMoney) {
+            ui->totalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
+            ui->purchaseStockOneButton->setEnabled(false);
+        } else {
+            ui->totalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
+            ui->purchaseStockOneButton->setEnabled(true);
         }
-        case 1:{
-            ui->totalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
-            if(amount > currentMoney){
-                ui->totalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
-                ui->purchaseStockTwoButton->setEnabled(false);
-            }
-            else{
-                ui->totalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
-                ui->purchaseStockTwoButton->setEnabled(true);
-            }
-            ui->totalPriceStockTwo->adjustSize();
-            break;
+        ui->totalPriceStockOne->adjustSize();
+        break;
+    }
+    case 1: {
+        ui->totalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
+        if (amount > currentMoney) {
+            ui->totalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
+            ui->purchaseStockTwoButton->setEnabled(false);
+        } else {
+            ui->totalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
+            ui->purchaseStockTwoButton->setEnabled(true);
         }
-        case 2:{
-            ui->totalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
-            if(amount > currentMoney){
-                ui->totalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
-                ui->purchaseStockThreeButton->setEnabled(false);
-            }
-            else{
-                ui->totalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
-                ui->purchaseStockThreeButton->setEnabled(true);
-            }
-            ui->totalPriceStockTwo->adjustSize();
-            break;
+        ui->totalPriceStockTwo->adjustSize();
+        break;
+    }
+    case 2: {
+        ui->totalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
+        if (amount > currentMoney) {
+            ui->totalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
+            ui->purchaseStockThreeButton->setEnabled(false);
+        } else {
+            ui->totalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
+            ui->purchaseStockThreeButton->setEnabled(true);
         }
-        default:{
-            break;
-        }
+        ui->totalPriceStockTwo->adjustSize();
+        break;
+    }
+    default: {
+        break;
+    }
     }
 }
 
-void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, bool tooMany){
-    switch(stockNumber){
-    case 0:{
+void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, bool tooMany)
+{
+    switch (stockNumber) {
+    case 0: {
         ui->sellingTotalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
-        if(tooMany){
+        if (tooMany) {
             ui->sellingTotalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
             ui->sellButtonStockOne->setEnabled(false);
-        }
-        else{
+        } else {
             ui->sellingTotalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
             ui->sellButtonStockOne->setEnabled(true);
         }
         ui->sellingTotalPriceStockOne->adjustSize();
         break;
     }
-    case 1:{
+    case 1: {
         ui->sellingTotalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
-        if(tooMany){
+        if (tooMany) {
             ui->sellingTotalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
             ui->sellButtonStockTwo->setEnabled(false);
-        }
-        else{
+        } else {
             ui->sellingTotalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
             ui->sellButtonStockTwo->setEnabled(true);
         }
         ui->sellingTotalPriceStockTwo->adjustSize();
         break;
     }
-    case 2:{
+    case 2: {
         ui->sellingTotalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
-        if(tooMany){
+        if (tooMany) {
             ui->sellingTotalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
             ui->sellButtonStockThree->setEnabled(false);
-        }
-        else{
+        } else {
             ui->sellingTotalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
             ui->sellButtonStockThree->setEnabled(true);
         }
         ui->sellingTotalPriceStockThree->adjustSize();
         break;
     }
-    default:{
+    default: {
         break;
     }
     }
 }
 
-void MainWindow::revalidateAllStockDisplays(){
+void MainWindow::revalidateAllStockDisplays()
+{
     emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
     emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
 
     emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
-
 }
 
-void MainWindow::updateStockAmountOwned(uint amount, int stockNumber){
+void MainWindow::updateStockAmountOwned(uint amount, int stockNumber)
+{
     qDebug() << "updating Amount owned to: " << amount;
-    switch(stockNumber){
-        case 0:{
-            ui->ownedStockOne->setText("Amount Owned: " + QString::number(amount));
-            break;
-        }
-        case 1:{
-            ui->ownedStockTwo->setText("Amount Owned: " + QString::number(amount));
-            break;
-        }
-        case 2:{
-            ui->ownedStockThree->setText("Amount Owned: " + QString::number(amount));
-            break;
-        }
-        default:{
-            break;
-        }
+    switch (stockNumber) {
+    case 0: {
+        ui->ownedStockOne->setText("Amount Owned: " + QString::number(amount));
+        break;
+    }
+    case 1: {
+        ui->ownedStockTwo->setText("Amount Owned: " + QString::number(amount));
+        break;
+    }
+    case 2: {
+        ui->ownedStockThree->setText("Amount Owned: " + QString::number(amount));
+        break;
+    }
+    default: {
+        break;
+    }
     }
 }
 
-void MainWindow::displayDepositPage() {
+void MainWindow::displayDepositPage()
+{
     depositWindow.show();
 }
 
-void MainWindow::readSavingsAmount() {
+void MainWindow::readSavingsAmount()
+{
     double updatedSavings = ui->savingsDepositInput->text().toDouble();
     emit amountRead(updatedSavings);
-
 }
 
+void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes) {
+    QString reportString;
+    reportString.append("Yearly Report: \n");
+    reportString.append("Net Worth: " +  QString::number(newTotals[4]) + " (+" + QString::number(newTotals[4]) + ")\n");
+    reportString.append("Savings Account: " +  QString::number(newTotals[0]) + " (+" + QString::number(newTotals[0]) + ")\n");
+    reportString.append("CD Accounts Total: " +  QString::number(newTotals[1]) + " (+" + QString::number(newTotals[1]) + ")\n");
+    reportString.append("Stocks Total: " +  QString::number(newTotals[2]) + " (+" + QString::number(newTotals[2]) + ")\n");
+    reportString.append("Loans Total: " +  QString::number(newTotals[3]) + " (" + QString::number(newTotals[3]) + ")\n");
+}

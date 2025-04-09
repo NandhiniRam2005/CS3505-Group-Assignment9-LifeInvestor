@@ -1,18 +1,19 @@
 #ifndef ANIMATIONVIEW_H
 #define ANIMATIONVIEW_H
 
-#include <QWidget>
-#include <QTimer>
 #include <QColor>
 #include <QSize>
+#include <QTimer>
 #include <QVector>
+#include <QWidget>
 #include <Box2D/Box2D.h>
 
-class Animation {
+class Animation
+{
 public:
-    Animation(b2Body* body, QColor color, QSize size);
+    Animation(b2Body *body, QColor color, QSize size);
     ~Animation();
-    b2Body* body;
+    b2Body *body;
     QColor color;
     QSize size;
 };
@@ -29,13 +30,13 @@ public:
     void stopRainAnimation();
 
 protected:
-    void paintEvent(QPaintEvent* event) override;
+    void paintEvent(QPaintEvent *event) override;
 
 private:
     b2World world;
-    QTimer* timer;
-    QVector<Animation*> confettiList;
-    QVector<Animation*> rainList;
+    QTimer *timer;
+    QVector<Animation *> confettiList;
+    QVector<Animation *> rainList;
     double scale;
 
     void clearConfetti();

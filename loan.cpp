@@ -1,6 +1,8 @@
 #include "loan.h"
 
-Loan::Loan(double interestRate, double startingBalance, int creditRequirement, int termLength) : MoneyContainer() {
+Loan::Loan(double interestRate, double startingBalance, int creditRequirement, int termLength)
+    : MoneyContainer()
+{
     this->interestRate = interestRate;
     this->startingBalance = -startingBalance;
     this->balance = -startingBalance;
@@ -11,14 +13,14 @@ Loan::Loan(double interestRate, double startingBalance, int creditRequirement, i
     this->active = false;
 }
 
-void Loan::nextYear() {
+void Loan::nextYear()
+{
     if (active) {
         if (balance <= 0) {
             active = false;
             balance = startingBalance;
             yearsLeft = termLength;
-        }
-        else {
+        } else {
             balance = balance + balance * (1 + interestRate);
             yearsLeft -= 1;
             if (yearsLeft <= 0)
@@ -27,24 +29,33 @@ void Loan::nextYear() {
     }
 }
 
-double Loan::getInterestRate() {
+double Loan::getInterestRate()
+{
     return interestRate;
 }
 
-int Loan::getYearsLeft() {
+int Loan::getYearsLeft()
+{
     return yearsLeft;
 }
 
-bool Loan::getAvailable() {
+bool Loan::getAvailable()
+{
     return available;
 }
 
-void Loan::setAvailable(int creditScore) {
+bool Loan::getActive() {
+    return active;
+}
+
+void Loan::setAvailable(int creditScore)
+{
     if (balance > 0 && creditScore > creditRequirement)
         available = true;
 }
 
-bool Loan::activate() {
+bool Loan::activate()
+{
     if (available) {
         active = true;
         available = false;
@@ -53,7 +64,8 @@ bool Loan::activate() {
     return false;
 }
 
-bool Loan::deposit(double amount) {
+bool Loan::deposit(double amount)
+{
     if (balance + amount > 0 || !active)
         return false;
     return MoneyContainer::deposit(amount);

@@ -1,19 +1,12 @@
 #include "quizhandler.h"
 #include <cpptoml.h>
-#include <iostream>
-#include <stdexcept>
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
+#include <stdexcept>
 
-
-const std::array<std::string, 6> QuizHandler::quizFileNames = {
-    "cdQuiz",
-    "example",
-    "gamblingQuiz",
-    "loansQuiz",
-    "savingsQuiz",
-    "tutorialQuiz"
-};
+const std::array<std::string, 6> QuizHandler::quizFileNames
+    = {"cdQuiz", "example", "gamblingQuiz", "loansQuiz", "savingsQuiz", "tutorialQuiz"};
 
 QuizHandler::QuizHandler(QObject *parent)
     : QObject{parent}
@@ -34,17 +27,18 @@ void QuizHandler::createQuiz(QuizCategory category, uint length)
     scrambleVector(quizQuestions);
 }
 
-std::vector<Question> QuizHandler::getAllQuestionsFromCategory(QuizCategory category){
+std::vector<Question> QuizHandler::getAllQuestionsFromCategory(QuizCategory category)
+{
     std::vector<std::string> filePathsToParse;
     std::vector<Question> questionList;
-    if(category != QuizCategory::mixOfAll){
+    if (category != QuizCategory::mixOfAll) {
         filePathsToParse.push_back(getFilePath(category));
-    }else{
-        for(std::string quizName : quizFileNames){
+    } else {
+        for (std::string quizName : quizFileNames) {
             filePathsToParse.push_back(PROJECT_PATH "QuestionBanks/" + quizName + ".toml");
         }
     }
-    for(std::string& filepath : filePathsToParse){
+    for (std::string &filepath : filePathsToParse) {
         auto file = cpptoml::parse_file(filepath);
         auto questions = file->get_table_array("questions");
         for (auto &q : *questions) {
@@ -73,8 +67,6 @@ std::vector<Question> QuizHandler::getAllQuestionsFromCategory(QuizCategory cate
     }
     return questionList;
 }
-
-
 
 Question QuizHandler::getNextQuestion()
 {
@@ -123,8 +115,9 @@ uint QuizHandler::quizProgress()
     return (currentQuestion * 100) / quizLength;
 }
 
-std::string QuizHandler::getFilePath(QuizCategory category){
-    if(category == QuizCategory::mixOfAll){
+std::string QuizHandler::getFilePath(QuizCategory category)
+{
+    if (category == QuizCategory::mixOfAll) {
         throw std::runtime_error("This category does not have a file");
     }
     return PROJECT_PATH "QuestionBanks/" + quizFileNames[static_cast<uint>(category)] + ".toml";

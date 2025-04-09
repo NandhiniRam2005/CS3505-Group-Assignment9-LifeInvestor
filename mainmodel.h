@@ -2,10 +2,10 @@
 #define MAINMODEL_H
 
 #include <QObject>
+#include "cdaccount.h"
+#include "loan.h"
 #include "quizhandler.h"
 #include "savingsaccount.h"
-#include "loan.h"
-#include "cdaccount.h"
 #include "stock.h"
 
 class MainModel : public QObject
@@ -40,7 +40,7 @@ public slots:
 
     void nextYear();
 
-    void settingsOpened(QWidget* currentWidget);
+    void settingsOpened(QWidget *currentWidget);
 
     void sendPriceOfXStocks(int numberOfStocks, int stockNumber);
 
@@ -76,11 +76,17 @@ signals:
 
     void updateSavings(double newBalance, double interestRate);
 
-    void updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft);
+    void updateCD(int cdNumber,
+                  double newBalance,
+                  double interestRate,
+                  int termlength,
+                  double minimumDeposit,
+                  int yearsLeft);
 
     void updateStock(int stockNumber, double newBalance);
 
-    void updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
+    void updateLoan(
+        int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
 
     void sendPriceOfStocks(double price, int stockNumber);
 
@@ -88,13 +94,13 @@ signals:
 
     void numberOfStocksOwned(uint amount, int stockNumber);
 
-    void returnToGame(QWidget* currentWidget);
+    void returnToGame(QWidget *currentWidget);
 
     void updateBalance(double newBalance);
 
     void showErrorMessage(QString errorMessage);
 
-    void sendYearTotals(QVector<double> newTotals, QVector<double> changes);
+    void newYear(QVector<double> newTotals, QVector<double> changes);
 
 private:
     QuizHandler *quizHandler;
@@ -102,9 +108,9 @@ private:
     double currentMoney;
     int creditScore;
     int currentYear;
-    QWidget* currentWidget;
+    QWidget *currentWidget;
 
-    SavingsAccount* savingsAccount;
+    SavingsAccount *savingsAccount;
 
     QVector<CDAccount> cdAccounts;
 

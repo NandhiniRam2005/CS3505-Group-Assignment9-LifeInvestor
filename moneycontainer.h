@@ -18,7 +18,6 @@ public:
     virtual bool withdraw(double amount);
 
     virtual void nextYear();
-
 };
 
 #endif // MONEYCONTAINER_H

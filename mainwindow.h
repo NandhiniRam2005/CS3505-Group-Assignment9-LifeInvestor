@@ -4,10 +4,10 @@
 #include <QButtonGroup>
 #include <QMainWindow>
 #include <QSoundEffect>
-#include "mainmodel.h"
-#include "quizhandler.h"
 #include "animationview.h"
 #include "depositwindow.h"
+#include "mainmodel.h"
+#include "quizhandler.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -34,8 +34,8 @@ private:
     QVector<double> loanBalances;
     double savingsBalance;
     QVector<double> cdBalances;
-    AnimationView* animationView;
-    QSoundEffect* levelPassSound;
+    AnimationView *animationView;
+    QSoundEffect *levelPassSound;
     DepositWindow depositWindow;
 
 public slots:
@@ -47,11 +47,17 @@ public slots:
 
     void updateSavings(double newBalance, double interestRate);
 
-    void updateCD(int cdNumber, double newBalance, double interestRate, int termlength, double minimumDeposit, int yearsLeft);
+    void updateCD(int cdNumber,
+                  double newBalance,
+                  double interestRate,
+                  int termlength,
+                  double minimumDeposit,
+                  int yearsLeft);
 
     void updateStock(int stockNumber, double newBalance);
 
-    void updateLoan(int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
+    void updateLoan(
+        int loanNumber, double newBalance, double interestRate, bool available, int yearsLeft);
 
     void updateBalance(double newAmount);
 
@@ -69,13 +75,15 @@ public slots:
 
     void hidePhone();
 
-    void returnToGame(QWidget* currentWidget);
+    void returnToGame(QWidget *currentWidget);
 
     void showErrorMessage(QString errorMessage);
 
     void revalidateAllStockDisplays();
     void displayDepositPage();
     void readSavingsAmount();
+
+    void newYear(QVector<double> newTotals, QVector<double> changes);
 
 signals:
     void startQuizRequested();
@@ -107,10 +115,9 @@ signals:
 
     void revalidateSpecificStockDisplay(int amount, int stockNumber);
 
-    void settingsOpened(QWidget* currentWidget);
+    void settingsOpened(QWidget *currentWidget);
 
     void requestCDInfo(int cdNumber);
     void amountRead(int amount);
-
 };
 #endif // MAINWINDOW_H

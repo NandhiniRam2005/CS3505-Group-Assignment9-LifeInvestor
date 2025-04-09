@@ -12,7 +12,7 @@ struct Question
     std::string difficulty;
     int reward;
 };
-enum class QuizCategory{
+enum class QuizCategory {
     cds = 0,
     example = 1,
     gambling = 2,
@@ -99,19 +99,18 @@ private:
 
     static const std::array<std::string, 6> quizFileNames;
 
-
     /**
      * Scrambles the elements in a given vector into a random order.
      * @param vector the vector to scramble.
      */
-    template <typename T>
-    void scrambleVector(std::vector<T>& vector){
+    template<typename T>
+    void scrambleVector(std::vector<T> &vector)
+    {
         std::srand(std::time(nullptr));
-        for(size_t i = 0; i<vector.size(); i++){
+        for (size_t i = 0; i < vector.size(); i++) {
             size_t swapIndex = std::rand() % vector.size();
             std::swap(vector[i], vector[swapIndex]);
         }
-
     }
     /**
      * Returns the filepath to the the quiz file of a given Quiz Category
@@ -126,7 +125,6 @@ private:
      * @return A vector of all Questions in that category.
      */
     std::vector<Question> getAllQuestionsFromCategory(QuizCategory category);
-
 };
 
 #endif // QUIZHANDLER_H
