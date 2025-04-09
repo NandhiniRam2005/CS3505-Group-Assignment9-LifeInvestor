@@ -574,10 +574,14 @@ void MainWindow::readSavingsAmount()
     emit amountRead(updatedSavings);
 }
 
-void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes)
+void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
-    ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
+    // Set current year label and button
+    ui->currentYear->setText("YEAR " + QString::number(currentYear));
+    ui->nextYearButton->setText("End Year " + QString::number(currentYear));
 
+    // Set yearly report
+    ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
 }
 
 QString MainWindow::generateReportString(QVector<double> newTotals, QVector<double> changes) {

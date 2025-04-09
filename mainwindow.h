@@ -87,7 +87,7 @@ public slots:
     void displayDepositPage();
     void readSavingsAmount();
 
-    void newYear(QVector<double> newTotals, QVector<double> changes);
+    void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
 
 signals:
     void startQuizRequested();
