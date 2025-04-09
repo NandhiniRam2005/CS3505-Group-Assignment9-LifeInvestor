@@ -24,6 +24,7 @@
         <file>icons/cdApp.png</file>
         <file>icons/bank.png</file>
         <file>icons/mainBackground.png</file>
+        <file>icons/moneyBag.jpf</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

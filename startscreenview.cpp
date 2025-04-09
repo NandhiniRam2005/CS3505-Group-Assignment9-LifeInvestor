@@ -94,7 +94,7 @@ void StartScreenView::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    QPixmap moneyBagPixmap(":/icons/icons/test.png");  // Ensure this image is listed in your .qrc file
+    QPixmap moneyBagPixmap(":/icons/icons/moneyBag.jpf");  // Ensure this image is listed in your .qrc file
 
     if (moneyBagPixmap.isNull()) {
         // Fallback: draw a simple ellipse if pixmap not found
@@ -109,7 +109,7 @@ void StartScreenView::paintEvent(QPaintEvent *) {
         // For each money bag, apply the rotation corresponding to the physics body's angle.
         for (b2Body* bag : moneyBags) {
             b2Vec2 pos = bag->GetPosition();
-            float size = 2.0f * scale;
+            float size = 2.67f * scale;
             float angle = bag->GetAngle() * (180.0f / b2_pi); // Convert radians to degrees
 
             // Save the current painter state
