@@ -26,5 +26,6 @@
     </qresource>
     <qresource prefix="/gifs">
         <file>gifs/moneyStart.gif</file>
+        <file>gifs/bank.gif</file>
     </qresource>
 </RCC>

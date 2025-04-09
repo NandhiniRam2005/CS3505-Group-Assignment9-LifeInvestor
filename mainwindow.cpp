@@ -19,8 +19,17 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     animationView = new AnimationView(this);
     animationView->hide();
 
+    // Experimental gif stuff, not permanent
+    QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
+    ui->bankGif->setMovie(bankMovie);
+    bankMovie->setScaledSize(ui->bankGif->size());
+    connect(bankMovie, &QMovie::finished, [bankMovie]() {
+        bankMovie->setPaused(true); // Freeze on the last frame
+    });
+    bankMovie->start();
     QMovie *movie = new QMovie(":/gifs/gifs/moneyStart.gif");
     ui->startGif->setMovie(movie);
+    movie->setScaledSize(ui->startGif->size());
     movie->start();
 
     // connections for buttons to enable submitting
