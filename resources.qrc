@@ -26,6 +26,7 @@
         <file>icons/mainBackground.png</file>
         <file>icons/moneyBag.jpf</file>
         <file>icons/checking-account.png</file>
+        <file>icons/savings-account.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
