@@ -43,6 +43,9 @@ private:
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);
 
+    QuizCategory quizCategory;
+    uint quizLength;
+
 public slots:
     void startQuiz(QuizCategory category, uint questionAmount);
     void showQuizData(Question q);

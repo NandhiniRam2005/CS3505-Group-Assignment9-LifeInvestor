@@ -31,6 +31,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0,0}, {0,0,0,0,0,0}));
 
+    quizCategory = QuizCategory::example;
+    quizLength = 2;
+
     // Experimental gif stuff, not permanent
     QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
     ui->bankGif->setMovie(bankMovie);
@@ -78,8 +81,10 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(model, &MainModel::sendQuizInfo, this, &MainWindow::updateQuizInfo);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
+
+    //make a show quiz info, then make that button on page start quiz
     connect(ui->startQuizButton, &QPushButton::clicked, this, [this]() {
-        startQuiz(QuizCategory::mixOfAll, 3);
+        startQuiz(quizCategory, quizLength);
     });
     connect(this, &MainWindow::requestQuiz, model, &MainModel::quizRequested);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
@@ -593,9 +598,9 @@ void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRa
     }
 }
 void MainWindow::startQuiz(QuizCategory category, uint questionAmount){
-    ui->stackedWidget->setCurrentWidget(ui->Quiz);
-
     emit requestQuiz(category, questionAmount);
+    updateProgress(0);
+    ui->stackedWidget->setCurrentWidget(ui->Quiz);
 }
 
 
@@ -746,7 +751,9 @@ void MainWindow::displayDepositPage()
 
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
-    startQuiz(QuizCategory::mixOfAll, 4);
+    quizCategory = QuizCategory::mixOfAll;
+    quizLength = 5;
+    onStartClicked();
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
