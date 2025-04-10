@@ -37,7 +37,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     bankMovie->start();
 
-    QMovie *stocksMovie = new QMovie(":/gifs/gifs/stocks.gif");
+    QMovie *stocksMovie = new QMovie(":/gifs/gifs/bank.gif");
     ui->stockGif->setMovie(stocksMovie);
     stocksMovie->setScaledSize(ui->stockGif->size());
     connect(stocksMovie, &QMovie::finished, [stocksMovie]() {
