@@ -901,7 +901,7 @@ Total:Earnings: $5,000,000</string>
        <rect>
         <x>190</x>
         <y>130</y>
-        <width>401</width>
+        <width>571</width>
         <height>311</height>
        </rect>
       </property>
@@ -1227,7 +1227,7 @@ Total:Earnings: $5,000,000</string>
         <rect>
          <x>40</x>
          <y>5</y>
-         <width>21</width>
+         <width>16</width>
          <height>81</height>
         </rect>
        </property>
@@ -1240,7 +1240,7 @@ Total:Earnings: $5,000,000</string>
         <rect>
          <x>40</x>
          <y>77</y>
-         <width>21</width>
+         <width>16</width>
          <height>81</height>
         </rect>
        </property>
@@ -1253,7 +1253,7 @@ Total:Earnings: $5,000,000</string>
         <rect>
          <x>300</x>
          <y>5</y>
-         <width>21</width>
+         <width>16</width>
          <height>81</height>
         </rect>
        </property>
@@ -1266,7 +1266,7 @@ Total:Earnings: $5,000,000</string>
         <rect>
          <x>300</x>
          <y>77</y>
-         <width>21</width>
+         <width>16</width>
          <height>81</height>
         </rect>
        </property>
