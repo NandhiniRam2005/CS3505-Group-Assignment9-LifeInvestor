@@ -10,7 +10,7 @@ MainModel::MainModel(QObject *parent)
 
     currentMoney = 0;
     creditScore = 650;
-    currentYear = 0;
+    currentYear = 1;
 
     savingsAccount = new SavingsAccount(0.004);
 
@@ -189,6 +189,10 @@ void MainModel::activateLoan(int loanNumber)
 void MainModel::nextYear()
 {
     currentYear++;
+
+    if (currentYear == 25) {
+        endGame();
+    }
 
     QVector<double> initialTotals;
     QVector<double> newTotals;

@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -341,22 +341,22 @@ Total:Earnings: $5,000,000</string>
      <widget class="QLabel" name="currentYear">
       <property name="geometry">
        <rect>
-        <x>630</x>
+        <x>480</x>
         <y>-20</y>
-        <width>151</width>
+        <width>301</width>
         <height>111</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
+        <pointsize>20</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>YEAR 1</string>
+       <string>YEARS REMAINING: 24</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
+       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
      </widget>
      <widget class="Line" name="line">

@@ -675,7 +675,7 @@ void MainWindow::readSavingsAmount()
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
     // Set current year label and button
-    ui->currentYear->setText("YEAR " + QString::number(currentYear));
+    ui->currentYear->setText("YEARS REMAINING: " + QString::number(25 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
 
     // Set yearly report
