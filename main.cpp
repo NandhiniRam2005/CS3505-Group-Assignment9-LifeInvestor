@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     QApplication::setStyle("Fusion");
 
-    QApplication::setFont(QFont("Vivaldi", 14)); // Set default font
+    QApplication::setFont(QFont("Arial", 12)); // Set default font
 
     // Set custom colors (you can customize these)
     palette.setColor(QPalette::Window, QColor(43, 106, 116));  // Greenish background
