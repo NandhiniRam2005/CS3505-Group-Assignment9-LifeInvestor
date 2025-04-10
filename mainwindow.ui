@@ -2892,7 +2892,7 @@ border-radius: 5px;}</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="checkingTab">
        <attribute name="title">
@@ -2970,7 +2970,7 @@ border-radius: 5px;}</string>
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="checingWithdrawInput">
+       <widget class="QLineEdit" name="checkingWithdrawInput">
         <property name="geometry">
          <rect>
           <x>500</x>

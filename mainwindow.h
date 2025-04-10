@@ -53,6 +53,8 @@ public slots:
 
     void updateSavings(double newBalance, double interestRate);
 
+    void updateChecking(double newBalance);
+
     void updateCD(int cdNumber,
                   double newBalance,
                   double interestRate,
@@ -98,6 +100,8 @@ signals:
 
     void depositToSavings(double amount);
 
+    void depositToChecking(double amount);
+
     void depositToCD(double amount, int cdNumber);
 
     void buyStock(int numberOfShares, int stockNumber);
@@ -105,6 +109,8 @@ signals:
     void depositToLoan(double amount, int loanNumber);
 
     void withdrawFromSavings(double amount);
+
+    void withdrawFromChecking(double amount);
 
     void withdrawFromCD(int cdNumber);
 
@@ -127,6 +133,8 @@ signals:
     void requestCDInfo(int cdNumber);
     void savingsDepositAmountRead(int amount);
     void savingsWithdrawAmountRead(int amount);
+    void checkingDepositAmountRead(int amount);
+    void checkingWithdrawAmountRead(int amount);
 
     void requestLoanInfo(int loanNumber);
 };

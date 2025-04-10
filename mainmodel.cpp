@@ -14,6 +14,8 @@ MainModel::MainModel(QObject *parent)
 
     savingsAccount = new SavingsAccount(0.004);
 
+    checkingAccount = new MoneyContainer();
+
     cdAccounts.push_back(CDAccount(0.035, 2, 500));
     cdAccounts.push_back(CDAccount(0.040, 4, 750));
     cdAccounts.push_back(CDAccount(0.045, 5, 1000));
@@ -67,6 +69,16 @@ void MainModel::depositToSavings(double amount)
         currentMoney -= amount;
         emit updateBalance(currentMoney);
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    } else
+        emit showErrorMessage("Input amount cannot be deposited");
+}
+
+void MainModel::depositToChecking(double amount)
+{
+    if (amount <= currentMoney && checkingAccount->deposit(amount)) {
+        currentMoney -= amount;
+        emit updateBalance(currentMoney);
+        emit updateChecking(checkingAccount->getBalance());
     } else
         emit showErrorMessage("Input amount cannot be deposited");
 }
@@ -132,6 +144,16 @@ void MainModel::withdrawFromSavings(double amount)
         currentMoney += amount;
         emit updateBalance(currentMoney);
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+    } else
+        emit showErrorMessage("Input amount cannot be withdrawn");
+}
+
+void MainModel::withdrawFromChecking(double amount)
+{
+    if (checkingAccount->withdraw(amount)) {
+        currentMoney += amount;
+        emit updateBalance(currentMoney);
+        emit updateChecking(checkingAccount->getBalance());
     } else
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
@@ -206,6 +228,9 @@ void MainModel::nextYear()
     savingsAccount->nextYear();
     newTotals.push_back(savingsAccount->getBalance());
     emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
+
+    initialTotals.push_back(checkingAccount->getBalance());
+    newTotals.push_back(checkingAccount->getBalance());
 
     initialCounter = 0;
     newCounter = 0;

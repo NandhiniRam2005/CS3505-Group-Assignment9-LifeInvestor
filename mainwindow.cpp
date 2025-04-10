@@ -29,7 +29,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     animationView->setGeometry(this->rect());
     animationView->hide();
 
-    ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0}, {0,0,0,0,0}));
+    ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0,0}, {0,0,0,0,0,0}));
 
     // Experimental gif stuff, not permanent
     QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
@@ -126,6 +126,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // connections for depositing
     connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
+    connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
     connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
     connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
     connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
@@ -133,12 +134,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     // connections for withdrawing
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
+    connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
     connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
     connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
 
     // connections for updating MainWindow values
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
+    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
     connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
     connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
     connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
@@ -293,8 +296,23 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->savingsWithdrawInput->clear();
     });
 
+    connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
+
+    connect(ui->checkingDepositButton, &QPushButton::clicked, this, [this]() {
+        double updatedChecking = ui->checkingDepositInput->text().toDouble();
+        emit checkingDepositAmountRead(updatedChecking);
+        ui->checkingDepositInput->clear();
+    });
+    connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
+    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
+
+    connect(ui->checkingWithdrawButton, &QPushButton::clicked, this, [this]() {
+        double updatedChecking = ui->checkingWithdrawInput->text().toDouble();
+        emit checkingWithdrawAmountRead(updatedChecking);
+        ui->checkingWithdrawInput->clear();
+    });
+
     connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
-    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
 
     // Start button connections for pressed
     connect(ui->startButton, &QPushButton::pressed, [=]() {
@@ -482,6 +500,11 @@ void MainWindow::updateBalance(double newAmount)
 void MainWindow::updateSavings(double newBalance, double interestRate)
 {
     ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
+}
+
+void MainWindow::updateChecking(double newBalance)
+{
+    ui->checkingAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
 }
 
 void MainWindow::updateCD(int cdNumber,
@@ -739,33 +762,36 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
     reportString.append("<table>");
 
     // Add net worth to the string
-    reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
+    reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[5], 'f', 2));
     if (changes[4] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[4], 'f', 2));
+        reportString.append("<font color='green'> +$" + QString::number(changes[5], 'f', 2));
     else if (changes[4] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
+        reportString.append("<font color='red'> -$" + QString::number(-changes[5], 'f', 2));
+
+    // Add checking account
+    reportString.append("</font></td></tr><tr><td><b>Checking Account: </b></td><td> $" + QString::number(newTotals[1], 'f', 2));
 
     // Add savings account
-    reportString.append("</font></td></tr><tr><td><b>Savings Account: </b></td><td> $" + QString::number(newTotals[0], 'f', 2));
+    reportString.append("</td></tr><tr><td><b>Savings Account: </b></td><td> $" + QString::number(newTotals[0], 'f', 2));
     if (changes[0] > 0)
         reportString.append("<font color='green'>+$" + QString::number(changes[0], 'f', 2));
 
     // Add cd accounts
-    reportString.append("</font></td></tr><tr><td><b>CDs Total: </b></td><td> $" + QString::number(newTotals[1], 'f', 2));
-    if (changes[1] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[1], 'f', 2));
-
-    // Add stocks
-    reportString.append("</font></td></tr><tr><td><b>Stocks Total: </b></td><td> $" + QString::number(newTotals[2], 'f', 2));
+    reportString.append("</font></td></tr><tr><td><b>CDs Total: </b></td><td> $" + QString::number(newTotals[2], 'f', 2));
     if (changes[2] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[2], 'f', 2));
-    else if (changes[2] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[2], 'f', 2));
+
+    // Add stocks
+    reportString.append("</font></td></tr><tr><td><b>Stocks Total: </b></td><td> $" + QString::number(newTotals[3], 'f', 2));
+    if (changes[3] > 0)
+        reportString.append("<font color='green'> +$" + QString::number(changes[3], 'f', 2));
+    else if (changes[3] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
 
     // Add loans
-    reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[3], 'f', 2));
-    if (changes[3] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
+    reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
+    if (changes[4] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
     reportString.append("</font></td></tr>");
 
     return reportString;

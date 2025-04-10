@@ -26,6 +26,8 @@ public slots:
 
     void depositToSavings(double amount);
 
+    void depositToChecking(double amount);
+
     void depositToCD(double amount, int cdNumber);
 
     void buyStock(int numberOfShares, int stockNumber);
@@ -33,6 +35,8 @@ public slots:
     void depositToLoan(double amount, int loanNumber);
 
     void withdrawFromSavings(double amount);
+
+    void withdrawFromChecking(double amount);
 
     void withdrawFromCD(int cdNumber);
 
@@ -82,6 +86,8 @@ signals:
 
     void updateSavings(double newBalance, double interestRate);
 
+    void updateChecking(double newBalance);
+
     void updateCD(int cdNumber,
                   double newBalance,
                   double interestRate,
@@ -119,6 +125,8 @@ private:
     QWidget *currentWidget;
 
     SavingsAccount *savingsAccount;
+
+    MoneyContainer *checkingAccount;
 
     QVector<CDAccount> cdAccounts;
 
