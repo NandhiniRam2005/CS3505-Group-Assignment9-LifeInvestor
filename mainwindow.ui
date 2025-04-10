@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -255,6 +255,22 @@ V</string>
        <string/>
       </property>
      </widget>
+     <widget class="QLabel" name="pigGif">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>30</y>
+        <width>151</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>titleBackground</zorder>
      <zorder>littlefloorshadow</zorder>
      <zorder>wallet</zorder>
@@ -263,6 +279,7 @@ V</string>
      <zorder>littlefloorshadow_2</zorder>
      <zorder>startButton</zorder>
      <zorder>howToPlay</zorder>
+     <zorder>pigGif</zorder>
     </widget>
     <widget class="QWidget" name="quizEnd">
      <widget class="QLabel" name="endLabel">

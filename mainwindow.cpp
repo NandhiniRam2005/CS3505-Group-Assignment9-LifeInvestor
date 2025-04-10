@@ -45,6 +45,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     stocksMovie->start();
 
+    QMovie *pigMovie = new QMovie(":/gifs/gifs/piggy.gif");
+    ui->pigGif->setMovie(pigMovie);
+    pigMovie->setScaledSize(ui->pigGif->size());
+    connect(pigMovie, &QMovie::finished, [pigMovie]() {
+        pigMovie->setPaused(true); // Freeze on the last frame
+    });
+    pigMovie->start();
+
 
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);

@@ -34,5 +34,6 @@
         <file>gifs/moneyStart.gif</file>
         <file>gifs/bank.gif</file>
         <file>gifs/stocks.gif</file>
+        <file>gifs/piggy.gif</file>
     </qresource>
 </RCC>
