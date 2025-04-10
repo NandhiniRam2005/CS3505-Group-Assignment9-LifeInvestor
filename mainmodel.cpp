@@ -194,6 +194,7 @@ void MainModel::nextYear()
     QVector<double> newTotals;
     double initialCounter;
     double newCounter;
+    double tempCounter;
 
     initialTotals.push_back(savingsAccount->getBalance());
     savingsAccount->nextYear();
@@ -231,9 +232,12 @@ void MainModel::nextYear()
     newCounter = 0;
     for (int i = 0; i < loans.count(); i++) {
         if (loans[i].getActive()) {
-            initialCounter += loans[i].getBalance();
+            tempCounter = loans[i].getBalance();
             loans[i].nextYear();
-            newCounter += loans[i].getBalance();
+            if (loans[i].getActive()) {
+                newCounter += tempCounter;
+                newCounter += loans[i].getBalance();
+            }
         }
         loans[i].setAvailable(creditScore);
         if (loans[i].getYearsLeft() < 0)
