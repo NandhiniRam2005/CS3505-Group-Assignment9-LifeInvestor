@@ -1026,6 +1026,7 @@ Total:Earnings: $5,000,000</string>
       </property>
      </widget>
      <zorder>mainBackground</zorder>
+     <zorder>yearlyReportLabel</zorder>
      <zorder>line_3</zorder>
      <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
@@ -1034,7 +1035,6 @@ Total:Earnings: $5,000,000</string>
      <zorder>openPhoneButton</zorder>
      <zorder>Apps</zorder>
      <zorder>nextYearButton</zorder>
-     <zorder>yearlyReportLabel</zorder>
      <zorder>line_14</zorder>
      <zorder>label</zorder>
      <zorder>line_15</zorder>
