@@ -30,9 +30,9 @@ MainModel::MainModel(QObject *parent)
     stocks.push_back(Stock(500, 0.3, 0.9));
 }
 
-void MainModel::requestQuiz()
+void MainModel::quizRequested(QuizCategory category, uint length)
 {
-    this->quizHandler->createQuiz(QuizCategory::example, 2);
+    this->quizHandler->createQuiz(category, length);
     getNextQuestion();
     getQuizInfo();
 }

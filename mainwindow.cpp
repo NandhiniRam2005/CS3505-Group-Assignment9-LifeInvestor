@@ -78,12 +78,10 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(model, &MainModel::sendQuizInfo, this, &MainWindow::updateQuizInfo);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
-    connect(ui->startQuizButton, &QPushButton::clicked, this, [&]()->void{
-        ui->stackedWidget->setCurrentWidget(ui->Quiz);
+    connect(ui->startQuizButton, &QPushButton::clicked, this, [this]() {
+        startQuiz(QuizCategory::mixOfAll, 3);
     });
-    connect(ui->startQuizButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
-    connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
-
+    connect(this, &MainWindow::requestQuiz, model, &MainModel::quizRequested);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -594,6 +592,12 @@ void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRa
         ui->loan2AvailabilityStatus->setText("Status: " + status);
     }
 }
+void MainWindow::startQuiz(QuizCategory category, uint questionAmount){
+    ui->stackedWidget->setCurrentWidget(ui->Quiz);
+
+    emit requestQuiz(category, questionAmount);
+}
+
 
 void MainWindow::showErrorMessage(QString errorMessage) {
     QMessageBox::warning(this, "Warning", errorMessage);
@@ -742,6 +746,7 @@ void MainWindow::displayDepositPage()
 
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
+    startQuiz(QuizCategory::mixOfAll, 4);
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
