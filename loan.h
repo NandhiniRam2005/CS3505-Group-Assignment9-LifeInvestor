@@ -2,6 +2,7 @@
 #define LOAN_H
 
 #include "moneycontainer.h"
+#include <QDebug>
 
 class Loan : public MoneyContainer
 {
