@@ -56,6 +56,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     pigMovie->start();
 
+    // Sounds
+    levelPassSound = new QSoundEffect(this);
+    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+    levelFailSound = new QSoundEffect(this);
+    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
+    depositSound = new QSoundEffect(this);
+    depositSound->setSource(QUrl("qrc:/sounds/sounds/cash-register.wav"));
+
     //Experimental Music stuff
     QMediaPlayer *player = new QMediaPlayer;
     QAudioOutput *audioOutput = new QAudioOutput;
@@ -286,6 +294,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         double updatedSavings = ui->savingsDepositInput->text().toDouble();
         emit savingsDepositAmountRead(updatedSavings);
         ui->savingsDepositInput->clear();
+        depositSound->play();
+
     });
     connect(this, &MainWindow::savingsDepositAmountRead, model, &MainModel::depositToSavings);
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
@@ -302,6 +312,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         double updatedChecking = ui->checkingDepositInput->text().toDouble();
         emit checkingDepositAmountRead(updatedChecking);
         ui->checkingDepositInput->clear();
+        depositSound->play();
     });
     connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
     connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
@@ -320,11 +331,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->startButton->setIconSize(QSize(200, 250));
     });
 
-    // Sounds
-    levelPassSound = new QSoundEffect(this);
-    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
-    levelFailSound = new QSoundEffect(this);
-    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
+
 
     //App 4 - LOANS connecytions
     connect(ui->App4, &QPushButton::clicked, this, [this]() {
