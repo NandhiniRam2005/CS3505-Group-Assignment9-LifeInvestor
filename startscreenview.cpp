@@ -23,7 +23,7 @@ StartScreenView::~StartScreenView() {
 
 void StartScreenView::initializePhysics() {
     cleanupPhysics();
-    world = new b2World(b2Vec2(0.0f, 30.8f));
+    world = new b2World(b2Vec2(0.0f, 100.8f));
     createBoundaries();
     createMoneyBags();
     physicsTimer->start(16);
@@ -94,7 +94,7 @@ void StartScreenView::paintEvent(QPaintEvent *) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    QPixmap moneyBagPixmap(":/icons/icons/moneyBag.jpf");  // Ensure this image is listed in your .qrc file
+    QPixmap moneyBagPixmap(":/icons/icons/moneyBag.png");
 
     if (moneyBagPixmap.isNull()) {
         // Fallback: draw a simple ellipse if pixmap not found
