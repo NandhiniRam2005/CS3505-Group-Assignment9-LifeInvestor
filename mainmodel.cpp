@@ -20,6 +20,8 @@ MainModel::MainModel(QObject *parent)
 
     loans.push_back(Loan(0.36, 10000, 0, 5));
     loans.push_back(Loan(0.067, 10000, 650, 5));
+    loans[0].setAvailable(creditScore);
+    loans[1].setAvailable(creditScore);
 
     stocks.push_back(Stock(20, 0.5, 1.2));
     stocks.push_back(Stock(100, 0.1, 1.1));

@@ -1,4 +1,5 @@
 #include "loan.h"
+#include "loan.h"
 
 Loan::Loan(double interestRate, double startingBalance, int creditRequirement, int termLength)
     : MoneyContainer()
@@ -16,7 +17,7 @@ Loan::Loan(double interestRate, double startingBalance, int creditRequirement, i
 void Loan::nextYear()
 {
     if (active) {
-        if (balance <= 0) {
+        if (balance >= 0) {
             active = false;
             balance = startingBalance;
             yearsLeft = termLength;
@@ -51,7 +52,7 @@ bool Loan::getActive()
 
 void Loan::setAvailable(int creditScore)
 {
-    if (balance > 0 && creditScore > creditRequirement)
+    if (balance < 0 && creditScore > creditRequirement)
         available = true;
 }
 

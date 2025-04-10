@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -3032,7 +3032,7 @@ border-radius: 5px;}</string>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="activateLoan1Button">
+     <widget class="QPushButton" name="payLoan1Button">
       <property name="geometry">
        <rect>
         <x>79</x>
@@ -3045,7 +3045,7 @@ border-radius: 5px;}</string>
        <string>Make Payment</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="activateLoan2Button">
+     <widget class="QPushButton" name="payLoan2Button">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -3058,7 +3058,7 @@ border-radius: 5px;}</string>
        <string>Make Payment</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="payLoan1Button">
+     <widget class="QPushButton" name="activateLoan1Button">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -3071,7 +3071,7 @@ border-radius: 5px;}</string>
        <string>Activate Loan</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="payLoan2Button">
+     <widget class="QPushButton" name="activateLoan2Button">
       <property name="geometry">
        <rect>
         <x>500</x>
