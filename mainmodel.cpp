@@ -190,10 +190,6 @@ void MainModel::nextYear()
 {
     currentYear++;
 
-    if (currentYear == 15) {
-        endGame();
-    }
-
     QVector<double> initialTotals;
     QVector<double> newTotals;
     double initialCounter;
@@ -243,9 +239,9 @@ void MainModel::nextYear()
                 newCounter += loans[i].getBalance();
             }
         }
-        loans[i].setAvailable(creditScore);
         if (loans[i].getYearsLeft() < 0)
             endGame();
+        loans[i].setAvailable(creditScore);
         emit updateLoan(i,
                         loans[i].getBalance(),
                         loans[i].getInterestRate(),
@@ -266,6 +262,10 @@ void MainModel::nextYear()
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
     emit newYear(newTotals, initialTotals, currentYear);
+
+    if (currentYear == 16) {
+        endGame();
+    }
 }
 
 void MainModel::settingsOpened(QWidget *currentWidget)
