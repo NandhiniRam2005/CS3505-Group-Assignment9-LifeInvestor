@@ -781,9 +781,9 @@ void MainWindow::gameEnded() {
 QString MainWindow::generateReportString(QVector<double> newTotals, QVector<double> changes) {
     QString reportString;
 
-    reportString.append("<p style='line-height:1.5'><font size='4'><u>Yearly Report: </u></font>");
+    reportString.append("<p style='line-height:1.4'><font size='4'><u>Yearly Report: </u></font>");
 
-    reportString.append("<table>");
+    reportString.append("<table cellpadding='2'>");
 
     // Add net worth to the string
     if (newTotals[5] < 0)
@@ -796,7 +796,7 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
         reportString.append("<font color='red'> -$" + QString::number(-changes[5], 'f', 2));
 
     // Add checking account
-    reportString.append("</font></td></tr><tr><td>Checking Account:</td><td> $" + QString::number(newTotals[1], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>Checking Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> $" + QString::number(newTotals[1], 'f', 2));
 
     // Add savings account
     reportString.append("</td></tr><tr><td>Savings Account:</td><td> $" + QString::number(newTotals[0], 'f', 2));
