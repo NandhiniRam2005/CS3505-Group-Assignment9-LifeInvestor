@@ -1178,14 +1178,17 @@ Total:Earnings: $5,000,000</string>
       <property name="text">
        <string>TextLabel</string>
       </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QGroupBox" name="choicesLayout">
       <property name="geometry">
        <rect>
         <x>120</x>
-        <y>209</y>
+        <y>179</y>
         <width>551</width>
-        <height>131</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -1193,7 +1196,7 @@ Total:Earnings: $5,000,000</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QGroupBox {
-    background-color: #2b6a74;
+    background-color: #5f9098;
     border: 1px solid white;
     border-radius: 15px;
 }</string>
@@ -1205,52 +1208,116 @@ Total:Earnings: $5,000,000</string>
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>40</y>
-         <width>191</width>
-         <height>20</height>
+         <y>0</y>
+         <width>21</width>
+         <height>81</height>
         </rect>
        </property>
        <property name="text">
-        <string>RadioButton</string>
+        <string/>
        </property>
       </widget>
       <widget class="QRadioButton" name="choice2">
        <property name="geometry">
         <rect>
          <x>40</x>
-         <y>80</y>
-         <width>251</width>
-         <height>20</height>
+         <y>70</y>
+         <width>21</width>
+         <height>81</height>
         </rect>
        </property>
        <property name="text">
-        <string>RadioButton</string>
+        <string/>
        </property>
       </widget>
       <widget class="QRadioButton" name="choice3">
        <property name="geometry">
         <rect>
-         <x>310</x>
-         <y>40</y>
-         <width>191</width>
-         <height>20</height>
+         <x>300</x>
+         <y>0</y>
+         <width>21</width>
+         <height>81</height>
         </rect>
        </property>
        <property name="text">
-        <string>RadioButton</string>
+        <string/>
        </property>
       </widget>
       <widget class="QRadioButton" name="choice4">
        <property name="geometry">
         <rect>
-         <x>310</x>
-         <y>80</y>
-         <width>221</width>
-         <height>20</height>
+         <x>300</x>
+         <y>70</y>
+         <width>21</width>
+         <height>81</height>
         </rect>
        </property>
        <property name="text">
-        <string>RadioButton</string>
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="choice1Label">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>0</y>
+         <width>221</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="choice2Label">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>70</y>
+         <width>221</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="choice4Label">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>70</y>
+         <width>221</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="choice3Label">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>0</y>
+         <width>221</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>
@@ -1300,6 +1367,9 @@ Total:Earnings: $5,000,000</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="resultLabel">
@@ -3433,15 +3503,16 @@ QTabBar::tab:!selected {
     <property name="font">
      <font>
       <family>Proxima Nova</family>
-      <pointsize>20</pointsize>
+      <pointsize>-1</pointsize>
       <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel {
-    color: #4ea912;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 30px;
 }</string>
     </property>
     <property name="text">

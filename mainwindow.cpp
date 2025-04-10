@@ -396,10 +396,10 @@ void MainWindow::showQuizData(Question question)
 
     ui->labelQuestion->setText(QString::fromStdString(question.text));
 
-    ui->choice1->setText(QString::fromStdString(question.choices[0]));
-    ui->choice2->setText(QString::fromStdString(question.choices[1]));
-    ui->choice3->setText(QString::fromStdString(question.choices[2]));
-    ui->choice4->setText(QString::fromStdString(question.choices[3]));
+    ui->choice1Label->setText(QString::fromStdString(question.choices[0]));
+    ui->choice2Label->setText(QString::fromStdString(question.choices[1]));
+    ui->choice3Label->setText(QString::fromStdString(question.choices[2]));
+    ui->choice4Label->setText(QString::fromStdString(question.choices[3]));
 
     ui->labelReward->setText("Reward: " + QString::number(question.reward));
 }
