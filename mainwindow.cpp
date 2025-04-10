@@ -1,3 +1,4 @@
+#include <QMessageBox>
 #include "mainwindow.h"
 #include <QMovie>
 #include "iostream"
@@ -261,14 +262,25 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->stackedWidget->setCurrentWidget(ui->Bank);
     });
 
-    // connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-
     connect(ui->bankBackButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
     });
 
-    connect(ui->savingsDepositButton, &QPushButton::clicked, this, &MainWindow::readSavingsAmount);
-    connect(this, &MainWindow::amountRead, model, &MainModel::depositToSavings);
+    connect(ui->savingsDepositButton, &QPushButton::clicked, this, [this]() {
+        double updatedSavings = ui->savingsDepositInput->text().toDouble();
+        emit savingsDepositAmountRead(updatedSavings);
+        ui->savingsDepositInput->clear();
+    });
+    connect(this, &MainWindow::savingsDepositAmountRead, model, &MainModel::depositToSavings);
+    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
+
+    connect(ui->savingsWithdrawButton, &QPushButton::clicked, this, [this]() {
+        double updatedSavings = ui->savingsWithdrawInput->text().toDouble();
+        emit savingsWithdrawAmountRead(updatedSavings);
+        ui->savingsWithdrawInput->clear();
+    });
+
+    connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
 
     // Start button connections for pressed
@@ -547,7 +559,9 @@ void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRa
     }
 }
 
-void MainWindow::showErrorMessage(QString errorMessage) {}
+void MainWindow::showErrorMessage(QString errorMessage) {
+    QMessageBox::warning(this, "Warning", errorMessage);
+}
 
 void MainWindow::enableSubmitButton(bool checked)
 {
@@ -688,11 +702,7 @@ void MainWindow::displayDepositPage()
     depositWindow.show();
 }
 
-void MainWindow::readSavingsAmount()
-{
-    double updatedSavings = ui->savingsDepositInput->text().toDouble();
-    emit amountRead(updatedSavings);
-}
+
 
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {

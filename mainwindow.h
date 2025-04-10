@@ -87,7 +87,6 @@ public slots:
 
     void revalidateAllStockDisplays();
     void displayDepositPage();
-    void readSavingsAmount();
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
 
@@ -126,7 +125,8 @@ signals:
     void settingsOpened(QWidget *currentWidget);
 
     void requestCDInfo(int cdNumber);
-    void amountRead(int amount);
+    void savingsDepositAmountRead(int amount);
+    void savingsWithdrawAmountRead(int amount);
 
     void requestLoanInfo(int loanNumber);
 };
