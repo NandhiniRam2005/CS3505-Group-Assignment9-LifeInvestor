@@ -90,6 +90,8 @@ public slots:
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
 
+    void gameEnded();
+
 signals:
     void startQuizRequested();
     void sendAnswer(std::string answer);

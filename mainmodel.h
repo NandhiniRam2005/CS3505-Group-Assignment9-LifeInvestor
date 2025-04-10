@@ -104,6 +104,8 @@ signals:
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
 
+    void gameEnded();
+
 private:
     QuizHandler *quizHandler;
 

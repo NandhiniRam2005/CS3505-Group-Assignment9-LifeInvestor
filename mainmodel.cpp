@@ -190,7 +190,7 @@ void MainModel::nextYear()
 {
     currentYear++;
 
-    if (currentYear == 25) {
+    if (currentYear == 15) {
         endGame();
     }
 
@@ -294,4 +294,6 @@ void MainModel::handleLoanInfoRequest(int loanNumber) {
                     loan.getYearsLeft());
 }
 
-void MainModel ::endGame() {}
+void MainModel ::endGame() {
+    emit gameEnded();
+}

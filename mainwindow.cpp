@@ -100,6 +100,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
     connect(model, &MainModel::newYear, this, &MainWindow::newYear);
 
+    // connections for game ended
+    connect(model, &MainModel::gameEnded, this, &MainWindow::gameEnded);
+
     // connections for depositing
     connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
     connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
@@ -675,11 +678,15 @@ void MainWindow::readSavingsAmount()
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
     // Set current year label and button
-    ui->currentYear->setText("YEARS REMAINING: " + QString::number(25 - currentYear));
+    ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
 
     // Set yearly report
     ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
+}
+
+void MainWindow::gameEnded() {
+    ui->stackedWidget->setCurrentWidget(ui->gameEnd);
 }
 
 QString MainWindow::generateReportString(QVector<double> newTotals, QVector<double> changes) {
