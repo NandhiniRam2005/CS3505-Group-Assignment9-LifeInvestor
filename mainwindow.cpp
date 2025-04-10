@@ -461,38 +461,46 @@ void MainWindow::updateCD(int cdNumber,
 void MainWindow::updateStock(int stockNumber, double newBalance) {}
 
 void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate, bool available, bool active, int yearsLeft){
-    QString balanceText = QString::number(newBalance, 'f', 2);
+    QString balanceText = QString::number(-newBalance, 'f', 2);
     QString status;
 
     if(loanNumber == 0) {
-        ui->loan1Balance->setText("Balance: $" + balanceText);
         ui->loan1InterestRate->setText("Interest: " + QString::number(interestRate*100, 'f', 1) + "%");
-        ui->loan1YearsLeft->setText("Years Left: " + QString::number(yearsLeft));
 
         if(available && !active) {
+            ui->loan1Balance->setText("Loan Amount: $" + balanceText);
+            ui->loan1YearsLeft->setText("Term Length: " + QString::number(yearsLeft));
             ui->activateLoan1Button->setEnabled(true);
             status = "Available";
         } else if(active) {
+            ui->loan1Balance->setText("Outstanding Balance: $" + balanceText);
+            ui->loan1YearsLeft->setText("Years Left: " + QString::number(yearsLeft));
             status = "Active";
             ui->activateLoan1Button->setEnabled(false);
         } else {
+            ui->loan1Balance->setText("Loan Amount: $" + balanceText);
+            ui->loan1YearsLeft->setText("Term Length: " + QString::number(yearsLeft));
             status = "Unavailable";
             ui->activateLoan1Button->setEnabled(false);
         }
         ui->loan1AvailabilityStatus->setText("Status: " + status);
     }
     else {
-        ui->loan2Balance->setText("Balance: $" + balanceText);
         ui->loan2InterestRate->setText("Interest: " + QString::number(interestRate*100, 'f', 1) + "%");
-        ui->loan2YearsLeft->setText("Years Left: " + QString::number(yearsLeft));
 
         if(available && !active) {
+            ui->loan2Balance->setText("Loan Amount: $" + balanceText);
+            ui->loan2YearsLeft->setText("Term Length: " + QString::number(yearsLeft));
             ui->activateLoan2Button->setEnabled(true);
             status = "Available";
         } else if(active) {
+            ui->loan2Balance->setText("Outstanding Balance: $" + balanceText);
+            ui->loan2YearsLeft->setText("Years Left: " + QString::number(yearsLeft));
             status = "Active";
             ui->activateLoan2Button->setEnabled(false);
         } else {
+            ui->loan2Balance->setText("Loan Amount: $" + balanceText);
+            ui->loan2YearsLeft->setText("Term Length: " + QString::number(yearsLeft));
             status = "Unavailable";
             ui->activateLoan2Button->setEnabled(false);
         }

@@ -9,7 +9,7 @@ MainModel::MainModel(QObject *parent)
     quizHandler = new QuizHandler(this);
 
     currentMoney = 0;
-    creditScore = 750;
+    creditScore = 650;
     currentYear = 0;
 
     savingsAccount = new SavingsAccount(0.004);
@@ -19,7 +19,7 @@ MainModel::MainModel(QObject *parent)
     cdAccounts.push_back(CDAccount(0.045, 5, 1000));
 
     loans.push_back(Loan(0.36, 10000, 0, 5));
-    loans.push_back(Loan(0.067, 10000, 650, 5));
+    loans.push_back(Loan(0.067, 10000, 650, 7));
     loans[0].setAvailable(creditScore);
     loans[1].setAvailable(creditScore);
 
