@@ -2835,9 +2835,9 @@ border-radius: 5px;}</string>
      <widget class="QPushButton" name="bankBackButton">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>470</y>
-        <width>121</width>
+        <x>670</x>
+        <y>70</y>
+        <width>101</width>
         <height>41</height>
        </rect>
       </property>
@@ -2885,10 +2885,10 @@ border-radius: 5px;}</string>
      <widget class="QTabWidget" name="tabWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>771</width>
-        <height>421</height>
+        <x>30</x>
+        <y>130</y>
+        <width>741</width>
+        <height>371</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -3083,7 +3083,41 @@ border-radius: 5px;}</string>
          </rect>
         </property>
        </widget>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>80</y>
+          <width>181</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/icons/icons/savings-account.png</pixmap>
+        </property>
+       </widget>
       </widget>
+     </widget>
+     <widget class="QLabel" name="label_31">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>70</y>
+        <width>301</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Welcome to Heisler's Bank</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Loans">
