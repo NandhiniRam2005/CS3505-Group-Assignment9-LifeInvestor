@@ -285,11 +285,11 @@ void MainModel::nextYear()
 
     // Calculate net worths
     initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2]
-                            + initialTotals[3]);
-    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]);
+                            + initialTotals[3]+ initialTotals[4]);
+    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]+ initialTotals[4]);
 
     // Calculate changes between years
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 6; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
     emit newYear(newTotals, initialTotals, currentYear);

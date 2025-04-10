@@ -762,10 +762,13 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
     reportString.append("<table>");
 
     // Add net worth to the string
-    reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[5], 'f', 2));
-    if (changes[4] > 0)
+    if (newTotals[5] < 0)
+        reportString.append("<tr><td><b>Net Worth:   </b></td><td> -$" + QString::number(-newTotals[5], 'f', 2));
+    else
+        reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[5], 'f', 2));
+    if (changes[5] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[5], 'f', 2));
-    else if (changes[4] < 0)
+    else if (changes[5] < 0)
         reportString.append("<font color='red'> -$" + QString::number(-changes[5], 'f', 2));
 
     // Add checking account
@@ -789,7 +792,10 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
         reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
 
     // Add loans
-    reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
+    if (newTotals[4] < 0)
+        reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> -$" + QString::number(-newTotals[4], 'f', 2));
+    else
+        reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
     if (changes[4] < 0)
         reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
     reportString.append("</font></td></tr>");

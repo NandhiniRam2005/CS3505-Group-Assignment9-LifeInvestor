@@ -52,7 +52,7 @@ bool Loan::getActive()
 
 void Loan::setAvailable(int creditScore)
 {
-    if (balance < 0 && creditScore > creditRequirement)
+    if (!active && creditScore > creditRequirement)
         available = true;
 }
 
@@ -68,7 +68,13 @@ bool Loan::activate()
 
 bool Loan::deposit(double amount)
 {
-    if (balance + amount > 0 || !active)
+    if (!(balance + amount <= 0) || !active)
         return false;
-    return MoneyContainer::deposit(amount);
+    bool success = MoneyContainer::deposit(amount);
+    if (balance > -0.01) {
+        active = false;
+        balance = startingBalance;
+        yearsLeft = termLength;
+    }
+    return success;
 }
