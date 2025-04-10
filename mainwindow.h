@@ -125,6 +125,7 @@ signals:
 
     void requestCDInfo(int cdNumber);
     void savingsDepositAmountRead(int amount);
+    void savingsWithdrawAmountRead(int amount);
 
     void requestLoanInfo(int loanNumber);
 };

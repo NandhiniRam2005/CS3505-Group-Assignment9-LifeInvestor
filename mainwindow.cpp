@@ -267,6 +267,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(this, &MainWindow::savingsDepositAmountRead, model, &MainModel::depositToSavings);
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
 
+    connect(ui->savingsWithdrawButton, &QPushButton::clicked, this, [this]() {
+        double updatedSavings = ui->savingsWithdrawInput->text().toDouble();
+        emit savingsWithdrawAmountRead(updatedSavings);
+        ui->savingsWithdrawInput->clear();
+    });
+
+    connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
+    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
+
     // Start button connections for pressed
     connect(ui->startButton, &QPushButton::pressed, [=]() {
         ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
