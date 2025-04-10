@@ -72,7 +72,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     QAudioOutput *audioOutput = new QAudioOutput;
 
     player->setAudioOutput(audioOutput);
-    audioOutput->setVolume(0.5);
+    audioOutput->setVolume(0.25);
 
     player->setSource(QUrl("qrc:/sounds/sounds/ElvisHerod-Clutterbuck.mp3"));
     player->setLoops(QMediaPlayer::Infinite);
