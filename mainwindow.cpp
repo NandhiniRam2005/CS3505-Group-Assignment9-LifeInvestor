@@ -61,8 +61,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->choice4, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
 
     connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
+    connect(model, &MainModel::sendQuizInfo, this, &MainWindow::updateQuizInfo);
+
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
+    connect(ui->startQuizButton, &QPushButton::clicked, this, [&]()->void{
+        ui->stackedWidget->setCurrentWidget(ui->Quiz);
+    });
+    connect(ui->startQuizButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
     connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
+
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -344,6 +351,18 @@ void MainWindow::showQuizData(Question question)
     ui->labelReward->setText("Reward: " + QString::number(question.reward));
 }
 
+void MainWindow::updateQuizInfo(QuizInfo qI)
+{
+    qDebug() << qI.info << qI.category << qI.imageName;
+    ui->categoryLabel->setText(QString::fromStdString(qI.category));
+    ui->categoryLabel->adjustSize();
+
+    ui->categoryInfo->setText(QString::fromStdString(qI.info));
+    QPixmap pixmap(":///icons/icons/" + QString::fromStdString(qI.imageName));
+    ui->infoImage->setPixmap(pixmap);
+
+}
+
 void MainWindow::displayPhone()
 {
     ui->openPhoneButton->hide();
@@ -385,7 +404,7 @@ void MainWindow::onStartClicked()
 {
     hidePhone();
     ui->balance->show();
-    ui->stackedWidget->setCurrentWidget(ui->Quiz);
+    ui->stackedWidget->setCurrentWidget(ui->quizInfo);
 }
 
 void MainWindow::submitHelper()

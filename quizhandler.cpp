@@ -24,7 +24,18 @@ void QuizHandler::createQuiz(QuizCategory category, uint length)
     quizQuestions.clear();
     currentQuestion = 0;
     quizQuestions = getAllQuestionsFromCategory(category);
+    information = generateQuizInfo(category);
     scrambleVector(quizQuestions);
+}
+
+QuizInfo QuizHandler::generateQuizInfo(QuizCategory category){
+    auto file = cpptoml::parse_file(getFilePath(category));
+    QuizInfo generatedInformation;
+    generatedInformation.category = *file->get_as<std::string>("category");
+    generatedInformation.imageName = *file->get_as<std::string>("image");
+    generatedInformation.info = *file->get_as<std::string>("categoryInfo");
+
+    return generatedInformation;
 }
 
 std::vector<Question> QuizHandler::getAllQuestionsFromCategory(QuizCategory category)
@@ -75,6 +86,10 @@ Question QuizHandler::getNextQuestion()
     }
     currentQuestion++;
     return quizQuestions.at(currentQuestion - 1);
+}
+
+QuizInfo QuizHandler::getQuizInfo(){
+    return information;
 }
 
 std::string QuizHandler::getCurrentQuestionWhy()

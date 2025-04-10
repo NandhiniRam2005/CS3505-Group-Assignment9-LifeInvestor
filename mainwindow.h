@@ -49,6 +49,7 @@ public slots:
     void submitHelper();
     void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
+    void updateQuizInfo(QuizInfo qI);
 
     void updateSavings(double newBalance, double interestRate);
 

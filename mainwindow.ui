@@ -379,10 +379,10 @@ Total:Earnings: $5,000,000</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_29">
+     <widget class="QLabel" name="categoryLabel">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>220</x>
         <y>50</y>
         <width>331</width>
         <height>51</height>
@@ -396,11 +396,17 @@ Total:Earnings: $5,000,000</string>
         <underline>true</underline>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string>Category</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTextBrowser" name="categoryInfo">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -410,7 +416,7 @@ Total:Earnings: $5,000,000</string>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="stocksBackButton_2">
+     <widget class="QPushButton" name="startQuizButton">
       <property name="geometry">
        <rect>
         <x>630</x>

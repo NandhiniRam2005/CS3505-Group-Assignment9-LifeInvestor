@@ -19,6 +19,8 @@ int main(int argc, char *argv[])
     a.setPalette(palette);
 
     qRegisterMetaType<Question>("Question");
+    qRegisterMetaType<QuizInfo>("QuizInfo");
+
     MainModel model;
     MainWindow window(&model);
     QIcon icon(":///icons/icons/lifeInvestIcon.png");

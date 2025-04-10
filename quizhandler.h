@@ -12,6 +12,13 @@ struct Question
     std::string difficulty;
     int reward;
 };
+
+struct QuizInfo{
+    std::string info;
+    std::string imageName;
+    std::string category;
+};
+
 enum class QuizCategory {
     cds = 0,
     example = 1,
@@ -23,6 +30,8 @@ enum class QuizCategory {
 };
 
 Q_DECLARE_METATYPE(Question)
+Q_DECLARE_METATYPE(QuizInfo)
+
 
 class QuizHandler : public QObject
 {
@@ -38,11 +47,14 @@ public:
      */
     void createQuiz(QuizCategory category, uint quizLength);
 
+    QuizInfo generateQuizInfo(QuizCategory category);
     /**
      * Gets the next quiz question or completes the quiz depending on if the quiz has been
      * completed
      */
     Question getNextQuestion();
+
+    QuizInfo getQuizInfo();
 
     std::string getCurrentQuestionWhy();
 
@@ -98,6 +110,8 @@ private:
     uint quizLength;
 
     static const std::array<std::string, 6> quizFileNames;
+
+    QuizInfo information;
 
     /**
      * Scrambles the elements in a given vector into a random order.

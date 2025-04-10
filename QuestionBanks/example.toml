@@ -7,7 +7,7 @@ We could put learning information here
 
 or in a different format if needed
 '''
-
+image = "lifeInvestIcon.png"
 [[questions]]
 question = "What does 'IPO' stand for?"
 

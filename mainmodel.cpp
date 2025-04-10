@@ -32,6 +32,7 @@ void MainModel::requestQuiz()
 {
     this->quizHandler->createQuiz(QuizCategory::example, 2);
     getNextQuestion();
+    getQuizInfo();
 }
 
 void MainModel::getNextQuestion()
@@ -41,6 +42,10 @@ void MainModel::getNextQuestion()
     } else {
         emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly());
     }
+}
+
+void MainModel::getQuizInfo(){
+    emit sendQuizInfo(quizHandler->getQuizInfo());
 }
 
 void MainModel::checkAnswer(std::string selectedChoice)

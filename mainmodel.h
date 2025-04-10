@@ -22,6 +22,8 @@ public slots:
 
     void getNextQuestion();
 
+    void getQuizInfo();
+
     void depositToSavings(double amount);
 
     void depositToCD(double amount, int cdNumber);
@@ -59,6 +61,8 @@ signals:
      * @param q - The question to be displayed
      */
     void sendQuestion(Question q);
+
+    void sendQuizInfo(QuizInfo qI);
 
     /**
      * Alerts the view as to whether the quiz question is correct.
