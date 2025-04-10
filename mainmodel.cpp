@@ -195,6 +195,7 @@ void MainModel::nextYear()
     double initialCounter;
     double newCounter;
     double tempCounter;
+    bool loanOverdue = false;
 
     initialTotals.push_back(savingsAccount->getBalance());
     savingsAccount->nextYear();
@@ -240,7 +241,7 @@ void MainModel::nextYear()
             }
         }
         if (loans[i].getYearsLeft() < 0)
-            endGame();
+            loanOverdue = true;
         loans[i].setAvailable(creditScore);
         emit updateLoan(i,
                         loans[i].getBalance(),
@@ -263,7 +264,7 @@ void MainModel::nextYear()
 
     emit newYear(newTotals, initialTotals, currentYear);
 
-    if (currentYear == 16) {
+    if (currentYear == 16 || loanOverdue) {
         endGame();
     }
 }
