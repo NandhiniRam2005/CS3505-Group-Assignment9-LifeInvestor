@@ -25,9 +25,10 @@ MainModel::MainModel(QObject *parent)
     loans[0].setAvailable(creditScore);
     loans[1].setAvailable(creditScore);
 
-    stocks.push_back(Stock(20, 0.5, 1.2));
-    stocks.push_back(Stock(100, 0.1, 1.1));
-    stocks.push_back(Stock(500, 0.3, 0.9));
+    stocks.push_back(Stock(70.76, 0.33, 1.20)); // E-Cola
+    stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
+    stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
+
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)
