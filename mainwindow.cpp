@@ -37,6 +37,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     bankMovie->start();
 
+    QMovie *stocksMovie = new QMovie(":/gifs/gifs/stocks.gif");
+    ui->stockGif->setMovie(stocksMovie);
+    stocksMovie->setScaledSize(ui->stockGif->size());
+    connect(stocksMovie, &QMovie::finished, [stocksMovie]() {
+        stocksMovie->setPaused(true); // Freeze on the last frame
+    });
+    stocksMovie->start();
+
+
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
     connect(ui->choice2, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
