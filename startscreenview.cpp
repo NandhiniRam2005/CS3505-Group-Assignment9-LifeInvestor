@@ -23,7 +23,7 @@ StartScreenView::~StartScreenView() {
 
 void StartScreenView::initializePhysics() {
     cleanupPhysics();
-    world = new b2World(b2Vec2(0.0f, 100.8f));
+    world = new b2World(b2Vec2(0.0f, 40.8f));
     createBoundaries();
     createMoneyBags();
     physicsTimer->start(16);
