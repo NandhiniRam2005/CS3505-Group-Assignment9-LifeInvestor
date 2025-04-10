@@ -1,6 +1,8 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 #include <QMovie>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 #include "iostream"
 #include "ui_mainwindow.h"
 
@@ -54,6 +56,17 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     pigMovie->start();
 
+    //Experimental Music stuff
+    QMediaPlayer *player = new QMediaPlayer;
+    QAudioOutput *audioOutput = new QAudioOutput;
+
+    player->setAudioOutput(audioOutput);
+    audioOutput->setVolume(0.5);
+
+    player->setSource(QUrl("qrc:/sounds/sounds/ElvisHerod-Clutterbuck.mp3"));
+    player->setLoops(QMediaPlayer::Infinite);
+
+    player->play();
 
     // connections for buttons to enable submitting
     connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);

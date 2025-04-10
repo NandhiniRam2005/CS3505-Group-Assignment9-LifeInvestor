@@ -30,6 +30,7 @@
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
         <file>sounds/wrong.wav</file>
+        <file>sounds/ElvisHerod-Clutterbuck.mp3</file>
     </qresource>
     <qresource prefix="/gifs">
         <file>gifs/moneyStart.gif</file>
