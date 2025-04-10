@@ -15,8 +15,7 @@ public:
     explicit MainModel(QObject *parent = nullptr);
 
 public slots:
-    //TEMPORARY SLOT ADDED FOR TESTING.
-    void requestQuiz();
+    void quizRequested(QuizCategory category, uint length);
 
     void checkAnswer(std::string selectedChoice);
 

@@ -31,6 +31,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0,0}, {0,0,0,0,0,0}));
 
+    quizCategory = QuizCategory::example;
+    quizLength = 2;
+
     // Experimental gif stuff, not permanent
     QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
     ui->bankGif->setMovie(bankMovie);
@@ -56,6 +59,14 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
     pigMovie->start();
 
+    // Sounds
+    levelPassSound = new QSoundEffect(this);
+    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+    levelFailSound = new QSoundEffect(this);
+    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
+    depositSound = new QSoundEffect(this);
+    depositSound->setSource(QUrl("qrc:/sounds/sounds/cash-register.wav"));
+
     //Experimental Music stuff
     QMediaPlayer *player = new QMediaPlayer;
     QAudioOutput *audioOutput = new QAudioOutput;
@@ -78,12 +89,12 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(model, &MainModel::sendQuizInfo, this, &MainWindow::updateQuizInfo);
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
-    connect(ui->startQuizButton, &QPushButton::clicked, this, [&]()->void{
-        ui->stackedWidget->setCurrentWidget(ui->Quiz);
-    });
-    connect(ui->startQuizButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
-    connect(ui->startButton, &QPushButton::clicked, model, &MainModel::requestQuiz);
 
+    //make a show quiz info, then make that button on page start quiz
+    connect(ui->startQuizButton, &QPushButton::clicked, this, [this]() {
+        startQuiz(quizCategory, quizLength);
+    });
+    connect(this, &MainWindow::requestQuiz, model, &MainModel::quizRequested);
     connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
     connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -286,6 +297,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         double updatedSavings = ui->savingsDepositInput->text().toDouble();
         emit savingsDepositAmountRead(updatedSavings);
         ui->savingsDepositInput->clear();
+        depositSound->play();
+
     });
     connect(this, &MainWindow::savingsDepositAmountRead, model, &MainModel::depositToSavings);
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
@@ -302,6 +315,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         double updatedChecking = ui->checkingDepositInput->text().toDouble();
         emit checkingDepositAmountRead(updatedChecking);
         ui->checkingDepositInput->clear();
+        depositSound->play();
     });
     connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
     connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
@@ -320,11 +334,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->startButton->setIconSize(QSize(200, 250));
     });
 
-    // Sounds
-    levelPassSound = new QSoundEffect(this);
-    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
-    levelFailSound = new QSoundEffect(this);
-    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
+
 
     //App 4 - LOANS connecytions
     connect(ui->App4, &QPushButton::clicked, this, [this]() {
@@ -594,6 +604,12 @@ void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRa
         ui->loan2AvailabilityStatus->setText("Status: " + status);
     }
 }
+void MainWindow::startQuiz(QuizCategory category, uint questionAmount){
+    emit requestQuiz(category, questionAmount);
+    updateProgress(0);
+    ui->stackedWidget->setCurrentWidget(ui->Quiz);
+}
+
 
 void MainWindow::showErrorMessage(QString errorMessage) {
     QMessageBox::warning(this, "Warning", errorMessage);
@@ -742,6 +758,9 @@ void MainWindow::displayDepositPage()
 
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
+    quizCategory = QuizCategory::mixOfAll;
+    quizLength = 5;
+    onStartClicked();
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));

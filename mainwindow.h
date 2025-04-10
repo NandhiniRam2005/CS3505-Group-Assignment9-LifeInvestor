@@ -39,11 +39,16 @@ private:
     StartScreenView *startScreenView;
     QSoundEffect *levelPassSound;
     QSoundEffect *levelFailSound;
+    QSoundEffect *depositSound;
     DepositWindow depositWindow;
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);
 
+    QuizCategory quizCategory;
+    uint quizLength;
+
 public slots:
+    void startQuiz(QuizCategory category, uint questionAmount);
     void showQuizData(Question q);
     void onStartClicked();
     void submitHelper();
@@ -95,7 +100,8 @@ public slots:
     void gameEnded();
 
 signals:
-    void startQuizRequested();
+
+    void requestQuiz(QuizCategory category, uint questionAmount);
     void sendAnswer(std::string answer);
 
     void depositToSavings(double amount);

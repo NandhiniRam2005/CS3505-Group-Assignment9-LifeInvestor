@@ -29,8 +29,14 @@ void QuizHandler::createQuiz(QuizCategory category, uint length)
 }
 
 QuizInfo QuizHandler::generateQuizInfo(QuizCategory category){
-    auto file = cpptoml::parse_file(getFilePath(category));
     QuizInfo generatedInformation;
+    if(category == QuizCategory::mixOfAll){
+        generatedInformation.category = "All categories";
+        generatedInformation.imageName = "idk";
+        generatedInformation.info = "This is a quiz containing a mixture questions from all of the other categories.";
+        return generatedInformation;
+    }
+    auto file = cpptoml::parse_file(getFilePath(category));
     generatedInformation.category = *file->get_as<std::string>("category");
     generatedInformation.imageName = *file->get_as<std::string>("image");
     generatedInformation.info = *file->get_as<std::string>("categoryInfo");
