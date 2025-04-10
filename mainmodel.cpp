@@ -235,7 +235,7 @@ void MainModel::nextYear()
             tempCounter = loans[i].getBalance();
             loans[i].nextYear();
             if (loans[i].getActive()) {
-                newCounter += tempCounter;
+                initialCounter += tempCounter;
                 newCounter += loans[i].getBalance();
             }
         }
