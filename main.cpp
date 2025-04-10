@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     QApplication::setStyle("Fusion");
 
-    QApplication::setFont(QFont("Trebuchet MS", 11)); // Set default font
+    QApplication::setFont(QFont("Segoe UI", 11)); // Set default font
 
     // Set custom colors (you can customize these)
     palette.setColor(QPalette::Window, QColor(43, 106, 116));  // Greenish background

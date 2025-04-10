@@ -776,35 +776,35 @@ void MainWindow::gameEnded() {
 QString MainWindow::generateReportString(QVector<double> newTotals, QVector<double> changes) {
     QString reportString;
 
-    reportString.append("<font size='4'><b>Yearly Report: </b></font>");
+    reportString.append("<p style='line-height:1.5'><font size='4'><u>Yearly Report: </u></font>");
 
     reportString.append("<table>");
 
     // Add net worth to the string
     if (newTotals[5] < 0)
-        reportString.append("<tr><td><b>Net Worth:   </b></td><td> -$" + QString::number(-newTotals[5], 'f', 2));
+        reportString.append("<tr><td>Net Worth:</td><td> -$" + QString::number(-newTotals[5], 'f', 2));
     else
-        reportString.append("<tr><td><b>Net Worth:   </b></td><td> $" + QString::number(newTotals[5], 'f', 2));
+        reportString.append("<tr><td>Net Worth:</td><td> $" + QString::number(newTotals[5], 'f', 2));
     if (changes[5] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[5], 'f', 2));
     else if (changes[5] < 0)
         reportString.append("<font color='red'> -$" + QString::number(-changes[5], 'f', 2));
 
     // Add checking account
-    reportString.append("</font></td></tr><tr><td><b>Checking Account: </b></td><td> $" + QString::number(newTotals[1], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>Checking Account:</td><td> $" + QString::number(newTotals[1], 'f', 2));
 
     // Add savings account
-    reportString.append("</td></tr><tr><td><b>Savings Account: </b></td><td> $" + QString::number(newTotals[0], 'f', 2));
+    reportString.append("</td></tr><tr><td>Savings Account:</td><td> $" + QString::number(newTotals[0], 'f', 2));
     if (changes[0] > 0)
         reportString.append("<font color='green'>+$" + QString::number(changes[0], 'f', 2));
 
     // Add cd accounts
-    reportString.append("</font></td></tr><tr><td><b>CDs Total: </b></td><td> $" + QString::number(newTotals[2], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>CDs Total:</td><td> $" + QString::number(newTotals[2], 'f', 2));
     if (changes[2] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[2], 'f', 2));
 
     // Add stocks
-    reportString.append("</font></td></tr><tr><td><b>Stocks Total: </b></td><td> $" + QString::number(newTotals[3], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>Stocks Total:</td><td> $" + QString::number(newTotals[3], 'f', 2));
     if (changes[3] > 0)
         reportString.append("<font color='green'> +$" + QString::number(changes[3], 'f', 2));
     else if (changes[3] < 0)
@@ -812,12 +812,12 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
 
     // Add loans
     if (newTotals[4] < 0)
-        reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> -$" + QString::number(-newTotals[4], 'f', 2));
+        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> -$" + QString::number(-newTotals[4], 'f', 2));
     else
-        reportString.append("</font></td></tr><tr><td><b>Loans Total: </b></td><td> $" + QString::number(newTotals[4], 'f', 2));
+        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> $" + QString::number(newTotals[4], 'f', 2));
     if (changes[4] < 0)
         reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
-    reportString.append("</font></td></tr>");
+    reportString.append("</font></td></tr></p>");
 
     return reportString;
 }
