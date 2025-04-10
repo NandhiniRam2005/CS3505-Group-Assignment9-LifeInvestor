@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QApplication::setStyle("Fusion");
 
     // Set custom colors (you can customize these)
-    palette.setColor(QPalette::Window, QColor(0, 0, 0));  // White background
+    palette.setColor(QPalette::Window, QColor(43, 106, 116));  // White background
     palette.setColor(QPalette::WindowText, QColor(255, 255, 255));    // Black text
 
     // Apply the palette to the application
