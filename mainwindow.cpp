@@ -31,8 +31,10 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0,0}, {0,0,0,0,0,0}));
 
-    quizCategory = QuizCategory::example;
-    quizLength = 2;
+    quizCategory = QuizCategory::stocks;
+    quizLength = 5;
+    firstStart = true;
+
 
     // Experimental gif stuff, not permanent
     QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
@@ -462,6 +464,10 @@ void MainWindow::onStartClicked()
 {
     hidePhone();
     ui->balance->show();
+    if(firstStart){
+        emit requestQuiz(quizCategory, 5);
+        firstStart = false;
+    }
     ui->stackedWidget->setCurrentWidget(ui->quizInfo);
 }
 
@@ -765,6 +771,7 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
 {
     quizCategory = QuizCategory::mixOfAll;
     quizLength = 5;
+    emit requestQuiz(quizCategory, 5);
     onStartClicked();
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));

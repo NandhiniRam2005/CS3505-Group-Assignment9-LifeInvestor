@@ -1,0 +1,163 @@
+category = "Stocks"
+
+categoryInfo = """
+The stock market is a system where investors can buy and sell ownership stakes in companies, called *stocks* or *shares*. When a company wants to raise money, it can issue stock to the public through a process called an **Initial Public Offering (IPO)**. This means the company is becoming publicly traded, and investors can buy pieces of it. After an IPO, the stock trades on stock exchanges like the New York Stock Exchange (NYSE) or NASDAQ.
+
+Each share represents partial ownership in a company. If the company performs well—generating strong earnings or growth—its stock price may increase, giving shareholders a **capital gain**. Some companies also return part of their profits to shareholders in the form of **dividends**, usually paid quarterly.
+
+Stocks are affected by many things: company news, industry trends, interest rates, and overall market sentiment. If investors are confident and prices are rising, the market is said to be in a **bull market**. If confidence drops and prices decline, it's called a **bear market**.
+
+Sometimes companies do a **stock split**, such as a 2-for-1 split. This doubles the number of shares and halves the price per share, but your total investment value stays the same. Companies do this to make shares more affordable for individual investors.
+
+The **price-to-earnings ratio (P/E ratio)** is a common valuation metric. It's calculated by dividing a stock's current price by its earnings per share. A high P/E might suggest a stock is expensive, or that investors expect strong future growth. A low P/E might indicate a bargain—or a company in trouble.
+
+Another key concept is **market capitalization**, or *market cap*, which is the total value of a company’s outstanding shares. It’s calculated by multiplying the current stock price by the number of shares. This helps classify companies: large-cap (big, stable firms), mid-cap (moderate size and risk), and small-cap (more volatile but with higher growth potential).
+
+Investors can also use strategies like **short selling**, where they borrow a stock and sell it, hoping to buy it back later at a lower price. This is risky and used when you expect a stock to fall in value.
+
+One of the most important ways to manage risk in investing is through **diversification**—spreading your investments across different sectors, industries, or asset types. This reduces the impact of any single investment performing poorly.
+
+To measure how the overall market is doing, investors often look at **market indexes**, like the **S&P 500**, which tracks the performance of 500 large U.S. companies. It’s considered a reliable indicator of the U.S. stock market as a whole.
+
+In summary: Stocks represent ownership in companies. You can profit through price increases or dividends. Key concepts include IPOs, stock splits, dividends, market cap, P/E ratios, and diversification. A strong understanding of these basics will help you make informed decisions and interpret what’s happening in the market.
+"""
+
+
+learnMore = '''
+We could put learning information here
+
+or in a different format if needed
+'''
+
+image = "lifeInvestIcon.png"
+
+[[questions]]
+question = "What does 'IPO' stand for?"
+choices = [
+  "Initial Public Offering",
+  "Instant Purchase Order",
+  "Investment Portfolio Option",
+  "Internal Profit Objective"
+]
+answer = "Initial Public Offering"
+why = 'IPO means "Initial Public Offering"'
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "If a stock splits 2-for-1, what happens to the share price (assuming all else equal)?"
+choices = [
+  "It doubles",
+  "It halves",
+  "It stays the same",
+  "It drops to zero"
+]
+answer = "It halves"
+why = "Stock splits increase the number of shares, but the value of the company stays the same, so the share price will be cut in half."
+difficulty = "hard"
+reward = 500
+
+[[questions]]
+question = "What does it mean to 'short' a stock?"
+choices = [
+  "Buy low, sell high",
+  "Buy a stock and hold it",
+  "Bet that the stock price will go down",
+  "Avoid buying the stock"
+]
+answer = "Bet that the stock price will go down"
+why = "Shorting a stock involves borrowing and selling it with the hope of buying it back at a lower price."
+difficulty = "medium"
+reward = 300
+
+[[questions]]
+question = "What is a dividend?"
+choices = [
+  "A fee for trading stocks",
+  "An increase in stock price",
+  "A share of company profits paid to shareholders",
+  "A type of stock"
+]
+answer = "A share of company profits paid to shareholders"
+why = "Dividends are payments made by a company to its shareholders from its profits."
+difficulty = "easy"
+reward = 150
+
+[[questions]]
+question = "Which index is commonly used as a benchmark for the U.S. stock market?"
+choices = [
+  "NASDAQ Composite",
+  "Dow Jones Industrial Average",
+  "S&P 500",
+  "Russell 2000"
+]
+answer = "S&P 500"
+why = "The S&P 500 is considered the best representation of the overall U.S. stock market."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What is market capitalization?"
+choices = [
+  "The value of a company's real estate",
+  "The total value of all stocks on an exchange",
+  "The total dollar value of a company’s outstanding shares",
+  "The amount of cash a company holds"
+]
+answer = "The total dollar value of a company’s outstanding shares"
+why = "Market cap is calculated by multiplying a company's stock price by its total number of outstanding shares."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What typically causes a stock’s price to rise?"
+choices = [
+  "Increased supply of shares",
+  "Higher trading fees",
+  "Positive news or strong earnings",
+  "More regulations"
+]
+answer = "Positive news or strong earnings"
+why = "Good news about a company often makes investors more willing to buy its stock, increasing demand and raising the price."
+difficulty = "easy"
+reward = 200
+
+[[questions]]
+question = "What does a 'bull market' refer to?"
+choices = [
+  "A market with low trading volume",
+  "A market in which prices are falling",
+  "A market in which prices are rising",
+  "A market where investors are cautious"
+]
+answer = "A market in which prices are rising"
+why = "A bull market refers to a sustained period of rising stock prices."
+difficulty = "easy"
+reward = 150
+
+[[questions]]
+question = "What is a P/E ratio?"
+choices = [
+  "Price of earnings per share",
+  "Profit to equity ratio",
+  "Price divided by earnings per share",
+  "Performance/evaluation score"
+]
+answer = "Price divided by earnings per share"
+why = "The price-to-earnings (P/E) ratio helps investors determine the market value of a stock compared to the company’s earnings."
+difficulty = "medium"
+reward = 300
+
+[[questions]]
+question = "What does diversification help with in investing?"
+choices = [
+  "Maximizing taxes",
+  "Eliminating all risk",
+  "Increasing fees",
+  "Reducing investment risk"
+]
+answer = "Reducing investment risk"
+why = "Diversifying spreads your investment across various assets, reducing the impact of any one failing."
+difficulty = "easy"
+reward = 200
+

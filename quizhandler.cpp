@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 const std::array<std::string, 6> QuizHandler::quizFileNames
-    = {"cdQuiz", "example", "gamblingQuiz", "loansQuiz", "savingsQuiz", "tutorialQuiz"};
+    = {"cdQuiz", "stocks", "gamblingQuiz", "loansQuiz", "savingsQuiz", "tutorialQuiz"};
 
 QuizHandler::QuizHandler(QObject *parent)
     : QObject{parent}
@@ -32,7 +32,7 @@ QuizInfo QuizHandler::generateQuizInfo(QuizCategory category){
     QuizInfo generatedInformation;
     if(category == QuizCategory::mixOfAll){
         generatedInformation.category = "All categories";
-        generatedInformation.imageName = "idk";
+        generatedInformation.imageName = "moneyMan.png";
         generatedInformation.info = "This is a quiz containing a mixture questions from all of the other categories.";
         return generatedInformation;
     }

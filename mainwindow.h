@@ -47,6 +47,8 @@ private:
     QuizCategory quizCategory;
     uint quizLength;
 
+    bool firstStart;
+
 public slots:
     void startQuiz(QuizCategory category, uint questionAmount);
     void showQuizData(Question q);

@@ -21,7 +21,7 @@ struct QuizInfo{
 
 enum class QuizCategory {
     cds = 0,
-    example = 1,
+    stocks = 1,
     gambling = 2,
     loans = 3,
     savings = 4,

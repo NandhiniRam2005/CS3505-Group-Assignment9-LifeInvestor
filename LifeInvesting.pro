@@ -148,8 +148,8 @@ DISTFILES += \
     Box2D/Box2DConfig.cmake \
     Box2D/CMakeLists.txt \
     QuestionBanks/cdQuiz.toml \
-    QuestionBanks/example.toml \
     QuestionBanks/gamblingQuiz.toml \
     QuestionBanks/loansQuiz.toml \
     QuestionBanks/savingsQuiz.toml \
+    QuestionBanks/stocks.toml \
     QuestionBanks/tutorialQuiz.toml
