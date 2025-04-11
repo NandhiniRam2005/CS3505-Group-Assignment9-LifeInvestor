@@ -454,6 +454,16 @@ void MainWindow::returnToGame(QWidget *currentWidget)
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
     } else if (returnPage == "Stocks") {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
+    } else if (returnPage == "Bank") {
+        ui->stackedWidget->setCurrentWidget(ui->Bank);
+    } else if (returnPage == "CD") {
+        ui->stackedWidget->setCurrentWidget(ui->CD);
+    } else if (returnPage == "Loans") {
+        ui->stackedWidget->setCurrentWidget(ui->Loans);
+    } else if (returnPage == "gameEnd") {
+        ui->stackedWidget->setCurrentWidget(ui->gameEnd);
+    } else if (returnPage == "quizInfo") {
+        ui->stackedWidget->setCurrentWidget(ui->quizInfo);
     } else {
         throw std::runtime_error("return page could not be found.");
     }
