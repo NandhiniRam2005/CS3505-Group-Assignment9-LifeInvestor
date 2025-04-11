@@ -29,6 +29,9 @@
         <file>icons/savings-account.png</file>
         <file>icons/moneyBag.png</file>
         <file>icons/moneyMan.png</file>
+        <file>icons/gambling.jpg</file>
+        <file>icons/cdImage.jpg</file>
+        <file>icons/loanImage.jpg</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

@@ -1,11 +1,30 @@
 category = "Savings"
 
-categoryInfo = "This category covers questions related to savings accounts, how they work, and strategies for saving money."
+categoryInfo = """
+A savings account is a safe and accessible way to store money while earning a small amount of interest. Offered by banks and credit unions, these accounts are ideal for building emergency funds, saving for short-term goals, or simply parking money you don’t need to use immediately.
+
+When you deposit money into a savings account, the bank uses those funds to make loans to other customers. In return, the bank pays you interest—typically expressed as an **annual percentage yield (APY)**. The interest rate can vary depending on the financial institution and the type of account. **High-yield savings accounts**, often offered by online banks, provide significantly better rates than traditional savings accounts.
+
+One of the most powerful concepts in savings is **compound interest**. This means you earn interest not only on your original deposit (the principal) but also on the interest that accumulates over time. The more frequently interest is compounded—daily, monthly, or annually—the faster your savings can grow.
+
+Savings accounts are insured by the **FDIC (Federal Deposit Insurance Corporation)** in banks or the **NCUA (National Credit Union Administration)** in credit unions, which means your money is protected up to $250,000 per depositor, per institution, in case the bank fails.
+
+A **money market account** is a type of savings account that usually offers higher interest rates but may require a larger minimum balance. It may also provide limited check-writing or debit card access, unlike traditional savings accounts.
+
+Savings accounts are not designed for frequent transactions—federal regulations often limit certain types of withdrawals to six per month. For daily spending, **checking accounts** are more appropriate, as they provide unlimited access through checks, debit cards, and electronic transfers.
+
+Having a savings account is essential for managing **emergency funds**. Experts recommend saving three to six months' worth of expenses in a liquid, secure place like a savings account to cover unexpected costs such as medical bills, job loss, or urgent repairs.
+
+Strategically using a savings account also involves setting clear goals, automating deposits, and comparing interest rates and fees across banks. While savings accounts aren’t meant for high returns like investments, they play a key role in financial stability, offering both safety and modest growth.
+
+In summary: A savings account is a low-risk tool to securely store money and earn interest. Understanding the role of interest, compound growth, account types, and how to use savings effectively can help you build a stronger financial foundation.
+"""
+
 
 learnMore = '''
 A savings account is a type of deposit account offered by banks and credit unions where you can earn interest on your deposits. It’s a safe way to store money while earning a small return.
 '''
-
+image = "savings-account.png"
 [[questions]]
 question = "What is a savings account?"
 choices = [

@@ -1,10 +1,20 @@
 category = "Loans"
 
-categoryInfo = "This category covers questions related to various types of loans, their terms, and how they work."
+
+categoryInfo = """
+A loan is money that you borrow from a lender with the agreement to pay it back over time, usually with interest. The amount you borrow is called the principal, and the cost of borrowing it is called interest. The Annual Percentage Rate (APR) includes both the interest rate and any fees, giving a fuller picture of how much the loan will cost each year.
+
+Loan terms refer to how long you have to repay the loan. Loans can be secured (backed by collateral like a house or car) or unsecured (not backed by any assets). Common types of loans include mortgages (for buying real estate), personal loans, auto loans, and payday loans (short-term, high-interest loans typically due on your next paycheck).
+
+If you stop making payments, you can default on the loan, which damages your credit and can result in legal or financial consequences. Some loans may involve a co-signer—someone who agrees to take responsibility for repayment if you don’t.
+
+Understanding how loans work helps you borrow responsibly and avoid high costs or debt traps.
+"""
 
 learnMore = '''
 A loan is a sum of money borrowed from a lender that is expected to be paid back with interest over a set period of time. Different loans come with varying terms, interest rates, and repayment schedules.
 '''
+image = "loanImage.jpg"
 
 [[questions]]
 question = "What is a loan?"

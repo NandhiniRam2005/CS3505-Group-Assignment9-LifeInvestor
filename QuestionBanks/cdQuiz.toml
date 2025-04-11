@@ -1,11 +1,26 @@
 category = "Certificates of Deposit (CDs)"
 
-categoryInfo = "This category covers questions related to Certificates of Deposit, their characteristics, and how they work."
+categoryInfo = """
+Certificates of Deposit (CDs) are time deposits offered by banks and credit unions that pay a fixed interest rate over a specified term.
+
+They typically offer higher interest rates than regular savings accounts, but funds are locked in for the duration of the term.
+
+Withdrawing money early often incurs a penalty. CD terms usually range from 1 month to 10 years. CDs are generally considered low-risk investments
+
+and are insured by the FDIC up to $250,000 per depositor. Interest on CDs can be compounded periodically or paid at maturity, depending on the institution.
+
+A common strategy for managing liquidity and interest rate exposure is a 'CD ladder', where an investor opens multiple CDs with staggered maturity dates.
+
+At the end of a CD’s term, the depositor can either withdraw the principal and interest or roll it into a new CD.
+
+CDs are not suitable for funds that may need to be accessed before the maturity date due to penalties and lack of flexibility.
+"""
 
 learnMore = '''
 A Certificate of Deposit (CD) is a savings account offered by banks that provides a fixed interest rate for a specified term. Early withdrawal typically incurs a penalty.
 (We should add more here)
 '''
+image = "cdImage.jpg"
 
 [[questions]]
 question = "What is a Certificate of Deposit (CD)?"

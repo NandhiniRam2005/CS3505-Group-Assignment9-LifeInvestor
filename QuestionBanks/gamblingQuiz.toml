@@ -1,10 +1,23 @@
 category = "Gambling"
 
-categoryInfo = "This category covers the risks of gambling, why it can be harmful, and how to make informed decisions regarding gambling behaviors."
+categoryInfo = """
+Gambling involves the act of risking money, valuables, or something of value on an event or outcome that is uncertain. The goal is typically to win more money, though it can also involve other prizes or rewards. While gambling can appear to be an exciting or enjoyable activity for some, it carries substantial risks that can have serious financial, emotional, and psychological consequences if not approached responsibly.
 
+When gambling, the odds are often stacked against the individual, and there is always a risk of losing money. This can lead to negative financial consequences, such as debt, bankruptcy, and loss of savings. Many individuals who gamble excessively also face emotional distress, including feelings of guilt, anxiety, and shame. Additionally, gambling can lead to mental health problems like depression, especially when someone becomes addicted to the behavior.
+
+The allure of gambling often comes from the excitement and adrenaline rush associated with placing bets and hoping for a favorable outcome. The brain's reward system is activated during these moments, releasing dopamine and reinforcing the desire to continue gambling. This process can lead to addiction, where individuals repeatedly gamble in an attempt to chase the "high" of winning, even after suffering financial losses.
+
+Problem gambling, or gambling addiction, can also have a detrimental effect on relationships. Trust issues arise when individuals spend money on gambling rather than addressing their financial responsibilities, leading to conflicts with partners, family members, and friends. In some cases, the individual may even resort to deceit or manipulation to hide their gambling habits.
+
+To avoid falling into harmful gambling patterns, it is important to set clear limits on both time and money spent on gambling activities. Recognizing the signs of gambling addiction, such as betting larger amounts of money despite losing, is crucial in preventing further damage. Seeking professional help, such as counseling or therapy, is often the most effective way to address gambling issues and work through the emotional and psychological factors that contribute to the addiction.
+
+Ultimately, gambling should be approached with caution and awareness. If you choose to engage in gambling, it is essential to do so in a controlled and informed manner. Understanding the risks, setting boundaries, and knowing when to stop are key to ensuring that gambling remains a safe and enjoyable activity rather than something that causes harm.
+"""
 learnMore = '''
 Gambling involves risking money or valuables on an event with an uncertain outcome, typically with the hope of winning more money. While it can seem like a fun activity, gambling can have serious financial, emotional, and psychological consequences if not approached carefully.
 '''
+
+image = "gambling.jpg"
 
 [[questions]]
 question = "What is a common risk of gambling?"

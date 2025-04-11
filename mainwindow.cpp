@@ -417,6 +417,7 @@ void MainWindow::updateQuizInfo(QuizInfo qI)
     qDebug() << qI.info << qI.category << qI.imageName;
     ui->categoryLabel->setText(QString::fromStdString(qI.category));
     ui->categoryLabel->adjustSize();
+    ui->categoryInfo->setAlignment(Qt::AlignHCenter);
 
     ui->categoryInfo->setText(QString::fromStdString(qI.info));
     QPixmap pixmap(":///icons/icons/" + QString::fromStdString(qI.imageName));
