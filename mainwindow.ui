@@ -1713,7 +1713,7 @@ border-radius: 5px;}</string>
        <string>Reward</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
+     <widget class="QLabel" name="stockImageOne">
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -1732,7 +1732,7 @@ border-radius: 5px;}</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_18">
+     <widget class="QLabel" name="stockImageTwo">
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -1751,7 +1751,7 @@ border-radius: 5px;}</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_19">
+     <widget class="QLabel" name="stockImageThree">
       <property name="geometry">
        <rect>
         <x>170</x>

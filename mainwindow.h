@@ -71,6 +71,8 @@ public slots:
 
     void updateStock(int stockNumber, double newBalance);
 
+    void updateStockImage(bool stockOneUp, bool stockTwoUp, bool stockThreeUp);
+
     void updateLoan(
         int loanNumber, double newBalance, double interestRate, bool available, bool active, int yearsLeft);
 

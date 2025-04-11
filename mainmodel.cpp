@@ -251,12 +251,19 @@ void MainModel::nextYear()
 
     initialCounter = 0;
     newCounter = 0;
+    // NEED TO ADD SOME CODE HERE TO EMIT A SIGNAL TO THE VIEW TO TELL IT TO UPDATE THE IMAGES OF STOCKS IF STOCKS WENT DOWN OR UP.
+    QVector<double> initialStocks;
+    QVector<double> afterYearEndStocks;
     for (int i = 0; i < stocks.count(); i++) {
+        initialStocks.push_back(stocks[i].getValue());
         initialCounter += stocks[i].getMoneyBalance();
         stocks[i].nextYear();
         newCounter += stocks[i].getMoneyBalance();
+        afterYearEndStocks.push_back(stocks[i].getValue());
         emit updateStock(i, stocks[i].getMoneyBalance());
     }
+
+    emit stockChange(initialStocks.at(0) <= afterYearEndStocks.at(0), initialStocks.at(1) <= afterYearEndStocks.at(1), initialStocks.at(2) <= afterYearEndStocks.at(2));
     initialTotals.push_back(initialCounter);
     newTotals.push_back(newCounter);
 

@@ -239,7 +239,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
             this,
             &MainWindow::updateSellingStockPriceDisplay);
     // View protection of selling/buying is done in update price label...
-
+    //UPDATE STOCK IMAGE
+    connect(model, &MainModel::stockChange, this, &MainWindow::updateStockImage);
     // Connect CD page signals
 
     connect(ui->App2, &QPushButton::clicked, this, [this]() {
@@ -740,7 +741,6 @@ void MainWindow::revalidateAllStockDisplays()
 
 void MainWindow::updateStockAmountOwned(uint amount, int stockNumber)
 {
-    qDebug() << "updating Amount owned to: " << amount;
     switch (stockNumber) {
     case 0: {
         ui->ownedStockOne->setText("Amount Owned: " + QString::number(amount));
@@ -760,6 +760,34 @@ void MainWindow::updateStockAmountOwned(uint amount, int stockNumber)
     }
 }
 
+void MainWindow::updateStockImage(bool stockOneUp, bool stockTwoUp, bool stockThreeUp){
+    if(stockOneUp){
+        QPixmap pixmap(":///icons/icons/stock.png");
+        ui->stockImageOne->setPixmap(pixmap);
+    }
+    else{
+        QPixmap pixmap(":///icons/icons/StockDown.png");
+        ui->stockImageOne->setPixmap(pixmap);
+    }
+
+    if(stockTwoUp){
+        QPixmap pixmap(":///icons/icons/stock.png");
+        ui->stockImageTwo->setPixmap(pixmap);
+    }
+    else{
+        QPixmap pixmap(":///icons/icons/StockDown.png");
+        ui->stockImageTwo->setPixmap(pixmap);
+    }
+
+    if(stockThreeUp){
+        QPixmap pixmap(":///icons/icons/stock.png");
+        ui->stockImageThree->setPixmap(pixmap);
+    }
+    else{
+        QPixmap pixmap(":///icons/icons/StockDown.png");
+        ui->stockImageThree->setPixmap(pixmap);
+    }
+}
 void MainWindow::displayDepositPage()
 {
     depositWindow.show();

@@ -113,6 +113,8 @@ signals:
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
 
+    void stockChange(bool stockOneUp, bool stockTwoUp, bool stockThreeUp);
+
     void gameEnded();
 
 private:
