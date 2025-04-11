@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -2321,7 +2321,7 @@ border-radius: 5px;}</string>
        </rect>
       </property>
       <property name="text">
-       <string>Stock ONE Name</string>
+       <string>Pear Inc (PEAR)</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_24">
@@ -2334,7 +2334,7 @@ border-radius: 5px;}</string>
        </rect>
       </property>
       <property name="text">
-       <string>Stock TWO Name</string>
+       <string>Coma-Cola (CO)</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_25">
@@ -2347,7 +2347,7 @@ border-radius: 5px;}</string>
        </rect>
       </property>
       <property name="text">
-       <string>Stock THREE Name</string>
+       <string>CineCarl (CNL)</string>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
