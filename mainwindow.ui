@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1623,7 +1623,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>400</y>
+        <y>410</y>
         <width>71</width>
         <height>31</height>
        </rect>
@@ -1642,7 +1642,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>440</y>
+        <y>450</y>
         <width>71</width>
         <height>31</height>
        </rect>
@@ -1713,7 +1713,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>450</y>
+        <y>460</y>
         <width>58</width>
         <height>16</height>
        </rect>
@@ -1757,8 +1757,8 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="stockImageTwo">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>230</y>
+        <x>160</x>
+        <y>250</y>
         <width>371</width>
         <height>121</height>
        </rect>
@@ -1776,8 +1776,8 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="stockImageThree">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>370</y>
+        <x>160</x>
+        <y>400</y>
         <width>371</width>
         <height>121</height>
        </rect>
@@ -1834,7 +1834,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>410</y>
+        <y>420</y>
         <width>41</width>
         <height>41</height>
        </rect>
@@ -1853,7 +1853,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>450</y>
+        <y>460</y>
         <width>41</width>
         <height>41</height>
        </rect>
@@ -1942,7 +1942,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>370</y>
+        <y>380</y>
         <width>173</width>
         <height>33</height>
        </rect>
@@ -1976,7 +1976,7 @@ border-radius: 5px;}</string>
         <height>42</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="PriceStockTwoLayout" stretch="1,0">
+      <layout class="QHBoxLayout" name="PriceStockTwoLayout" stretch="0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
        </property>
@@ -1992,19 +1992,20 @@ border-radius: 5px;}</string>
          <property name="font">
           <font>
            <family>Proxima Nova</family>
-           <pointsize>20</pointsize>
+           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-    color: green;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 20px;
 }</string>
          </property>
          <property name="text">
-          <string>$0</string>
+          <string>$0.00</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2038,19 +2039,20 @@ border-radius: 5px;}</string>
          <property name="font">
           <font>
            <family>Proxima Nova</family>
-           <pointsize>20</pointsize>
+           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-    color: green;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 20px;
 }</string>
          </property>
          <property name="text">
-          <string>$0</string>
+          <string>$0.00</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2092,7 +2094,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>440</y>
+        <y>460</y>
         <width>167</width>
         <height>33</height>
        </rect>
@@ -2134,7 +2136,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>350</y>
+        <y>360</y>
         <width>801</width>
         <height>20</height>
        </rect>
@@ -2173,7 +2175,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>430</y>
+        <y>450</y>
         <width>261</width>
         <height>16</height>
        </rect>
@@ -2220,19 +2222,20 @@ border-radius: 5px;}</string>
          <property name="font">
           <font>
            <family>Proxima Nova</family>
-           <pointsize>20</pointsize>
+           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-    color: green;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 20px;
 }</string>
          </property>
          <property name="text">
-          <string>$0</string>
+          <string>$0.00</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2266,19 +2269,20 @@ border-radius: 5px;}</string>
          <property name="font">
           <font>
            <family>Proxima Nova</family>
-           <pointsize>20</pointsize>
+           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-    color: green;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 20px;
 }</string>
          </property>
          <property name="text">
-          <string>$0</string>
+          <string>$0.00</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2291,12 +2295,12 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>540</x>
-        <y>470</y>
+        <y>490</y>
         <width>121</width>
         <height>42</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="SellingPriceStockThreeLayout" stretch="1,0">
+      <layout class="QHBoxLayout" name="SellingPriceStockThreeLayout" stretch="0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
        </property>
@@ -2312,19 +2316,20 @@ border-radius: 5px;}</string>
          <property name="font">
           <font>
            <family>Proxima Nova</family>
-           <pointsize>20</pointsize>
+           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-    color: green;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 20px;
 }</string>
          </property>
          <property name="text">
-          <string>$0</string>
+          <string>$0.00</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2363,20 +2368,20 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>380</y>
+        <y>390</y>
         <width>131</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>CineCarl (CNL)</string>
+       <string>CineKarl (CNL)</string>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>80</y>
+        <y>60</y>
         <width>173</width>
         <height>33</height>
        </rect>
@@ -2405,7 +2410,7 @@ border-radius: 5px;}</string>
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>110</y>
+        <y>90</y>
         <width>111</width>
         <height>42</height>
        </rect>
@@ -2426,19 +2431,20 @@ border-radius: 5px;}</string>
          <property name="font">
           <font>
            <family>Proxima Nova</family>
-           <pointsize>20</pointsize>
+           <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-    color: green;
+    color: #85bb65;
     font-weight: bold;
+	font-size: 20px;
 }</string>
          </property>
          <property name="text">
-          <string>$0</string>
+          <string>$0.00</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2482,8 +2488,8 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="ownedStockOne">
       <property name="geometry">
        <rect>
-        <x>670</x>
-        <y>200</y>
+        <x>270</x>
+        <y>70</y>
         <width>171</width>
         <height>16</height>
        </rect>
@@ -2500,8 +2506,8 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="ownedStockTwo">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>340</y>
+        <x>280</x>
+        <y>230</y>
         <width>171</width>
         <height>16</height>
        </rect>
@@ -2518,8 +2524,8 @@ border-radius: 5px;}</string>
      <widget class="QLabel" name="ownedStockThree">
       <property name="geometry">
        <rect>
-        <x>670</x>
-        <y>490</y>
+        <x>290</x>
+        <y>380</y>
         <width>171</width>
         <height>16</height>
        </rect>

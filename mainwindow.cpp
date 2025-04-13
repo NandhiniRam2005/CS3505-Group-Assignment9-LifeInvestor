@@ -367,10 +367,10 @@ void MainWindow::updateStockPriceDisplay(double amount, int stockNumber)
     case 0: {
         ui->totalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
         if (amount > currentMoney) {
-            ui->totalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
+            ui->totalPriceStockOne->setStyleSheet("color: red; font-weight: bold; font-size: 20px;");
             ui->purchaseStockOneButton->setEnabled(false);
         } else {
-            ui->totalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
+            ui->totalPriceStockOne->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 20px;}");
             ui->purchaseStockOneButton->setEnabled(true);
         }
         ui->totalPriceStockOne->adjustSize();
@@ -379,10 +379,10 @@ void MainWindow::updateStockPriceDisplay(double amount, int stockNumber)
     case 1: {
         ui->totalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
         if (amount > currentMoney) {
-            ui->totalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
+            ui->totalPriceStockTwo->setStyleSheet("color: red; font-weight: bold; font-size: 20px;");
             ui->purchaseStockTwoButton->setEnabled(false);
         } else {
-            ui->totalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
+            ui->totalPriceStockTwo->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 20px;}");
             ui->purchaseStockTwoButton->setEnabled(true);
         }
         ui->totalPriceStockTwo->adjustSize();
@@ -391,10 +391,10 @@ void MainWindow::updateStockPriceDisplay(double amount, int stockNumber)
     case 2: {
         ui->totalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
         if (amount > currentMoney) {
-            ui->totalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
+            ui->totalPriceStockThree->setStyleSheet("color: red; font-weight: bold; font-size: 20px;");
             ui->purchaseStockThreeButton->setEnabled(false);
         } else {
-            ui->totalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
+            ui->totalPriceStockThree->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 20px;}");
             ui->purchaseStockThreeButton->setEnabled(true);
         }
         ui->totalPriceStockTwo->adjustSize();
@@ -412,10 +412,10 @@ void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, 
     case 0: {
         ui->sellingTotalPriceStockOne->setText("$" + QString::number(amount, 'f', 2));
         if (tooMany) {
-            ui->sellingTotalPriceStockOne->setStyleSheet("color: red; font-weight: bold;");
+            ui->sellingTotalPriceStockOne->setStyleSheet("color: red; font-weight: bold; font-size: 20px;");
             ui->sellButtonStockOne->setEnabled(false);
         } else {
-            ui->sellingTotalPriceStockOne->setStyleSheet("color: green; font-weight: bold;");
+            ui->sellingTotalPriceStockOne->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 20px;};");
             ui->sellButtonStockOne->setEnabled(true);
         }
         ui->sellingTotalPriceStockOne->adjustSize();
@@ -424,10 +424,10 @@ void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, 
     case 1: {
         ui->sellingTotalPriceStockTwo->setText("$" + QString::number(amount, 'f', 2));
         if (tooMany) {
-            ui->sellingTotalPriceStockTwo->setStyleSheet("color: red; font-weight: bold;");
+            ui->sellingTotalPriceStockTwo->setStyleSheet("color: red; font-weight: bold; font-size: 20px;");
             ui->sellButtonStockTwo->setEnabled(false);
         } else {
-            ui->sellingTotalPriceStockTwo->setStyleSheet("color: green; font-weight: bold;");
+            ui->sellingTotalPriceStockTwo->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 20px;}");
             ui->sellButtonStockTwo->setEnabled(true);
         }
         ui->sellingTotalPriceStockTwo->adjustSize();
@@ -436,10 +436,10 @@ void MainWindow::updateSellingStockPriceDisplay(double amount, int stockNumber, 
     case 2: {
         ui->sellingTotalPriceStockThree->setText("$" + QString::number(amount, 'f', 2));
         if (tooMany) {
-            ui->sellingTotalPriceStockThree->setStyleSheet("color: red; font-weight: bold;");
+            ui->sellingTotalPriceStockThree->setStyleSheet("color: red; font-weight: bold; font-size: 20px;");
             ui->sellButtonStockThree->setEnabled(false);
         } else {
-            ui->sellingTotalPriceStockThree->setStyleSheet("color: green; font-weight: bold;");
+            ui->sellingTotalPriceStockThree->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 20px;}");
             ui->sellButtonStockThree->setEnabled(true);
         }
         ui->sellingTotalPriceStockThree->adjustSize();
