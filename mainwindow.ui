@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>11</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1025,6 +1025,27 @@ Total:Earnings: $5,000,000</string>
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="quizRemains">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>50</y>
+        <width>301</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Extra Quizes remaning: 3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
      <zorder>mainBackground</zorder>
      <zorder>yearlyReportLabel</zorder>
      <zorder>line_3</zorder>
@@ -1040,6 +1061,7 @@ Total:Earnings: $5,000,000</string>
      <zorder>line_15</zorder>
      <zorder>label_26</zorder>
      <zorder>label_27</zorder>
+     <zorder>quizRemains</zorder>
     </widget>
     <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">
@@ -3480,6 +3502,7 @@ QTabBar::tab:!selected {
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="ExtraQuiz"/>
    </widget>
    <widget class="QPushButton" name="settingsButton">
     <property name="enabled">
