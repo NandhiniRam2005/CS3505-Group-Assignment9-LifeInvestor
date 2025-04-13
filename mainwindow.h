@@ -24,6 +24,10 @@ public:
     MainWindow(MainModel *model, QWidget *parent = nullptr);
     ~MainWindow();
 
+    void quizConnections(MainModel *model);
+
+    void mainWindowValueUpdateConnections(MainModel *model);
+
 private:
     Ui::MainWindow *ui;
     QButtonGroup *buttonGroup;
@@ -48,6 +52,36 @@ private:
     uint quizLength;
 
     bool firstStart;
+
+    void generalUISetup();
+
+    void setUpGifs();
+
+    void setupAudio();
+
+    void enableQuizSubmission();
+
+    void depositingConnectionWindowToModel(MainModel *model);
+
+    void withdrawingConnectionsWindowToModel(MainModel *model);
+
+    void buyingStockUIConnections();
+
+    void sellingStockUIConnections();
+
+    void visualIUpdatesStockConnections(MainModel *model);
+
+    void cdPageConnections(MainModel *model);
+
+    void savingsPageConnections(MainModel *model);
+
+    void loansPageConnections(MainModel *model);
+
+    void nextYearConnections(MainModel *model);
+
+    void phoneConnections();
+
+    void settingsConnections(MainModel *model);
 
 public slots:
     void startQuiz(QuizCategory category, uint questionAmount);

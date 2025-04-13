@@ -12,93 +12,41 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->Start);
-    buttonGroup = new QButtonGroup(this);
-    buttonGroup->addButton(ui->choice1);
-    buttonGroup->addButton(ui->choice2);
-    buttonGroup->addButton(ui->choice3);
-    buttonGroup->addButton(ui->choice4);
-    ui->balance->hide();
-
-    startScreenView = new StartScreenView(ui->Start);
-    startScreenView->stackUnder(ui->startButton);
-    startScreenView->setGeometry(this->rect());
-    startScreenView->show();
-
-    animationView = new AnimationView(ui->Quiz);
-    animationView->stackUnder(ui->choicesLayout);
-    animationView->setGeometry(this->rect());
-    animationView->hide();
-
-    ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0,0}, {0,0,0,0,0,0}));
-
-    quizCategory = QuizCategory::stocks;
-    quizLength = 5;
-    firstStart = true;
+    generalUISetup();
 
 
-    // Experimental gif stuff, not permanent
-    QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
-    ui->bankGif->setMovie(bankMovie);
-    bankMovie->setScaledSize(ui->bankGif->size());
-    connect(bankMovie, &QMovie::finished, [bankMovie]() {
-        bankMovie->setPaused(true); // Freeze on the last frame
-    });
-    bankMovie->start();
+    setUpGifs();
 
-    QMovie *stocksMovie = new QMovie(":/gifs/gifs/bank.gif");
-    ui->stockGif->setMovie(stocksMovie);
-    stocksMovie->setScaledSize(ui->stockGif->size());
-    connect(stocksMovie, &QMovie::finished, [stocksMovie]() {
-        stocksMovie->setPaused(true); // Freeze on the last frame
-    });
-    stocksMovie->start();
+    setupAudio();
 
-    QMovie *pigMovie = new QMovie(":/gifs/gifs/piggy.gif");
-    ui->pigGif->setMovie(pigMovie);
-    pigMovie->setScaledSize(ui->pigGif->size());
-    connect(pigMovie, &QMovie::finished, [pigMovie]() {
-        pigMovie->setPaused(true); // Freeze on the last frame
-    });
-    pigMovie->start();
+    enableQuizSubmission();
 
-    // Sounds
-    levelPassSound = new QSoundEffect(this);
-    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
-    levelFailSound = new QSoundEffect(this);
-    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
-    depositSound = new QSoundEffect(this);
-    depositSound->setSource(QUrl("qrc:/sounds/sounds/cash-register.wav"));
+    quizConnections(model);
 
-    //Experimental Music stuff
-    QMediaPlayer *player = new QMediaPlayer;
-    QAudioOutput *audioOutput = new QAudioOutput;
+    phoneConnections();
 
-    player->setAudioOutput(audioOutput);
-    audioOutput->setVolume(0.25);
+    nextYearConnections(model);
 
-    player->setSource(QUrl("qrc:/sounds/sounds/ElvisHerod-Clutterbuck.mp3"));
-    player->setLoops(QMediaPlayer::Infinite);
+    depositingConnectionWindowToModel(model);
 
-    player->play();
+    withdrawingConnectionsWindowToModel(model);
 
-    // connections for buttons to enable submitting
-    connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
-    connect(ui->choice2, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
-    connect(ui->choice3, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
-    connect(ui->choice4, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    mainWindowValueUpdateConnections(model);
 
-    connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
-    connect(model, &MainModel::sendQuizInfo, this, &MainWindow::updateQuizInfo);
+    buyingStockUIConnections();
 
-    connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
+    sellingStockUIConnections();
 
-    //make a show quiz info, then make that button on page start quiz
-    connect(ui->startQuizButton, &QPushButton::clicked, this, [this]() {
-        startQuiz(quizCategory, quizLength);
-    });
-    connect(this, &MainWindow::requestQuiz, model, &MainModel::quizRequested);
-    connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
-    connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
+    visualIUpdatesStockConnections(model);
+
+    cdPageConnections(model);
+
+    savingsPageConnections(model);
+
+    loansPageConnections(model);
+
+
+    //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
         ui->balance->show();
@@ -106,230 +54,21 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
-    connect(ui->stocksBackButton, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->mainGame);
-    });
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
     connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
-    connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
-        ui->settingsButton->hide();
-        ui->balance->hide();
-        emit settingsOpened(ui->stackedWidget->currentWidget());
-        ui->stackedWidget->setCurrentWidget(ui->Settings);
+    settingsConnections(model);
+
+    connect(ui->startButton, &QPushButton::pressed, [=]() {
+        ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
+        ui->startButton->setIconSize(QSize(200, 250));
     });
-    connect(ui->settingsBackButton, &QPushButton::clicked, model, &MainModel::settingsClosed);
 
-    // phone connections
-    connect(ui->openPhoneButton, &QPushButton::clicked, this, &MainWindow::displayPhone);
-    connect(ui->closePhoneButton, &QPushButton::clicked, this, &MainWindow::hidePhone);
-
-    connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
-    connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
-    connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
-
-    connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
-
-    // connections for nextYear
-    connect(ui->nextYearButton, &QPushButton::clicked, model, &MainModel::nextYear);
-    connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
-    connect(model, &MainModel::newYear, this, &MainWindow::newYear);
-
-    // connections for game ended
     connect(model, &MainModel::gameEnded, this, &MainWindow::gameEnded);
 
-    // connections for depositing
-    connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
-    connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
-    connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
-    connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
-    connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
     connect(model, &MainModel::updateBalance, this, &MainWindow::updateBalance);
-
-    // connections for withdrawing
-    connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
-    connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
-    connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
-    connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
-    connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
-
-    // connections for updating MainWindow values
-    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
-    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
-    connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
-    connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
-    connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
 
     // connection for showing error messages
     connect(model, &MainModel::showErrorMessage, this, &MainWindow::showErrorMessage);
-
-    // connections for buying and selling stock
-
-    // Buys stock
-    connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]() -> void {
-        emit buyStock(ui->purchaseStockOneSpin->value(), 0);
-        ui->purchaseStockOneSpin->setValue(0);
-        emit revalidateStockDisplay();
-    });
-    connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]() -> void {
-        emit buyStock(ui->purchaseStockTwoSpin->value(), 1);
-        ui->purchaseStockTwoSpin->setValue(0);
-        emit revalidateStockDisplay();
-    });
-    connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]() -> void {
-        emit buyStock(ui->purchaseStockThreeSpin->value(), 2);
-        ui->purchaseStockThreeSpin->setValue(0);
-        emit revalidateStockDisplay();
-    });
-
-    connect(this,
-            &MainWindow::revalidateStockDisplay,
-            this,
-            &MainWindow::revalidateAllStockDisplays);
-    connect(this,
-            &MainWindow::revalidateSpecificStockDisplay,
-            this,
-            &MainWindow::updateStockPriceDisplay);
-
-    // Sell Stock
-    connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]() -> void {
-        emit sellStock(ui->sellSpinStockOne->value(), 0);
-        ui->sellSpinStockOne->setValue(0);
-    });
-    connect(ui->sellButtonStockTwo, &QPushButton::clicked, this, [&]() -> void {
-        emit sellStock(ui->sellSpinStockTwo->value(), 1);
-        ui->sellSpinStockTwo->setValue(0);
-    });
-    connect(ui->sellButtonStockThree, &QPushButton::clicked, this, [&]() -> void {
-        emit sellStock(ui->sellSpinStockThree->value(), 2);
-        ui->sellSpinStockThree->setValue(0);
-    });
-
-    connect(model, &MainModel::numberOfStocksOwned, this, &MainWindow::updateStockAmountOwned);
-
-    // Update price buying
-    connect(ui->purchaseStockOneSpin, &QSpinBox::valueChanged, this, [&]() -> void {
-        emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
-    });
-    connect(ui->purchaseStockTwoSpin, &QSpinBox::valueChanged, this, [&]() -> void {
-        emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
-    });
-    connect(ui->purchaseStockThreeSpin, &QSpinBox::valueChanged, this, [&]() -> void {
-        emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
-    });
-    connect(this, &MainWindow::requestPriceOfXStocks, model, &MainModel::sendPriceOfXStocks);
-    connect(model, &MainModel::sendPriceOfStocks, this, &MainWindow::updateStockPriceDisplay);
-
-    //Update price selling
-    connect(ui->sellSpinStockOne, &QSpinBox::valueChanged, this, [&]() -> void {
-        emit requestSellingPriceOfXStocks(ui->sellSpinStockOne->value(), 0);
-    });
-    connect(ui->sellSpinStockTwo, &QSpinBox::valueChanged, this, [&]() -> void {
-        emit requestSellingPriceOfXStocks(ui->sellSpinStockTwo->value(), 1);
-    });
-    connect(ui->sellSpinStockThree, &QSpinBox::valueChanged, this, [&]() -> void {
-        emit requestSellingPriceOfXStocks(ui->sellSpinStockThree->value(), 2);
-    });
-
-    connect(this,
-            &MainWindow::requestSellingPriceOfXStocks,
-            model,
-            &MainModel::sendSellingPriceOfXStocks);
-    connect(model,
-            &MainModel::sendSellingPriceOfStocks,
-            this,
-            &MainWindow::updateSellingStockPriceDisplay);
-    // View protection of selling/buying is done in update price label...
-    //UPDATE STOCK IMAGE
-    connect(model, &MainModel::stockChange, this, &MainWindow::updateStockImage);
-    // Connect CD page signals
-
-    connect(ui->App2, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->CD);
-        for (int i = 0; i < 3; ++i) {
-            emit requestCDInfo(i);
-        }
-    });
-
-    connect(this, &MainWindow::requestCDInfo, model, &MainModel::updateCDInformation);
-
-    connect(ui->cdBackButton, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->mainGame);
-    });
-
-    connect(ui->cd1WithdrawButton, &QPushButton::clicked, this, [this]() {
-        emit withdrawFromCD(0);
-    });
-    connect(ui->cd2WithdrawButton, &QPushButton::clicked, this, [this]() {
-        emit withdrawFromCD(1);
-    });
-    connect(ui->cd3WithdrawButton, &QPushButton::clicked, this, [this]() {
-        emit withdrawFromCD(2);
-    });
-
-    // connect(ui->cd1DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-    // connect(ui->cd2DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-    // connect(ui->cd3DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-
-    connect(ui->cd1DepositButton, &QPushButton::clicked, this, [this]() {
-        double amount = ui->cd1DepositInput->text().toDouble();
-        emit depositToCD(amount, 0);
-        ui->cd1DepositInput->clear();
-    });
-    connect(ui->cd2DepositButton, &QPushButton::clicked, this, [this]() {
-        double amount = ui->cd2DepositInput->text().toDouble();
-        emit depositToCD(amount, 1);
-        ui->cd2DepositInput->clear();
-    });
-    connect(ui->cd3DepositButton, &QPushButton::clicked, this, [this]() {
-        double amount = ui->cd3DepositInput->text().toDouble();
-        emit depositToCD(amount, 2);
-        ui->cd3DepositInput->clear();
-    });
-
-    //App 3 -savings
-
-    connect(ui->App3, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->Bank);
-    });
-
-    connect(ui->bankBackButton, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->mainGame);
-    });
-
-    connect(ui->savingsDepositButton, &QPushButton::clicked, this, [this]() {
-        double updatedSavings = ui->savingsDepositInput->text().toDouble();
-        emit savingsDepositAmountRead(updatedSavings);
-        ui->savingsDepositInput->clear();
-        depositSound->play();
-
-    });
-    connect(this, &MainWindow::savingsDepositAmountRead, model, &MainModel::depositToSavings);
-    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
-
-    connect(ui->savingsWithdrawButton, &QPushButton::clicked, this, [this]() {
-        double updatedSavings = ui->savingsWithdrawInput->text().toDouble();
-        emit savingsWithdrawAmountRead(updatedSavings);
-        ui->savingsWithdrawInput->clear();
-    });
-
-    connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
-
-    connect(ui->checkingDepositButton, &QPushButton::clicked, this, [this]() {
-        double updatedChecking = ui->checkingDepositInput->text().toDouble();
-        emit checkingDepositAmountRead(updatedChecking);
-        ui->checkingDepositInput->clear();
-        depositSound->play();
-    });
-    connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
-    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
-
-    connect(ui->checkingWithdrawButton, &QPushButton::clicked, this, [this]() {
-        double updatedChecking = ui->checkingWithdrawInput->text().toDouble();
-        emit checkingWithdrawAmountRead(updatedChecking);
-        ui->checkingWithdrawInput->clear();
-    });
-
-    connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
 
     // Start button connections for pressed
     connect(ui->startButton, &QPushButton::pressed, [=]() {
@@ -337,39 +76,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->startButton->setIconSize(QSize(200, 250));
     });
 
-
-
-    //App 4 - LOANS connecytions
-    connect(ui->App4, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->Loans);
-        emit requestLoanInfo(0);
-        emit requestLoanInfo(1);
-    });
-
-    connect(this, &MainWindow::requestLoanInfo, model, &MainModel::handleLoanInfoRequest);
-
-    connect(ui->loanBackButton, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->mainGame);
-    });
-
-    connect(ui->activateLoan1Button, &QPushButton::clicked, this, [this]() {
-        emit activateLoan(0);
-    });
-    connect(ui->activateLoan2Button, &QPushButton::clicked, this, [this]() {
-        emit activateLoan(1);
-    });
-
-    connect(ui->payLoan1Button, &QPushButton::clicked, this, [this]() {
-        double amount = ui->loan1PaymentInput->text().toDouble();
-        emit depositToLoan(amount, 0);
-        ui->loan1PaymentInput->clear();
-    });
-    connect(ui->payLoan2Button, &QPushButton::clicked, this, [this]() {
-        double amount = ui->loan2PaymentInput->text().toDouble();
-        emit depositToLoan(amount, 1);
-        ui->loan2PaymentInput->clear();
-    });
-
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 }
 
@@ -477,7 +184,7 @@ void MainWindow::onStartClicked()
     hidePhone();
     ui->balance->show();
     if(firstStart){
-        emit requestQuiz(quizCategory, 5);
+        emit requestQuiz(quizCategory, 1);
         firstStart = false;
     }
     ui->stackedWidget->setCurrentWidget(ui->quizInfo);
@@ -872,4 +579,373 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
 
     return reportString;
 }
+
+
+
+// CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void MainWindow::generalUISetup()
+{
+    buttonGroup = new QButtonGroup(this);
+    buttonGroup->addButton(ui->choice1);
+    buttonGroup->addButton(ui->choice2);
+    buttonGroup->addButton(ui->choice3);
+    buttonGroup->addButton(ui->choice4);
+    ui->balance->hide();
+
+    startScreenView = new StartScreenView(ui->Start);
+    startScreenView->stackUnder(ui->startButton);
+    startScreenView->setGeometry(this->rect());
+    startScreenView->show();
+
+    animationView = new AnimationView(ui->Quiz);
+    animationView->stackUnder(ui->choicesLayout);
+    animationView->setGeometry(this->rect());
+    animationView->hide();
+
+    ui->yearlyReportLabel->setText(generateReportString({0,0,0,0,0,0}, {0,0,0,0,0,0}));
+
+    quizCategory = QuizCategory::tutorial;
+    quizLength = 1;
+    firstStart = true;
+}
+
+void MainWindow::setUpGifs()
+{
+    QMovie *bankMovie = new QMovie(":/gifs/gifs/bank.gif");
+    ui->bankGif->setMovie(bankMovie);
+    bankMovie->setScaledSize(ui->bankGif->size());
+    connect(bankMovie, &QMovie::finished, [bankMovie]() {
+        bankMovie->setPaused(true); // Freeze on the last frame
+    });
+    bankMovie->start();
+
+    QMovie *stocksMovie = new QMovie(":/gifs/gifs/bank.gif");
+    ui->stockGif->setMovie(stocksMovie);
+    stocksMovie->setScaledSize(ui->stockGif->size());
+    connect(stocksMovie, &QMovie::finished, [stocksMovie]() {
+        stocksMovie->setPaused(true); // Freeze on the last frame
+    });
+    stocksMovie->start();
+
+    QMovie *pigMovie = new QMovie(":/gifs/gifs/piggy.gif");
+    ui->pigGif->setMovie(pigMovie);
+    pigMovie->setScaledSize(ui->pigGif->size());
+    connect(pigMovie, &QMovie::finished, [pigMovie]() {
+        pigMovie->setPaused(true); // Freeze on the last frame
+    });
+    pigMovie->start();
+}
+
+void MainWindow::setupAudio()
+{
+    levelPassSound = new QSoundEffect(this);
+    levelPassSound->setSource(QUrl("qrc:/sounds/sounds/level-up-sound.wav"));
+    levelFailSound = new QSoundEffect(this);
+    levelFailSound->setSource(QUrl("qrc:/sounds/sounds/wrong.wav"));
+    depositSound = new QSoundEffect(this);
+    depositSound->setSource(QUrl("qrc:/sounds/sounds/cash-register.wav"));
+
+    //Experimental Music stuff
+    QMediaPlayer *player = new QMediaPlayer;
+    QAudioOutput *audioOutput = new QAudioOutput;
+
+    player->setAudioOutput(audioOutput);
+    audioOutput->setVolume(0.25);
+
+    player->setSource(QUrl("qrc:/sounds/sounds/ElvisHerod-Clutterbuck.mp3"));
+    player->setLoops(QMediaPlayer::Infinite);
+
+    player->play();
+}
+
+void MainWindow::enableQuizSubmission()
+{
+    connect(ui->choice1, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    connect(ui->choice2, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    connect(ui->choice3, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+    connect(ui->choice4, &QRadioButton::toggled, this, &MainWindow::enableSubmitButton);
+}
+
+void MainWindow::quizConnections(MainModel *model)
+{
+    connect(model, &MainModel::sendQuestion, this, &MainWindow::showQuizData);
+    connect(model, &MainModel::sendQuizInfo, this, &MainWindow::updateQuizInfo);
+
+    connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
+
+    //make a show quiz info, then make that button on page start quiz
+    connect(ui->startQuizButton, &QPushButton::clicked, this, [this]() {
+        startQuiz(quizCategory, quizLength);
+    });
+    connect(this, &MainWindow::requestQuiz, model, &MainModel::quizRequested);
+    connect(ui->nextButton, &QPushButton::clicked, model, &MainModel::getNextQuestion);
+    connect(ui->submitButton, &QPushButton::clicked, this, &MainWindow::submitHelper);
+
+    connect(this, &MainWindow::sendAnswer, model, &MainModel::checkAnswer);
+    connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
+    connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
+    connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
+}
+
+void MainWindow::depositingConnectionWindowToModel(MainModel *model)
+{
+    connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
+    connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
+    connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
+    connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
+    connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
+}
+
+void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
+{
+    connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
+    connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
+    connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
+    connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
+    connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
+}
+
+void MainWindow::mainWindowValueUpdateConnections(MainModel *model)
+{
+    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
+    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
+    connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
+    connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
+    connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
+}
+
+void MainWindow::buyingStockUIConnections()
+{
+    connect(ui->purchaseStockOneButton, &QPushButton::clicked, this, [&]() -> void {
+        emit buyStock(ui->purchaseStockOneSpin->value(), 0);
+        ui->purchaseStockOneSpin->setValue(0);
+        emit revalidateStockDisplay();
+    });
+    connect(ui->purchaseStockTwoButton, &QPushButton::clicked, this, [&]() -> void {
+        emit buyStock(ui->purchaseStockTwoSpin->value(), 1);
+        ui->purchaseStockTwoSpin->setValue(0);
+        emit revalidateStockDisplay();
+    });
+    connect(ui->purchaseStockThreeButton, &QPushButton::clicked, this, [&]() -> void {
+        emit buyStock(ui->purchaseStockThreeSpin->value(), 2);
+        ui->purchaseStockThreeSpin->setValue(0);
+        emit revalidateStockDisplay();
+    });
+}
+
+void MainWindow::sellingStockUIConnections()
+{
+    connect(ui->sellButtonStockOne, &QPushButton::clicked, this, [&]() -> void {
+        emit sellStock(ui->sellSpinStockOne->value(), 0);
+        ui->sellSpinStockOne->setValue(0);
+    });
+    connect(ui->sellButtonStockTwo, &QPushButton::clicked, this, [&]() -> void {
+        emit sellStock(ui->sellSpinStockTwo->value(), 1);
+        ui->sellSpinStockTwo->setValue(0);
+    });
+    connect(ui->sellButtonStockThree, &QPushButton::clicked, this, [&]() -> void {
+        emit sellStock(ui->sellSpinStockThree->value(), 2);
+        ui->sellSpinStockThree->setValue(0);
+    });
+}
+
+void MainWindow::visualIUpdatesStockConnections(MainModel *model)
+{
+    connect(this, &MainWindow::revalidateStockDisplay,this, &MainWindow::revalidateAllStockDisplays);
+    connect(this, &MainWindow::revalidateSpecificStockDisplay,this, &MainWindow::updateStockPriceDisplay);
+    connect(model, &MainModel::numberOfStocksOwned, this, &MainWindow::updateStockAmountOwned);
+
+    // Update price buying
+    connect(ui->purchaseStockOneSpin, &QSpinBox::valueChanged, this, [&]() -> void {
+        emit requestPriceOfXStocks(ui->purchaseStockOneSpin->value(), 0);
+    });
+    connect(ui->purchaseStockTwoSpin, &QSpinBox::valueChanged, this, [&]() -> void {
+        emit requestPriceOfXStocks(ui->purchaseStockTwoSpin->value(), 1);
+    });
+    connect(ui->purchaseStockThreeSpin, &QSpinBox::valueChanged, this, [&]() -> void {
+        emit requestPriceOfXStocks(ui->purchaseStockThreeSpin->value(), 2);
+    });
+    connect(this, &MainWindow::requestPriceOfXStocks, model, &MainModel::sendPriceOfXStocks);
+    connect(model, &MainModel::sendPriceOfStocks, this, &MainWindow::updateStockPriceDisplay);
+
+    //Update price selling
+    connect(ui->sellSpinStockOne, &QSpinBox::valueChanged, this, [&]() -> void {
+        emit requestSellingPriceOfXStocks(ui->sellSpinStockOne->value(), 0);
+    });
+    connect(ui->sellSpinStockTwo, &QSpinBox::valueChanged, this, [&]() -> void {
+        emit requestSellingPriceOfXStocks(ui->sellSpinStockTwo->value(), 1);
+    });
+    connect(ui->sellSpinStockThree, &QSpinBox::valueChanged, this, [&]() -> void {
+        emit requestSellingPriceOfXStocks(ui->sellSpinStockThree->value(), 2);
+    });
+
+    connect(this,
+            &MainWindow::requestSellingPriceOfXStocks,
+            model,
+            &MainModel::sendSellingPriceOfXStocks);
+    connect(model,
+            &MainModel::sendSellingPriceOfStocks,
+            this,
+            &MainWindow::updateSellingStockPriceDisplay);
+
+    //UPDATE STOCK IMAGE
+    connect(model, &MainModel::stockChange, this, &MainWindow::updateStockImage);
+
+    //Stocks go back button
+    connect(ui->stocksBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+}
+
+void MainWindow::cdPageConnections(MainModel *model)
+{
+    connect(ui->App2, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->CD);
+        for (int i = 0; i < 3; ++i) {
+            emit requestCDInfo(i);
+        }
+    });
+
+    connect(this, &MainWindow::requestCDInfo, model, &MainModel::updateCDInformation);
+
+    connect(ui->cdBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    connect(ui->cd1WithdrawButton, &QPushButton::clicked, this, [this]() {
+        emit withdrawFromCD(0);
+    });
+    connect(ui->cd2WithdrawButton, &QPushButton::clicked, this, [this]() {
+        emit withdrawFromCD(1);
+    });
+    connect(ui->cd3WithdrawButton, &QPushButton::clicked, this, [this]() {
+        emit withdrawFromCD(2);
+    });
+
+    // connect(ui->cd1DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    // connect(ui->cd2DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+    // connect(ui->cd3DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
+
+    connect(ui->cd1DepositButton, &QPushButton::clicked, this, [this]() {
+        double amount = ui->cd1DepositInput->text().toDouble();
+        emit depositToCD(amount, 0);
+        ui->cd1DepositInput->clear();
+    });
+    connect(ui->cd2DepositButton, &QPushButton::clicked, this, [this]() {
+        double amount = ui->cd2DepositInput->text().toDouble();
+        emit depositToCD(amount, 1);
+        ui->cd2DepositInput->clear();
+    });
+    connect(ui->cd3DepositButton, &QPushButton::clicked, this, [this]() {
+        double amount = ui->cd3DepositInput->text().toDouble();
+        emit depositToCD(amount, 2);
+        ui->cd3DepositInput->clear();
+    });
+}
+
+void MainWindow::savingsPageConnections(MainModel *model)
+{
+    connect(ui->App3, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Bank);
+    });
+
+    connect(ui->bankBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    connect(ui->savingsDepositButton, &QPushButton::clicked, this, [this]() {
+        double updatedSavings = ui->savingsDepositInput->text().toDouble();
+        emit savingsDepositAmountRead(updatedSavings);
+        ui->savingsDepositInput->clear();
+        depositSound->play();
+
+    });
+    connect(this, &MainWindow::savingsDepositAmountRead, model, &MainModel::depositToSavings);
+    connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
+
+    connect(ui->savingsWithdrawButton, &QPushButton::clicked, this, [this]() {
+        double updatedSavings = ui->savingsWithdrawInput->text().toDouble();
+        emit savingsWithdrawAmountRead(updatedSavings);
+        ui->savingsWithdrawInput->clear();
+    });
+
+    connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
+
+    connect(ui->checkingDepositButton, &QPushButton::clicked, this, [this]() {
+        double updatedChecking = ui->checkingDepositInput->text().toDouble();
+        emit checkingDepositAmountRead(updatedChecking);
+        ui->checkingDepositInput->clear();
+        depositSound->play();
+    });
+    connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
+    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
+
+    connect(ui->checkingWithdrawButton, &QPushButton::clicked, this, [this]() {
+        double updatedChecking = ui->checkingWithdrawInput->text().toDouble();
+        emit checkingWithdrawAmountRead(updatedChecking);
+        ui->checkingWithdrawInput->clear();
+    });
+
+    connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
+}
+
+void MainWindow::loansPageConnections(MainModel *model)
+{
+    connect(ui->App4, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Loans);
+        emit requestLoanInfo(0);
+        emit requestLoanInfo(1);
+    });
+
+    connect(this, &MainWindow::requestLoanInfo, model, &MainModel::handleLoanInfoRequest);
+
+    connect(ui->loanBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    connect(ui->activateLoan1Button, &QPushButton::clicked, this, [this]() {
+        emit activateLoan(0);
+    });
+    connect(ui->activateLoan2Button, &QPushButton::clicked, this, [this]() {
+        emit activateLoan(1);
+    });
+
+    connect(ui->payLoan1Button, &QPushButton::clicked, this, [this]() {
+        double amount = ui->loan1PaymentInput->text().toDouble();
+        emit depositToLoan(amount, 0);
+        ui->loan1PaymentInput->clear();
+    });
+    connect(ui->payLoan2Button, &QPushButton::clicked, this, [this]() {
+        double amount = ui->loan2PaymentInput->text().toDouble();
+        emit depositToLoan(amount, 1);
+        ui->loan2PaymentInput->clear();
+    });
+}
+
+void MainWindow::nextYearConnections(MainModel *model)
+{
+    connect(ui->nextYearButton, &QPushButton::clicked, model, &MainModel::nextYear);
+    connect(this, &MainWindow::nextYear, model, &MainModel::nextYear);
+    connect(model, &MainModel::newYear, this, &MainWindow::newYear);
+}
+
+void MainWindow::phoneConnections()
+{
+    connect(ui->openPhoneButton, &QPushButton::clicked, this, &MainWindow::displayPhone);
+    connect(ui->closePhoneButton, &QPushButton::clicked, this, &MainWindow::hidePhone);
+}
+
+void MainWindow::settingsConnections(MainModel *model)
+{
+    connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
+        ui->settingsButton->hide();
+        ui->balance->hide();
+        emit settingsOpened(ui->stackedWidget->currentWidget());
+        ui->stackedWidget->setCurrentWidget(ui->Settings);
+    });
+    connect(ui->settingsBackButton, &QPushButton::clicked, model, &MainModel::settingsClosed);
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
