@@ -117,12 +117,15 @@ signals:
 
     void gameEnded();
 
+    void quizzesRemainingChanged(int remaining);
+
 private:
     QuizHandler *quizHandler;
 
     double currentMoney;
     int creditScore;
     int currentYear;
+    int remainingQuizzes = 3;
     QWidget *currentWidget;
 
     SavingsAccount *savingsAccount;
@@ -138,6 +141,7 @@ private:
     void addFunds(double amount);
 
     void endGame();
+
 };
 
 #endif // MAINMODEL_H

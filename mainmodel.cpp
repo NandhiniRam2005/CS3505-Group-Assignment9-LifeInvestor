@@ -33,9 +33,19 @@ MainModel::MainModel(QObject *parent)
 
 void MainModel::quizRequested(QuizCategory category, uint length)
 {
+    if(category == QuizCategory::mixOfAll && remainingQuizzes <= 0) {
+        emit showErrorMessage("No more quizzes available!");
+        return;
+    }
+
     this->quizHandler->createQuiz(category, length);
     getNextQuestion();
     getQuizInfo();
+
+    if(category == QuizCategory::mixOfAll) {
+        remainingQuizzes--;
+        emit quizzesRemainingChanged(remainingQuizzes);
+    }
 }
 
 void MainModel::getNextQuestion()
