@@ -305,6 +305,10 @@ void MainModel::nextYear()
     if (currentYear == 16 || loanOverdue) {
         endGame();
     }
+
+    //Reseats Bonus quiz number
+    remainingQuizzes = 3;
+    emit quizzesRemainingChanged(remainingQuizzes);
 }
 
 void MainModel::settingsOpened(QWidget *currentWidget)
