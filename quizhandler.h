@@ -26,7 +26,7 @@ enum class QuizCategory {
     loans = 3,
     savings = 4,
     tutorial = 5,
-    mixOfAll = 6
+    mixOfAll = 6,
 };
 
 Q_DECLARE_METATYPE(Question)

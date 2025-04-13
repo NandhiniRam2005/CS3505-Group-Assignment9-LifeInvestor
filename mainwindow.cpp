@@ -45,6 +45,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     loansPageConnections(model);
 
+    extraQuizesPageConnections(model);
+
 
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -945,6 +947,21 @@ void MainWindow::settingsConnections(MainModel *model)
         ui->stackedWidget->setCurrentWidget(ui->Settings);
     });
     connect(ui->settingsBackButton, &QPushButton::clicked, model, &MainModel::settingsClosed);
+}
+
+void MainWindow::extraQuizesPageConnections(MainModel *model)
+{
+    connect(ui->App5, &QPushButton::clicked, model, &MainModel::handleExtraQuizRequest);
+
+    connect(model, &MainModel::quizzesRemainingChanged, this, [this](int remaining) {
+        ui->quizRemains->setText("Bonus Quizzes: " + QString::number(remaining));
+    });
+
+    connect(model, &MainModel::quizStarted, this, [this]() {
+        quizCategory = QuizCategory::mixOfAll;
+        quizLength = 5;
+        ui->stackedWidget->setCurrentWidget(ui->quizInfo);
+    });
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

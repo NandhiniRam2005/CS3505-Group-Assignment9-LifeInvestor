@@ -57,6 +57,8 @@ public slots:
 
     void handleLoanInfoRequest(int loanNumber);
 
+    void handleExtraQuizRequest();
+
 signals:
     /**
      * Sends a question out for the view to display
@@ -118,6 +120,7 @@ signals:
     void gameEnded();
 
     void quizzesRemainingChanged(int remaining);
+    void quizStarted();
 
 private:
     QuizHandler *quizHandler;

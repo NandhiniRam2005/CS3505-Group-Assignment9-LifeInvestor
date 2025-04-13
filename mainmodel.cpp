@@ -33,19 +33,9 @@ MainModel::MainModel(QObject *parent)
 
 void MainModel::quizRequested(QuizCategory category, uint length)
 {
-    if(category == QuizCategory::mixOfAll && remainingQuizzes <= 0) {
-        emit showErrorMessage("No more quizzes available!");
-        return;
-    }
-
     this->quizHandler->createQuiz(category, length);
     getNextQuestion();
     getQuizInfo();
-
-    if(category == QuizCategory::mixOfAll) {
-        remainingQuizzes--;
-        emit quizzesRemainingChanged(remainingQuizzes);
-    }
 }
 
 void MainModel::getNextQuestion()
@@ -341,6 +331,18 @@ void MainModel::handleLoanInfoRequest(int loanNumber) {
                     loan.getAvailable(),
                     loan.getActive(),
                     loan.getYearsLeft());
+}
+
+void MainModel::handleExtraQuizRequest() {
+
+    if (remainingQuizzes <= 0) {
+        emit showErrorMessage("No bonus quizzes remaining!");
+        return;
+    }
+    remainingQuizzes--;
+    emit quizzesRemainingChanged(remainingQuizzes);
+    quizRequested(QuizCategory::mixOfAll, 5);
+    emit quizStarted();
 }
 
 void MainModel ::endGame() {

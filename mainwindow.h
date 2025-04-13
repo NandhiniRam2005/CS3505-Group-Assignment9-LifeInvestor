@@ -83,6 +83,8 @@ private:
 
     void settingsConnections(MainModel *model);
 
+    void extraQuizesPageConnections(MainModel *model);
+
 public slots:
     void startQuiz(QuizCategory category, uint questionAmount);
     void showQuizData(Question q);
