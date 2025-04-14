@@ -51,9 +51,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
-        ui->balance_2->show();
-        ui->credit->show();
-        ui->networth->show();
+        ui->cashBalance->show();
+        ui->creditLabel->show();
+        ui->networthLabel->show();
     });
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
@@ -180,18 +180,18 @@ void MainWindow::returnToGame(QWidget *currentWidget)
     }
     ui->settingsButton->show();
     if (returnPage != "Start" && returnPage != "quizEnd"){
-        ui->balance_2->show();
-        ui->credit->show();
-        ui->networth->show();
+        ui->cashBalance->show();
+        ui->creditLabel->show();
+        ui->networthLabel->show();
     }
 }
 
 void MainWindow::onStartClicked()
 {
     hidePhone();
-    ui->balance_2->show();
-    ui->credit->show();
-    ui->networth->show();
+    ui->cashBalance->show();
+    ui->creditLabel->show();
+    ui->networthLabel->show();
     if(firstStart){
         emit requestQuiz(quizCategory, 1);
         firstStart = false;
@@ -241,15 +241,15 @@ void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
     if (currentMoney == std::floor(currentMoney))
-        ui->balance_2->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
+        ui->cashBalance->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
     else
-        ui->balance_2->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
+        ui->cashBalance->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
 
     if(currentMoney >= 0){
-        ui->balance_2->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
+        ui->cashBalance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
     }
     else{
-        ui->balance_2->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
+        ui->cashBalance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
     }
 
 
@@ -372,9 +372,9 @@ void MainWindow::enableSubmitButton(bool checked)
 
 void MainWindow::showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned)
 {
-    ui->balance_2->hide();
-    ui->credit->hide();
-    ui->networth->hide();
+    ui->cashBalance->hide();
+    ui->creditLabel->hide();
+    ui->networthLabel->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
     double percentage = ((double)questionsAnsweredCorrectly / quizLength) * 100;
     ui->scoreLabel->setText(QString::number(questionsAnsweredCorrectly) + " / " +  QString::number(quizLength));
@@ -555,7 +555,10 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
             break;
         }
         case 11:{
-            quizCategory = QuizCategory::savings;
+            quizCategory = QuizCategory::stocks;
+            QPixmap pixmap(":///icons/icons/stockApp.png");
+            ui->App1->setIcon(pixmap);
+            ui->App1->setEnabled(true);
             break;
         }
         case 10:{
@@ -656,9 +659,9 @@ void MainWindow::generalUISetup()
     buttonGroup->addButton(ui->choice2);
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
-    ui->balance_2->hide();
-    ui->credit->hide();
-    ui->networth->hide();
+    ui->cashBalance->hide();
+    ui->creditLabel->hide();
+    ui->networthLabel->hide();
 
     startScreenView = new StartScreenView(ui->Start);
     startScreenView->stackUnder(ui->startButton);
@@ -1020,9 +1023,9 @@ void MainWindow::settingsConnections(MainModel *model)
 {
     connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
         ui->settingsButton->hide();
-        ui->balance_2->hide();
-        ui->credit->hide();
-        ui->networth->hide();
+        ui->cashBalance->hide();
+        ui->creditLabel->hide();
+        ui->networthLabel->hide();
         emit settingsOpened(ui->stackedWidget->currentWidget());
         ui->stackedWidget->setCurrentWidget(ui->Settings);
     });
