@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1225,6 +1225,99 @@ V</string>
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="balance">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>10</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Impact</family>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Cash: $0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="networth">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>10</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Impact</family>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Networth: $0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="credit">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>50</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Impact</family>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+      </property>
+      <property name="text">
+       <string>Credit: 0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
      <zorder>mainBackground</zorder>
      <zorder>yearlyReportLabel</zorder>
      <zorder>line_3</zorder>
@@ -1242,6 +1335,9 @@ V</string>
      <zorder>quizRemains</zorder>
      <zorder>billbalance</zorder>
      <zorder>label_17</zorder>
+     <zorder>balance</zorder>
+     <zorder>networth</zorder>
+     <zorder>credit</zorder>
     </widget>
     <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">
@@ -4161,37 +4257,6 @@ QToolBox QWidget {
     </property>
     <property name="flat">
      <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="balance">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>20</y>
-      <width>181</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Proxima Nova</family>
-      <pointsize>-1</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel {
-    color: #85bb65;
-    font-weight: bold;
-	font-size: 30px;
-}</string>
-    </property>
-    <property name="text">
-     <string>$0</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>

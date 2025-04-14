@@ -44,6 +44,9 @@ void MainModel::getNextQuestion()
     if (quizHandler->hasMoreQuestions()) {
         emit sendQuestion(quizHandler->getNextQuestion());
     } else {
+        if(quizHandler->getQuestionsAnsweredCorrectly() > 4){
+            creditScore += 15;
+        }
         emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly(), quizHandler->getAmountEarned());
     }
 }
@@ -61,6 +64,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
     emit sendResult(result, why);
     if (result) {
         addFunds(quizHandler->getCurrentQuestionReward());
+        creditScore+=7;
         emit updateBalance(currentMoney);
     }
 }
@@ -136,6 +140,7 @@ void MainModel::depositToLoan(double amount, int loanNumber)
                         loans[loanNumber].getAvailable(),
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
+        creditScore+=12;
     } else
         emit showErrorMessage("Input amount cannot be removed from the loan");
 }
@@ -211,6 +216,7 @@ void MainModel::activateLoan(int loanNumber)
                         loans[loanNumber].getAvailable(),
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
+        creditScore-=75;
     } else
         emit showErrorMessage("The loan cannot be activated");
 }
@@ -314,6 +320,7 @@ void MainModel::nextYear()
     }
     if(currentMoney < 0){
         yearsBeingBroke++;
+        creditScore-=25;
     }
     else{
         yearsBeingBroke = 0;

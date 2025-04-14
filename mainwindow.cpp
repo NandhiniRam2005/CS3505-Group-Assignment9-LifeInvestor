@@ -52,6 +52,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
         ui->balance->show();
+        ui->credit->show();
+        ui->networth->show();
     });
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
@@ -177,14 +179,19 @@ void MainWindow::returnToGame(QWidget *currentWidget)
         throw std::runtime_error("return page could not be found.");
     }
     ui->settingsButton->show();
-    if (returnPage != "Start" && returnPage != "quizEnd")
+    if (returnPage != "Start" && returnPage != "quizEnd"){
         ui->balance->show();
+        ui->credit->show();
+        ui->networth->show();
+    }
 }
 
 void MainWindow::onStartClicked()
 {
     hidePhone();
     ui->balance->show();
+    ui->credit->show();
+    ui->networth->show();
     if(firstStart){
         emit requestQuiz(quizCategory, 1);
         firstStart = false;
@@ -234,9 +241,9 @@ void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
     if (currentMoney == std::floor(currentMoney))
-        ui->balance->setText("$" + QString::number(currentMoney, 'f', 0));
+        ui->balance->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
     else
-        ui->balance->setText("$" + QString::number(currentMoney, 'f', 2));
+        ui->balance->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
 
     if(currentMoney >= 0){
         ui->balance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
@@ -244,6 +251,8 @@ void MainWindow::updateBalance(double newAmount)
     else{
         ui->balance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
     }
+
+
 }
 
 void MainWindow::updateSavings(double newBalance, double interestRate)
@@ -364,6 +373,8 @@ void MainWindow::enableSubmitButton(bool checked)
 void MainWindow::showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned)
 {
     ui->balance->hide();
+    ui->credit->hide();
+    ui->networth->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
     double percentage = ((double)questionsAnsweredCorrectly / quizLength) * 100;
     ui->scoreLabel->setText(QString::number(questionsAnsweredCorrectly) + " / " +  QString::number(quizLength));
@@ -643,6 +654,8 @@ void MainWindow::generalUISetup()
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
     ui->balance->hide();
+    ui->credit->hide();
+    ui->networth->hide();
 
     startScreenView = new StartScreenView(ui->Start);
     startScreenView->stackUnder(ui->startButton);
@@ -1005,6 +1018,8 @@ void MainWindow::settingsConnections(MainModel *model)
     connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
         ui->settingsButton->hide();
         ui->balance->hide();
+        ui->credit->hide();
+        ui->networth->hide();
         emit settingsOpened(ui->stackedWidget->currentWidget());
         ui->stackedWidget->setCurrentWidget(ui->Settings);
     });
