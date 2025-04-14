@@ -976,21 +976,6 @@ void MainWindow::savingsPageConnections(MainModel *model)
 
     //connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
 
-    connect(ui->checkingDepositButton, &QPushButton::clicked, this, [this]() {
-        double updatedChecking = ui->checkingDepositInput->text().toDouble();
-        emit checkingDepositAmountRead(updatedChecking);
-        ui->checkingDepositInput->clear();
-        depositSound->play();
-    });
-    //connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
-    //connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
-
-    connect(ui->checkingWithdrawButton, &QPushButton::clicked, this, [this]() {
-        double updatedChecking = ui->checkingWithdrawInput->text().toDouble();
-        emit checkingWithdrawAmountRead(updatedChecking);
-        ui->checkingWithdrawInput->clear();
-    });
-
     connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
 }
 
