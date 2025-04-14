@@ -36,6 +36,7 @@
         <file>icons/cd2.png</file>
         <file>icons/cd3.png</file>
         <file>icons/img.icons8.png</file>
+        <file>icons/billCollector.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

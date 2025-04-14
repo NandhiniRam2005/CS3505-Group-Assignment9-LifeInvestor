@@ -137,7 +137,7 @@ public slots:
     void revalidateAllStockDisplays();
     void displayDepositPage();
 
-    void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
+    void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
     void gameEnded();
 

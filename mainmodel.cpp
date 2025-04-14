@@ -304,7 +304,7 @@ void MainModel::nextYear()
     for (int i = 0; i < 6; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
-    emit newYear(newTotals, initialTotals, currentYear);
+    emit newYear(newTotals, initialTotals, currentYear, yearlyBills);
 
     if (currentYear == 16 || loanOverdue) {
         endGame();

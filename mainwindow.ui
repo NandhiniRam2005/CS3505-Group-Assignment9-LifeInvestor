@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -952,7 +952,7 @@ Total:Earnings: $5,000,000</string>
      <widget class="Line" name="line_14">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>170</x>
         <y>90</y>
         <width>61</width>
         <height>391</height>
@@ -965,14 +965,23 @@ Total:Earnings: $5,000,000</string>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>470</y>
+        <x>10</x>
+        <y>230</y>
         <width>181</width>
         <height>61</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>Expected expenses this year: da dee da dee da</string>
+       <string>UPCOMING YEARLY BILLS:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -981,9 +990,9 @@ Total:Earnings: $5,000,000</string>
      <widget class="Line" name="line_15">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>270</y>
-        <width>181</width>
+        <x>0</x>
+        <y>220</y>
+        <width>201</width>
         <height>20</height>
        </rect>
       </property>
@@ -994,8 +1003,8 @@ Total:Earnings: $5,000,000</string>
      <widget class="QLabel" name="label_26">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>130</y>
+        <x>10</x>
+        <y>90</y>
         <width>121</width>
         <height>101</height>
        </rect>
@@ -1004,22 +1013,6 @@ Total:Earnings: $5,000,000</string>
        <string>Breaking news!
 
  Heisler hits the streets as the new pink ninja turtle</string>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_27">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>320</y>
-        <width>121</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Stocks, pictures, i'm not sure</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -1046,6 +1039,56 @@ Total:Earnings: $5,000,000</string>
        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="billbalance">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>440</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Proxima Nova</family>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+      </property>
+      <property name="text">
+       <string>$500</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>280</y>
+        <width>141</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/billCollector.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
      <zorder>mainBackground</zorder>
      <zorder>yearlyReportLabel</zorder>
      <zorder>line_3</zorder>
@@ -1060,8 +1103,9 @@ Total:Earnings: $5,000,000</string>
      <zorder>label</zorder>
      <zorder>line_15</zorder>
      <zorder>label_26</zorder>
-     <zorder>label_27</zorder>
      <zorder>quizRemains</zorder>
+     <zorder>billbalance</zorder>
+     <zorder>label_17</zorder>
     </widget>
     <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">

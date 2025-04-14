@@ -113,7 +113,7 @@ signals:
 
     void showErrorMessage(QString errorMessage);
 
-    void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear);
+    void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
     void stockChange(bool stockOneUp, bool stockTwoUp, bool stockThreeUp);
 

@@ -522,7 +522,7 @@ void MainWindow::displayDepositPage()
 
 
 
-void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
+void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills)
 {
     switch(14 - currentYear){
         case 12:{
@@ -553,6 +553,7 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
     quizLength = 5;
     emit requestQuiz(quizCategory, quizLength);
     onStartClicked();
+    ui->billbalance->setText("$"+ QString::number(yearlyBills));
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
