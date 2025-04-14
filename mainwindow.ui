@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1367,7 +1367,7 @@ V</string>
       <property name="geometry">
        <rect>
         <x>170</x>
-        <y>90</y>
+        <y>40</y>
         <width>441</width>
         <height>121</height>
        </rect>
@@ -1378,10 +1378,51 @@ V</string>
        </font>
       </property>
       <property name="text">
-       <string>THE END!</string>
+       <string>GAME OVER:</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="endImage">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>160</y>
+        <width>191</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/broke.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="reasonLabel">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>160</y>
+        <width>371</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Baghdad</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>REASON FOR END</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -2106,7 +2147,7 @@ border-radius: 5px;}</string>
         <x>550</x>
         <y>230</y>
         <width>173</width>
-        <height>33</height>
+        <height>34</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="StockTwoBuyLayout" stretch="1,0,0">
@@ -2138,7 +2179,7 @@ border-radius: 5px;}</string>
         <x>540</x>
         <y>380</y>
         <width>173</width>
-        <height>33</height>
+        <height>34</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="StockThreeBuyLayout" stretch="1,0,0">
@@ -2261,7 +2302,7 @@ border-radius: 5px;}</string>
         <x>550</x>
         <y>300</y>
         <width>167</width>
-        <height>33</height>
+        <height>34</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="sellLayoutStockTwo">
@@ -2290,7 +2331,7 @@ border-radius: 5px;}</string>
         <x>540</x>
         <y>460</y>
         <width>167</width>
-        <height>33</height>
+        <height>34</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="sellLayoutStockThree">
@@ -2577,7 +2618,7 @@ border-radius: 5px;}</string>
         <x>550</x>
         <y>60</y>
         <width>173</width>
-        <height>33</height>
+        <height>34</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="stockOneBuyLayout">
@@ -2656,7 +2697,7 @@ border-radius: 5px;}</string>
         <x>550</x>
         <y>140</y>
         <width>167</width>
-        <height>33</height>
+        <height>34</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="sellLayoutStockOne">
@@ -3862,7 +3903,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>301</height>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">
