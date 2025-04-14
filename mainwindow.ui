@@ -604,6 +604,28 @@ V</string>
      </widget>
     </widget>
     <widget class="QWidget" name="mainGame">
+     <widget class="QLabel" name="currentYear">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>60</y>
+        <width>251</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>YEARS REMAINING: 14</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
      <widget class="Line" name="line">
       <property name="geometry">
        <rect>
@@ -1115,6 +1137,28 @@ V</string>
        <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
+     <widget class="QLabel" name="quizRemains">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>60</y>
+        <width>275</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>19</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Extra Quizzes remaning: 3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
      <widget class="QLabel" name="billbalance">
       <property name="geometry">
        <rect>
@@ -1178,50 +1222,6 @@ V</string>
        <enum>Qt::Orientation::Vertical</enum>
       </property>
      </widget>
-     <widget class="QWidget" name="">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>60</y>
-        <width>561</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="yearQuizLayout">
-       <item>
-        <widget class="QLabel" name="currentYear">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>YEARS REMAINING: 14</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="quizRemains">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>19</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Extra Quizzes remaning: 3</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <zorder>mainBackground</zorder>
      <zorder>yearlyReportLabel</zorder>
      <zorder>line_3</zorder>
@@ -1239,6 +1239,8 @@ V</string>
      <zorder>billbalance</zorder>
      <zorder>label_17</zorder>
      <zorder>line_16</zorder>
+     <zorder>quizRemains</zorder>
+     <zorder>currentYear</zorder>
     </widget>
     <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">
