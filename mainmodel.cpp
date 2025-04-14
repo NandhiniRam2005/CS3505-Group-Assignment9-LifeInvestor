@@ -236,6 +236,8 @@ void MainModel::nextYear()
     initialCounter = 0;
     newCounter = 0;
     for (int i = 0; i < cdAccounts.count(); i++) {
+        if (cdAccounts[i].getYearsRemaining() == 0)
+            withdrawFromCD(i);
         initialCounter += cdAccounts[i].getBalance();
         cdAccounts[i].nextYear();
         newCounter += cdAccounts[i].getBalance();
@@ -294,7 +296,7 @@ void MainModel::nextYear()
     // Calculate net worths
     initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2]
                             + initialTotals[3]+ initialTotals[4]);
-    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]+ initialTotals[4]);
+    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]+ newTotals[4]);
 
     // Calculate changes between years
     for (int i = 0; i < 6; i++)
