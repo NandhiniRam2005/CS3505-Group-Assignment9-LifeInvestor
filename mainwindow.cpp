@@ -557,6 +557,7 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
+    ui->continueButton->setText("Continute to Year " +  QString::number(currentYear));
 
     // Set yearly report
     ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
