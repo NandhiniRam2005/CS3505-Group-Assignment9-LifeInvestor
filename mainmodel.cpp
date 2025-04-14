@@ -33,6 +33,28 @@ MainModel::MainModel(QObject *parent)
 
 }
 
+double MainModel::calculateNetWorth()
+{
+    double total = currentMoney;
+    total += savingsAccount->getBalance();
+
+    // CDs
+    for (CDAccount cd : cdAccounts)
+        total += cd.getBalance();
+
+    // Stocks
+    for (Stock stock : stocks)
+        total += stock.getMoneyBalance();
+
+    // Only include ACTIVE loans
+    for (Loan loan : loans) {
+        if (loan.getActive()) {
+            total += loan.getBalance();
+        }
+    }
+    return total;
+}
+
 void MainModel::randomLifeEvent() {
     LifeEvent lifeEvent = this->lifeEventHandler->getRandomLifeEvent();
     emit displayLifeEvent(lifeEvent);
@@ -73,6 +95,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
         addFunds(quizHandler->getCurrentQuestionReward());
         creditScore+=7;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
     }
 }
 
@@ -81,12 +104,13 @@ void MainModel::depositToSavings(double amount)
     if (amount <= currentMoney && savingsAccount->deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
     } else
         emit showErrorMessage("Input amount cannot be deposited");
 }
 
-void MainModel::depositToChecking(double amount)
+/*void MainModel::depositToChecking(double amount)
 {
     if (amount <= currentMoney && checkingAccount->deposit(amount)) {
         currentMoney -= amount;
@@ -94,13 +118,14 @@ void MainModel::depositToChecking(double amount)
         emit updateChecking(checkingAccount->getBalance());
     } else
         emit showErrorMessage("Input amount cannot be deposited");
-}
+}*/
 
 void MainModel::depositToCD(double amount, int cdNumber)
 {
     if (amount <= currentMoney && cdAccounts[cdNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateCD(cdNumber,
                       cdAccounts[cdNumber].getBalance(),
                       cdAccounts[cdNumber].getInterestRate(),
@@ -117,6 +142,7 @@ void MainModel::buyStock(int numberOfShares, int stockNumber)
     if (amount <= currentMoney && stocks[stockNumber].deposit(numberOfShares)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
         emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
     } else
@@ -141,6 +167,7 @@ void MainModel::depositToLoan(double amount, int loanNumber)
     if (amount <= currentMoney && loans[loanNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateLoan(loanNumber,
                         loans[loanNumber].getBalance(),
                         loans[loanNumber].getInterestRate(),
@@ -157,12 +184,13 @@ void MainModel::withdrawFromSavings(double amount)
     if (savingsAccount->withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
     } else
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::withdrawFromChecking(double amount)
+/*void MainModel::withdrawFromChecking(double amount)
 {
     if (checkingAccount->withdraw(amount)) {
         currentMoney += amount;
@@ -170,7 +198,7 @@ void MainModel::withdrawFromChecking(double amount)
         emit updateChecking(checkingAccount->getBalance());
     } else
         emit showErrorMessage("Input amount cannot be withdrawn");
-}
+}*/
 
 void MainModel::withdrawFromCD(int cdNumber)
 {
@@ -179,6 +207,7 @@ void MainModel::withdrawFromCD(int cdNumber)
     if (cdAccounts[cdNumber].withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateCD(cdNumber,
                       cdAccounts[cdNumber].getBalance(),
                       cdAccounts[cdNumber].getInterestRate(),
@@ -206,6 +235,7 @@ void MainModel::sellStock(int numberOfShares, int stockNumber)
     if (stocks[stockNumber].withdraw(numberOfShares)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
         emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
     } else
@@ -217,6 +247,7 @@ void MainModel::activateLoan(int loanNumber)
     if (loans[loanNumber].activate()) {
         currentMoney += -loans[loanNumber].getBalance();
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateLoan(loanNumber,
                         loans[loanNumber].getBalance(),
                         loans[loanNumber].getInterestRate(),
@@ -233,6 +264,7 @@ void MainModel::nextYear()
     currentYear++;
     currentMoney-=yearlyBills;
     emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
     yearlyBills+=300;
     QVector<double> initialTotals;
     QVector<double> newTotals;
@@ -246,8 +278,8 @@ void MainModel::nextYear()
     newTotals.push_back(savingsAccount->getBalance());
     emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
 
-    initialTotals.push_back(checkingAccount->getBalance());
-    newTotals.push_back(checkingAccount->getBalance());
+    //initialTotals.push_back(checkingAccount->getBalance());
+    //newTotals.push_back(checkingAccount->getBalance());
 
     initialCounter = 0;
     newCounter = 0;
@@ -309,12 +341,12 @@ void MainModel::nextYear()
     newTotals.push_back(newCounter);
 
     // Calculate net worths
-    initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2]
-                            + initialTotals[3]+ initialTotals[4]);
-    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]+ newTotals[4]);
+    initialTotals.push_back(currentMoney + initialTotals[0] + initialTotals[1] + initialTotals[2]
+                            + initialTotals[3]);
+    newTotals.push_back(currentMoney + newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]);
 
     // Calculate changes between years
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 5; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
     emit newYear(newTotals, initialTotals, currentYear, yearlyBills);
@@ -355,6 +387,7 @@ void MainModel::addFunds(double amount)
 {
     currentMoney += amount;
     emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
 }
 
 void MainModel::handleLoanInfoRequest(int loanNumber) {

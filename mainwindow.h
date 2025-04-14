@@ -97,10 +97,11 @@ public slots:
     void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
     void updateQuizInfo(QuizInfo qI);
+    void updateNetWorth(double netWorth);
 
     void updateSavings(double newBalance, double interestRate);
 
-    void updateChecking(double newBalance);
+    //void updateChecking(double newBalance);
 
     void updateCD(int cdNumber,
                   double newBalance,

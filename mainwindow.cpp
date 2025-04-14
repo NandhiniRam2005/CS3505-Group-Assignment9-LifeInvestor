@@ -14,7 +14,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     ui->stackedWidget->setCurrentWidget(ui->Start);
     generalUISetup();
 
-
     setUpGifs();
 
     setupAudio();
@@ -56,12 +55,15 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->networthLabel->show();
     });
 
+    connect(model, &MainModel::netWorthChanged, this, &MainWindow::updateNetWorth);
+
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         emit requestLifeEvent();
         lifeEventDisplay.show();
     });
 
     connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
+
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
@@ -249,9 +251,9 @@ void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
     if (currentMoney == std::floor(currentMoney))
-        ui->cashBalance->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
+        ui->cashBalance->setText("Checking: $" + QString::number(currentMoney, 'f', 0));
     else
-        ui->cashBalance->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
+        ui->cashBalance->setText("Checking: $" + QString::number(currentMoney, 'f', 2));
 
     if(currentMoney >= 0){
         ui->cashBalance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
@@ -268,10 +270,16 @@ void MainWindow::updateSavings(double newBalance, double interestRate)
     ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
 }
 
-void MainWindow::updateChecking(double newBalance)
+void MainWindow::updateNetWorth(double netWorth)
+{
+    ui->networthLabel->setText("Net Worth: $" + QString::number(netWorth, 'f', 2));
+    ui->networthLabel->setStyleSheet(netWorth < 0 ? "color: red; font-weight: bold; font-size: 30px;" : "color: #85bb65; font-weight: bold; font-size: 30px;");
+}
+
+/*void MainWindow::updateChecking(double newBalance)
 {
     ui->checkingAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
-}
+*/
 
 void MainWindow::updateCD(int cdNumber,
                           double newBalance,
@@ -620,14 +628,14 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
     reportString.append("<table cellpadding='2'>");
 
     // Add net worth to the string
-    if (newTotals[5] < 0)
-        reportString.append("<tr><td>Net Worth:</td><td> -$" + QString::number(-newTotals[5], 'f', 2));
+    if (newTotals[4] < 0)
+        reportString.append("<tr><td>Net Worth:</td><td> -$" + QString::number(-newTotals[4], 'f', 2));
     else
-        reportString.append("<tr><td>Net Worth:</td><td> $" + QString::number(newTotals[5], 'f', 2));
-    if (changes[5] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[5], 'f', 2));
-    else if (changes[5] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[5], 'f', 2));
+        reportString.append("<tr><td>Net Worth:</td><td> $" + QString::number(newTotals[4], 'f', 2));
+    if (changes[4] > 0)
+        reportString.append("<font color: #85bb65> +$" + QString::number(changes[4], 'f', 2));
+    else if (changes[4] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
 
     // Add checking account
     reportString.append("</font></td></tr><tr><td>Checking Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> $" + QString::number(newTotals[1], 'f', 2));
@@ -635,27 +643,27 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
     // Add savings account
     reportString.append("</td></tr><tr><td>Savings Account:</td><td> $" + QString::number(newTotals[0], 'f', 2));
     if (changes[0] > 0)
-        reportString.append("<font color='green'>+$" + QString::number(changes[0], 'f', 2));
+        reportString.append("<font color: #85bb65>+$" + QString::number(changes[0], 'f', 2));
 
     // Add cd accounts
     reportString.append("</font></td></tr><tr><td>CDs Total:</td><td> $" + QString::number(newTotals[2], 'f', 2));
-    if (changes[2] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[2], 'f', 2));
+    if (changes[1] > 0)
+        reportString.append("<font color: #85bb65> +$" + QString::number(changes[1], 'f', 2));
 
     // Add stocks
     reportString.append("</font></td></tr><tr><td>Stocks Total:</td><td> $" + QString::number(newTotals[3], 'f', 2));
-    if (changes[3] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[3], 'f', 2));
-    else if (changes[3] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
+    if (changes[2] > 0)
+        reportString.append("<font color: #85bb65> +$" + QString::number(changes[2], 'f', 2));
+    else if (changes[2] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[2], 'f', 2));
 
     // Add loans
-    if (newTotals[4] < 0)
-        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> -$" + QString::number(-newTotals[4], 'f', 2));
+    if (newTotals[3] < 0)
+        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> -$" + QString::number(-newTotals[3], 'f', 2));
     else
-        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> $" + QString::number(newTotals[4], 'f', 2));
-    if (changes[4] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
+        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> $" + QString::number(newTotals[3], 'f', 2));
+    if (changes[3] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
     reportString.append("</font></td></tr></p>");
 
     return reportString;
@@ -787,7 +795,7 @@ void MainWindow::quizConnections(MainModel *model)
 void MainWindow::depositingConnectionWindowToModel(MainModel *model)
 {
     connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
-    connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
+    //connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
     connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
     connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
     connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
@@ -796,7 +804,7 @@ void MainWindow::depositingConnectionWindowToModel(MainModel *model)
 void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
 {
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
-    connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
+    //connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
     connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
     connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
@@ -805,7 +813,7 @@ void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
 void MainWindow::mainWindowValueUpdateConnections(MainModel *model)
 {
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
-    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
+    //connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
     connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
     connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
     connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
@@ -966,7 +974,7 @@ void MainWindow::savingsPageConnections(MainModel *model)
         ui->savingsWithdrawInput->clear();
     });
 
-    connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
+    //connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
 
     connect(ui->checkingDepositButton, &QPushButton::clicked, this, [this]() {
         double updatedChecking = ui->checkingDepositInput->text().toDouble();
@@ -974,8 +982,8 @@ void MainWindow::savingsPageConnections(MainModel *model)
         ui->checkingDepositInput->clear();
         depositSound->play();
     });
-    connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
-    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
+    //connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
+    //connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
 
     connect(ui->checkingWithdrawButton, &QPushButton::clicked, this, [this]() {
         double updatedChecking = ui->checkingWithdrawInput->text().toDouble();

@@ -4206,7 +4206,7 @@ QToolBox QWidget {
 }</string>
        </property>
        <property name="text">
-        <string>Cash: $0</string>
+        <string>Checking: $0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>

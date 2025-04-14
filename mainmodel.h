@@ -16,6 +16,8 @@ public:
     explicit MainModel(QObject *parent = nullptr);
 
 public slots:
+    double calculateNetWorth();
+
     void quizRequested(QuizCategory category, uint length);
 
     void checkAnswer(std::string selectedChoice);
@@ -26,7 +28,7 @@ public slots:
 
     void depositToSavings(double amount);
 
-    void depositToChecking(double amount);
+    //void depositToChecking(double amount);
 
     void depositToCD(double amount, int cdNumber);
 
@@ -36,7 +38,7 @@ public slots:
 
     void withdrawFromSavings(double amount);
 
-    void withdrawFromChecking(double amount);
+    //void withdrawFromChecking(double amount);
 
     void withdrawFromCD(int cdNumber);
 
@@ -86,6 +88,8 @@ signals:
     void quizFinished(uint numberCorrect, int moneyEarned);
 
     void quizProgress(uint progess);
+
+    void netWorthChanged(double newNetWorth);
 
     void updateSavings(double newBalance, double interestRate);
 
@@ -140,7 +144,7 @@ private:
 
     SavingsAccount *savingsAccount;
 
-    MoneyContainer *checkingAccount;
+    //MoneyContainer *checkingAccount;
 
     QVector<CDAccount> cdAccounts;
 
