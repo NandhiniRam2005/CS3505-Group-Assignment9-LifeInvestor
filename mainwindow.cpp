@@ -549,6 +549,9 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
     switch(14 - currentYear){
         case 12:{
             quizCategory = QuizCategory::stocks;
+            QPixmap pixmap(":///icons/icons/stockApp.png");
+            ui->App1->setIcon(pixmap);
+            ui->App1->setEnabled(true);
             break;
         }
         case 11:{

@@ -1079,7 +1079,7 @@ V</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/mainBackground.png</pixmap>
+       <pixmap resource="resources.qrc">:/icons/icons/plainBg.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -4155,7 +4155,7 @@ QToolBox QWidget {
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="balance">
+      <widget class="QLabel" name="balance_2">
        <property name="font">
         <font>
          <family>Impact</family>
