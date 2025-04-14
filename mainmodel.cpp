@@ -306,8 +306,20 @@ void MainModel::nextYear()
 
     emit newYear(newTotals, initialTotals, currentYear, yearlyBills);
 
-    if (currentYear == 16 || loanOverdue) {
-        endGame();
+    if (currentYear == 16) {
+        endGame("You successfully played for 16 years!", "retired.png");
+    }
+    if(loanOverdue){
+        endGame("You failed to pay off your loan and the bill collector came for you!" , "angryBillCollector.png");
+    }
+    if(currentMoney < 0){
+        yearsBeingBroke++;
+    }
+    else{
+        yearsBeingBroke = 0;
+    }
+    if(yearsBeingBroke > 3){
+        endGame("You’ve been broke for so long (3 years), a raccoon claimed your identity and is doing better than you.", "broke.png");
     }
 
     //Reseats Bonus quiz number
@@ -353,6 +365,6 @@ void MainModel::handleExtraQuizRequest() {
     emit quizStarted();
 }
 
-void MainModel ::endGame() {
-    emit gameEnded();
+void MainModel::endGame(QString reasonForEnd, QString imageName) {
+    emit gameEnded(reasonForEnd, imageName);
 }

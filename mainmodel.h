@@ -117,7 +117,7 @@ signals:
 
     void stockChange(bool stockOneUp, bool stockTwoUp, bool stockThreeUp);
 
-    void gameEnded();
+    void gameEnded(QString reasonForEnd, QString imageName);
 
     void quizzesRemainingChanged(int remaining);
     void quizStarted();
@@ -130,6 +130,7 @@ private:
     int currentYear;
     int remainingQuizzes = 3;
     double yearlyBills;
+    int yearsBeingBroke = 0;
 
     QWidget *currentWidget;
 
@@ -145,7 +146,7 @@ private:
 
     void addFunds(double amount);
 
-    void endGame();
+    void endGame(QString reasonForEnd, QString imageName);
 
 };
 

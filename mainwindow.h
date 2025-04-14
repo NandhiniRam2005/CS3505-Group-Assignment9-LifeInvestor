@@ -140,7 +140,7 @@ public slots:
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
-    void gameEnded();
+    void gameEnded(QString reason, QString imageName);
 
 signals:
 

@@ -574,8 +574,12 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
     ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
 }
 
-void MainWindow::gameEnded() {
+void MainWindow::gameEnded(QString reason, QString imageName) {
     ui->stackedWidget->setCurrentWidget(ui->gameEnd);
+    ui->reasonLabel->setText(reason);
+    ui->reasonLabel->adjustSize();
+    QPixmap pixmap(":///icons/icons/" + imageName);
+    ui->endImage->setPixmap(pixmap);
 }
 
 QString MainWindow::generateReportString(QVector<double> newTotals, QVector<double> changes) {
