@@ -607,8 +607,8 @@ V</string>
      <widget class="QLabel" name="currentYear">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>20</y>
+        <x>-100</x>
+        <y>480</y>
         <width>301</width>
         <height>31</height>
        </rect>
@@ -1136,29 +1136,11 @@ V</string>
        <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_26">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>121</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Breaking news!
-
- Heisler hits the streets as the new pink ninja turtle</string>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLabel" name="quizRemains">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>50</y>
+        <x>-120</x>
+        <y>500</y>
         <width>301</width>
         <height>31</height>
        </rect>
@@ -1225,99 +1207,6 @@ V</string>
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="balance">
-      <property name="geometry">
-       <rect>
-        <x>170</x>
-        <y>10</y>
-        <width>181</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Impact</family>
-        <pointsize>-1</pointsize>
-        <italic>false</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: #85bb65;
-    font-weight: bold;
-	font-size: 30px;
-}</string>
-      </property>
-      <property name="text">
-       <string>Cash: $0</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="networth">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>10</y>
-        <width>211</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Impact</family>
-        <pointsize>-1</pointsize>
-        <italic>false</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: #85bb65;
-    font-weight: bold;
-	font-size: 30px;
-}</string>
-      </property>
-      <property name="text">
-       <string>Networth: $0</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="credit">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>50</y>
-        <width>211</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Impact</family>
-        <pointsize>-1</pointsize>
-        <italic>false</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: #85bb65;
-    font-weight: bold;
-	font-size: 30px;
-}</string>
-      </property>
-      <property name="text">
-       <string>Credit: 0</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
      <zorder>mainBackground</zorder>
      <zorder>yearlyReportLabel</zorder>
      <zorder>line_3</zorder>
@@ -1331,13 +1220,9 @@ V</string>
      <zorder>line_14</zorder>
      <zorder>label</zorder>
      <zorder>line_15</zorder>
-     <zorder>label_26</zorder>
      <zorder>quizRemains</zorder>
      <zorder>billbalance</zorder>
      <zorder>label_17</zorder>
-     <zorder>balance</zorder>
-     <zorder>networth</zorder>
-     <zorder>credit</zorder>
     </widget>
     <widget class="QWidget" name="Settings">
      <widget class="QLabel" name="settingsBackground">
@@ -4258,6 +4143,93 @@ QToolBox QWidget {
     <property name="flat">
      <bool>false</bool>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>10</y>
+      <width>621</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="balance">
+       <property name="font">
+        <font>
+         <family>Impact</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Cash: $0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="networth">
+       <property name="font">
+        <font>
+         <family>Impact</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Networth: $0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="credit">
+       <property name="font">
+        <font>
+         <family>Impact</family>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: #85bb65;
+    font-weight: bold;
+	font-size: 30px;
+}</string>
+       </property>
+       <property name="text">
+        <string>Credit: 650</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
