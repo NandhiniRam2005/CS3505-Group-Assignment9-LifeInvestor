@@ -54,7 +54,10 @@ std::vector<Question> QuizHandler::getAllQuestionsFromCategory(QuizCategory cate
     if (category != QuizCategory::mixOfAll) {
         filePathsToParse.push_back(getFilePath(category));
     } else {
-        for (std::string quizName : quizFileNames) {
+        for (std::string quizName : quizFileNames) {\
+                if(quizName == "tutorialQuiz"){
+                    continue;
+                }
             filePathsToParse.push_back(PROJECT_PATH "QuestionBanks/" + quizName + ".toml");
         }
     }
