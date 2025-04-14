@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1482,6 +1482,19 @@ border-radius: 5px;}</string>
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QPushButton" name="skipQuizButton">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>420</y>
+        <width>100</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SKIP QUIZ</string>
+      </property>
+     </widget>
      <zorder>backgroundQuiz</zorder>
      <zorder>choicesLayout</zorder>
      <zorder>submitButton</zorder>
@@ -1491,6 +1504,7 @@ border-radius: 5px;}</string>
      <zorder>quizProgress</zorder>
      <zorder>label_4</zorder>
      <zorder>labelReward</zorder>
+     <zorder>skipQuizButton</zorder>
     </widget>
     <widget class="QWidget" name="Stocks">
      <widget class="QPushButton" name="stocksBackButton">
@@ -3746,8 +3760,8 @@ QTabBar::tab:!selected {
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>741</width>
-         <height>303</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
