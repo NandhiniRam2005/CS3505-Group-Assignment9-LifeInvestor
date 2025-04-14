@@ -34,7 +34,9 @@ MainModel::MainModel(QObject *parent)
 }
 
 void MainModel::randomLifeEvent() {
-    emit displayLifeEvent(this->lifeEventHandler->getRandomLifeEvent());
+    LifeEvent lifeEvent = this->lifeEventHandler->getRandomLifeEvent();
+    emit displayLifeEvent(lifeEvent);
+    emit updateBalance(currentMoney + lifeEvent.price);
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)

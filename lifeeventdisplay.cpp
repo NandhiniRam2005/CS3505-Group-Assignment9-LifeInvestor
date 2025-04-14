@@ -12,3 +12,7 @@ LifeEventDisplay::~LifeEventDisplay()
 {
     delete ui;
 }
+
+void LifeEventDisplay::showLifeEvent(LifeEvent lifeEvent) {
+    ui->lifeEventLabel->setText(QString::fromStdString(lifeEvent.text) + QString::number(lifeEvent.price));
+}

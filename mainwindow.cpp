@@ -55,9 +55,17 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->creditLabel->show();
         ui->networthLabel->show();
     });
+
+    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
+        emit requestLifeEvent();
+        lifeEventDisplay.show();
+    });
+
+    connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
+    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
     connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
     settingsConnections(model);
@@ -1050,6 +1058,10 @@ void MainWindow::extraQuizesPageConnections(MainModel *model)
         quizLength = 5;
         ui->stackedWidget->setCurrentWidget(ui->quizInfo);
     });
+}
+
+void MainWindow::showLifeEvent(LifeEvent lifeEvent) {
+    lifeEventDisplay.showLifeEvent(lifeEvent);
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

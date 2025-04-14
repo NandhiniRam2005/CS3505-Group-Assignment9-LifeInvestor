@@ -9,6 +9,7 @@
 #include "mainmodel.h"
 #include "quizhandler.h"
 #include "startscreenview.h"
+#include "lifeeventdisplay.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -43,6 +44,7 @@ private:
     QSoundEffect *levelFailSound;
     QSoundEffect *depositSound;
     DepositWindow depositWindow;
+    LifeEventDisplay lifeEventDisplay;
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);
 
@@ -141,6 +143,7 @@ public slots:
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
     void gameEnded(QString reason, QString imageName);
+    void showLifeEvent(LifeEvent lifeEvent);
 
 signals:
 
@@ -186,5 +189,6 @@ signals:
     void checkingWithdrawAmountRead(int amount);
 
     void requestLoanInfo(int loanNumber);
+    void requestLifeEvent();
 };
 #endif // MAINWINDOW_H
