@@ -10,7 +10,15 @@ Some of the most common types of loans include mortgages, which are used to purc
 
 If you fail to make regular payments on a loan, you risk defaulting on the loan. Defaulting can have severe consequences, including damage to your credit score, higher interest rates on future loans, and potential legal or financial action by the lender. Depending on the type of loan, the lender may also seize any collateral you provided as part of a secured loan to recover the outstanding balance. Additionally, some loans may require a co-signer, especially for individuals with less-than-ideal credit. A co-signer is someone who agrees to take responsibility for the loan if the primary borrower fails to make payments. This agreement can help secure approval for a loan or result in better terms, but it also places a legal obligation on the co-signer to repay the debt if needed.
 
-Understanding how loans work is crucial for borrowing responsibly. By carefully evaluating the loan’s terms, interest rates, APR, and any associated fees, you can avoid falling into high-cost borrowing or debt traps. Borrowing with a clear understanding of your repayment ability and financial situation helps ensure that you manage your loans effectively and avoid the negative consequences that come with missed payments or default.
+When applying for a loan, the credit score plays a crucial role in determining whether you are approved and what interest rate you receive. Lenders use credit scores to assess your risk as a borrower—higher scores typically lead to better loan terms, while lower scores may result in higher rates or even rejection. A loan amortization schedule is another key concept: it outlines how each payment is applied toward principal and interest over time. Early in the loan, more of the payment goes toward interest; later, more goes toward principal.
+
+Some loans offer a grace period, which is a short time after the loan is issued (or after you graduate, in the case of student loans) during which you're not required to make payments. However, prepayment penalties can apply if you pay off a loan earlier than scheduled—these fees compensate lenders for lost interest income. Not all loans have them, so it’s important to read the terms.
+
+The debt-to-income ratio (DTI) is another factor lenders examine—it compares your monthly debt payments to your monthly income and helps lenders evaluate your ability to take on new debt. A lower DTI usually improves your chances of being approved. Additionally, lenders may offer fixed or variable interest rates. Fixed rates stay the same throughout the loan term, offering predictable payments, while variable rates can fluctuate based on market conditions, which might increase or decrease your monthly payment over time.
+
+Some borrowers consolidate multiple loans into one through loan consolidation, which can simplify repayment or offer a lower interest rate. And in special situations—such as public service or income-based repayment plans—loan forgiveness may eliminate some or all of your loan balance. Loan forgiveness is most commonly associated with student loans and specific career paths.
+
+Understanding how loans work is crucial for borrowing responsibly. By carefully evaluating the loan’s terms, interest rates, APR, repayment schedule, and any additional fees or risks, you can avoid falling into high-cost borrowing or debt traps. Borrowing with a clear understanding of your repayment ability and financial situation helps ensure that you manage your loans effectively and avoid the negative consequences that come with missed payments or default.
 """
 
 learnMore = '''
@@ -147,3 +155,133 @@ answer = "A person who is responsible for repaying the loan if the primary borro
 why = "A co-signer agrees to repay the loan if the primary borrower defaults, and their credit is at risk if payments are missed."
 difficulty = "medium"
 reward = 250
+
+[[questions]]
+question = "Why is it important to compare loan offers?"
+choices = [
+"To find the lowest interest rate and best terms",
+"To avoid repaying the loan",
+"To borrow more money than needed",
+"To delay repayment as long as possible"
+]
+answer = "To find the lowest interest rate and best terms"
+why = "Comparing loan offers helps you find the most affordable option, saving money on interest and fees over time."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What happens if you pay off a loan early?"
+choices = [
+"You may save on interest and finish payments sooner",
+"You automatically get another loan",
+"You pay extra interest for early payment",
+"You lose your credit score"
+]
+answer = "You may save on interest and finish payments sooner"
+why = "Paying off a loan early can reduce the total interest paid, though some loans may have early repayment penalties."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "How can taking out too many loans affect your credit score?"
+choices = [
+"It can lower your score and make future borrowing harder",
+"It increases your credit score automatically",
+"It has no impact on your credit score",
+"It guarantees loan approval in the future"
+]
+answer = "It can lower your score and make future borrowing harder"
+why = "Too many loans increase your debt load and suggest risk to lenders, which can negatively affect your credit score."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is a grace period in loan repayment?"
+choices = [
+"A set time when no payments are required after taking the loan",
+"A penalty-free time to delay interest payments",
+"A time when only the co-signer pays",
+"A period of extra interest accumulation"
+]
+answer = "A set time when no payments are required after taking the loan"
+why = "A grace period allows the borrower time to begin repayment, usually without penalties or additional interest."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What should you consider before taking out a loan?"
+choices = [
+"Your ability to repay, interest rate, and loan terms",
+"How fast you can spend the money",
+"Whether the lender is your friend",
+"The color of the loan paperwork"
+]
+answer = "Your ability to repay, interest rate, and loan terms"
+why = "Understanding your repayment ability, interest rates, and loan conditions is crucial to avoid financial trouble."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is refinancing a loan?"
+choices = [
+"Replacing an existing loan with a new one with better terms",
+"Skipping a loan payment temporarily",
+"Applying for a second loan on top of the first",
+"Paying only the interest for a short time"
+]
+answer = "Replacing an existing loan with a new one with better terms"
+why = "Refinancing can reduce monthly payments, lower interest rates, or change the loan term to better fit your needs."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is loan amortization?"
+choices = [
+"The process of paying off a loan over time with regular payments",
+"Defaulting on a loan over time",
+"Skipping interest payments",
+"A type of loan for buying furniture"
+]
+answer = "The process of paying off a loan over time with regular payments"
+why = "Amortization breaks loan repayment into scheduled payments that cover both principal and interest."
+difficulty = "hard"
+reward = 300
+
+[[questions]]
+question = "How does a loan affect your budget?"
+choices = [
+"It adds a fixed monthly expense that must be planned for",
+"It has no effect if you have a job",
+"It automatically increases your income",
+"It eliminates the need to save money"
+]
+answer = "It adds a fixed monthly expense that must be planned for"
+why = "Loan payments are recurring expenses that must be considered when managing your monthly budget."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "Why might someone be denied a loan?"
+choices = [
+"Poor credit history, high debt, or low income",
+"Having a bank account",
+"Applying during business hours",
+"Being employed full-time"
+]
+answer = "Poor credit history, high debt, or low income"
+why = "Lenders assess risk based on credit, debt-to-income ratio, and income level before approving a loan."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is a loan repayment schedule?"
+choices = [
+"A plan outlining when and how much you pay toward your loan",
+"A calendar showing unrelated events",
+"A list of your unpaid bills",
+"A reminder to apply for more loans"
+]
+answer = "A plan outlining when and how much you pay toward your loan"
+why = "A repayment schedule helps borrowers understand their financial commitment and plan payments accordingly."
+difficulty = "easy"
+reward = 100

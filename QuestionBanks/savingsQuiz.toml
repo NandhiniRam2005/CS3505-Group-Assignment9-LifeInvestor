@@ -25,6 +25,7 @@ learnMore = '''
 A savings account is a type of deposit account offered by banks and credit unions where you can earn interest on your deposits. It’s a safe way to store money while earning a small return.
 '''
 image = "savings-account.png"
+
 [[questions]]
 question = "What is a savings account?"
 choices = [
@@ -154,3 +155,95 @@ answer = "To store money securely and earn interest over time"
 why = "A savings account offers a secure way to store money while earning interest, which can help build wealth over time."
 difficulty = "easy"
 reward = 100
+
+[[questions]]
+question = "What does 'liquidity' mean in the context of a savings account?"
+choices = [
+"The account earns high returns quickly",
+"The money can be withdrawn easily without penalties",
+"The account is insured by the FDIC",
+"The account requires a high minimum balance"
+]
+answer = "The money can be withdrawn easily without penalties"
+why = "Liquidity refers to how quickly and easily you can access your money. Savings accounts are highly liquid because funds can typically be withdrawn at any time."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "Why might a bank limit the number of withdrawals from a savings account?"
+choices = [
+"To increase interest rates",
+"To meet federal regulations and encourage saving",
+"To prevent overdrafts",
+"To allow for unlimited deposits"
+]
+answer = "To meet federal regulations and encourage saving"
+why = "Banks often limit withdrawals from savings accounts due to federal regulations (such as Regulation D), which aim to promote saving habits."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What factor most directly affects the amount of interest earned in a savings account?"
+choices = [
+"The account holder’s age",
+"The number of withdrawals made",
+"The interest rate and account balance",
+"The number of linked accounts"
+]
+answer = "The interest rate and account balance"
+why = "The amount of interest earned is calculated based on the interest rate and the balance in the account—the higher both are, the more you earn."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is the purpose of an emergency savings fund?"
+choices = [
+"To invest in stocks",
+"To pay for expected monthly expenses",
+"To cover unexpected financial emergencies",
+"To qualify for a mortgage"
+]
+answer = "To cover unexpected financial emergencies"
+why = "An emergency savings fund is intended to help you manage surprise expenses such as medical bills, car repairs, or sudden loss of income."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "How does inflation affect money in a savings account?"
+choices = [
+"It increases the purchasing power of your savings",
+"It causes your savings to lose value over time if interest is low",
+"It reduces the interest rate",
+"It guarantees higher earnings from the bank"
+]
+answer = "It causes your savings to lose value over time if interest is low"
+why = "If the interest you earn on savings doesn’t keep pace with inflation, the real value or purchasing power of your money decreases over time."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What should you look for when choosing a savings account?"
+choices = [
+"High fees and low interest rates",
+"Low interest rates and strict withdrawal limits",
+"High interest rates, low fees, and FDIC insurance",
+"A bank that’s far from your home"
+]
+answer = "High interest rates, low fees, and FDIC insurance"
+why = "A good savings account offers a strong interest rate, minimal fees, and protection through FDIC insurance."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is a common strategy for growing your savings faster?"
+choices = [
+"Keeping your money in cash at home",
+"Investing all your savings in the stock market",
+"Setting up automatic transfers to your savings account",
+"Only depositing money once a year"
+]
+answer = "Setting up automatic transfers to your savings account"
+why = "Automatic transfers make saving consistent and effortless, helping you build your balance over time without needing to remember to do it manually."
+difficulty = "easy"
+reward = 100
+

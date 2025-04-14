@@ -14,6 +14,14 @@ One popular strategy for managing the balance between liquidity and interest rat
 At the end of a CD’s term, the depositor is typically presented with two options: to withdraw the principal and accumulated interest or to roll the funds into a new CD with a similar or different term. This provides some flexibility, although the funds remain tied up for the new term if reinvested.
 
 However, it's important to note that CDs are not a suitable option for funds that may need to be accessed quickly or unexpectedly. Since early withdrawals often result in penalties and because the funds are locked for a set period, CDs are not ideal for emergency savings or short-term liquidity needs. Investors who choose to invest in CDs should be confident that they will not need access to the funds before the CD matures to avoid the penalty fees that could reduce their returns.
+
+n addition to standard CDs, there are specialized options designed to meet different financial goals. For example, add-on CDs allow you to make additional deposits after the initial opening—something not permitted with most traditional CDs. Jumbo CDs, on the other hand, require a significantly larger minimum deposit, often $100,000 or more, but they typically offer higher interest rates in return.
+
+Another factor to consider when choosing a CD is how interest is handled. Some CDs pay interest monthly, quarterly, or annually, while others pay it in full when the term ends. Interest may also be compounded, which means that earned interest is reinvested and itself earns interest. This can make a meaningful difference in the total return, especially for longer-term CDs.
+
+CDs also have tax implications. The interest earned is considered taxable income in the year it is received, even if the funds are not withdrawn. It’s important for investors to plan accordingly and report this income during tax season.
+
+Overall, CDs can be a valuable tool for conservative investors seeking predictable returns and principal protection. Understanding the variety of CD types, how interest is calculated and paid, and the risks of early withdrawal ensures that investors can make informed choices based on their financial needs and goals.
 """
 
 learnMore = '''
@@ -151,3 +159,134 @@ answer = "Interest can be compounded or paid at maturity depending on the CD"
 why = "CDs may offer interest that is either compounded periodically or paid out at the time of maturity. The specific terms depend on the CD agreement."
 difficulty = "easy"
 reward = 100
+
+[[questions]]
+question = "Are CDs considered a low-risk investment?"
+choices = [
+"Yes, they are backed by FDIC insurance up to a certain limit",
+"No, they are very risky",
+"Only if held for more than a year",
+"Only if the bank is privately owned"
+]
+answer = "Yes, they are backed by FDIC insurance up to a certain limit"
+why = "CDs are considered low-risk because they are insured by the FDIC up to $250,000 per depositor, per institution."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What determines the interest rate of a CD?"
+choices = [
+"The length of the term and market conditions",
+"The customer's credit score",
+"The number of CDs purchased",
+"Government regulations"
+]
+answer = "The length of the term and market conditions"
+why = "CD interest rates vary based on how long the funds are committed and the current state of the financial market."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "Can you add more money to a CD after opening it?"
+choices = [
+"Not typically, unless it’s an add-on CD",
+"Yes, anytime",
+"Only in the first 30 days",
+"Only if you pay a fee"
+]
+answer = "Not typically, unless it’s an add-on CD"
+why = "Most CDs don't allow additional deposits after opening, though some specialized 'add-on CDs' do."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What does CD maturity mean?"
+choices = [
+"The date when the CD reaches the end of its term",
+"The amount of interest it earns",
+"The age of the account holder",
+"The point at which it becomes taxable"
+]
+answer = "The date when the CD reaches the end of its term"
+why = "Maturity refers to the end of the agreed term, when you can withdraw your principal and interest without penalty."
+difficulty = "easy"
+reward = 100
+
+[[questions]]
+question = "What is an add-on CD?"
+choices = [
+"A CD that allows additional deposits after opening",
+"A CD that adds to your credit score",
+"A CD with automatic reinvestment",
+"A CD that increases its rate over time"
+]
+answer = "A CD that allows additional deposits after opening"
+why = "An add-on CD allows the account holder to make additional deposits during the term, unlike traditional CDs."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "Can CD interest rates be fixed or variable?"
+choices = [
+"Both, depending on the CD type",
+"Only fixed",
+"Only variable",
+"Neither; rates are random"
+]
+answer = "Both, depending on the CD type"
+why = "Some CDs offer a fixed rate for the entire term, while others may have variable rates tied to market indexes."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "What is a no-penalty CD?"
+choices = [
+"A CD that allows early withdrawal without a penalty",
+"A CD that pays no interest",
+"A CD with no minimum balance",
+"A CD that renews automatically"
+]
+answer = "A CD that allows early withdrawal without a penalty"
+why = "A no-penalty CD offers flexibility by letting you withdraw your money before maturity without facing a penalty."
+difficulty = "hard"
+reward = 300
+
+[[questions]]
+question = "What is auto-renewal in the context of CDs?"
+choices = [
+"When a CD automatically rolls over into a new term if not cashed out",
+"When the interest rate is automatically increased",
+"When the bank adds more funds to the CD",
+"When the CD converts into a savings account"
+]
+answer = "When a CD automatically rolls over into a new term if not cashed out"
+why = "If you don’t withdraw funds after maturity, many banks will auto-renew the CD for the same term at the current rate."
+difficulty = "medium"
+reward = 150
+
+[[questions]]
+question = "Are CD earnings taxable?"
+choices = [
+"Yes, interest earned on CDs is subject to federal income tax",
+"No, CD interest is tax-free",
+"Only if the CD is over $10,000",
+"Only after 5 years"
+]
+answer = "Yes, interest earned on CDs is subject to federal income tax"
+why = "Interest from CDs is taxable income, even if you don’t withdraw it until maturity."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is a jumbo CD?"
+choices = [
+"A CD that requires a large minimum deposit, often $100,000 or more",
+"A CD for teenagers",
+"A CD with a longer maturity than normal",
+"A CD that pays out interest monthly"
+]
+answer = "A CD that requires a large minimum deposit, often $100,000 or more"
+why = "Jumbo CDs offer higher interest rates but require a significantly larger initial deposit."
+difficulty = "hard"
+reward = 400
+

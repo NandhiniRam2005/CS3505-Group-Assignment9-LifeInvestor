@@ -237,6 +237,13 @@ void MainWindow::updateBalance(double newAmount)
         ui->balance->setText("$" + QString::number(currentMoney, 'f', 0));
     else
         ui->balance->setText("$" + QString::number(currentMoney, 'f', 2));
+
+    if(currentMoney >= 0){
+        ui->balance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
+    }
+    else{
+        ui->balance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
+    }
 }
 
 void MainWindow::updateSavings(double newBalance, double interestRate)
@@ -517,9 +524,34 @@ void MainWindow::displayDepositPage()
 
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear)
 {
-    quizCategory = QuizCategory::mixOfAll;
+    switch(14 - currentYear){
+        case 12:{
+            quizCategory = QuizCategory::stocks;
+            break;
+        }
+        case 11:{
+            quizCategory = QuizCategory::savings;
+            break;
+        }
+        case 10:{
+            quizCategory = QuizCategory::cds;
+            break;
+        }
+        case 9:{
+            quizCategory = QuizCategory::loans;
+            break;
+        }
+        case 8:{
+            quizCategory = QuizCategory::gambling;
+            break;
+        }
+        default:{
+            quizCategory = QuizCategory::mixOfAll;
+            break;
+        }
+    }
     quizLength = 5;
-    emit requestQuiz(quizCategory, 5);
+    emit requestQuiz(quizCategory, quizLength);
     onStartClicked();
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
@@ -688,6 +720,9 @@ void MainWindow::quizConnections(MainModel *model)
     connect(model, &MainModel::sendResult, this, &MainWindow::displayResult);
     connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
     connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
+
+    //DEVELOPMENT CONNECTION
+    connect(ui->skipQuizButton, &QPushButton::clicked, this, &MainWindow::showEndScreen);
 }
 
 void MainWindow::depositingConnectionWindowToModel(MainModel *model)

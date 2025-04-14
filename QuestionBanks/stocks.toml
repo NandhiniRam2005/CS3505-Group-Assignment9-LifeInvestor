@@ -1,25 +1,66 @@
 category = "Stocks"
 
 categoryInfo = """
-The stock market is a system where investors can buy and sell ownership stakes in companies, called *stocks* or *shares*. When a company wants to raise money, it can issue stock to the public through a process called an **Initial Public Offering (IPO)**. This means the company is becoming publicly traded, and investors can buy pieces of it. After an IPO, the stock trades on stock exchanges like the New York Stock Exchange (NYSE) or NASDAQ.
+The stock market is where people buy and sell ownership shares in companies, known as stocks or shares. When a company needs money to grow, it can offer shares to the public through an Initial Public Offering (IPO). This is the process where a company first sells its shares to investors, and after that, those shares can be traded on stock exchanges like the New York Stock Exchange (NYSE) or NASDAQ.
 
-Each share represents partial ownership in a company. If the company performs well—generating strong earnings or growth—its stock price may increase, giving shareholders a **capital gain**. Some companies also return part of their profits to shareholders in the form of **dividends**, usually paid quarterly.
+Key Concepts in the Stock Market
+Stock Ownership: Each share you buy represents partial ownership in the company. If the company performs well, the stock price may rise, and you can make a capital gain when you sell your shares at a higher price.
 
-Stocks are affected by many things: company news, industry trends, interest rates, and overall market sentiment. If investors are confident and prices are rising, the market is said to be in a **bull market**. If confidence drops and prices decline, it's called a **bear market**.
+Dividends: Some companies share their profits with shareholders in the form of dividends. These are payments made to investors, usually on a quarterly basis, and are one way to earn money from owning stocks.
 
-Sometimes companies do a **stock split**, such as a 2-for-1 split. This doubles the number of shares and halves the price per share, but your total investment value stays the same. Companies do this to make shares more affordable for individual investors.
+Bull and Bear Markets:
 
-The **price-to-earnings ratio (P/E ratio)** is a common valuation metric. It's calculated by dividing a stock's current price by its earnings per share. A high P/E might suggest a stock is expensive, or that investors expect strong future growth. A low P/E might indicate a bargain—or a company in trouble.
+A bull market happens when stock prices are generally rising, and investors are optimistic about the economy.
 
-Another key concept is **market capitalization**, or *market cap*, which is the total value of a company’s outstanding shares. It’s calculated by multiplying the current stock price by the number of shares. This helps classify companies: large-cap (big, stable firms), mid-cap (moderate size and risk), and small-cap (more volatile but with higher growth potential).
+A bear market is the opposite, where stock prices are falling, and investors are more cautious or fearful.
 
-Investors can also use strategies like **short selling**, where they borrow a stock and sell it, hoping to buy it back later at a lower price. This is risky and used when you expect a stock to fall in value.
+Stock Splits: Sometimes, companies perform a stock split to make their shares more affordable. For example, a 2-for-1 stock split means you’ll get two shares for every one share you already own, but the price of each share will be halved. Your total investment value stays the same.
 
-One of the most important ways to manage risk in investing is through **diversification**—spreading your investments across different sectors, industries, or asset types. This reduces the impact of any single investment performing poorly.
+Price-to-Earnings (P/E) Ratio: This ratio helps investors determine if a stock is overvalued or undervalued. It’s calculated by dividing the stock’s current price by its earnings per share. A high P/E ratio might mean investors expect the company to grow a lot in the future, while a low P/E might suggest the stock is a bargain—or in trouble.
 
-To measure how the overall market is doing, investors often look at **market indexes**, like the **S&P 500**, which tracks the performance of 500 large U.S. companies. It’s considered a reliable indicator of the U.S. stock market as a whole.
+Market Capitalization (Market Cap): This is the total value of all of a company’s outstanding shares. To calculate market cap, multiply the stock price by the number of shares. Companies are often categorized as:
 
-In summary: Stocks represent ownership in companies. You can profit through price increases or dividends. Key concepts include IPOs, stock splits, dividends, market cap, P/E ratios, and diversification. A strong understanding of these basics will help you make informed decisions and interpret what’s happening in the market.
+Large-cap: Big, established companies
+
+Mid-cap: Moderate-sized companies
+
+Small-cap: Smaller, higher-risk companies with more growth potential
+
+Short Selling: This is a strategy where investors bet against a stock. They borrow shares, sell them, and then hope to buy them back at a lower price. While this can lead to profit if the stock price falls, it’s risky because if the stock price goes up, the investor will lose money.
+
+Diversification: This is a risk management strategy where investors spread their money across different types of investments. By doing this, if one investment performs poorly, the others may perform better, reducing the overall risk.
+
+Stock Trading: Stocks can be traded on exchanges. When investors buy or sell stocks, they do so through brokers or online trading platforms. Prices fluctuate based on demand and supply in the market.
+
+Common Stock Market Terms
+IPO (Initial Public Offering): The first sale of stock by a company to the public. This is how a company becomes publicly traded.
+
+Capital Gain: The profit from selling a stock at a higher price than you bought it.
+
+Dividend: A portion of a company's profits paid to shareholders, often quarterly.
+
+P/E Ratio: The ratio of a company’s current stock price to its earnings per share. It helps investors evaluate a company’s stock.
+
+Bull Market: A market where prices are rising or expected to rise.
+
+Bear Market: A market where prices are falling or expected to fall.
+
+Stock Split: A process where a company increases the number of shares and lowers the price per share, but your overall investment value remains the same.
+
+Market Cap: The total value of a company’s outstanding shares, calculated by multiplying the stock price by the number of shares.
+
+Short Selling: A strategy where investors borrow and sell a stock, hoping to buy it back at a lower price to profit from the price difference.
+
+Diversification: Spreading investments across different sectors or asset types to reduce risk.
+
+How Stocks Are Affected
+The stock price of a company can rise or fall for many reasons. Good news about a company, such as strong earnings or new product launches, can cause its stock price to go up. On the other hand, negative news, like poor financial results or a product recall, can cause stock prices to fall.
+
+Market Indices
+To track the performance of the stock market, investors look at market indexes. One of the most well-known is the S&P 500, which tracks the stock prices of 500 large companies in the U.S. It is often used as a benchmark to gauge the overall performance of the stock market.
+
+Conclusion
+The stock market can seem complex at first, but understanding these basic concepts can help you make more informed decisions as an investor. Stocks give you the opportunity to profit from the growth of companies, either through capital gains or dividends. Remember to research, diversify your investments, and understand the risks involved in the stock market. By doing so, you can navigate the market with more confidence and make better investment choices.
 """
 
 
@@ -160,4 +201,135 @@ answer = "Reducing investment risk"
 why = "Diversifying spreads your investment across various assets, reducing the impact of any one failing."
 difficulty = "easy"
 reward = 200
+
+[[questions]]
+question = "What is an ETF?"
+choices = [
+  "A company that issues bonds",
+  "An index fund that is traded like a stock",
+  "A type of savings account",
+  "A form of government loan"
+]
+answer = "An index fund that is traded like a stock"
+why = "An ETF (Exchange-Traded Fund) tracks an index or sector and can be bought or sold on a stock exchange like individual stocks."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "Which of the following best describes a stock?"
+choices = [
+  "A loan to a company",
+  "A share in a company’s ownership",
+  "A contract to buy a commodity",
+  "A type of bank account"
+]
+answer = "A share in a company’s ownership"
+why = "A stock represents a piece of ownership in a company and entitles the holder to a portion of its profits."
+difficulty = "easy"
+reward = 150
+
+[[questions]]
+question = "What does IPO stand for?"
+choices = [
+  "Initial Purchase Option",
+  "Individual Price Offering",
+  "Initial Public Offering",
+  "Investor Payout Order"
+]
+answer = "Initial Public Offering"
+why = "An IPO is when a company sells its shares to the public for the first time to raise capital."
+difficulty = "easy"
+reward = 150
+
+[[questions]]
+question = "What is the difference between a stock and a bond?"
+choices = [
+  "Stocks are debt; bonds are equity",
+  "Stocks are short-term; bonds are long-term",
+  "Stocks represent ownership; bonds represent a loan",
+  "Stocks pay interest; bonds pay dividends"
+]
+answer = "Stocks represent ownership; bonds represent a loan"
+why = "Stocks give you ownership in a company, while bonds are loans you give to a company or government that pay interest."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What does it mean when a stock is said to be 'volatile'?"
+choices = [
+  "It pays a high dividend",
+  "Its price changes frequently and unpredictably",
+  "It is not traded often",
+  "It is highly regulated"
+]
+answer = "Its price changes frequently and unpredictably"
+why = "Volatile stocks experience large price swings in short periods, often due to news, earnings, or speculation."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is insider trading?"
+choices = [
+  "Buying shares from friends",
+  "Trading stocks based on non-public information",
+  "Investing in international markets",
+  "Using a stockbroker for advice"
+]
+answer = "Trading stocks based on non-public information"
+why = "Insider trading is illegal when someone uses confidential company information to gain an unfair market advantage."
+difficulty = "hard"
+reward = 400
+
+[[questions]]
+question = "Which type of stock typically pays regular dividends?"
+choices = [
+  "Growth stocks",
+  "Penny stocks",
+  "Preferred stocks",
+  "Speculative stocks"
+]
+answer = "Preferred stocks"
+why = "Preferred stocks usually pay fixed dividends and have priority over common stock in asset distribution."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What is a stockbroker?"
+choices = [
+  "A person who lends money to investors",
+  "A person who trades stocks on behalf of investors",
+  "An accountant for companies",
+  "A regulator of the stock market"
+]
+answer = "A person who trades stocks on behalf of investors"
+why = "Stockbrokers execute buy and sell orders for clients and may offer investment advice."
+difficulty = "easy"
+reward = 150
+
+[[questions]]
+question = "What is a limit order?"
+choices = [
+  "An order to buy or sell a stock at the current market price",
+  "An order to hold a stock for a fixed time",
+  "An order to buy or sell a stock only at a specific price or better",
+  "An order that expires after a day"
+]
+answer = "An order to buy or sell a stock only at a specific price or better"
+why = "Limit orders allow investors to control the price at which they buy or sell a stock."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What does volume mean in stock trading?"
+choices = [
+  "The price of a stock over time",
+  "The number of shares traded during a period",
+  "The interest rate of a stock",
+  "The sound level of trading floors"
+]
+answer = "The number of shares traded during a period"
+why = "Volume refers to how many shares of a stock are bought and sold during a specific time frame, indicating activity and liquidity."
+difficulty = "easy"
+reward = 150
+
 

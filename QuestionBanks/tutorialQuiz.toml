@@ -1,13 +1,13 @@
-category = "Example Category"
+category = "Tutorial"
 
-categoryInfo = "Here is a description of the question category"
+categoryInfo = "Investinhg game!!"
 
 learnMore = '''
 We could put learning information here
 
 or in a different format if needed
 '''
-
+image = "test.png"
 [[questions]]
 question = "When taking a quiz, a question will be displayed here. Answer correctly to receive the bonus cash"
 choices = ["answer",
