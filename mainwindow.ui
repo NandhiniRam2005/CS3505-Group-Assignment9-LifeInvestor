@@ -3674,7 +3674,7 @@ QToolBox QWidget {
 </string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <property name="geometry">
@@ -3776,6 +3776,19 @@ QToolBox QWidget {
          </rect>
         </property>
        </widget>
+       <widget class="QLabel" name="sharkGif">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>60</y>
+          <width>201</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="page_2">
        <property name="geometry">
@@ -3875,6 +3888,25 @@ QToolBox QWidget {
         </property>
         <property name="text">
          <string>Activate Loan</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="loan2Balance_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>40</y>
+          <width>201</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/icons/icons/img.icons8.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>

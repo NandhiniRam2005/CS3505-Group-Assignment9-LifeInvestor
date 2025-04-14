@@ -669,6 +669,14 @@ void MainWindow::setUpGifs()
         pigMovie->setPaused(true); // Freeze on the last frame
     });
     pigMovie->start();
+
+    QMovie *sharkMovie = new QMovie(":/gifs/gifs/shark.gif");
+    ui->sharkGif->setMovie(sharkMovie);
+    sharkMovie->setScaledSize(ui->sharkGif->size());
+    connect(sharkMovie, &QMovie::finished, [sharkMovie]() {
+        sharkMovie->setPaused(true); // Freeze on the last frame
+    });
+    sharkMovie->start();
 }
 
 void MainWindow::setupAudio()
