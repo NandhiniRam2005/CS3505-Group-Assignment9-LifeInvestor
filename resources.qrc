@@ -32,6 +32,9 @@
         <file>icons/gambling.jpg</file>
         <file>icons/cdImage.jpg</file>
         <file>icons/loanImage.jpg</file>
+        <file>icons/cd1.png</file>
+        <file>icons/cd2.png</file>
+        <file>icons/cd3.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
