@@ -122,7 +122,7 @@ public slots:
 
     void updateStockAmountOwned(uint amount, int stockNumber);
 
-    void showEndScreen();
+    void showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned);
 
     void enableSubmitButton(bool checked);
 
@@ -135,6 +135,7 @@ public slots:
     void showErrorMessage(QString errorMessage);
 
     void revalidateAllStockDisplays();
+
     void displayDepositPage();
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);

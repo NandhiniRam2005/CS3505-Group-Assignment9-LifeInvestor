@@ -361,11 +361,22 @@ void MainWindow::enableSubmitButton(bool checked)
     }
 }
 
-void MainWindow::showEndScreen()
+void MainWindow::showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned)
 {
     ui->balance->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
-    ui->endLabel->setText("Quiz done! yay\n here is the recap (there is no recap)");
+    double percentage = ((double)questionsAnsweredCorrectly / quizLength) * 100;
+    ui->scoreLabel->setText(QString::number(questionsAnsweredCorrectly) + " / " +  QString::number(quizLength));
+    ui->percentage->setText(QString::number(percentage, 'f', 2) + "%");
+    if(percentage < 60){
+        ui->scoreLabel->setStyleSheet("QLabel {color: red; font-weight: bold; font-size: 50px;}");
+        ui->percentage->setStyleSheet("QLabel {color: red; font-weight: bold; font-size: 50px;}");
+    }
+    else{
+        ui->scoreLabel->setStyleSheet("QLabel {color:  #85bb65; font-weight: bold; font-size: 50px;}");
+        ui->percentage->setStyleSheet("QLabel {color: #85bb65; font-weight: bold; font-size: 50px;}");
+    }
+    ui->moneyEarned->setText("$" + QString::number(moneyEarned));
 }
 
 void MainWindow::updateStockPriceDisplay(double amount, int stockNumber)
@@ -732,7 +743,9 @@ void MainWindow::quizConnections(MainModel *model)
     connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
 
     //DEVELOPMENT CONNECTION
-    connect(ui->skipQuizButton, &QPushButton::clicked, this, &MainWindow::showEndScreen);
+    connect(ui->skipQuizButton, &QPushButton::clicked, this, [&] ()->void{
+        showEndScreen(0,0);
+    });
 }
 
 void MainWindow::depositingConnectionWindowToModel(MainModel *model)

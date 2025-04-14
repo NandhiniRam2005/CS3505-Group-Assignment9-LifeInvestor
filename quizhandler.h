@@ -89,6 +89,8 @@ public:
      */
     uint quizProgress();
 
+    int getAmountEarned();
+
 private:
     /**
      * A collection of all the quizQuestions parsed.
@@ -108,6 +110,8 @@ private:
      * Tracker for how long the quiz should be i.e how many questions should be asked.
      */
     uint quizLength;
+
+    int amountEarned;
 
     static const std::array<std::string, 6> quizFileNames;
 

@@ -13,6 +13,7 @@ QuizHandler::QuizHandler(QObject *parent)
 {
     currentQuestion = 0;
     numberCorrect = 0;
+    amountEarned = 0;
     // parsingExample();
     // parseQuizFile("example");
     // getNextQuestion();
@@ -23,6 +24,8 @@ void QuizHandler::createQuiz(QuizCategory category, uint length)
     quizLength = length;
     quizQuestions.clear();
     currentQuestion = 0;
+    amountEarned = 0;
+    numberCorrect= 0;
     quizQuestions = getAllQuestionsFromCategory(category);
     information = generateQuizInfo(category);
     scrambleVector(quizQuestions);
@@ -108,6 +111,10 @@ int QuizHandler::getCurrentQuestionReward()
     return quizQuestions[currentQuestion - 1].reward;
 }
 
+int QuizHandler::getAmountEarned(){
+    return amountEarned;
+}
+
 bool QuizHandler::hasMoreQuestions()
 {
     if (currentQuestion >= quizLength) {
@@ -120,6 +127,7 @@ bool QuizHandler::checkAnswer(std::string selectedAnswer)
 {
     if (selectedAnswer == quizQuestions.at(currentQuestion - 1).answer) {
         numberCorrect++;
+        amountEarned+= getCurrentQuestionReward();
         return true;
     } else {
         return false;

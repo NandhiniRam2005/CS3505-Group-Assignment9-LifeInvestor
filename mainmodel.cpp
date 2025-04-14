@@ -44,7 +44,7 @@ void MainModel::getNextQuestion()
     if (quizHandler->hasMoreQuestions()) {
         emit sendQuestion(quizHandler->getNextQuestion());
     } else {
-        emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly());
+        emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly(), quizHandler->getAmountEarned());
     }
 }
 

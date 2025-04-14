@@ -81,7 +81,7 @@ signals:
      *
      * @param numberCorrect - The number of correctly answered quizQuestions.
      */
-    void quizFinished(uint numberCorrect);
+    void quizFinished(uint numberCorrect, int moneyEarned);
 
     void quizProgress(uint progess);
 
