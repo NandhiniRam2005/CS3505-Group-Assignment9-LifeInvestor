@@ -237,6 +237,13 @@ void MainWindow::updateBalance(double newAmount)
         ui->balance->setText("$" + QString::number(currentMoney, 'f', 0));
     else
         ui->balance->setText("$" + QString::number(currentMoney, 'f', 2));
+
+    if(currentMoney >= 0){
+        ui->balance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
+    }
+    else{
+        ui->balance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
+    }
 }
 
 void MainWindow::updateSavings(double newBalance, double interestRate)

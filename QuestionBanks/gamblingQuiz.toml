@@ -148,3 +148,134 @@ answer = "Set clear limits on your gambling activities and stick to them"
 why = "Setting and sticking to clear limits on gambling can help you avoid falling into unhealthy habits and ensure it remains a controlled activity."
 difficulty = "medium"
 reward = 250
+
+[[questions]]
+question = "What is a gambling addiction also known as?"
+choices = [
+"Compulsive gambling",
+"Recreational gambling",
+"Strategic gaming",
+"Financial management"
+]
+answer = "Compulsive gambling"
+why = "Gambling addiction is also called compulsive gambling, where a person is unable to resist the urge to gamble despite the negative consequences."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "Which of the following is a healthy alternative to gambling?"
+choices = [
+"Engaging in a hobby or physical activity",
+"Borrowing money to gamble more wisely",
+"Watching gambling tutorials online",
+"Only gambling when you're upset"
+]
+answer = "Engaging in a hobby or physical activity"
+why = "Replacing gambling with positive activities like hobbies or exercise can help break the cycle and reduce the urge to gamble."
+difficulty = "easy"
+reward = 150
+
+[[questions]]
+question = "What role can stress play in gambling behavior?"
+choices = [
+"It can increase the urge to gamble as a coping mechanism",
+"It eliminates the desire to gamble",
+"It helps gamblers focus better on strategy",
+"It always results in gambling success"
+]
+answer = "It can increase the urge to gamble as a coping mechanism"
+why = "Many people use gambling as a way to escape stress or emotional pain, which can worsen the problem over time."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "What is a 'self-exclusion program' in gambling?"
+choices = [
+"A program that helps you win more often",
+"A system that blocks access to gambling venues or websites",
+"A reward system for responsible gamblers",
+"A coaching service to learn gambling strategies"
+]
+answer = "A system that blocks access to gambling venues or websites"
+why = "Self-exclusion programs allow individuals to voluntarily ban themselves from gambling to help prevent addiction."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "How can gambling impact job performance?"
+choices = [
+"It often leads to improved focus and productivity",
+"It has no effect on work performance",
+"It can cause distraction, absenteeism, or job loss",
+"It guarantees promotions due to improved risk-taking"
+]
+answer = "It can cause distraction, absenteeism, or job loss"
+why = "Gambling addiction can interfere with work responsibilities, leading to poor performance and even job termination."
+difficulty = "hard"
+reward = 300
+
+[[questions]]
+question = "Which group is especially vulnerable to developing gambling problems?"
+choices = [
+"People with a history of mental health issues or addiction",
+"People with high financial literacy",
+"Those who never take financial risks",
+"People who only gamble once a year"
+]
+answer = "People with a history of mental health issues or addiction"
+why = "Individuals with existing mental health or addiction issues are more likely to develop gambling problems due to increased vulnerability."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What is a gambling win often followed by?"
+choices = [
+"Reduced interest in gambling",
+"Responsible financial decisions",
+"Increased confidence and risk-taking",
+"Long-term savings behavior"
+]
+answer = "Increased confidence and risk-taking"
+why = "A win can create a false sense of control or luck, encouraging riskier behavior and more frequent gambling."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "Why is it dangerous to view gambling as a way to make money?"
+choices = [
+"Because it creates overconfidence and encourages risky bets",
+"Because casinos offer free food and drinks",
+"Because gambling is a form of exercise",
+"Because it's only legal for certain ages"
+]
+answer = "Because it creates overconfidence and encourages risky bets"
+why = "Viewing gambling as a source of income often leads to unrealistic expectations, overconfidence, and eventual financial loss."
+difficulty = "medium"
+reward = 250
+
+[[questions]]
+question = "What is a major reason people continue gambling even after losses?"
+choices = [
+"To enjoy the social environment",
+"Because they always have a strategy",
+"To avoid missing out on a win",
+"Because they are guaranteed to win eventually"
+]
+answer = "To avoid missing out on a win"
+why = "The fear of missing out or the belief that a win is just around the corner keeps people gambling despite losses."
+difficulty = "medium"
+reward = 200
+
+[[questions]]
+question = "How can friends and family support someone with a gambling problem?"
+choices = [
+"By giving them money to continue gambling",
+"By ignoring the problem until it gets worse",
+"By encouraging professional help and offering emotional support",
+"By gambling with them to supervise their behavior"
+]
+answer = "By encouraging professional help and offering emotional support"
+why = "Support from loved ones, combined with professional help, can be critical in helping someone overcome a gambling problem."
+difficulty = "medium"
+reward = 250
+

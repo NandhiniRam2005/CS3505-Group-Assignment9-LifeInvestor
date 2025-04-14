@@ -129,6 +129,8 @@ private:
     int creditScore;
     int currentYear;
     int remainingQuizzes = 3;
+    double yearlyBills;
+
     QWidget *currentWidget;
 
     SavingsAccount *savingsAccount;

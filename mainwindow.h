@@ -24,9 +24,7 @@ public:
     MainWindow(MainModel *model, QWidget *parent = nullptr);
     ~MainWindow();
 
-    void quizConnections(MainModel *model);
 
-    void mainWindowValueUpdateConnections(MainModel *model);
 
 private:
     Ui::MainWindow *ui;
@@ -84,6 +82,10 @@ private:
     void settingsConnections(MainModel *model);
 
     void extraQuizesPageConnections(MainModel *model);
+
+    void quizConnections(MainModel *model);
+
+    void mainWindowValueUpdateConnections(MainModel *model);
 
 public slots:
     void startQuiz(QuizCategory category, uint questionAmount);

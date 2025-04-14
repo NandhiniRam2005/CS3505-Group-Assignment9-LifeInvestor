@@ -11,6 +11,7 @@ MainModel::MainModel(QObject *parent)
     currentMoney = 0;
     creditScore = 650;
     currentYear = 1;
+    yearlyBills = 500;
 
     savingsAccount = new SavingsAccount(0.004);
 
@@ -217,7 +218,9 @@ void MainModel::activateLoan(int loanNumber)
 void MainModel::nextYear()
 {
     currentYear++;
-
+    currentMoney-=yearlyBills;
+    emit updateBalance(currentMoney);
+    yearlyBills+=300;
     QVector<double> initialTotals;
     QVector<double> newTotals;
     double initialCounter;
@@ -251,7 +254,6 @@ void MainModel::nextYear()
 
     initialCounter = 0;
     newCounter = 0;
-    // NEED TO ADD SOME CODE HERE TO EMIT A SIGNAL TO THE VIEW TO TELL IT TO UPDATE THE IMAGES OF STOCKS IF STOCKS WENT DOWN OR UP.
     QVector<double> initialStocks;
     QVector<double> afterYearEndStocks;
     for (int i = 0; i < stocks.count(); i++) {
