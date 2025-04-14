@@ -26,6 +26,6 @@ void LifeEventHandler::loadAllLifeEvents() {
 }
 
 LifeEvent LifeEventHandler::getRandomLifeEvent() {
-    int index = QRandomGenerator::global()->bounded(lifeEvents.size());
+    int index = QRandomGenerator::global()->bounded(static_cast<int>(lifeEvents.size()));
     return lifeEvents[index];
 }
