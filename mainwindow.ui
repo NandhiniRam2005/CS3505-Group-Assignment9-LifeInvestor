@@ -1181,13 +1181,13 @@ V</string>
      <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>50</y>
-        <width>601</width>
+        <x>120</x>
+        <y>60</y>
+        <width>561</width>
         <height>25</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="yearQuizLayout">
        <item>
         <widget class="QLabel" name="currentYear">
          <property name="font">
@@ -1205,7 +1205,7 @@ V</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="cquizRemains">
+        <widget class="QLabel" name="quizRemains">
          <property name="font">
           <font>
            <family>Arial</family>
@@ -1213,7 +1213,7 @@ V</string>
           </font>
          </property>
          <property name="text">
-          <string>Extra Quizes remaning: 3</string>
+          <string>Extra Quizzes remaning: 3</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -1235,7 +1235,7 @@ V</string>
      <zorder>line_14</zorder>
      <zorder>label</zorder>
      <zorder>line_15</zorder>
-     <zorder>cquizRemains</zorder>
+     <zorder>quizRemains</zorder>
      <zorder>billbalance</zorder>
      <zorder>label_17</zorder>
      <zorder>line_16</zorder>
