@@ -357,7 +357,7 @@ void MainModel::nextYear()
     if(loanOverdue){
         endGame("You failed to pay off your loan and the bill collector came for you!" , "angryBillCollector.png");
     }
-    if(currentMoney < 0){
+    if(calculateNetWorth() < 0){
         yearsBeingBroke++;
         creditScore-=25;
     }
