@@ -7,6 +7,7 @@
 #include "quizhandler.h"
 #include "savingsaccount.h"
 #include "stock.h"
+#include "lifeeventhandler.h"
 
 class MainModel : public QObject
 {
@@ -58,6 +59,7 @@ public slots:
     void handleLoanInfoRequest(int loanNumber);
 
     void handleExtraQuizRequest();
+    void randomLifeEvent();
 
 signals:
     /**
@@ -121,9 +123,11 @@ signals:
 
     void quizzesRemainingChanged(int remaining);
     void quizStarted();
+    void displayLifeEvent(LifeEvent lifeEvent);
 
 private:
     QuizHandler *quizHandler;
+    LifeEventHandler *lifeEventHandler;
 
     double currentMoney;
     int creditScore;

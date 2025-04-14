@@ -7,6 +7,7 @@ MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {
     quizHandler = new QuizHandler(this);
+    lifeEventHandler = new LifeEventHandler(this);
 
     currentMoney = 0;
     creditScore = 650;
@@ -30,6 +31,10 @@ MainModel::MainModel(QObject *parent)
     stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
     stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
 
+}
+
+void MainModel::randomLifeEvent() {
+    emit displayLifeEvent(this->lifeEventHandler->getRandomLifeEvent());
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)

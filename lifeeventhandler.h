@@ -3,10 +3,26 @@
 
 #include <QObject>
 
-class LifeEventHandler
+struct LifeEvent
 {
+    std::string text;
+    int price;
+};
+
+class LifeEventHandler: public QObject
+
+{
+    Q_OBJECT
 public:
-    LifeEventHandler();
+    explicit LifeEventHandler(QObject *parent = nullptr);
+
+    LifeEvent getRandomLifeEvent();
+
+private:
+    std::string filePath;
+    std::vector<LifeEvent> lifeEvents;
+    void loadAllLifeEvents();
+
 };
 
 #endif // LIFEEVENTHANDLER_H
