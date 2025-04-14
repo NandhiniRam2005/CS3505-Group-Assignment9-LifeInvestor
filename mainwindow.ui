@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1227,7 +1227,6 @@ V</string>
      <zorder>line_3</zorder>
      <zorder>Phone</zorder>
      <zorder>closePhoneButton</zorder>
-     <zorder>currentYear</zorder>
      <zorder>line</zorder>
      <zorder>openPhoneButton</zorder>
      <zorder>Apps</zorder>
@@ -1235,7 +1234,6 @@ V</string>
      <zorder>line_14</zorder>
      <zorder>label</zorder>
      <zorder>line_15</zorder>
-     <zorder>quizRemains</zorder>
      <zorder>billbalance</zorder>
      <zorder>label_17</zorder>
      <zorder>line_16</zorder>
@@ -3581,24 +3579,6 @@ QTabBar::tab:!selected {
        <attribute name="title">
         <string>CheckingAccount</string>
        </attribute>
-       <widget class="QLabel" name="checingAccountLabel">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>20</y>
-          <width>211</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Checking Account</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="checkingAccountAmount">
         <property name="geometry">
          <rect>
@@ -3683,29 +3663,38 @@ QTabBar::tab:!selected {
          <pixmap resource="resources.qrc">:/icons/icons/checking-account.png</pixmap>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="savingsTab">
-       <attribute name="title">
-        <string>Savings Account</string>
-       </attribute>
-       <widget class="QLabel" name="savingAccountLabel">
+       <widget class="QLabel" name="cd1MinDepositLabel_7">
         <property name="geometry">
          <rect>
-          <x>400</x>
+          <x>360</x>
           <y>20</y>
-          <width>201</width>
+          <width>281</width>
           <height>51</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>15</pointsize>
+          <pointsize>22</pointsize>
+          <bold>true</bold>
          </font>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: black;
+}</string>
+        </property>
         <property name="text">
-         <string>Savings Account</string>
+         <string>Checking Account</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
+      </widget>
+      <widget class="QWidget" name="savingsTab">
+       <attribute name="title">
+        <string>Savings Account</string>
+       </attribute>
        <widget class="QLabel" name="savingsAccountAmount">
         <property name="geometry">
          <rect>
@@ -3788,6 +3777,33 @@ QTabBar::tab:!selected {
         </property>
         <property name="pixmap">
          <pixmap resource="resources.qrc">:/icons/icons/savings-account.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cd1MinDepositLabel_8">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>20</y>
+          <width>281</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>22</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: black;
+}</string>
+        </property>
+        <property name="text">
+         <string>Savings Account</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
       </widget>
@@ -3902,7 +3918,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>303</height>
+         <height>301</height>
         </rect>
        </property>
        <attribute name="label">

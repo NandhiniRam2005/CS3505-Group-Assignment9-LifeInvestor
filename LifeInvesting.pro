@@ -64,6 +64,7 @@ SOURCES += \
     animationview.cpp \
     cdaccount.cpp \
     depositwindow.cpp \
+    lifeeventhandler.cpp \
     loan.cpp \
     main.cpp \
     mainmodel.cpp \
@@ -126,6 +127,7 @@ HEADERS += \
     cdaccount.h \
     cpptoml.h \
     depositwindow.h \
+    lifeeventhandler.h \
     loan.h \
     mainmodel.h \
     mainwindow.h \
@@ -149,6 +151,7 @@ DISTFILES += \
     Box2D/CMakeLists.txt \
     QuestionBanks/cdQuiz.toml \
     QuestionBanks/gamblingQuiz.toml \
+    QuestionBanks/lifeEvents.toml \
     QuestionBanks/loansQuiz.toml \
     QuestionBanks/savingsQuiz.toml \
     QuestionBanks/stocks.toml \
