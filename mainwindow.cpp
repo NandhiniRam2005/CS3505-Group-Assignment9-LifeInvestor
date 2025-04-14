@@ -51,7 +51,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
-        ui->balance->show();
+        ui->balance_2->show();
         ui->credit->show();
         ui->networth->show();
     });
@@ -180,7 +180,7 @@ void MainWindow::returnToGame(QWidget *currentWidget)
     }
     ui->settingsButton->show();
     if (returnPage != "Start" && returnPage != "quizEnd"){
-        ui->balance->show();
+        ui->balance_2->show();
         ui->credit->show();
         ui->networth->show();
     }
@@ -189,7 +189,7 @@ void MainWindow::returnToGame(QWidget *currentWidget)
 void MainWindow::onStartClicked()
 {
     hidePhone();
-    ui->balance->show();
+    ui->balance_2->show();
     ui->credit->show();
     ui->networth->show();
     if(firstStart){
@@ -241,15 +241,15 @@ void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
     if (currentMoney == std::floor(currentMoney))
-        ui->balance->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
+        ui->balance_2->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
     else
-        ui->balance->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
+        ui->balance_2->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
 
     if(currentMoney >= 0){
-        ui->balance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
+        ui->balance_2->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
     }
     else{
-        ui->balance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
+        ui->balance_2->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
     }
 
 
@@ -372,7 +372,7 @@ void MainWindow::enableSubmitButton(bool checked)
 
 void MainWindow::showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned)
 {
-    ui->balance->hide();
+    ui->balance_2->hide();
     ui->credit->hide();
     ui->networth->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
@@ -653,7 +653,7 @@ void MainWindow::generalUISetup()
     buttonGroup->addButton(ui->choice2);
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
-    ui->balance->hide();
+    ui->balance_2->hide();
     ui->credit->hide();
     ui->networth->hide();
 
@@ -1017,7 +1017,7 @@ void MainWindow::settingsConnections(MainModel *model)
 {
     connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
         ui->settingsButton->hide();
-        ui->balance->hide();
+        ui->balance_2->hide();
         ui->credit->hide();
         ui->networth->hide();
         emit settingsOpened(ui->stackedWidget->currentWidget());
