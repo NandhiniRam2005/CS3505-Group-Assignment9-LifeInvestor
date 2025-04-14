@@ -16,7 +16,7 @@ MainModel::MainModel(QObject *parent)
 
     savingsAccount = new SavingsAccount(0.004);
 
-    checkingAccount = new MoneyContainer();
+    //checkingAccount = new MoneyContainer();
 
     cdAccounts.push_back(CDAccount(0.035, 2, 500));
     cdAccounts.push_back(CDAccount(0.040, 4, 750));
