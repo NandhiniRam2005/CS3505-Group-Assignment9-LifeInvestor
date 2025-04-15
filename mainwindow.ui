@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -471,6 +471,71 @@ V</string>
         </widget>
        </item>
       </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Casino">
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>60</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CASINO</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="casinoBackButton">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>450</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe Script</family>
+        <pointsize>-1</pointsize>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+        color: white;
+        background-color: blue;
+        border: 2px solid black;
+        border-radius: 15px; 
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    QPushButton:hover {
+        background-color: #45a049; 
+        border: 2px solid green;
+    }
+
+    QPushButton:pressed {
+        background-color: #388e3c; 
+        border: 2px solid #e6b800;
+    }
+
+    QPushButton:focus {
+        outline: none;
+    }</string>
+      </property>
+      <property name="text">
+       <string>&lt;~ BACK</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="quizInfo">
@@ -4142,8 +4207,8 @@ QToolBox QWidget {
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>741</width>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">

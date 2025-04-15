@@ -56,6 +56,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     loansPageConnections(model);
 
+    casinoPageConnections(model);
+
     extraQuizesPageConnections(model);
 
     lifeEventsConnections(model);
@@ -1081,6 +1083,15 @@ void MainWindow::loansPageConnections(MainModel *model)
         double amount = ui->loan2PaymentInput->text().toDouble();
         emit depositToLoan(amount, 1);
         ui->loan2PaymentInput->clear();
+    });
+}
+
+void MainWindow::casinoPageConnections(MainModel *model)
+{
+
+
+    connect(ui->casinoBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
     });
 }
 

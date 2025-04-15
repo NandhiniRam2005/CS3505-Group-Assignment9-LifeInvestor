@@ -77,6 +77,8 @@ private:
 
     void loansPageConnections(MainModel *model);
 
+    void casinoPageConnections(MainModel *model);
+
     void nextYearConnections(MainModel *model);
 
     void phoneConnections();
