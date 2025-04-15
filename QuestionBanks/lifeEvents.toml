@@ -9,48 +9,56 @@ image = ":///icons/icons/vegas-jackpot.png"
 eventDesc = "A distant relative left you a generous inheritance."
 price = 4000
 type = "Good"
-image = ":///icons/icons/.png"
+image = ":///icons/icons/relative.png"
 
 [[goodEvents]]
 eventDesc = "You sold an old collectible online for a high price."
 price = 1200
 type = "Good"
+image = ":///icons/icons/collectible.png"
 
 
 [[goodEvents]]
 eventDesc = "Your side hustle took off!"
 price = 2000
 type = "Good"
+image = ":///icons/icons/side-hustle.png"
 
 [[goodEvents]]
 eventDesc = "You received a government grant for your project."
 price = 3500
 type = "Good"
+image = ":///icons/icons/government-grant.png"
 
 [[goodEvents]]
 eventDesc = "You won a community raffle."
 price = 800
 type = "Good"
+image = ":///icons/icons/community - raffle.png"
 
 [[goodEvents]]
 eventDesc = "Your investments performed exceptionally well."
 price = 3000
 type = "Good"
+image = ":///icons/icons/investment-gain.png"
 
 [[goodEvents]]
 eventDesc = "You found a rare coin while hiking."
 price = 600
 type = "Good"
+image = ":///icons/icons/rareCoin.png"
 
 [[goodEvents]]
 eventDesc = "You earned a bonus at work."
 price = 1500
 type = "Good"
+image = ":///icons/icons/workBonus.png"
 
 [[goodEvents]]
 eventDesc = "You were overcharged last year and got a big tax refund."
 price = 2500
 type = "Good"
+image = ":///icons/icons/tax-refund.png"
 
 [[neutralEvents]]
 eventDesc = "You found a $10 bill in an old coat pocket."
@@ -106,6 +114,7 @@ type = "Neutral"
 eventDesc = "You fell down the stairs and broke your leg. Hospital fees!"
 price = -5000
 type = "Bad"
+image = ":///icons/icons/breakLeg.png"
 
 [[badEvents]]
 eventDesc = "Your car broke down and needed major repairs."

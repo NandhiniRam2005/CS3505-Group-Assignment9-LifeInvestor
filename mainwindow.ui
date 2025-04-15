@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -307,9 +307,9 @@ V</string>
      <widget class="QPushButton" name="continueButton">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>280</x>
         <y>430</y>
-        <width>171</width>
+        <width>251</width>
         <height>61</height>
        </rect>
       </property>
