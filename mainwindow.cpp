@@ -198,6 +198,8 @@ void MainWindow::returnToGame(QWidget *currentWidget)
         ui->stackedWidget->setCurrentWidget(ui->gameEnd);
     } else if (returnPage == "quizInfo") {
         ui->stackedWidget->setCurrentWidget(ui->quizInfo);
+    } else if (returnPage == "Casino") {
+        ui->stackedWidget->setCurrentWidget(ui->Casino);
     } else {
         throw std::runtime_error("return page could not be found.");
     }
@@ -1088,7 +1090,9 @@ void MainWindow::loansPageConnections(MainModel *model)
 
 void MainWindow::casinoPageConnections(MainModel *model)
 {
-
+    connect(ui->App6, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Casino);
+    });
 
     connect(ui->casinoBackButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
