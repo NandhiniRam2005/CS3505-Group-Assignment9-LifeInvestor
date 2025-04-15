@@ -332,7 +332,7 @@ void MainModel::nextYear()
                 newCounter += loans[i].getBalance();
             }
         }
-        if(loans[i].getYearsLeft() == 1 && !billWarningEmitted){
+        if(loans[i].getYearsLeft() == 0 && !billWarningEmitted){
             billWarningEmitted = true;
         }
         if (loans[i].getYearsLeft() < 0)
@@ -362,7 +362,9 @@ void MainModel::nextYear()
         endGame("You failed to pay off your loan and the bill collector came for you!" , "angryBillCollector.png");
         gameOver = true;
     }
-    if(calculateNetWorth() < 0){
+
+    // DONE SO YOU CAN SEE BOTH ENDINGS (LOAN overdue and broke) I want broke to only happen if you refuse to take out loans and such...
+    if(currentMoney < 0){
         yearsBeingBroke++;
         if(yearsBeingBroke == 3 && !gameOver){
             emit displayWarning("You have been in debt for a while now... A raccoon has took notice and thinks he can do better than you in life. GET OUT OF DEBT!", "plottingRaccoon.png");
