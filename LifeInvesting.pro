@@ -73,7 +73,8 @@ SOURCES += \
     quizhandler.cpp \
     savingsaccount.cpp \
     startscreenview.cpp \
-    stock.cpp
+    stock.cpp \
+    warningdisplay.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -135,11 +136,13 @@ HEADERS += \
     quizhandler.h \
     savingsaccount.h \
     startscreenview.h \
-    stock.h
+    stock.h \
+    warningdisplay.h
 
 FORMS += \
     lifeeventdisplay.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    warningdisplay.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

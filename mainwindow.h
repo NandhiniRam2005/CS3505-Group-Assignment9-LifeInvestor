@@ -9,6 +9,7 @@
 #include "quizhandler.h"
 #include "startscreenview.h"
 #include "lifeeventdisplay.h"
+#include "warningdisplay.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -43,6 +44,7 @@ private:
     QSoundEffect *levelFailSound;
     QSoundEffect *depositSound;
     LifeEventDisplay lifeEventDisplay;
+    warningdisplay warningDisplay;
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);
 
@@ -141,6 +143,8 @@ public slots:
 
     void gameEnded(QString reason, QString imageName);
     void showLifeEvent(LifeEvent lifeEvent);
+
+    void showWarning(QString warning, QString image);
     void updateCreditScore(int score);
 
 signals:

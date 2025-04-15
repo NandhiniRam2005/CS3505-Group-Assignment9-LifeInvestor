@@ -59,6 +59,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     lifeEventsConnections(model);
 
+    connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
+
 
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -675,6 +677,10 @@ void MainWindow::showLifeEvent(LifeEvent lifeEvent) {
     lifeEventDisplay.showLifeEvent(lifeEvent);
 }
 
+void MainWindow::showWarning(QString warning, QString image){
+    warningDisplay.show();
+    warningDisplay.showWarning(warning, image);
+}
 
 // CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 

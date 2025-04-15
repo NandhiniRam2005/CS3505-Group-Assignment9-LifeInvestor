@@ -322,6 +322,7 @@ void MainModel::nextYear()
 
     initialCounter = 0;
     newCounter = 0;
+    bool billWarningEmitted = false;
     for (int i = 0; i < loans.count(); i++) {
         if (loans[i].getActive()) {
             tempCounter = loans[i].getBalance();
@@ -330,6 +331,10 @@ void MainModel::nextYear()
                 initialCounter += tempCounter;
                 newCounter += loans[i].getBalance();
             }
+        }
+        if(loans[i].getYearsLeft() == 1 && !billWarningEmitted){
+            emit displayWarning("One or more loans from BillDog is about to be due. Make sure you pay it on time", "annoyedBill.png");
+            billWarningEmitted = true;
         }
         if (loans[i].getYearsLeft() < 0)
             loanOverdue = true;
@@ -358,6 +363,9 @@ void MainModel::nextYear()
     }
     if(calculateNetWorth() < 0){
         yearsBeingBroke++;
+        if(yearsBeingBroke == 3){
+            emit displayWarning("You have been in debt for a while now... A raccoon has took notice and thinks he can do better than you in life. GET OUT OF DEBT!", "plottingRaccoon.png");
+        }
         creditScore-=25;
         emit creditScoreChanged(creditScore);
     }

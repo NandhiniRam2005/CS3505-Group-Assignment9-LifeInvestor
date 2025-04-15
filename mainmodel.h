@@ -128,6 +128,7 @@ signals:
     void quizzesRemainingChanged(int remaining);
     void quizStarted();
     void displayLifeEvent(LifeEvent lifeEvent);
+    void displayWarning(QString warning, QString image);
     void creditScoreChanged(int newScore);
 
 private:
