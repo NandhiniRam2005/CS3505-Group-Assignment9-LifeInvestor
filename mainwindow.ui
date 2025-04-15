@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -607,9 +607,9 @@ V</string>
      <widget class="QLabel" name="currentYear">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>10</x>
         <y>60</y>
-        <width>251</width>
+        <width>381</width>
         <height>23</height>
        </rect>
       </property>
@@ -1103,9 +1103,9 @@ V</string>
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>300</y>
+        <y>280</y>
         <width>141</width>
-        <height>61</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
@@ -1142,7 +1142,7 @@ V</string>
        <rect>
         <x>410</x>
         <y>60</y>
-        <width>275</width>
+        <width>381</width>
         <height>23</height>
        </rect>
       </property>

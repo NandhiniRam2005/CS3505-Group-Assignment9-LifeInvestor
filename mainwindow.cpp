@@ -6,6 +6,17 @@
 #include "iostream"
 #include "ui_mainwindow.h"
 
+void MainWindow::lifeEventsConnections(MainModel *model)
+{
+    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
+        emit requestLifeEvent();
+        lifeEventDisplay.show();
+    });
+
+    connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
+    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
+}
+
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -46,6 +57,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     extraQuizesPageConnections(model);
 
+    lifeEventsConnections(model);
+
 
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -57,13 +70,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     connect(model, &MainModel::netWorthChanged, this, &MainWindow::updateNetWorth);
 
-    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
-        emit requestLifeEvent();
-        lifeEventDisplay.show();
-    });
 
-    connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
-    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
 
 
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
@@ -553,10 +560,6 @@ void MainWindow::updateStockImage(bool stockOneUp, bool stockTwoUp, bool stockTh
         QPixmap pixmap(":///icons/icons/StockDown.png");
         ui->stockImageThree->setPixmap(pixmap);
     }
-}
-void MainWindow::displayDepositPage()
-{
-    depositWindow.show();
 }
 
 

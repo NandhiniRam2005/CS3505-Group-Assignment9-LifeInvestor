@@ -63,7 +63,6 @@ SOURCES += \
     Box2D/Rope/b2Rope.cpp \
     animationview.cpp \
     cdaccount.cpp \
-    depositwindow.cpp \
     lifeeventdisplay.cpp \
     lifeeventhandler.cpp \
     loan.cpp \
@@ -127,7 +126,6 @@ HEADERS += \
     animationview.h \
     cdaccount.h \
     cpptoml.h \
-    depositwindow.h \
     lifeeventdisplay.h \
     lifeeventhandler.h \
     loan.h \
@@ -140,7 +138,6 @@ HEADERS += \
     stock.h
 
 FORMS += \
-    depositwindow.ui \
     lifeeventdisplay.ui \
     mainwindow.ui
 

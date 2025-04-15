@@ -5,7 +5,6 @@
 #include <QMainWindow>
 #include <QSoundEffect>
 #include "animationview.h"
-#include "depositwindow.h"
 #include "mainmodel.h"
 #include "quizhandler.h"
 #include "startscreenview.h"
@@ -24,9 +23,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(MainModel *model, QWidget *parent = nullptr);
     ~MainWindow();
-
-
-
+    
+    
+    
+    void lifeEventsConnections(MainModel *model);
+    
 private:
     Ui::MainWindow *ui;
     QButtonGroup *buttonGroup;
@@ -43,7 +44,6 @@ private:
     QSoundEffect *levelPassSound;
     QSoundEffect *levelFailSound;
     QSoundEffect *depositSound;
-    DepositWindow depositWindow;
     LifeEventDisplay lifeEventDisplay;
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);
@@ -138,8 +138,6 @@ public slots:
     void showErrorMessage(QString errorMessage);
 
     void revalidateAllStockDisplays();
-
-    void displayDepositPage();
 
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
