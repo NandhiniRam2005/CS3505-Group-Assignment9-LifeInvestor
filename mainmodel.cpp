@@ -24,7 +24,7 @@ MainModel::MainModel(QObject *parent)
     cdAccounts.push_back(CDAccount(0.045, 5, 1000));
 
     loans.push_back(Loan(0.36, 10000, 0, 5));
-    loans.push_back(Loan(0.067, 10000, 649, 7));
+    loans.push_back(Loan(0.067, 10000, 650, 7));
     loans[0].setAvailable(creditScore);
     loans[1].setAvailable(creditScore);
 

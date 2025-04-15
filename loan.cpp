@@ -53,8 +53,10 @@ bool Loan::getActive()
 
 void Loan::setAvailable(int creditScore)
 {
-    if (!active && creditScore > creditRequirement)
+    if (!active && creditScore >= creditRequirement)
         available = true;
+    else
+        available = false;
 }
 
 bool Loan::activate()
