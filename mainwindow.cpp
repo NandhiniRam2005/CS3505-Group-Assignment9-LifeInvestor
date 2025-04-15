@@ -255,10 +255,15 @@ void MainWindow::updateProgress(uint progress)
 void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
+    QString balanceText;
     if (currentMoney == std::floor(currentMoney))
-        ui->cashBalance->setText("Checking: $" + QString::number(currentMoney, 'f', 0));
+        balanceText = "Checking: $" + QString::number(currentMoney, 'f', 0);
     else
-        ui->cashBalance->setText("Checking: $" + QString::number(currentMoney, 'f', 2));
+        balanceText = "Checking: $" + QString::number(currentMoney, 'f', 2);
+
+    ui->cashBalance->setText(balanceText);
+    ui->checkingAccountAmount->setText(balanceText);
+    ui->checkingAccountAmount->adjustSize();
 
     if(currentMoney >= 0){
         ui->cashBalance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
@@ -273,6 +278,7 @@ void MainWindow::updateBalance(double newAmount)
 void MainWindow::updateSavings(double newBalance, double interestRate)
 {
     ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
+    ui->savingsAccountAmount->adjustSize();
 }
 
 void MainWindow::updateNetWorth(double netWorth)
@@ -1067,12 +1073,29 @@ void MainWindow::loansPageConnections(MainModel *model)
     });
 
     connect(ui->payLoan1Button, &QPushButton::clicked, this, [this]() {
-        double amount = ui->loan1PaymentInput->text().toDouble();
+        QString input = ui->loan1PaymentInput->text();
+        bool ok;
+        double amount = input.toDouble(&ok);
+
+        if (input.isEmpty() || !ok || amount <= 0) {
+            showErrorMessage("Invalid loan amount!");
+            return;
+        }
+
         emit depositToLoan(amount, 0);
         ui->loan1PaymentInput->clear();
     });
+
     connect(ui->payLoan2Button, &QPushButton::clicked, this, [this]() {
-        double amount = ui->loan2PaymentInput->text().toDouble();
+        QString input = ui->loan2PaymentInput->text().trimmed();
+        bool ok;
+        double amount = input.toDouble(&ok);
+
+        if (input.isEmpty() || !ok || amount <= 0) {
+            showErrorMessage("Invalid loan amount!");
+            return;
+        }
+
         emit depositToLoan(amount, 1);
         ui->loan2PaymentInput->clear();
     });
