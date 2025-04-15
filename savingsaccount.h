@@ -20,10 +20,21 @@ private:
     double interestRate;
 
 public:
+    /**
+     * Creates a savings account with a balance of 0 and a given interest rate
+     * @param interestRate the interest rate on the account
+     */
     SavingsAccount(double interestRate);
 
+    /**
+     * @return The interest rate of this Savings Account
+     */
     double getInterestRate();
 
+    /**
+     * This method should be callled whenever a new year occurs to ensure
+     * that any necessary modifications to the balance of this SavingsAccount can be performed.
+     */
     void nextYear() override;
 };
 
