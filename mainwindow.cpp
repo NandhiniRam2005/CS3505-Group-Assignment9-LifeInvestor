@@ -10,6 +10,7 @@ void MainWindow::lifeEventsConnections(MainModel *model)
 {
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         emit requestLifeEvent();
+        lifeEventDisplay.setModal(true);
         lifeEventDisplay.show();
     });
 
@@ -736,6 +737,7 @@ void MainWindow::showLifeEvent(LifeEvent lifeEvent) {
 }
 
 void MainWindow::showWarning(QString warning, QString image){
+    warningDisplay.setModal(true);
     warningDisplay.show();
     warningDisplay.showWarning(warning, image);
 }
