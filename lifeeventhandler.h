@@ -7,6 +7,7 @@ struct LifeEvent
 {
     std::string text;
     int price;
+    std::string type;
 };
 
 class LifeEventHandler: public QObject

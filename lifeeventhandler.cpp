@@ -20,6 +20,7 @@ void LifeEventHandler::loadAllLifeEvents() {
             LifeEvent specificLifeEvent;
             specificLifeEvent.text = *event->get_as<std::string>("eventDesc");
             specificLifeEvent.price = *event->get_as<int>("price");
+            specificLifeEvent.type = *event->get_as<std::string>("type");
             lifeEvents.push_back(specificLifeEvent);
         }
     }

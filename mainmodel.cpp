@@ -58,7 +58,8 @@ double MainModel::calculateNetWorth()
 void MainModel::randomLifeEvent() {
     LifeEvent lifeEvent = this->lifeEventHandler->getRandomLifeEvent();
     emit displayLifeEvent(lifeEvent);
-    emit updateBalance(currentMoney + lifeEvent.price);
+    currentMoney = currentMoney + lifeEvent.price;
+    emit updateBalance(currentMoney);
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)

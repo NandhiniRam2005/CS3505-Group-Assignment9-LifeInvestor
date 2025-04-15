@@ -63,11 +63,12 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     });
 
     connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
+    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
+
 
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
-    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
     connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
     settingsConnections(model);
