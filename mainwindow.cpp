@@ -619,9 +619,67 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
 }
 
 void MainWindow::gameEnded(QString reason, QString imageName) {
+    ui->cashBalance->hide();
+    ui->creditLabel->hide();
+    ui->networthLabel->hide();
+
     ui->stackedWidget->setCurrentWidget(ui->gameEnd);
     ui->reasonLabel->setText(reason);
     ui->reasonLabel->adjustSize();
+    ui->endCashBalance->setText("End " + ui->cashBalance->text());
+    ui->endCashBalance->adjustSize();
+    ui->endCredit->setText("End " + ui->creditLabel->text());
+    ui->endCredit->adjustSize();
+    ui->endNetWorth->setText("End " + ui->networthLabel->text());
+    ui->endNetWorth->adjustSize();
+
+    std::string networthString = ui->endNetWorth->text().toStdString();
+    std::string networthNum = networthString.substr(16);
+    double networth = std::stod(networthNum);
+
+    std::string creditStr = ui->endCredit->text().toStdString();
+    std::string creditNum = creditStr.substr(12);
+    int credit = std::stoi(creditNum);
+
+    if(currentMoney < 0){
+        ui->endCashBalance->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
+    }
+
+    if(networth < 0){
+        ui->endNetWorth->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
+    }
+
+    if(credit < 650){
+        ui->endCredit->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
+    }
+
+    if(credit > 1000){
+        ui->rank->setText("RANK: World Renowned Investing Expert");
+    }
+    else if(credit > 900){
+        ui->rank->setText("RANK: Investing Mogul");
+    }
+    else if(credit > 820){
+         ui->rank->setText("RANK: Investing Pro");
+    }
+    else if(credit > 750){
+        ui->rank->setText("RANK: Responsible Citizen");
+    }
+    else if(credit > 700){
+        ui->rank->setText("RANK: Average Citizen");
+    }
+    else if(credit > 650){
+        ui->rank->setText("RANK: Bad investor");
+    }
+    else if(credit > 300){
+        ui->rank->setText("RANK: Gambler");
+    }
+    else{
+        ui->rank->setText("RANK: Nandhini");
+    }
+
+    ui->rank->adjustSize();
+
     QPixmap pixmap(":///icons/icons/" + imageName);
     ui->endImage->setPixmap(pixmap);
 }
