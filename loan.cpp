@@ -28,6 +28,7 @@ void Loan::nextYear()
                 active = false;
         }
     }
+    MoneyContainer::nextYear();
 }
 
 double Loan::getInterestRate()

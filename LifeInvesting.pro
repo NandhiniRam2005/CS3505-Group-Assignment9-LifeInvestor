@@ -63,7 +63,8 @@ SOURCES += \
     Box2D/Rope/b2Rope.cpp \
     animationview.cpp \
     cdaccount.cpp \
-    depositwindow.cpp \
+    lifeeventdisplay.cpp \
+    lifeeventhandler.cpp \
     loan.cpp \
     main.cpp \
     mainmodel.cpp \
@@ -72,7 +73,8 @@ SOURCES += \
     quizhandler.cpp \
     savingsaccount.cpp \
     startscreenview.cpp \
-    stock.cpp
+    stock.cpp \
+    warningdisplay.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -125,7 +127,8 @@ HEADERS += \
     animationview.h \
     cdaccount.h \
     cpptoml.h \
-    depositwindow.h \
+    lifeeventdisplay.h \
+    lifeeventhandler.h \
     loan.h \
     mainmodel.h \
     mainwindow.h \
@@ -133,11 +136,13 @@ HEADERS += \
     quizhandler.h \
     savingsaccount.h \
     startscreenview.h \
-    stock.h
+    stock.h \
+    warningdisplay.h
 
 FORMS += \
-    depositwindow.ui \
-    mainwindow.ui
+    lifeeventdisplay.ui \
+    mainwindow.ui \
+    warningdisplay.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -149,6 +154,7 @@ DISTFILES += \
     Box2D/CMakeLists.txt \
     QuestionBanks/cdQuiz.toml \
     QuestionBanks/gamblingQuiz.toml \
+    QuestionBanks/lifeEvents.toml \
     QuestionBanks/loansQuiz.toml \
     QuestionBanks/savingsQuiz.toml \
     QuestionBanks/stocks.toml \

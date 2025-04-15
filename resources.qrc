@@ -40,6 +40,20 @@
         <file>icons/angryBillCollector.png</file>
         <file>icons/retired.png</file>
         <file>icons/broke.png</file>
+        <file>icons/vegas-jackpot.png</file>
+        <file>icons/car-breakdown.png</file>
+        <file>icons/collectible.png</file>
+        <file>icons/investment-gain.png</file>
+        <file>icons/relative.png</file>
+        <file>icons/side-hustle.png</file>
+        <file>icons/government-grant.png</file>
+        <file>icons/workBonus.png</file>
+        <file>icons/community - raffle.png</file>
+        <file>icons/rareCoin.png</file>
+        <file>icons/tax-refund.png</file>
+        <file>icons/breakLeg.png</file>
+        <file>icons/plottingRaccoon.png</file>
+        <file>icons/annoyedBill.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

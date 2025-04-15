@@ -7,6 +7,7 @@ MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {
     quizHandler = new QuizHandler(this);
+    lifeEventHandler = new LifeEventHandler(this);
 
     currentMoney = 0;
     creditScore = 650;
@@ -15,7 +16,7 @@ MainModel::MainModel(QObject *parent)
 
     savingsAccount = new SavingsAccount(0.004);
 
-    checkingAccount = new MoneyContainer();
+    //checkingAccount = new MoneyContainer();
 
     cdAccounts.push_back(CDAccount(0.035, 2, 500));
     cdAccounts.push_back(CDAccount(0.040, 4, 750));
@@ -26,10 +27,40 @@ MainModel::MainModel(QObject *parent)
     loans[0].setAvailable(creditScore);
     loans[1].setAvailable(creditScore);
 
-    stocks.push_back(Stock(70.76, 0.33, 1.20)); // E-Cola
     stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
+    stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
     stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
 
+}
+
+double MainModel::calculateNetWorth()
+{
+    double total = currentMoney;
+    total += savingsAccount->getBalance();
+
+    // CDs
+    for (CDAccount cd : cdAccounts)
+        total += cd.getBalance();
+
+    // Stocks
+    for (Stock stock : stocks)
+        total += stock.getMoneyBalance();
+
+    // Only include ACTIVE loans
+    for (Loan loan : loans) {
+        if (loan.getActive()) {
+            total += loan.getBalance();
+        }
+    }
+    return total;
+}
+
+void MainModel::randomLifeEvent() {
+    LifeEvent lifeEvent = this->lifeEventHandler->getRandomLifeEvent();
+    emit displayLifeEvent(lifeEvent);
+    currentMoney = currentMoney + lifeEvent.price;
+    emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)
@@ -46,6 +77,7 @@ void MainModel::getNextQuestion()
     } else {
         if(quizHandler->getQuestionsAnsweredCorrectly() > 4){
             creditScore += 15;
+            emit creditScoreChanged(creditScore);
         }
         emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly(), quizHandler->getAmountEarned());
     }
@@ -65,7 +97,9 @@ void MainModel::checkAnswer(std::string selectedChoice)
     if (result) {
         addFunds(quizHandler->getCurrentQuestionReward());
         creditScore+=7;
+        emit creditScoreChanged(creditScore);
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
     }
 }
 
@@ -74,12 +108,13 @@ void MainModel::depositToSavings(double amount)
     if (amount <= currentMoney && savingsAccount->deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
     } else
         emit showErrorMessage("Input amount cannot be deposited");
 }
 
-void MainModel::depositToChecking(double amount)
+/*void MainModel::depositToChecking(double amount)
 {
     if (amount <= currentMoney && checkingAccount->deposit(amount)) {
         currentMoney -= amount;
@@ -87,13 +122,14 @@ void MainModel::depositToChecking(double amount)
         emit updateChecking(checkingAccount->getBalance());
     } else
         emit showErrorMessage("Input amount cannot be deposited");
-}
+}*/
 
 void MainModel::depositToCD(double amount, int cdNumber)
 {
     if (amount <= currentMoney && cdAccounts[cdNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateCD(cdNumber,
                       cdAccounts[cdNumber].getBalance(),
                       cdAccounts[cdNumber].getInterestRate(),
@@ -110,6 +146,7 @@ void MainModel::buyStock(int numberOfShares, int stockNumber)
     if (amount <= currentMoney && stocks[stockNumber].deposit(numberOfShares)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
         emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
     } else
@@ -134,6 +171,7 @@ void MainModel::depositToLoan(double amount, int loanNumber)
     if (amount <= currentMoney && loans[loanNumber].deposit(amount)) {
         currentMoney -= amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateLoan(loanNumber,
                         loans[loanNumber].getBalance(),
                         loans[loanNumber].getInterestRate(),
@@ -141,6 +179,7 @@ void MainModel::depositToLoan(double amount, int loanNumber)
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
         creditScore+=12;
+        emit creditScoreChanged(creditScore);
     } else
         emit showErrorMessage("Input amount cannot be removed from the loan");
 }
@@ -150,12 +189,13 @@ void MainModel::withdrawFromSavings(double amount)
     if (savingsAccount->withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
     } else
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-void MainModel::withdrawFromChecking(double amount)
+/*void MainModel::withdrawFromChecking(double amount)
 {
     if (checkingAccount->withdraw(amount)) {
         currentMoney += amount;
@@ -163,7 +203,7 @@ void MainModel::withdrawFromChecking(double amount)
         emit updateChecking(checkingAccount->getBalance());
     } else
         emit showErrorMessage("Input amount cannot be withdrawn");
-}
+}*/
 
 void MainModel::withdrawFromCD(int cdNumber)
 {
@@ -172,6 +212,7 @@ void MainModel::withdrawFromCD(int cdNumber)
     if (cdAccounts[cdNumber].withdraw(amount)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateCD(cdNumber,
                       cdAccounts[cdNumber].getBalance(),
                       cdAccounts[cdNumber].getInterestRate(),
@@ -199,6 +240,7 @@ void MainModel::sellStock(int numberOfShares, int stockNumber)
     if (stocks[stockNumber].withdraw(numberOfShares)) {
         currentMoney += amount;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateStock(stockNumber, stocks[stockNumber].getMoneyBalance());
         emit numberOfStocksOwned(stocks[stockNumber].getBalance(), stockNumber);
     } else
@@ -210,6 +252,7 @@ void MainModel::activateLoan(int loanNumber)
     if (loans[loanNumber].activate()) {
         currentMoney += -loans[loanNumber].getBalance();
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit updateLoan(loanNumber,
                         loans[loanNumber].getBalance(),
                         loans[loanNumber].getInterestRate(),
@@ -217,6 +260,7 @@ void MainModel::activateLoan(int loanNumber)
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
         creditScore-=75;
+        emit creditScoreChanged(creditScore);
     } else
         emit showErrorMessage("The loan cannot be activated");
 }
@@ -225,7 +269,6 @@ void MainModel::nextYear()
 {
     currentYear++;
     currentMoney-=yearlyBills;
-    emit updateBalance(currentMoney);
     yearlyBills+=300;
     QVector<double> initialTotals;
     QVector<double> newTotals;
@@ -239,8 +282,8 @@ void MainModel::nextYear()
     newTotals.push_back(savingsAccount->getBalance());
     emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
 
-    initialTotals.push_back(checkingAccount->getBalance());
-    newTotals.push_back(checkingAccount->getBalance());
+    //initialTotals.push_back(checkingAccount->getBalance());
+    //newTotals.push_back(checkingAccount->getBalance());
 
     initialCounter = 0;
     newCounter = 0;
@@ -279,6 +322,7 @@ void MainModel::nextYear()
 
     initialCounter = 0;
     newCounter = 0;
+    bool billWarningEmitted = false;
     for (int i = 0; i < loans.count(); i++) {
         if (loans[i].getActive()) {
             tempCounter = loans[i].getBalance();
@@ -287,6 +331,9 @@ void MainModel::nextYear()
                 initialCounter += tempCounter;
                 newCounter += loans[i].getBalance();
             }
+        }
+        if(loans[i].getYearsLeft() == 0 && !billWarningEmitted){
+            billWarningEmitted = true;
         }
         if (loans[i].getYearsLeft() < 0)
             loanOverdue = true;
@@ -301,37 +348,48 @@ void MainModel::nextYear()
     initialTotals.push_back(initialCounter);
     newTotals.push_back(newCounter);
 
-    // Calculate net worths
-    initialTotals.push_back(initialTotals[0] + initialTotals[1] + initialTotals[2]
-                            + initialTotals[3]+ initialTotals[4]);
-    newTotals.push_back(newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]+ newTotals[4]);
-
     // Calculate changes between years
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 4; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
     emit newYear(newTotals, initialTotals, currentYear, yearlyBills);
-
+    bool gameOver = false;
     if (currentYear == 16) {
-        endGame("You successfully played for 16 years!", "retired.png");
+        endGame("You successfully played for 15 years!", "retired.png");
+        gameOver = true;
     }
     if(loanOverdue){
         endGame("You failed to pay off your loan and the bill collector came for you!" , "angryBillCollector.png");
+        gameOver = true;
     }
+
+    // DONE SO YOU CAN SEE BOTH ENDINGS (LOAN overdue and broke) I want broke to only happen if you refuse to take out loans and such...
     if(currentMoney < 0){
         yearsBeingBroke++;
+        if(yearsBeingBroke == 3 && !gameOver){
+            emit displayWarning("You have been in debt for a while now... A raccoon has took notice and thinks he can do better than you in life. GET OUT OF DEBT!", "plottingRaccoon.png");
+        }
         creditScore-=25;
+        emit creditScoreChanged(creditScore);
     }
     else{
         yearsBeingBroke = 0;
     }
     if(yearsBeingBroke > 3){
         endGame("You’ve been broke for so long (3 years), a raccoon claimed your identity and is doing better than you.", "broke.png");
+        gameOver = true;
     }
 
-    //Reseats Bonus quiz number
+    if(!gameOver && billWarningEmitted){
+        emit displayWarning("One or more loans from BillDog is about to be due. Make sure you pay it on time", "annoyedBill.png");
+    }
+
+    //Resets Bonus quiz number
     remainingQuizzes = 3;
     emit quizzesRemainingChanged(remainingQuizzes);
+
+    emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
 }
 
 void MainModel::settingsOpened(QWidget *currentWidget)
@@ -348,6 +406,7 @@ void MainModel::addFunds(double amount)
 {
     currentMoney += amount;
     emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
 }
 
 void MainModel::handleLoanInfoRequest(int loanNumber) {

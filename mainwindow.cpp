@@ -6,6 +6,18 @@
 #include "iostream"
 #include "ui_mainwindow.h"
 
+void MainWindow::lifeEventsConnections(MainModel *model)
+{
+    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
+        emit requestLifeEvent();
+        lifeEventDisplay.setModal(true);
+        lifeEventDisplay.show();
+    });
+
+    connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
+    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
+}
+
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -13,7 +25,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->Start);
     generalUISetup();
-
 
     setUpGifs();
 
@@ -45,16 +56,28 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     loansPageConnections(model);
 
+    casinoPageConnections(model);
+
     extraQuizesPageConnections(model);
+
+    lifeEventsConnections(model);
+
+    connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
 
 
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
-        ui->balance_2->show();
-        ui->credit->show();
-        ui->networth->show();
+        ui->cashBalance->show();
+        ui->creditLabel->show();
+        ui->networthLabel->show();
     });
+
+    connect(model, &MainModel::netWorthChanged, this, &MainWindow::updateNetWorth);
+
+
+
+
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
@@ -175,23 +198,25 @@ void MainWindow::returnToGame(QWidget *currentWidget)
         ui->stackedWidget->setCurrentWidget(ui->gameEnd);
     } else if (returnPage == "quizInfo") {
         ui->stackedWidget->setCurrentWidget(ui->quizInfo);
+    } else if (returnPage == "Casino") {
+        ui->stackedWidget->setCurrentWidget(ui->Casino);
     } else {
         throw std::runtime_error("return page could not be found.");
     }
     ui->settingsButton->show();
     if (returnPage != "Start" && returnPage != "quizEnd"){
-        ui->balance_2->show();
-        ui->credit->show();
-        ui->networth->show();
+        ui->cashBalance->show();
+        ui->creditLabel->show();
+        ui->networthLabel->show();
     }
 }
 
 void MainWindow::onStartClicked()
 {
     hidePhone();
-    ui->balance_2->show();
-    ui->credit->show();
-    ui->networth->show();
+    ui->cashBalance->show();
+    ui->creditLabel->show();
+    ui->networthLabel->show();
     if(firstStart){
         emit requestQuiz(quizCategory, 1);
         firstStart = false;
@@ -241,15 +266,15 @@ void MainWindow::updateBalance(double newAmount)
 {
     currentMoney = newAmount;
     if (currentMoney == std::floor(currentMoney))
-        ui->balance_2->setText("Cash: $" + QString::number(currentMoney, 'f', 0));
+        ui->cashBalance->setText("Checking: $" + QString::number(currentMoney, 'f', 0));
     else
-        ui->balance_2->setText("Cash: $" + QString::number(currentMoney, 'f', 2));
+        ui->cashBalance->setText("Checking: $" + QString::number(currentMoney, 'f', 2));
 
     if(currentMoney >= 0){
-        ui->balance_2->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
+        ui->cashBalance->setStyleSheet("QLabel {  color: #85bb65;  font-weight: bold;	font-size: 30px;}");
     }
     else{
-        ui->balance_2->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
+        ui->cashBalance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
     }
 
 
@@ -260,10 +285,16 @@ void MainWindow::updateSavings(double newBalance, double interestRate)
     ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
 }
 
-void MainWindow::updateChecking(double newBalance)
+void MainWindow::updateNetWorth(double netWorth)
+{
+    ui->networthLabel->setText("Net Worth: $" + QString::number(netWorth, 'f', 2));
+    ui->networthLabel->setStyleSheet(netWorth < 0 ? "color: red; font-weight: bold; font-size: 30px;" : "color: #85bb65; font-weight: bold; font-size: 30px;");
+}
+
+/*void MainWindow::updateChecking(double newBalance)
 {
     ui->checkingAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
-}
+*/
 
 void MainWindow::updateCD(int cdNumber,
                           double newBalance,
@@ -372,9 +403,9 @@ void MainWindow::enableSubmitButton(bool checked)
 
 void MainWindow::showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned)
 {
-    ui->balance_2->hide();
-    ui->credit->hide();
-    ui->networth->hide();
+    ui->cashBalance->hide();
+    ui->creditLabel->hide();
+    ui->networthLabel->hide();
     ui->stackedWidget->setCurrentWidget(ui->quizEnd);
     double percentage = ((double)questionsAnsweredCorrectly / quizLength) * 100;
     ui->scoreLabel->setText(QString::number(questionsAnsweredCorrectly) + " / " +  QString::number(quizLength));
@@ -537,10 +568,6 @@ void MainWindow::updateStockImage(bool stockOneUp, bool stockTwoUp, bool stockTh
         ui->stockImageThree->setPixmap(pixmap);
     }
 }
-void MainWindow::displayDepositPage()
-{
-    depositWindow.show();
-}
 
 
 
@@ -548,26 +575,34 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
 {
     switch(14 - currentYear){
         case 12:{
+            quizCategory = QuizCategory::savings;
+            break;
+        }
+        case 11:{
             quizCategory = QuizCategory::stocks;
             QPixmap pixmap(":///icons/icons/stockApp.png");
             ui->App1->setIcon(pixmap);
             ui->App1->setEnabled(true);
             break;
         }
-        case 11:{
-            quizCategory = QuizCategory::savings;
-            break;
-        }
         case 10:{
             quizCategory = QuizCategory::cds;
+            QPixmap pixmap(":///icons/icons/cdApp.png");
+            ui->App2->setIcon(pixmap);
+            ui->App2->setEnabled(true);
             break;
         }
         case 9:{
             quizCategory = QuizCategory::loans;
+            // QPixmap pixmap(":///icons/icons/loanApp.png");
+            // ui->App2->setIcon(pixmap);
+            ui->App2->setEnabled(true);
             break;
         }
         case 8:{
             quizCategory = QuizCategory::gambling;
+            // QPixmap pixmap(":///icons/icons/gamblingApp.png");
+            // ui->App6->setIcon(pixmap);
             break;
         }
         default:{
@@ -589,9 +624,67 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
 }
 
 void MainWindow::gameEnded(QString reason, QString imageName) {
+    ui->cashBalance->hide();
+    ui->creditLabel->hide();
+    ui->networthLabel->hide();
+
     ui->stackedWidget->setCurrentWidget(ui->gameEnd);
     ui->reasonLabel->setText(reason);
     ui->reasonLabel->adjustSize();
+    ui->endCashBalance->setText("End " + ui->cashBalance->text());
+    ui->endCashBalance->adjustSize();
+    ui->endCredit->setText("End " + ui->creditLabel->text());
+    ui->endCredit->adjustSize();
+    ui->endNetWorth->setText("End " + ui->networthLabel->text());
+    ui->endNetWorth->adjustSize();
+
+    std::string networthString = ui->endNetWorth->text().toStdString();
+    std::string networthNum = networthString.substr(16);
+    double networth = std::stod(networthNum);
+
+    std::string creditStr = ui->endCredit->text().toStdString();
+    std::string creditNum = creditStr.substr(12);
+    int credit = std::stoi(creditNum);
+
+    if(currentMoney < 0){
+        ui->endCashBalance->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
+    }
+
+    if(networth < 0){
+        ui->endNetWorth->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
+    }
+
+    if(credit < 650){
+        ui->endCredit->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
+    }
+
+    if(credit > 1000){
+        ui->rank->setText("RANK: World Renowned Investing Expert");
+    }
+    else if(credit > 900){
+        ui->rank->setText("RANK: Investing Mogul");
+    }
+    else if(credit > 820){
+         ui->rank->setText("RANK: Investing Pro");
+    }
+    else if(credit > 750){
+        ui->rank->setText("RANK: Responsible Citizen");
+    }
+    else if(credit > 700){
+        ui->rank->setText("RANK: Average Citizen");
+    }
+    else if(credit > 650){
+        ui->rank->setText("RANK: Bad investor");
+    }
+    else if(credit > 300){
+        ui->rank->setText("RANK: Gambler");
+    }
+    else{
+        ui->rank->setText("RANK: Nandhini");
+    }
+
+    ui->rank->adjustSize();
+
     QPixmap pixmap(":///icons/icons/" + imageName);
     ui->endImage->setPixmap(pixmap);
 }
@@ -603,49 +696,55 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
 
     reportString.append("<table cellpadding='2'>");
 
-    // Add net worth to the string
-    if (newTotals[5] < 0)
-        reportString.append("<tr><td>Net Worth:</td><td> -$" + QString::number(-newTotals[5], 'f', 2));
-    else
-        reportString.append("<tr><td>Net Worth:</td><td> $" + QString::number(newTotals[5], 'f', 2));
-    if (changes[5] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[5], 'f', 2));
-    else if (changes[5] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[5], 'f', 2));
-
-    // Add checking account
-    reportString.append("</font></td></tr><tr><td>Checking Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> $" + QString::number(newTotals[1], 'f', 2));
-
     // Add savings account
     reportString.append("</td></tr><tr><td>Savings Account:</td><td> $" + QString::number(newTotals[0], 'f', 2));
     if (changes[0] > 0)
-        reportString.append("<font color='green'>+$" + QString::number(changes[0], 'f', 2));
+        reportString.append("<font color=#85bb65>+$" + QString::number(changes[0], 'f', 2));
 
     // Add cd accounts
-    reportString.append("</font></td></tr><tr><td>CDs Total:</td><td> $" + QString::number(newTotals[2], 'f', 2));
-    if (changes[2] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[2], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>CDs Total:</td><td> $" + QString::number(newTotals[1], 'f', 2));
+    if (changes[1] > 0)
+        reportString.append("<font color=#85bb65> +$" + QString::number(changes[1], 'f', 2));
 
     // Add stocks
-    reportString.append("</font></td></tr><tr><td>Stocks Total:</td><td> $" + QString::number(newTotals[3], 'f', 2));
-    if (changes[3] > 0)
-        reportString.append("<font color='green'> +$" + QString::number(changes[3], 'f', 2));
-    else if (changes[3] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>Stocks Total:</td><td> $" + QString::number(newTotals[2], 'f', 2));
+    if (changes[2] > 0)
+        reportString.append("<font color=#85bb65> +$" + QString::number(changes[2], 'f', 2));
+    else if (changes[2] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[2], 'f', 2));
 
     // Add loans
-    if (newTotals[4] < 0)
-        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> -$" + QString::number(-newTotals[4], 'f', 2));
+    if (newTotals[3] < 0)
+        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> -$" + QString::number(-newTotals[3], 'f', 2));
     else
-        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> $" + QString::number(newTotals[4], 'f', 2));
-    if (changes[4] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
+        reportString.append("</font></td></tr><tr><td>Loans Total:</td><td> $" + QString::number(newTotals[3], 'f', 2));
+    if (changes[3] < 0)
+        reportString.append("<font color='red'> -$" + QString::number(-changes[3], 'f', 2));
     reportString.append("</font></td></tr></p>");
 
     return reportString;
 }
 
+void MainWindow::updateCreditScore(int score) {
+    ui->creditLabel->setText("Credit: " + QString::number(score));
+    if (score < 580) {
+        ui->creditLabel->setStyleSheet("color: red; font-weight: bold; font-size: 30px;");
+    } else if (score < 670) {
+        ui->creditLabel->setStyleSheet("color: orange; font-weight: bold; font-size: 30px;");
+    } else {
+        ui->creditLabel->setStyleSheet("color: #85bb65; font-weight: bold; font-size: 30px;");
+    }
+}
 
+void MainWindow::showLifeEvent(LifeEvent lifeEvent) {
+    lifeEventDisplay.showLifeEvent(lifeEvent);
+}
+
+void MainWindow::showWarning(QString warning, QString image){
+    warningDisplay.setModal(true);
+    warningDisplay.show();
+    warningDisplay.showWarning(warning, image);
+}
 
 // CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -656,9 +755,9 @@ void MainWindow::generalUISetup()
     buttonGroup->addButton(ui->choice2);
     buttonGroup->addButton(ui->choice3);
     buttonGroup->addButton(ui->choice4);
-    ui->balance_2->hide();
-    ui->credit->hide();
-    ui->networth->hide();
+    ui->cashBalance->hide();
+    ui->creditLabel->hide();
+    ui->networthLabel->hide();
 
     startScreenView = new StartScreenView(ui->Start);
     startScreenView->stackUnder(ui->startButton);
@@ -771,7 +870,7 @@ void MainWindow::quizConnections(MainModel *model)
 void MainWindow::depositingConnectionWindowToModel(MainModel *model)
 {
     connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
-    connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
+    //connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
     connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
     connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
     connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
@@ -780,7 +879,7 @@ void MainWindow::depositingConnectionWindowToModel(MainModel *model)
 void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
 {
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
-    connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
+    //connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
     connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
     connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
@@ -789,10 +888,11 @@ void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
 void MainWindow::mainWindowValueUpdateConnections(MainModel *model)
 {
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
-    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
+    //connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
     connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
     connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
     connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
+    connect(model, &MainModel::creditScoreChanged, this, &MainWindow::updateCreditScore);
 }
 
 void MainWindow::buyingStockUIConnections()
@@ -950,22 +1050,7 @@ void MainWindow::savingsPageConnections(MainModel *model)
         ui->savingsWithdrawInput->clear();
     });
 
-    connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
-
-    connect(ui->checkingDepositButton, &QPushButton::clicked, this, [this]() {
-        double updatedChecking = ui->checkingDepositInput->text().toDouble();
-        emit checkingDepositAmountRead(updatedChecking);
-        ui->checkingDepositInput->clear();
-        depositSound->play();
-    });
-    connect(this, &MainWindow::checkingDepositAmountRead, model, &MainModel::depositToChecking);
-    connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
-
-    connect(ui->checkingWithdrawButton, &QPushButton::clicked, this, [this]() {
-        double updatedChecking = ui->checkingWithdrawInput->text().toDouble();
-        emit checkingWithdrawAmountRead(updatedChecking);
-        ui->checkingWithdrawInput->clear();
-    });
+    //connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
 
     connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
 }
@@ -1003,6 +1088,17 @@ void MainWindow::loansPageConnections(MainModel *model)
     });
 }
 
+void MainWindow::casinoPageConnections(MainModel *model)
+{
+    connect(ui->App6, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Casino);
+    });
+
+    connect(ui->casinoBackButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+}
+
 void MainWindow::nextYearConnections(MainModel *model)
 {
     connect(ui->nextYearButton, &QPushButton::clicked, model, &MainModel::nextYear);
@@ -1020,9 +1116,9 @@ void MainWindow::settingsConnections(MainModel *model)
 {
     connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
         ui->settingsButton->hide();
-        ui->balance_2->hide();
-        ui->credit->hide();
-        ui->networth->hide();
+        ui->cashBalance->hide();
+        ui->creditLabel->hide();
+        ui->networthLabel->hide();
         emit settingsOpened(ui->stackedWidget->currentWidget());
         ui->stackedWidget->setCurrentWidget(ui->Settings);
     });
@@ -1043,6 +1139,5 @@ void MainWindow::extraQuizesPageConnections(MainModel *model)
         ui->stackedWidget->setCurrentWidget(ui->quizInfo);
     });
 }
-
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

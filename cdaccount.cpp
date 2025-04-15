@@ -15,6 +15,7 @@ void CDAccount::nextYear()
     balance = balance + balance * interestRate;
     if (yearsRemaining > 0)
         yearsRemaining--;
+    MoneyContainer::nextYear();
 }
 
 bool CDAccount::withdraw(double amount)

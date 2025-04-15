@@ -5,10 +5,11 @@
 #include <QMainWindow>
 #include <QSoundEffect>
 #include "animationview.h"
-#include "depositwindow.h"
 #include "mainmodel.h"
 #include "quizhandler.h"
 #include "startscreenview.h"
+#include "lifeeventdisplay.h"
+#include "warningdisplay.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,9 +24,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(MainModel *model, QWidget *parent = nullptr);
     ~MainWindow();
-
-
-
+    
+    void lifeEventsConnections(MainModel *model);
+    
 private:
     Ui::MainWindow *ui;
     QButtonGroup *buttonGroup;
@@ -42,7 +43,8 @@ private:
     QSoundEffect *levelPassSound;
     QSoundEffect *levelFailSound;
     QSoundEffect *depositSound;
-    DepositWindow depositWindow;
+    LifeEventDisplay lifeEventDisplay;
+    warningdisplay warningDisplay;
 
     QString generateReportString(QVector<double> newTotals, QVector<double> changes);
 
@@ -75,6 +77,8 @@ private:
 
     void loansPageConnections(MainModel *model);
 
+    void casinoPageConnections(MainModel *model);
+
     void nextYearConnections(MainModel *model);
 
     void phoneConnections();
@@ -95,10 +99,11 @@ public slots:
     void displayResult(bool result, std::string explanation);
     void updateProgress(uint progress);
     void updateQuizInfo(QuizInfo qI);
+    void updateNetWorth(double netWorth);
 
     void updateSavings(double newBalance, double interestRate);
 
-    void updateChecking(double newBalance);
+    //void updateChecking(double newBalance);
 
     void updateCD(int cdNumber,
                   double newBalance,
@@ -136,11 +141,13 @@ public slots:
 
     void revalidateAllStockDisplays();
 
-    void displayDepositPage();
-
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
     void gameEnded(QString reason, QString imageName);
+    void showLifeEvent(LifeEvent lifeEvent);
+
+    void showWarning(QString warning, QString image);
+    void updateCreditScore(int score);
 
 signals:
 
@@ -186,5 +193,6 @@ signals:
     void checkingWithdrawAmountRead(int amount);
 
     void requestLoanInfo(int loanNumber);
+    void requestLifeEvent();
 };
 #endif // MAINWINDOW_H

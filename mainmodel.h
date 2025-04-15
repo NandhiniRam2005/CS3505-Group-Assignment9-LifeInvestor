@@ -7,6 +7,7 @@
 #include "quizhandler.h"
 #include "savingsaccount.h"
 #include "stock.h"
+#include "lifeeventhandler.h"
 
 class MainModel : public QObject
 {
@@ -15,6 +16,8 @@ public:
     explicit MainModel(QObject *parent = nullptr);
 
 public slots:
+    double calculateNetWorth();
+
     void quizRequested(QuizCategory category, uint length);
 
     void checkAnswer(std::string selectedChoice);
@@ -25,7 +28,7 @@ public slots:
 
     void depositToSavings(double amount);
 
-    void depositToChecking(double amount);
+    //void depositToChecking(double amount);
 
     void depositToCD(double amount, int cdNumber);
 
@@ -35,7 +38,7 @@ public slots:
 
     void withdrawFromSavings(double amount);
 
-    void withdrawFromChecking(double amount);
+    //void withdrawFromChecking(double amount);
 
     void withdrawFromCD(int cdNumber);
 
@@ -58,6 +61,7 @@ public slots:
     void handleLoanInfoRequest(int loanNumber);
 
     void handleExtraQuizRequest();
+    void randomLifeEvent();
 
 signals:
     /**
@@ -84,6 +88,8 @@ signals:
     void quizFinished(uint numberCorrect, int moneyEarned);
 
     void quizProgress(uint progess);
+
+    void netWorthChanged(double newNetWorth);
 
     void updateSavings(double newBalance, double interestRate);
 
@@ -121,9 +127,13 @@ signals:
 
     void quizzesRemainingChanged(int remaining);
     void quizStarted();
+    void displayLifeEvent(LifeEvent lifeEvent);
+    void displayWarning(QString warning, QString image);
+    void creditScoreChanged(int newScore);
 
 private:
     QuizHandler *quizHandler;
+    LifeEventHandler *lifeEventHandler;
 
     double currentMoney;
     int creditScore;
@@ -136,7 +146,7 @@ private:
 
     SavingsAccount *savingsAccount;
 
-    MoneyContainer *checkingAccount;
+    //MoneyContainer *checkingAccount;
 
     QVector<CDAccount> cdAccounts;
 
