@@ -628,33 +628,20 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
 
     reportString.append("<table cellpadding='2'>");
 
-    // Add net worth to the string
-    if (newTotals[4] < 0)
-        reportString.append("<tr><td>Net Worth:</td><td> -$" + QString::number(-newTotals[4], 'f', 2));
-    else
-        reportString.append("<tr><td>Net Worth:</td><td> $" + QString::number(newTotals[4], 'f', 2));
-    if (changes[4] > 0)
-        reportString.append("<font color: #85bb65> +$" + QString::number(changes[4], 'f', 2));
-    else if (changes[4] < 0)
-        reportString.append("<font color='red'> -$" + QString::number(-changes[4], 'f', 2));
-
-    // Add checking account
-    reportString.append("</font></td></tr><tr><td>Checking Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> $" + QString::number(newTotals[1], 'f', 2));
-
     // Add savings account
     reportString.append("</td></tr><tr><td>Savings Account:</td><td> $" + QString::number(newTotals[0], 'f', 2));
     if (changes[0] > 0)
-        reportString.append("<font color: #85bb65>+$" + QString::number(changes[0], 'f', 2));
+        reportString.append("<font color=#85bb65>+$" + QString::number(changes[0], 'f', 2));
 
     // Add cd accounts
-    reportString.append("</font></td></tr><tr><td>CDs Total:</td><td> $" + QString::number(newTotals[2], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>CDs Total:</td><td> $" + QString::number(newTotals[1], 'f', 2));
     if (changes[1] > 0)
-        reportString.append("<font color: #85bb65> +$" + QString::number(changes[1], 'f', 2));
+        reportString.append("<font color=#85bb65> +$" + QString::number(changes[1], 'f', 2));
 
     // Add stocks
-    reportString.append("</font></td></tr><tr><td>Stocks Total:</td><td> $" + QString::number(newTotals[3], 'f', 2));
+    reportString.append("</font></td></tr><tr><td>Stocks Total:</td><td> $" + QString::number(newTotals[2], 'f', 2));
     if (changes[2] > 0)
-        reportString.append("<font color: #85bb65> +$" + QString::number(changes[2], 'f', 2));
+        reportString.append("<font color=#85bb65> +$" + QString::number(changes[2], 'f', 2));
     else if (changes[2] < 0)
         reportString.append("<font color='red'> -$" + QString::number(-changes[2], 'f', 2));
 

@@ -27,8 +27,8 @@ MainModel::MainModel(QObject *parent)
     loans[0].setAvailable(creditScore);
     loans[1].setAvailable(creditScore);
 
-    stocks.push_back(Stock(70.76, 0.33, 1.20)); // E-Cola
     stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
+    stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
     stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
 
 }
@@ -60,6 +60,7 @@ void MainModel::randomLifeEvent() {
     emit displayLifeEvent(lifeEvent);
     currentMoney = currentMoney + lifeEvent.price;
     emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)
@@ -268,8 +269,6 @@ void MainModel::nextYear()
 {
     currentYear++;
     currentMoney-=yearlyBills;
-    emit updateBalance(currentMoney);
-    emit netWorthChanged(calculateNetWorth());
     yearlyBills+=300;
     QVector<double> initialTotals;
     QVector<double> newTotals;
@@ -345,19 +344,14 @@ void MainModel::nextYear()
     initialTotals.push_back(initialCounter);
     newTotals.push_back(newCounter);
 
-    // Calculate net worths
-    initialTotals.push_back(currentMoney + initialTotals[0] + initialTotals[1] + initialTotals[2]
-                            + initialTotals[3]);
-    newTotals.push_back(currentMoney + newTotals[0] + newTotals[1] + newTotals[2] + newTotals[3]);
-
     // Calculate changes between years
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 4; i++)
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
     emit newYear(newTotals, initialTotals, currentYear, yearlyBills);
 
     if (currentYear == 16) {
-        endGame("You successfully played for 16 years!", "retired.png");
+        endGame("You successfully played for 15 years!", "retired.png");
     }
     if(loanOverdue){
         endGame("You failed to pay off your loan and the bill collector came for you!" , "angryBillCollector.png");
@@ -374,9 +368,12 @@ void MainModel::nextYear()
         endGame("You’ve been broke for so long (3 years), a raccoon claimed your identity and is doing better than you.", "broke.png");
     }
 
-    //Reseats Bonus quiz number
+    //Resets Bonus quiz number
     remainingQuizzes = 3;
     emit quizzesRemainingChanged(remainingQuizzes);
+
+    emit updateBalance(currentMoney);
+    emit netWorthChanged(calculateNetWorth());
 }
 
 void MainModel::settingsOpened(QWidget *currentWidget)
