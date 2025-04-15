@@ -138,6 +138,7 @@ private:
     double currentMoney;
     int creditScore;
     int currentYear;
+    int tempYear;
     int remainingQuizzes = 3;
     double yearlyBills;
     int yearsBeingBroke = 0;

@@ -29,14 +29,8 @@ void LifeEventDisplay::showLifeEvent(LifeEvent lifeEvent) {
     }
 
     ui->lifeEventPrice->setText(QString::number(lifeEvent.price));
-
-    // Try to load the image
     QPixmap pixmap(QString::fromStdString(lifeEvent.image));
-    if (!pixmap.isNull()) {
-        ui->lifeEventPic->setPixmap(pixmap);
-    } else {
-        qWarning() << "Failed to load image from path:" << QString::fromStdString(lifeEvent.image);
-        ui->lifeEventPic->clear(); // Optional: clear or show a placeholder image
-    }
+
+    ui->lifeEventPic->setPixmap(pixmap);
 }
 

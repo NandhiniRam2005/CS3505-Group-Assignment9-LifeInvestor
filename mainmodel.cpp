@@ -12,6 +12,7 @@ MainModel::MainModel(QObject *parent)
     currentMoney = 0;
     creditScore = 650;
     currentYear = 1;
+    tempYear = 1;
     yearlyBills = 500;
 
     savingsAccount = new SavingsAccount(0.004);

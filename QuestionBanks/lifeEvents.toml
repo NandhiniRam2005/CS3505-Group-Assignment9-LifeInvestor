@@ -64,51 +64,61 @@ image = ":///icons/icons/tax-refund.png"
 eventDesc = "You found a $10 bill in an old coat pocket."
 price = 10
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You sold a couple of unused items online."
 price = 100
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You got cash back from a store promotion."
 price = 10
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You paid for a parking ticket you forgot about."
 price = -50
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You grabbed takeout instead of cooking."
 price = -15
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You bought snacks during a late-night craving."
 price = -15
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You bought gifts for a friend's birthday."
 price = -30
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You picked up a short gig helping someone move."
 price = 40
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You borrowed a book instead of buying one."
 price = 0
 type = "Neutral"
+image = ""
 
 [[neutralEvents]]
 eventDesc = "You finally watched a tutorial on how to take a shower."
 price = 0
 type = "Neutral"
+image = ""
 
 [[badEvents]]
 eventDesc = "You fell down the stairs and broke your leg. Hospital fees!"
@@ -125,16 +135,19 @@ image = ":///icons/icons/car-breakdown.png"
 [[badEvents]]
 eventDesc = "You lost your phone and had to replace it."
 price = -1000
+image = ""
 
 [[badEvents]]
 eventDesc = "You were scammed online."
 price = -1500
 type = "Bad"
+image = ""
 
 [[badEvents]]
 eventDesc = "Your pet got sick and needed urgent care."
 price = -1200
 type = "Bad"
+image = ""
 
 [[badEvents]]
 eventDesc = "Your basement flooded."
@@ -145,19 +158,23 @@ type = "Bad"
 eventDesc = "You broke a neighbor’s window playing catch."
 price = -300
 type = "Bad"
+image = ""
 
 [[badEvents]]
 eventDesc = "Your bike was stolen."
 price = -450
 type = "Bad"
+image = ""
 
 [[badEvents]]
 eventDesc = "You accidentally deleted important work and had to pay for recovery."
 price = -700
 type = "Bad"
+image = ""
 
 [[badEvents]]
 eventDesc = "You were fined for late loan payment."
 price = -600
 type = "Bad"
+image = ""
 

@@ -6,17 +6,7 @@
 #include "iostream"
 #include "ui_mainwindow.h"
 
-void MainWindow::lifeEventsConnections(MainModel *model)
-{
-    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
-        emit requestLifeEvent();
-        lifeEventDisplay.setModal(true);
-        lifeEventDisplay.show();
-    });
 
-    connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
-    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
-}
 
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
@@ -1138,6 +1128,18 @@ void MainWindow::extraQuizesPageConnections(MainModel *model)
         quizLength = 5;
         ui->stackedWidget->setCurrentWidget(ui->quizInfo);
     });
+}
+
+void MainWindow::lifeEventsConnections(MainModel *model)
+{
+    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
+        emit requestLifeEvent();
+        lifeEventDisplay.setModal(true);
+        lifeEventDisplay.show();
+    });
+
+    connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
+    connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
 }
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
