@@ -12,6 +12,7 @@ Stock::Stock(double value, double variance, double trend)
 void Stock::nextYear()
 {
     value *= (trend - variance) + QRandomGenerator::global()->generateDouble() * 2 * variance;
+    MoneyContainer::nextYear();
 }
 
 double Stock::getValue()
