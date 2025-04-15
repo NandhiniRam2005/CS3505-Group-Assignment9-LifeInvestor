@@ -17,19 +17,40 @@ April 22, 2025
 class MoneyContainer
 {
 protected:
+    /**
+     * holds the current amount held in this MoneyContainer
+     */
     double balance;
 
 public:
+    /**
+     * Creates a MoneyContainer with a balance of 0
+     */
     MoneyContainer();
 
+    /**
+     * @return the current balance of this MoneyContainer
+     */
     double getBalance();
 
-    // returns true if the deposit was successful
+    /**
+     * deposits a given amount of money in this MoneyContainer
+     * @param amount the amount to deposit
+     * @return true if the deposit was sucessful, and false otherwise.
+     */
     virtual bool deposit(double amount);
 
-    // returns true if the withdraw was successful
+    /**
+     * withdraws a given amount of money from this MoneyContainer
+     * @param amount the amount to withdraw
+     * @return true if the withdrawal was sucessful, and false otherwise.
+     */
     virtual bool withdraw(double amount);
 
+    /**
+     * This method should be callled whenever a new year occurs to ensure
+     * that any necessary modifications to the balance of this MoneyContainer can be performed.
+     */
     virtual void nextYear();
 };
 
