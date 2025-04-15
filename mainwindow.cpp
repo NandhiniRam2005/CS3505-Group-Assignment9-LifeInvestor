@@ -658,7 +658,7 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
 }
 
 void MainWindow::updateCreditScore(int score) {
-    ui->creditLabel->setText("Credit Score: " + QString::number(score));
+    ui->creditLabel->setText("Credit: " + QString::number(score));
     if (score < 580) {
         ui->creditLabel->setStyleSheet("color: red; font-weight: bold; font-size: 30px;");
     } else if (score < 670) {
