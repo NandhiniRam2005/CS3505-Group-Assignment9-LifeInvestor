@@ -1,6 +1,5 @@
 #include "lifeeventdisplay.h"
 #include "ui_lifeeventdisplay.h"
-#include "QDebug"
 
 LifeEventDisplay::LifeEventDisplay(QWidget *parent)
     : QDialog(parent)
@@ -15,9 +14,6 @@ LifeEventDisplay::~LifeEventDisplay()
 }
 
 void LifeEventDisplay::showLifeEvent(LifeEvent lifeEvent) {
-    qDebug() << "Life Event Type:" << lifeEvent.type;
-    qDebug() << "Image Path:" << QString::fromStdString(lifeEvent.image);
-
     ui->lifeEventLabel->setText(QString::fromStdString(lifeEvent.text));
 
     if (lifeEvent.type == "Good") {
