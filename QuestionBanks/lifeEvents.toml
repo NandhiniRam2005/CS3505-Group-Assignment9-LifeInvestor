@@ -2,11 +2,14 @@
 eventDesc = "You hit it big in Vegas and won $5000!"
 price = 5000
 type = "Good"
+image = ":///icons/icons/vegas-jackpot.png"
+
 
 [[goodEvents]]
 eventDesc = "A distant relative left you a generous inheritance."
 price = 4000
 type = "Good"
+image = ":///icons/icons/.png"
 
 [[goodEvents]]
 eventDesc = "You sold an old collectible online for a high price."
@@ -108,6 +111,7 @@ type = "Bad"
 eventDesc = "Your car broke down and needed major repairs."
 price = -1800
 type = "Bad"
+image = ":///icons/icons/car-breakdown.png"
 
 [[badEvents]]
 eventDesc = "You lost your phone and had to replace it."
@@ -147,3 +151,4 @@ type = "Bad"
 eventDesc = "You were fined for late loan payment."
 price = -600
 type = "Bad"
+

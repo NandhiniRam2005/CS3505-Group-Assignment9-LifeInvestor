@@ -24,8 +24,6 @@ public:
     MainWindow(MainModel *model, QWidget *parent = nullptr);
     ~MainWindow();
     
-    
-    
     void lifeEventsConnections(MainModel *model);
     
 private:

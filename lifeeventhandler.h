@@ -8,6 +8,7 @@ struct LifeEvent
     std::string text;
     int price;
     std::string type;
+    std::string image;
 };
 
 class LifeEventHandler: public QObject
