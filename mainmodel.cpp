@@ -333,7 +333,6 @@ void MainModel::nextYear()
             }
         }
         if(loans[i].getYearsLeft() == 1 && !billWarningEmitted){
-            emit displayWarning("One or more loans from BillDog is about to be due. Make sure you pay it on time", "annoyedBill.png");
             billWarningEmitted = true;
         }
         if (loans[i].getYearsLeft() < 0)
@@ -354,16 +353,18 @@ void MainModel::nextYear()
         initialTotals[i] = -(initialTotals[i] - newTotals[i]);
 
     emit newYear(newTotals, initialTotals, currentYear, yearlyBills);
-
+    bool gameOver = false;
     if (currentYear == 16) {
         endGame("You successfully played for 15 years!", "retired.png");
+        gameOver = true;
     }
     if(loanOverdue){
         endGame("You failed to pay off your loan and the bill collector came for you!" , "angryBillCollector.png");
+        gameOver = true;
     }
     if(calculateNetWorth() < 0){
         yearsBeingBroke++;
-        if(yearsBeingBroke == 3){
+        if(yearsBeingBroke == 3 && !gameOver){
             emit displayWarning("You have been in debt for a while now... A raccoon has took notice and thinks he can do better than you in life. GET OUT OF DEBT!", "plottingRaccoon.png");
         }
         creditScore-=25;
@@ -374,6 +375,11 @@ void MainModel::nextYear()
     }
     if(yearsBeingBroke > 3){
         endGame("You’ve been broke for so long (3 years), a raccoon claimed your identity and is doing better than you.", "broke.png");
+        gameOver = true;
+    }
+
+    if(!gameOver && billWarningEmitted){
+        emit displayWarning("One or more loans from BillDog is about to be due. Make sure you pay it on time", "annoyedBill.png");
     }
 
     //Resets Bonus quiz number
