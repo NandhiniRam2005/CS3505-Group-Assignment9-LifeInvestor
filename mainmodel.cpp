@@ -97,7 +97,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
     emit sendResult(result, why);
     if (result) {
         addFunds(quizHandler->getCurrentQuestionReward());
-        creditScore+=7;
+        setCreditScore(creditScore + 7);
         emit creditScoreChanged(creditScore);
         emit updateBalance(currentMoney);
         emit netWorthChanged(calculateNetWorth());
@@ -250,6 +250,11 @@ void MainModel::sellStock(int numberOfShares, int stockNumber)
 
 void MainModel::activateLoan(int loanNumber)
 {
+    if (!loans[loanNumber].getAvailable()) {
+        emit showErrorMessage("Credit score too low for this loan!");
+        return;
+    }
+
     if (loans[loanNumber].activate()) {
         currentMoney += -loans[loanNumber].getBalance();
         emit updateBalance(currentMoney);
@@ -260,7 +265,7 @@ void MainModel::activateLoan(int loanNumber)
                         loans[loanNumber].getAvailable(),
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
-        creditScore-=75;
+        setCreditScore(creditScore - 75);
         emit creditScoreChanged(creditScore);
     } else
         emit showErrorMessage("The loan cannot be activated");
@@ -370,7 +375,7 @@ void MainModel::nextYear()
         if(yearsBeingBroke == 3 && !gameOver){
             emit displayWarning("You have been in debt for a while now... A raccoon has took notice and thinks he can do better than you in life. GET OUT OF DEBT!", "plottingRaccoon.png");
         }
-        creditScore-=25;
+        setCreditScore(creditScore - 25);
         emit creditScoreChanged(creditScore);
     }
     else{
@@ -430,6 +435,14 @@ void MainModel::handleExtraQuizRequest() {
     emit quizzesRemainingChanged(remainingQuizzes);
     quizRequested(QuizCategory::mixOfAll, 5);
     emit quizStarted();
+}
+
+void MainModel::setCreditScore(int newScore) {
+    creditScore = newScore;
+    for(Loan &loan : loans) {
+        loan.setAvailable(creditScore);
+    }
+    emit creditScoreChanged(creditScore);
 }
 
 void MainModel::endGame(QString reasonForEnd, QString imageName) {

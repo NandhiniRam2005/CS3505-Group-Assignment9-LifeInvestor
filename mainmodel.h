@@ -62,6 +62,7 @@ public slots:
 
     void handleExtraQuizRequest();
     void randomLifeEvent();
+    void setCreditScore(int newScore);
 
 signals:
     /**
