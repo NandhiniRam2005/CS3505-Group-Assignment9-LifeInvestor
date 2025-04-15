@@ -1,4 +1,9 @@
 /**
+ * Cpptoml is a library for parsing .toml files in c++.
+ *
+ * Here is a link to the library's Github:
+ * https://github.com/skystrife/cpptoml
+ *
  * @file cpptoml.h
  * @author Chase Geigle
  * @date May 2013

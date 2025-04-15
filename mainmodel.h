@@ -1,6 +1,17 @@
 #ifndef MAINMODEL_H
 #define MAINMODEL_H
+/*
+The header file for MainModel.
 
+This class represents the main model for the LifeInvesting application. It tracks the programs state, including things like
+stocks owned, loans, cash, deposits, etc. It also handles things like sending quiz questions and life events to the view.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+April 22, 2025
+*/
 #include <QObject>
 #include "cdaccount.h"
 #include "loan.h"
