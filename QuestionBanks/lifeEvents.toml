@@ -53,52 +53,52 @@ price = 2500
 type = "Good"
 
 [[neutralEvents]]
-eventDesc = "You attended a local festival."
-price = 0
+eventDesc = "You found a $10 bill in an old coat pocket."
+price = 10
 type = "Neutral"
 
 [[neutralEvents]]
-eventDesc = "You replaced your worn-out shoes."
-price = 0
+eventDesc = "You sold a couple of unused items online."
+price = 100
 type = "Neutral"
 
 [[neutralEvents]]
-eventDesc = "You donated a small amount to charity."
-price = 0
+eventDesc = "You got cash back from a store promotion."
+price = 10
 type = "Neutral"
 
 [[neutralEvents]]
-eventDesc = "You took a short vacation."
-price = 0
+eventDesc = "You paid for a parking ticket you forgot about."
+price = -50
 type = "Neutral"
 
 [[neutralEvents]]
-eventDesc = "You hosted a dinner party for friends."
-price = 0
+eventDesc = "You grabbed takeout instead of cooking."
+price = -15
 type = "Neutral"
 
 [[neutralEvents]]
-eventDesc = "You upgraded your phone plan."
-price = 0
+eventDesc = "You bought snacks during a late-night craving."
+price = -15
 type = "Neutral"
 
 [[neutralEvents]]
 eventDesc = "You bought gifts for a friend's birthday."
+price = -30
+type = "Neutral"
+
+[[neutralEvents]]
+eventDesc = "You picked up a short gig helping someone move."
+price = 40
+type = "Neutral"
+
+[[neutralEvents]]
+eventDesc = "You borrowed a book instead of buying one."
 price = 0
 type = "Neutral"
 
 [[neutralEvents]]
-eventDesc = "You helped a neighbor and got free baked goods."
-price = 0
-type = "Neutral"
-
-[[neutralEvents]]
-eventDesc = "You spent a weekend binge-watching shows. No regrets."
-price = 0
-type = "Neutral"
-
-[[neutralEvents]]
-eventDesc = "You tried a new hobby, bought some supplies."
+eventDesc = "You finally watched a tutorial on how to take a shower."
 price = 0
 type = "Neutral"
 
