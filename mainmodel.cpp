@@ -32,6 +32,9 @@ MainModel::MainModel(QObject *parent)
     stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
     stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
 
+    shopItems.append(ShopItem("Car Insurance", 300));
+    shopItems.append(ShopItem("Health Insurance", 500));
+
 }
 
 double MainModel::calculateNetWorth()
@@ -423,6 +426,20 @@ void MainModel::handleLoanInfoRequest(int loanNumber) {
                     loan.getAvailable(),
                     loan.getActive(),
                     loan.getYearsLeft());
+}
+
+bool MainModel::purchaseShopItem(int index)
+{
+    ShopItem& item = shopItems[index];
+    if(!item.isPurchased() && currentMoney >= item.getCost()) {
+        currentMoney -= item.getCost();
+        item.setPurchased(true);
+        emit shopItemsChanged();
+        emit updateBalance(currentMoney);
+        return true;
+    }
+
+    return false;
 }
 
 void MainModel::handleExtraQuizRequest() {

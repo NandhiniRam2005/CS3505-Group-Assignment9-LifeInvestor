@@ -7,6 +7,7 @@
 #include "quizhandler.h"
 #include "savingsaccount.h"
 #include "stock.h"
+#include "shopitem.h"
 #include "lifeeventhandler.h"
 
 class MainModel : public QObject
@@ -131,6 +132,7 @@ signals:
     void displayLifeEvent(LifeEvent lifeEvent);
     void displayWarning(QString warning, QString image);
     void creditScoreChanged(int newScore);
+    void shopItemsChanged();
 
 private:
     QuizHandler *quizHandler;
@@ -159,6 +161,10 @@ private:
     void addFunds(double amount);
 
     void endGame(QString reasonForEnd, QString imageName);
+
+    QVector<ShopItem> shopItems;
+
+    bool purchaseShopItem(int index);
 
 };
 
