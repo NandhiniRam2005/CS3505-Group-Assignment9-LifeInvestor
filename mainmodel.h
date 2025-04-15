@@ -128,6 +128,7 @@ signals:
     void quizzesRemainingChanged(int remaining);
     void quizStarted();
     void displayLifeEvent(LifeEvent lifeEvent);
+    void creditScoreChanged(int newScore);
 
 private:
     QuizHandler *quizHandler;

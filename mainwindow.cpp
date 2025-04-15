@@ -669,6 +669,20 @@ QString MainWindow::generateReportString(QVector<double> newTotals, QVector<doub
     return reportString;
 }
 
+void MainWindow::updateCreditScore(int score) {
+    ui->creditLabel->setText("Credit Score: " + QString::number(score));
+    if (score < 580) {
+        ui->creditLabel->setStyleSheet("color: red; font-weight: bold; font-size: 30px;");
+    } else if (score < 670) {
+        ui->creditLabel->setStyleSheet("color: orange; font-weight: bold; font-size: 30px;");
+    } else {
+        ui->creditLabel->setStyleSheet("color: #85bb65; font-weight: bold; font-size: 30px;");
+    }
+}
+
+void MainWindow::showLifeEvent(LifeEvent lifeEvent) {
+    lifeEventDisplay.showLifeEvent(lifeEvent);
+}
 
 
 // CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -817,6 +831,7 @@ void MainWindow::mainWindowValueUpdateConnections(MainModel *model)
     connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
     connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
     connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
+    connect(model, &MainModel::creditScoreChanged, this, &MainWindow::updateCreditScore);
 }
 
 void MainWindow::buyingStockUIConnections()
@@ -1052,10 +1067,5 @@ void MainWindow::extraQuizesPageConnections(MainModel *model)
         ui->stackedWidget->setCurrentWidget(ui->quizInfo);
     });
 }
-
-void MainWindow::showLifeEvent(LifeEvent lifeEvent) {
-    lifeEventDisplay.showLifeEvent(lifeEvent);
-}
-
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

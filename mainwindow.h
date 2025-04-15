@@ -145,6 +145,7 @@ public slots:
 
     void gameEnded(QString reason, QString imageName);
     void showLifeEvent(LifeEvent lifeEvent);
+    void updateCreditScore(int score);
 
 signals:
 
