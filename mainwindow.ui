@@ -4454,7 +4454,7 @@ QToolBox QWidget {
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
-    color: #85bb65;
+    color: orange;
     font-weight: bold;
 	font-size: 30px;
 }</string>
