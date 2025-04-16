@@ -53,6 +53,8 @@ private:
 
     bool firstStart;
 
+    bool lifeEventShown;
+
     void generalUISetup();
 
     void setUpGifs();

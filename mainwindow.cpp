@@ -617,6 +617,8 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
 
     // Set yearly report
     ui->yearlyReportLabel->setText(generateReportString(newTotals, changes));
+
+    lifeEventShown = false;
 }
 
 void MainWindow::gameEnded(QString reason, QString imageName) {
@@ -782,6 +784,8 @@ void MainWindow::generalUISetup()
 
     ui->loan1PaymentInput->setValidator(decimalValidator);
     ui->loan2PaymentInput->setValidator(decimalValidator);
+
+    lifeEventShown = true;
 }
 
 void MainWindow::setUpGifs()
@@ -1168,9 +1172,12 @@ void MainWindow::extraQuizesPageConnections(MainModel *model)
 void MainWindow::lifeEventsConnections(MainModel *model)
 {
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
-        emit requestLifeEvent();
-        lifeEventDisplay.setModal(true);
-        lifeEventDisplay.show();
+        if (!lifeEventShown) {
+            emit requestLifeEvent();
+            lifeEventShown = true;
+            lifeEventDisplay.setModal(true);
+            lifeEventDisplay.show();
+        }
     });
 
     connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
