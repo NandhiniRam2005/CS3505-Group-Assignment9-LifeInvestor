@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -591,6 +591,9 @@ V</string>
       </property>
      </widget>
      <widget class="QPushButton" name="cup1">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -599,11 +602,17 @@ V</string>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>Cup 1</string>
       </property>
      </widget>
      <widget class="QPushButton" name="cup2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>360</x>
@@ -612,11 +621,17 @@ V</string>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>Cup 2</string>
       </property>
      </widget>
      <widget class="QPushButton" name="cup3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -624,6 +639,9 @@ V</string>
         <width>81</width>
         <height>151</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="text">
        <string>Cup 3</string>
@@ -655,9 +673,9 @@ V</string>
       <property name="geometry">
        <rect>
         <x>-3</x>
-        <y>5</y>
+        <y>-5</y>
         <width>811</width>
-        <height>531</height>
+        <height>541</height>
        </rect>
       </property>
       <property name="text">

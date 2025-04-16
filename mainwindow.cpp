@@ -807,25 +807,35 @@ void MainWindow::setUpGifs()
     ui->stockGif->setMovie(stocksMovie);
     stocksMovie->setScaledSize(ui->stockGif->size());
     connect(stocksMovie, &QMovie::finished, [stocksMovie]() {
-        stocksMovie->setPaused(true); // Freeze on the last frame
+        stocksMovie->setPaused(true); // freeze on the last frame
     });
     stocksMovie->start();
 
     QMovie *pigMovie = new QMovie(":/gifs/gifs/piggy.gif");
     ui->pigGif->setMovie(pigMovie);
     pigMovie->setScaledSize(ui->pigGif->size());
-    connect(pigMovie, &QMovie::finished, [pigMovie]() {
-        pigMovie->setPaused(true); // Freeze on the last frame
-    });
     pigMovie->start();
 
     QMovie *sharkMovie = new QMovie(":/gifs/gifs/shark.gif");
     ui->sharkGif->setMovie(sharkMovie);
     sharkMovie->setScaledSize(ui->sharkGif->size());
-    connect(sharkMovie, &QMovie::finished, [sharkMovie]() {
-        sharkMovie->setPaused(true); // Freeze on the last frame
-    });
     sharkMovie->start();
+
+    cupMovie = new QMovie(":/gifs/gifs/cupSwap.gif");
+    ui->shuffleSpot->setMovie(cupMovie);
+
+    // Ensure we're at frame 0 initially
+    cupMovie->jumpToFrame(0);
+
+    // Connect finished signal
+    connect(cupMovie, &QMovie::finished, this, [this]() {
+        // Jump to last frame and pause
+        cupMovie->setPaused(true);
+        ui->cup1->setEnabled(true);
+        ui->cup2->setEnabled(true);
+        ui->cup3->setEnabled(true);
+        qDebug() << "IDIOT STUPID GAMBLER";
+    });
 }
 
 void MainWindow::setupAudio()
@@ -1130,6 +1140,36 @@ void MainWindow::casinoPageConnections(MainModel *model)
 
     connect(ui->casinoBackButton, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->mainGame);
+    });
+
+    connect(ui->gambleButton, &QPushButton::clicked, model, &MainModel::startGamble);
+
+    connect(model, &MainModel::shuffleStarted, this, [this]() {
+        // play gif
+        cupMovie->start();
+
+        // disable buttons during shuffle
+        ui->gambleButton->setDisabled(true);
+        ui->cup1->setDisabled(true);
+        ui->cup2->setDisabled(true);
+        ui->cup3->setDisabled(true);
+    });
+
+    connect(ui->cup1, &QPushButton::clicked, model, [model]() { model->checkCup(0); });
+    connect(ui->cup2, &QPushButton::clicked, model, [model]() { model->checkCup(1); });
+    connect(ui->cup3, &QPushButton::clicked, model, [model]() { model->checkCup(2); });
+
+    connect(model, &MainModel::gambleResult, this, [this](bool won, int amount) {
+        // disable cup buttons
+        ui->cup1->setEnabled(false);
+        ui->cup2->setEnabled(false);
+        ui->cup3->setEnabled(false);
+        if(won) {
+            QMessageBox::information(this, "Winner!", QString("+$%1!").arg(amount));
+        } else {
+            QMessageBox::information(this, "Wrong Cup!", "Keep Gambling!!!");
+        }
+        ui->gambleButton->setEnabled(true);
     });
 }
 

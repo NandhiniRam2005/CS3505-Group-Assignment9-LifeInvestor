@@ -172,6 +172,18 @@ public slots:
      */
     void setCreditScore(int newScore);
 
+    /**
+     * Starts the cup gamble game functionality.
+     */
+    void startGamble();
+
+    /**
+     * Checks if the cup selected contains the ball.
+     *
+     * @param cupNumber - The cup to be checked
+     */
+    void checkCup(int cupNumber);
+
 signals:
     /**
      * Sends a question out for the view to display
@@ -357,6 +369,18 @@ signals:
     void creditScoreChanged(int newScore);
 
     /**
+     * Emmitted when the cups start shuffling
+     */
+    void shuffleStarted();
+
+    /**
+     * emitted once a cup is selected
+     * @param won if the player one the gamble
+     * @param amount the amount that was won
+     */
+    void gambleResult(bool won, int amount);
+
+    /**
      * Emmitted when the items in the shop change
      */
     void shopItemsChanged();
@@ -372,6 +396,8 @@ private:
     int remainingQuizzes = 3;
     double yearlyBills;
     int yearsBeingBroke = 0;
+    int correctCup = -1;
+    bool isGamblingActive = false;
 
     QWidget *currentWidget;
 

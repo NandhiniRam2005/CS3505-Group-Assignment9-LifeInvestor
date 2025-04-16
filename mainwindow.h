@@ -228,13 +228,6 @@ private:
     void loansPageConnections(MainModel *model);
 
     /**
-     * Connections for the casino page.
-     *
-     * @param model - a reference to the model used to make these connections.
-     */
-    void casinoPageConnections(MainModel *model);
-
-    /**
      * Connections for advancing the game.
      *
      * @param model - a reference to the model used to make these connections.
@@ -245,6 +238,13 @@ private:
      * @brief phoneConnections
      */
     void phoneConnections();
+
+    /**
+     * Connections for the casino page
+     *
+     * @param model - a reference to the model used to make these connections.
+     */
+    void casinoPageConnections(MainModel *model);
 
     /**
      * Connections for the settings page
@@ -280,6 +280,11 @@ private:
      * @param model - a reference to the model used to make these connections.
      */
     void databaseConnections(MainModel *model);
+
+    /**
+     * The QMovie behind the cup swapping in the casino.
+     */
+    QMovie* cupMovie;
 
 public slots:
 
@@ -344,8 +349,6 @@ public slots:
      * @param interestRate - The rate of interest on the account.
      */
     void updateSavings(double newBalance, double interestRate);
-
-    //void updateChecking(double newBalance);
 
     /**
      * Updates the cd display to display new values.

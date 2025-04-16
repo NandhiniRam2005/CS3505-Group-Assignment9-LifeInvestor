@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QRandomGenerator>
 /*
 The source file for MainModel.
 
@@ -134,16 +135,6 @@ void MainModel::depositToSavings(double amount)
     } else
         emit showErrorMessage("Input amount cannot be deposited");
 }
-
-/*void MainModel::depositToChecking(double amount)
-{
-    if (amount <= currentMoney && checkingAccount->deposit(amount)) {
-        currentMoney -= amount;
-        emit updateBalance(currentMoney);
-        emit updateChecking(checkingAccount->getBalance());
-    } else
-        emit showErrorMessage("Input amount cannot be deposited");
-}*/
 
 void MainModel::depositToCD(double amount, int cdNumber)
 {
@@ -479,6 +470,34 @@ void MainModel::setCreditScore(int newScore) {
         loan.setAvailable(creditScore);
     }
     emit creditScoreChanged(creditScore);
+}
+
+void MainModel::startGamble()
+{
+    if (currentMoney >= 1000 && !isGamblingActive) {
+        currentMoney -= 1000;
+        isGamblingActive = true;
+        correctCup = QRandomGenerator::global()->bounded(3);
+        emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
+        int newScore = creditScore - 10;
+        emit creditScoreChanged(newScore);
+        emit shuffleStarted();
+    }
+}
+
+void MainModel::checkCup(int cupNumber)
+{
+    isGamblingActive = false;
+    if (cupNumber == correctCup) {
+        int winnings = 2000;
+        currentMoney += winnings;
+        emit updateBalance(currentMoney);
+        emit gambleResult(true, winnings);
+    } else {
+        emit gambleResult(false, 0);
+    }
+    correctCup = -1;
 }
 
 void MainModel::endGame(QString reasonForEnd, QString imageName) {
