@@ -493,6 +493,7 @@ void MainModel::checkCup(int cupNumber)
         int winnings = 2000;
         currentMoney += winnings;
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         emit gambleResult(true, winnings);
     } else {
         emit gambleResult(false, 0);

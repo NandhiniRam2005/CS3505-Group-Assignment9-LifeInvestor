@@ -823,19 +823,8 @@ void MainWindow::setUpGifs()
 
     cupMovie = new QMovie(":/gifs/gifs/cupSwap.gif");
     ui->shuffleSpot->setMovie(cupMovie);
-
-    // Ensure we're at frame 0 initially
+    // ensure we're at frame 0 initially
     cupMovie->jumpToFrame(0);
-
-    // Connect finished signal
-    connect(cupMovie, &QMovie::finished, this, [this]() {
-        // Jump to last frame and pause
-        cupMovie->setPaused(true);
-        ui->cup1->setEnabled(true);
-        ui->cup2->setEnabled(true);
-        ui->cup3->setEnabled(true);
-        qDebug() << "IDIOT STUPID GAMBLER";
-    });
 }
 
 void MainWindow::setupAudio()
@@ -1145,9 +1134,25 @@ void MainWindow::casinoPageConnections(MainModel *model)
     connect(ui->gambleButton, &QPushButton::clicked, model, &MainModel::startGamble);
 
     connect(model, &MainModel::shuffleStarted, this, [this]() {
+        if (cupMovie) {
+            cupMovie->stop();
+            cupMovie->deleteLater(); // schedule for deletion
+            cupMovie = nullptr;
+        }
+
+        cupMovie = new QMovie(":/gifs/gifs/cupSwap.gif");
+        ui->shuffleSpot->setMovie(cupMovie);
+        // freeze on last frame and enable buttons
+        connect(cupMovie, &QMovie::finished, this, [this]() {
+            cupMovie->setPaused(true);
+            ui->cup1->setEnabled(true);
+            ui->cup2->setEnabled(true);
+            ui->cup3->setEnabled(true);
+            ui->gambleButton->setText("Pick a cup");
+        });
         // play gif
         cupMovie->start();
-
+        ui->gambleButton->setText("Shuffling...");
         // disable buttons during shuffle
         ui->gambleButton->setDisabled(true);
         ui->cup1->setDisabled(true);
@@ -1160,6 +1165,8 @@ void MainWindow::casinoPageConnections(MainModel *model)
     connect(ui->cup3, &QPushButton::clicked, model, [model]() { model->checkCup(2); });
 
     connect(model, &MainModel::gambleResult, this, [this](bool won, int amount) {
+        ui->gambleButton->setEnabled(true);
+        ui->gambleButton->setText("$1000");
         // disable cup buttons
         ui->cup1->setEnabled(false);
         ui->cup2->setEnabled(false);
@@ -1167,9 +1174,8 @@ void MainWindow::casinoPageConnections(MainModel *model)
         if(won) {
             QMessageBox::information(this, "Winner!", QString("+$%1!").arg(amount));
         } else {
-            QMessageBox::information(this, "Wrong Cup!", "Keep Gambling!!!");
+            QMessageBox::information(this, "Loser!", "Wrong Cup, Keep Gambling!!!");
         }
-        ui->gambleButton->setEnabled(true);
     });
 }
 

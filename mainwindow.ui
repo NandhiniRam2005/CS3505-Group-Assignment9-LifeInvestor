@@ -541,6 +541,9 @@ V</string>
       </property>
      </widget>
      <widget class="QPushButton" name="gambleButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -582,6 +585,12 @@ V</string>
         border: 2px solid #e6b800;
     }
 
+QPushButton:disabled {
+    color: white;
+    background-color: gray;
+    border: 2px solid darkgray;
+}
+
     QPushButton:focus {
         outline: none;
     }</string>
@@ -605,8 +614,30 @@ V</string>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">    QPushButton {
+        border: none;
+        background: transparent;
+    }
+    QPushButton:pressed {
+        background: transparent;
+    }
+    QPushButton:hover {
+        background: transparent;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+</string>
+      </property>
       <property name="text">
-       <string>Cup 1</string>
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="cup2">
@@ -624,8 +655,27 @@ V</string>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="styleSheet">
+       <string notr="true">    QPushButton {
+        border: none;
+        background: transparent;
+    }
+    QPushButton:pressed {
+        background: transparent;
+    }
+    QPushButton:hover {
+        background: transparent;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+</string>
+      </property>
       <property name="text">
-       <string>Cup 2</string>
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="cup3">
@@ -643,8 +693,27 @@ V</string>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="styleSheet">
+       <string notr="true">    QPushButton {
+        border: none;
+        background: transparent;
+    }
+    QPushButton:pressed {
+        background: transparent;
+    }
+    QPushButton:hover {
+        background: transparent;
+    }
+    QPushButton:focus {
+        outline: none;
+    }
+</string>
+      </property>
       <property name="text">
-       <string>Cup 3</string>
+       <string/>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="shuffleSpot">
@@ -657,7 +726,7 @@ V</string>
        </rect>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Shape::Box</enum>
+       <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="text">
        <string/>
