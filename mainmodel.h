@@ -372,8 +372,6 @@ private:
 
     SavingsAccount *savingsAccount;
 
-    //MoneyContainer *checkingAccount;
-
     QVector<CDAccount> cdAccounts;
 
     QVector<Loan> loans;
