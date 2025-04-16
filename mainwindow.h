@@ -187,10 +187,8 @@ signals:
     void settingsOpened(QWidget *currentWidget);
 
     void requestCDInfo(int cdNumber);
-    void savingsDepositAmountRead(int amount);
-    void savingsWithdrawAmountRead(int amount);
-    void checkingDepositAmountRead(int amount);
-    void checkingWithdrawAmountRead(int amount);
+    void savingsDepositAmountRead(double amount);
+    void savingsWithdrawAmountRead(double amount);
 
     void requestLoanInfo(int loanNumber);
     void requestLifeEvent();
