@@ -30,7 +30,7 @@ choices = [
 answer = "Losing more money than you can afford"
 why = "One of the most common risks of gambling is losing money, sometimes more than you can afford, which can lead to financial instability."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is 'chasing losses' in gambling?"
@@ -43,7 +43,7 @@ choices = [
 answer = "Trying to win back money that was lost by continuing to gamble"
 why = "Chasing losses is a dangerous behavior where gamblers try to recover lost money by gambling more, often leading to even larger losses."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "How can gambling negatively affect relationships?"
@@ -56,7 +56,7 @@ choices = [
 answer = "By creating trust and financial issues due to excessive gambling"
 why = "Gambling can create financial strain and emotional distress, damaging relationships by causing trust issues and disagreements over money."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "Why is gambling addictive?"
@@ -69,7 +69,7 @@ choices = [
 answer = "Because of the rush of excitement that comes with betting"
 why = "Gambling triggers the brain's reward system, releasing dopamine, which creates a feeling of excitement and can lead to addictive behavior."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What can excessive gambling lead to?"
@@ -82,7 +82,7 @@ choices = [
 answer = "Financial problems, stress, and mental health issues"
 why = "Excessive gambling can lead to severe financial problems, stress, and mental health issues such as anxiety, depression, and even addiction."
 difficulty = "hard"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "How can gambling affect your financial health?"
@@ -95,7 +95,7 @@ choices = [
 answer = "By making it difficult to budget and manage finances"
 why = "Gambling can interfere with managing personal finances, making it hard to budget properly and often leading to overspending and debt."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is the best way to deal with a gambling problem?"
@@ -108,7 +108,7 @@ choices = [
 answer = "Seek professional help or counseling"
 why = "The best way to deal with a gambling problem is to seek professional help, such as therapy or counseling, to address the underlying issues."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "What is 'gambling debt'?"
@@ -121,7 +121,7 @@ choices = [
 answer = "Money borrowed to fund gambling activities that can't be repaid"
 why = "Gambling debt occurs when someone borrows money to continue gambling and cannot repay the money, often spiraling into financial crisis."
 difficulty = "hard"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "What is a key warning sign of gambling addiction?"
@@ -147,7 +147,7 @@ choices = [
 answer = "Set clear limits on your gambling activities and stick to them"
 why = "Setting and sticking to clear limits on gambling can help you avoid falling into unhealthy habits and ensure it remains a controlled activity."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "What is a gambling addiction also known as?"
@@ -160,7 +160,7 @@ choices = [
 answer = "Compulsive gambling"
 why = "Gambling addiction is also called compulsive gambling, where a person is unable to resist the urge to gamble despite the negative consequences."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "Which of the following is a healthy alternative to gambling?"
@@ -173,7 +173,7 @@ choices = [
 answer = "Engaging in a hobby or physical activity"
 why = "Replacing gambling with positive activities like hobbies or exercise can help break the cycle and reduce the urge to gamble."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What role can stress play in gambling behavior?"
@@ -186,7 +186,7 @@ choices = [
 answer = "It can increase the urge to gamble as a coping mechanism"
 why = "Many people use gambling as a way to escape stress or emotional pain, which can worsen the problem over time."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is a 'self-exclusion program' in gambling?"
@@ -199,7 +199,7 @@ choices = [
 answer = "A system that blocks access to gambling venues or websites"
 why = "Self-exclusion programs allow individuals to voluntarily ban themselves from gambling to help prevent addiction."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "How can gambling impact job performance?"
@@ -212,7 +212,7 @@ choices = [
 answer = "It can cause distraction, absenteeism, or job loss"
 why = "Gambling addiction can interfere with work responsibilities, leading to poor performance and even job termination."
 difficulty = "hard"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "Which group is especially vulnerable to developing gambling problems?"
@@ -225,7 +225,7 @@ choices = [
 answer = "People with a history of mental health issues or addiction"
 why = "Individuals with existing mental health or addiction issues are more likely to develop gambling problems due to increased vulnerability."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "What is a gambling win often followed by?"
@@ -238,7 +238,7 @@ choices = [
 answer = "Increased confidence and risk-taking"
 why = "A win can create a false sense of control or luck, encouraging riskier behavior and more frequent gambling."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "Why is it dangerous to view gambling as a way to make money?"
@@ -251,7 +251,7 @@ choices = [
 answer = "Because it creates overconfidence and encourages risky bets"
 why = "Viewing gambling as a source of income often leads to unrealistic expectations, overconfidence, and eventual financial loss."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "What is a major reason people continue gambling even after losses?"
@@ -264,7 +264,7 @@ choices = [
 answer = "To avoid missing out on a win"
 why = "The fear of missing out or the belief that a win is just around the corner keeps people gambling despite losses."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "How can friends and family support someone with a gambling problem?"
@@ -277,5 +277,5 @@ choices = [
 answer = "By encouraging professional help and offering emotional support"
 why = "Support from loved ones, combined with professional help, can be critical in helping someone overcome a gambling problem."
 difficulty = "medium"
-reward = 250
+reward = 700
 

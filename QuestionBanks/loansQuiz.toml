@@ -37,7 +37,7 @@ choices = [
 answer = "A sum of money borrowed with an agreement to repay with interest"
 why = "A loan is money that is borrowed from a lender with the understanding that it will be paid back, often with interest, over a set period."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is interest on a loan?"
@@ -50,7 +50,7 @@ choices = [
 answer = "The fee charged by the lender for borrowing the money"
 why = "Interest is the cost of borrowing money, typically calculated as a percentage of the principal loan amount."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is the term of a loan?"
@@ -63,7 +63,7 @@ choices = [
 answer = "The time period over which the loan is to be repaid"
 why = "The term refers to the length of time agreed upon to repay the loan, which can range from months to years."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is the difference between secured and unsecured loans?"
@@ -76,7 +76,7 @@ choices = [
 answer = "Secured loans have collateral, while unsecured loans do not"
 why = "Secured loans require an asset (like a house or car) as collateral, while unsecured loans do not require any collateral."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is a mortgage?"
@@ -89,7 +89,7 @@ choices = [
 answer = "A loan used to purchase real estate"
 why = "A mortgage is a loan specifically used to buy real estate, typically secured by the property itself."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is the principal amount of a loan?"
@@ -102,7 +102,7 @@ choices = [
 answer = "The amount borrowed before interest"
 why = "The principal is the original amount of money borrowed, excluding interest and other charges."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is an APR (Annual Percentage Rate)?"
@@ -115,7 +115,7 @@ choices = [
 answer = "The interest rate charged annually, including fees"
 why = "APR is the total interest and fees charged on a loan annually, expressed as a percentage of the loan amount."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is a payday/shark loan?"
@@ -128,7 +128,7 @@ choices = [
 answer = "A short-term loan intended to be repaid with your next paycheck"
 why = "A payday loan is a short-term, high-interest loan typically due on the borrower’s next payday."
 difficulty = "hard"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "What is a loan default?"
@@ -141,7 +141,7 @@ choices = [
 answer = "Failure to make the required payments on a loan"
 why = "Defaulting on a loan occurs when the borrower fails to make the required payments as agreed upon in the loan contract."
 difficulty = "hard"
-reward = 400
+reward = 1200
 
 [[questions]]
 question = "What is a co-signer on a loan?"
@@ -154,7 +154,7 @@ choices = [
 answer = "A person who is responsible for repaying the loan if the primary borrower fails to do so"
 why = "A co-signer agrees to repay the loan if the primary borrower defaults, and their credit is at risk if payments are missed."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "Why is it important to compare loan offers?"
@@ -167,7 +167,7 @@ choices = [
 answer = "To find the lowest interest rate and best terms"
 why = "Comparing loan offers helps you find the most affordable option, saving money on interest and fees over time."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What happens if you pay off a loan early?"
@@ -180,7 +180,7 @@ choices = [
 answer = "You may save on interest and finish payments sooner"
 why = "Paying off a loan early can reduce the total interest paid, though some loans may have early repayment penalties."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "How can taking out too many loans affect your credit score?"
@@ -193,7 +193,7 @@ choices = [
 answer = "It can lower your score and make future borrowing harder"
 why = "Too many loans increase your debt load and suggest risk to lenders, which can negatively affect your credit score."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is a grace period in loan repayment?"
@@ -206,7 +206,7 @@ choices = [
 answer = "A set time when no payments are required after taking the loan"
 why = "A grace period allows the borrower time to begin repayment, usually without penalties or additional interest."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What should you consider before taking out a loan?"
@@ -219,7 +219,7 @@ choices = [
 answer = "Your ability to repay, interest rate, and loan terms"
 why = "Understanding your repayment ability, interest rates, and loan conditions is crucial to avoid financial trouble."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is refinancing a loan?"
@@ -232,7 +232,7 @@ choices = [
 answer = "Replacing an existing loan with a new one with better terms"
 why = "Refinancing can reduce monthly payments, lower interest rates, or change the loan term to better fit your needs."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is loan amortization?"
@@ -245,7 +245,7 @@ choices = [
 answer = "The process of paying off a loan over time with regular payments"
 why = "Amortization breaks loan repayment into scheduled payments that cover both principal and interest."
 difficulty = "hard"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "How does a loan affect your budget?"
@@ -258,7 +258,7 @@ choices = [
 answer = "It adds a fixed monthly expense that must be planned for"
 why = "Loan payments are recurring expenses that must be considered when managing your monthly budget."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "Why might someone be denied a loan?"
@@ -271,7 +271,7 @@ choices = [
 answer = "Poor credit history, high debt, or low income"
 why = "Lenders assess risk based on credit, debt-to-income ratio, and income level before approving a loan."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is a loan repayment schedule?"
@@ -284,4 +284,4 @@ choices = [
 answer = "A plan outlining when and how much you pay toward your loan"
 why = "A repayment schedule helps borrowers understand their financial commitment and plan payments accordingly."
 difficulty = "easy"
-reward = 100
+reward = 300
