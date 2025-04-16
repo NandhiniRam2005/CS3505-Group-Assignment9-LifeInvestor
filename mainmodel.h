@@ -20,6 +20,11 @@ April 22, 2025
 #include "stock.h"
 #include "shopitem.h"
 #include "lifeeventhandler.h"
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+
 
 class MainModel : public QObject
 {
