@@ -76,9 +76,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     connect(model, &MainModel::netWorthChanged, this, &MainWindow::updateNetWorth);
 
-
-
-
     connect(ui->App1, &QPushButton::clicked, this, [this]() {
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
