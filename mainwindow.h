@@ -1,6 +1,18 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+/*
+The header file for MainWindow.
 
+This class represents the main window for the LifeInvesting application. It consistenly asks the model for information
+to display and displays the information to the user. The view is an interactive location for the user to interact with
+our game.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+April 22, 2025
+*/
 #include <QButtonGroup>
 #include <QMainWindow>
 #include <QSoundEffect>
@@ -490,145 +502,165 @@ public slots:
 signals:
 
     /**
-     * @brief requestQuiz
-     * @param category
-     * @param questionAmount
+     * Requests the model for a quiz.
+     *
+     * @param category - The category for the quiz.
+     * @param questionAmount - The number of questions to request.
      */
     void requestQuiz(QuizCategory category, uint questionAmount);
 
     /**
-     * @brief sendAnswer
-     * @param answer
+     * Asks the model if the answer is correct.
+     *
+     * @param answer - The selected answer.
      */
     void sendAnswer(std::string answer);
 
     /**
-     * @brief depositToSavings
-     * @param amount
+     * Tells the model to deposit some money into savings.
+     *
+     * @param amount - The amount of money to deposit
      */
     void depositToSavings(double amount);
 
     /**
-     * @brief depositToChecking
-     * @param amount
+     * Tells the model to deposit some money into checking.
+     *
+     * @param amount - The amount of money to deposit
      */
     void depositToChecking(double amount);
 
     /**
-     * @brief depositToCD
-     * @param amount
-     * @param cdNumber
+     * Tells the model to deposit some money into savings.
+     *
+     * @param amount - The amount of money to deposit
+     * @param cdNumber - The cd to deposit into.
      */
     void depositToCD(double amount, int cdNumber);
 
     /**
-     * @brief buyStock
-     * @param numberOfShares
-     * @param stockNumber
+     * Tells the model to buy some stock
+     *
+     * @param numberOfShares - How many shares to buy.
+     * @param stockNumber - Which stock to buy.
      */
     void buyStock(int numberOfShares, int stockNumber);
 
     /**
-     * @brief depositToLoan
-     * @param amount
-     * @param loanNumber
+     * Tells the model to deposit some money into a loan.
+     *
+     * @param amount - The amount of money to deposit
+     * @param loanNumber - The loan to payoff
      */
     void depositToLoan(double amount, int loanNumber);
 
     /**
-     * @brief withdrawFromSavings
-     * @param amount
+     * Tells the model to withdraw some money from savings.
+     *
+     * @param amount - The amount of money to withdraw.
      */
     void withdrawFromSavings(double amount);
 
     /**
-     * @brief withdrawFromChecking
-     * @param amount
+     * Tells the model to withdraw some money from checkings.
+     *
+     * @param amount - The amount of money to withdraw.
      */
     void withdrawFromChecking(double amount);
 
     /**
-     * @brief withdrawFromCD
-     * @param cdNumber
+     * Tells the model to withdraw all money from a cd.
+     *
+     * @param cdNumber - The cd to withdraw from.
      */
     void withdrawFromCD(int cdNumber);
 
     /**
-     * @brief sellStock
-     * @param numberOfShares
-     * @param stockNumber
+     * Alerts the model to sell some stock.
+     *
+     * @param numberOfShares - How many shares to sell.
+     * @param stockNumber - Which stock to sell.
      */
     void sellStock(int numberOfShares, int stockNumber);
 
     /**
-     * @brief activateLoan
-     * @param loanNumber
+     * Alerts the model that a loan has been activated.
+     *
+     * @param loanNumber - Which loan to activate.
      */
     void activateLoan(int loanNumber);
 
     /**
-     * @brief nextYear
+     * Alerts the model to advance the year.
      */
     void nextYear();
 
     /**
-     * @brief requestPriceOfXStocks
-     * @param numberOfShares
-     * @param stockNumber
+     * Asks the model for the purchasing price of x stocks.
+     *
+     * @param numberOfShares - How many shares to ask for price of
+     * @param stockNumber - Which stock price.
      */
     void requestPriceOfXStocks(int numberOfShares, int stockNumber);
 
     /**
-     * @brief requestSellingPriceOfXStocks
-     * @param numberOfShares
-     * @param stockNumber
+     * Asks the model for the selling price of x stocks.
+     *
+     * @param numberOfShares - How many shares to ask for price of
+     * @param stockNumber - Which stock price.
      */
     void requestSellingPriceOfXStocks(int numberOfShares, int stockNumber);
 
     /**
-     * @brief revalidateStockDisplay
+     * Asks the model for information on revalidating the stock display.
      */
     void revalidateStockDisplay();
 
     /**
-     * @brief revalidateSpecificStockDisplay
-     * @param amount
-     * @param stockNumber
+     * Revalidates a specific stocks display.
+     *
+     * @param amount - How many the user was trying to purchase/sell.
+     * @param stockNumber - Which stock to revalidate.
      */
     void revalidateSpecificStockDisplay(int amount, int stockNumber);
 
     /**
-     * @brief settingsOpened
-     * @param currentWidget
+     * Asks the model to do what must be done when opening settings.
+     *
+     * @param currentWidget - What widget the user is currently on.
      */
     void settingsOpened(QWidget *currentWidget);
 
     /**
-     * @brief requestCDInfo
-     * @param cdNumber
+     * Asks the model for some cd info.
+     *
+     * @param cdNumber - Which cd to get info on.
      */
     void requestCDInfo(int cdNumber);
 
     /**
-     * @brief savingsDepositAmountRead
-     * @param amount
+     * How many money to deposit to model.
+     *
+     * @param amount - The amount to deposit.
      */
     void savingsDepositAmountRead(double amount);
 
     /**
-     * @brief savingsWithdrawAmountRead
-     * @param amount
+     * How many money to withdraw to model.
+     *
+     * @param amount - The amount to withdraw.
      */
     void savingsWithdrawAmountRead(double amount);
 
     /**
-     * @brief requestLoanInfo
-     * @param loanNumber
+     * Gets info on a loan.
+     *
+     * @param loanNumber - The loan to get info on.
      */
     void requestLoanInfo(int loanNumber);
 
     /**
-     * @brief requestLifeEvent
+     * Asks the model for a life event.
      */
     void requestLifeEvent();
 };
