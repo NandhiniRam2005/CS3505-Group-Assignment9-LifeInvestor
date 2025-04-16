@@ -2,7 +2,18 @@
 #include <QtCore/qdebug.h>
 #include "quizhandler.h"
 #include <iostream>
+/*
+The source file for MainModel.
 
+This class represents the main model for the LifeInvesting application. It tracks the programs state, including things like
+stocks owned, loans, cash, deposits, etc. It also handles things like sending quiz questions and life events to the view.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+April 22, 2025
+*/
 MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {

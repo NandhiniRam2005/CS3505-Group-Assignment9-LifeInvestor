@@ -6,8 +6,19 @@
 #include "iostream"
 #include "ui_mainwindow.h"
 
+/*
+The source file for MainWindow.
 
+This class represents the main window for the LifeInvesting application. It consistenly asks the model for information
+to display and displays the information to the user. The view is an interactive location for the user to interact with
+our game.
 
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+April 22, 2025
+*/
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
