@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>11</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1649,6 +1649,70 @@ V</string>
         <bool>true</bool>
        </property>
       </widget>
+      <widget class="QPushButton" name="choice1Button">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>241</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background-color: transparent; border: none;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="choice3Button">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>10</y>
+         <width>231</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background-color: transparent; border: none;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="choice2Button">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>241</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background-color: transparent; border: none;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="choice4Button">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>80</y>
+         <width>231</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background-color: transparent; border: none;}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
      <widget class="QPushButton" name="submitButton">
       <property name="geometry">
@@ -1760,6 +1824,9 @@ border-radius: 5px;}</string>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {background-color: transparent; border: none;}</string>
       </property>
       <property name="text">
        <string/>
@@ -3949,7 +4016,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>317</height>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">
@@ -4063,7 +4130,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>317</height>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">
@@ -4286,5 +4353,70 @@ QToolBox QWidget {
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>choice4Button</sender>
+   <signal>clicked()</signal>
+   <receiver>choice4</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>427</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>choice3Button</sender>
+   <signal>clicked()</signal>
+   <receiver>choice3</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>219</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>427</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>choice2Button</sender>
+   <signal>clicked()</signal>
+   <receiver>choice2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>250</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>167</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>choice1Button</sender>
+   <signal>clicked()</signal>
+   <receiver>choice1</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>250</x>
+     <y>219</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>167</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
