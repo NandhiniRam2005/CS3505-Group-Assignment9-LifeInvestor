@@ -770,6 +770,18 @@ void MainWindow::generalUISetup()
     quizCategory = QuizCategory::tutorial;
     quizLength = 1;
     firstStart = true;
+
+    QDoubleValidator* decimalValidator = new QDoubleValidator(0, 1000000000000, 2);
+
+    ui->cd1DepositInput->setValidator(decimalValidator);
+    ui->cd2DepositInput->setValidator(decimalValidator);
+    ui->cd3DepositInput->setValidator(decimalValidator);
+
+    ui->savingsDepositInput->setValidator(decimalValidator);
+    ui->savingsWithdrawInput->setValidator(decimalValidator);
+
+    ui->loan1PaymentInput->setValidator(decimalValidator);
+    ui->loan2PaymentInput->setValidator(decimalValidator);
 }
 
 void MainWindow::setUpGifs()
