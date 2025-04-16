@@ -81,6 +81,8 @@ void MainModel::getNextQuestion()
     } else {
         if(quizHandler->getQuestionsAnsweredCorrectly() > 4){
             creditScore += 15;
+            if (creditScore > 850)
+                creditScore = 850;
             emit creditScoreChanged(creditScore);
         }
         emit quizFinished(quizHandler->getQuestionsAnsweredCorrectly(), quizHandler->getAmountEarned());
@@ -100,7 +102,7 @@ void MainModel::checkAnswer(std::string selectedChoice)
     emit sendResult(result, why);
     if (result) {
         addFunds(quizHandler->getCurrentQuestionReward());
-        setCreditScore(creditScore + 7);
+        setCreditScore(creditScore + 5);
         emit creditScoreChanged(creditScore);
         emit updateBalance(currentMoney);
         emit netWorthChanged(calculateNetWorth());
@@ -183,6 +185,8 @@ void MainModel::depositToLoan(double amount, int loanNumber)
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
         creditScore+=12;
+        if (creditScore > 850)
+            creditScore = 850;
         emit creditScoreChanged(creditScore);
     } else
         emit showErrorMessage("Input amount cannot be removed from the loan");
