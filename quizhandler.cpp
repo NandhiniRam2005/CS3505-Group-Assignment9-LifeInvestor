@@ -14,9 +14,6 @@ QuizHandler::QuizHandler(QObject *parent)
     currentQuestion = 0;
     numberCorrect = 0;
     amountEarned = 0;
-    // parsingExample();
-    // parseQuizFile("example");
-    // getNextQuestion();
 }
 
 void QuizHandler::createQuiz(QuizCategory category, uint length)
