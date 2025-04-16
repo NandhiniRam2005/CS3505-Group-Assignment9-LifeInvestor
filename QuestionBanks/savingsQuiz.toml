@@ -37,7 +37,7 @@ choices = [
 answer = "A bank account that earns interest on deposits"
 why = "A savings account is a low-risk account where individuals deposit money and earn interest over time."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is the primary benefit of a savings account?"
@@ -50,7 +50,7 @@ choices = [
 answer = "Earning interest on the deposited money"
 why = "The primary benefit of a savings account is that it allows the account holder to earn interest on their deposited funds."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is a high-yield savings account?"
@@ -63,7 +63,7 @@ choices = [
 answer = "A savings account with a higher interest rate than a standard savings account"
 why = "High-yield savings accounts offer a higher interest rate compared to regular savings accounts, helping you earn more on your balance."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is the typical interest rate range for a savings account?"
@@ -76,7 +76,7 @@ choices = [
 answer = "0.01% to 5% annually"
 why = "Savings account interest rates typically range from 0.01% to 5%, depending on the bank, account type, and market conditions."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is compound interest?"
@@ -89,7 +89,7 @@ choices = [
 answer = "Interest calculated on both the initial principal and the accumulated interest"
 why = "Compound interest is interest that is calculated not only on the original principal but also on the interest that has been added to the account."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is the FDIC?"
@@ -102,7 +102,7 @@ choices = [
 answer = "A government agency that insures savings accounts"
 why = "The Federal Deposit Insurance Corporation (FDIC) insures deposits in banks up to $250,000, protecting the account holder in case of bank failure."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is a money market account?"
@@ -115,7 +115,7 @@ choices = [
 answer = "A high-interest savings account that may have higher minimum balance requirements"
 why = "A money market account is similar to a savings account but typically offers a higher interest rate and may require a higher minimum balance."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "How can a savings account help with emergency funds?"
@@ -128,7 +128,7 @@ choices = [
 answer = "By providing a safe, accessible place to store money for unexpected expenses"
 why = "A savings account is ideal for an emergency fund because it provides a secure place to store money that can be easily accessed when needed."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is the difference between a savings account and a checking account?"
@@ -141,7 +141,7 @@ choices = [
 answer = "A checking account is meant for daily transactions, while a savings account is for saving money and earning interest"
 why = "Checking accounts are typically used for everyday spending and transactions, while savings accounts are designed for saving and earning interest."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "Why is it important to have a savings account?"
@@ -154,7 +154,7 @@ choices = [
 answer = "To store money securely and earn interest over time"
 why = "A savings account offers a secure way to store money while earning interest, which can help build wealth over time."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What does 'liquidity' mean in the context of a savings account?"
@@ -167,7 +167,7 @@ choices = [
 answer = "The money can be withdrawn easily without penalties"
 why = "Liquidity refers to how quickly and easily you can access your money. Savings accounts are highly liquid because funds can typically be withdrawn at any time."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "Why might a bank limit the number of withdrawals from a savings account?"
@@ -180,7 +180,7 @@ choices = [
 answer = "To meet federal regulations and encourage saving"
 why = "Banks often limit withdrawals from savings accounts due to federal regulations (such as Regulation D), which aim to promote saving habits."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What factor most directly affects the amount of interest earned in a savings account?"
@@ -193,7 +193,7 @@ choices = [
 answer = "The interest rate and account balance"
 why = "The amount of interest earned is calculated based on the interest rate and the balance in the account—the higher both are, the more you earn."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is the purpose of an emergency savings fund?"
@@ -206,7 +206,7 @@ choices = [
 answer = "To cover unexpected financial emergencies"
 why = "An emergency savings fund is intended to help you manage surprise expenses such as medical bills, car repairs, or sudden loss of income."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "How does inflation affect money in a savings account?"
@@ -219,7 +219,7 @@ choices = [
 answer = "It causes your savings to lose value over time if interest is low"
 why = "If the interest you earn on savings doesn’t keep pace with inflation, the real value or purchasing power of your money decreases over time."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What should you look for when choosing a savings account?"
@@ -232,7 +232,7 @@ choices = [
 answer = "High interest rates, low fees, and FDIC insurance"
 why = "A good savings account offers a strong interest rate, minimal fees, and protection through FDIC insurance."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is a common strategy for growing your savings faster?"
@@ -245,5 +245,5 @@ choices = [
 answer = "Setting up automatic transfers to your savings account"
 why = "Automatic transfers make saving consistent and effortless, helping you build your balance over time without needing to remember to do it manually."
 difficulty = "easy"
-reward = 100
+reward = 300
 

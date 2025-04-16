@@ -41,7 +41,7 @@ choices = [
 answer = "An investment that provides a fixed interest rate for a set period of time"
 why = "A CD is a time deposit offered by banks that pays a fixed interest rate for a predetermined term."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What happens if you withdraw money from a CD before its maturity date?"
@@ -54,7 +54,7 @@ choices = [
 answer = "You may face an early withdrawal penalty"
 why = "Withdrawing funds before the maturity date of a CD usually results in a penalty, which can affect both the principal and interest earned."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is the typical term length for a CD?"
@@ -67,7 +67,7 @@ choices = [
 answer = "1 month to 10 years"
 why = "CDs can have terms ranging from as short as one month to as long as 10 years, though terms of 1 year to 5 years are common."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is the primary risk of investing in a CD?"
@@ -80,7 +80,7 @@ choices = [
 answer = "Risk of early withdrawal penalties"
 why = "The main risk associated with CDs is the penalty for early withdrawal, which can reduce the return on investment."
 difficulty = "medium"
-reward = 250
+reward = 700
 
 [[questions]]
 question = "How do interest rates on CDs compare to regular savings accounts?"
@@ -93,7 +93,7 @@ choices = [
 answer = "CD interest rates are typically higher"
 why = "CDs generally offer higher interest rates than regular savings accounts in exchange for locking up the funds for a fixed period."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is a CD ladder?"
@@ -106,7 +106,7 @@ choices = [
 answer = "A strategy for diversifying interest rates by having multiple CDs with different maturity dates"
 why = "A CD ladder is a strategy where you invest in several CDs with different maturity dates, allowing for periodic access to funds and potentially higher overall returns."
 difficulty = "hard"
-reward = 400
+reward = 1200
 
 [[questions]]
 question = "Can you access your funds in a CD anytime?"
@@ -119,7 +119,7 @@ choices = [
 answer = "No, the funds are locked until maturity"
 why = "The funds in a CD are typically locked until the maturity date, and early withdrawal may result in penalties."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What happens at the end of a CD’s term?"
@@ -132,7 +132,7 @@ choices = [
 answer = "The principal and interest are withdrawn automatically"
 why = "At the end of the term, the CD typically matures, and the principal along with any earned interest is either paid out or rolled into a new CD, depending on the account terms."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is the Federal Deposit Insurance Corporation (FDIC)?"
@@ -145,7 +145,7 @@ choices = [
 answer = "A government agency that insures bank deposits"
 why = "The FDIC insures bank deposits up to $250,000 per depositor, providing protection against bank failure."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "Which of the following is true about interest on CDs?"
@@ -158,7 +158,7 @@ choices = [
 answer = "Interest can be compounded or paid at maturity depending on the CD"
 why = "CDs may offer interest that is either compounded periodically or paid out at the time of maturity. The specific terms depend on the CD agreement."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "Are CDs considered a low-risk investment?"
@@ -171,7 +171,7 @@ choices = [
 answer = "Yes, they are backed by FDIC insurance up to a certain limit"
 why = "CDs are considered low-risk because they are insured by the FDIC up to $250,000 per depositor, per institution."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What determines the interest rate of a CD?"
@@ -184,7 +184,7 @@ choices = [
 answer = "The length of the term and market conditions"
 why = "CD interest rates vary based on how long the funds are committed and the current state of the financial market."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "Can you add more money to a CD after opening it?"
@@ -197,7 +197,7 @@ choices = [
 answer = "Not typically, unless it’s an add-on CD"
 why = "Most CDs don't allow additional deposits after opening, though some specialized 'add-on CDs' do."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What does CD maturity mean?"
@@ -210,7 +210,7 @@ choices = [
 answer = "The date when the CD reaches the end of its term"
 why = "Maturity refers to the end of the agreed term, when you can withdraw your principal and interest without penalty."
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "What is an add-on CD?"
@@ -223,7 +223,7 @@ choices = [
 answer = "A CD that allows additional deposits after opening"
 why = "An add-on CD allows the account holder to make additional deposits during the term, unlike traditional CDs."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "Can CD interest rates be fixed or variable?"
@@ -236,7 +236,7 @@ choices = [
 answer = "Both, depending on the CD type"
 why = "Some CDs offer a fixed rate for the entire term, while others may have variable rates tied to market indexes."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is a no-penalty CD?"
@@ -249,7 +249,7 @@ choices = [
 answer = "A CD that allows early withdrawal without a penalty"
 why = "A no-penalty CD offers flexibility by letting you withdraw your money before maturity without facing a penalty."
 difficulty = "hard"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "What is auto-renewal in the context of CDs?"
@@ -262,7 +262,7 @@ choices = [
 answer = "When a CD automatically rolls over into a new term if not cashed out"
 why = "If you don’t withdraw funds after maturity, many banks will auto-renew the CD for the same term at the current rate."
 difficulty = "medium"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "Are CD earnings taxable?"
@@ -275,7 +275,7 @@ choices = [
 answer = "Yes, interest earned on CDs is subject to federal income tax"
 why = "Interest from CDs is taxable income, even if you don’t withdraw it until maturity."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is a jumbo CD?"
@@ -288,5 +288,5 @@ choices = [
 answer = "A CD that requires a large minimum deposit, often $100,000 or more"
 why = "Jumbo CDs offer higher interest rates but require a significantly larger initial deposit."
 difficulty = "hard"
-reward = 400
+reward = 1200
 

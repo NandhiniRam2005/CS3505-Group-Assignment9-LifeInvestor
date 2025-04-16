@@ -83,8 +83,6 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
         ui->stackedWidget->setCurrentWidget(ui->Stocks);
     });
     connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
-    connect(this, &MainWindow::settingsOpened, model, &MainModel::settingsOpened);
-    settingsConnections(model);
 
     connect(ui->startButton, &QPushButton::pressed, [=]() {
         ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
@@ -204,7 +202,6 @@ void MainWindow::returnToGame(QWidget *currentWidget)
     } else {
         throw std::runtime_error("return page could not be found.");
     }
-    ui->settingsButton->show();
     if (returnPage != "Start" && returnPage != "quizEnd"){
         ui->cashBalance->show();
         ui->creditLabel->show();
@@ -1150,19 +1147,6 @@ void MainWindow::phoneConnections()
 {
     connect(ui->openPhoneButton, &QPushButton::clicked, this, &MainWindow::displayPhone);
     connect(ui->closePhoneButton, &QPushButton::clicked, this, &MainWindow::hidePhone);
-}
-
-void MainWindow::settingsConnections(MainModel *model)
-{
-    connect(ui->settingsButton, &QPushButton::clicked, this, [this]() {
-        ui->settingsButton->hide();
-        ui->cashBalance->hide();
-        ui->creditLabel->hide();
-        ui->networthLabel->hide();
-        emit settingsOpened(ui->stackedWidget->currentWidget());
-        ui->stackedWidget->setCurrentWidget(ui->Settings);
-    });
-    connect(ui->settingsBackButton, &QPushButton::clicked, model, &MainModel::settingsClosed);
 }
 
 void MainWindow::extraQuizesPageConnections(MainModel *model)

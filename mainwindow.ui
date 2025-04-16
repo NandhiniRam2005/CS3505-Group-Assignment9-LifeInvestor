@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>11</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1305,125 +1305,7 @@ V</string>
      <zorder>quizRemains</zorder>
      <zorder>currentYear</zorder>
     </widget>
-    <widget class="QWidget" name="Settings">
-     <widget class="QLabel" name="settingsBackground">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>801</width>
-        <height>541</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="resources.qrc">:/icons/icons/settingsBackground.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QSlider" name="horizontalSlider">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>210</y>
-        <width>160</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>160</y>
-        <width>161</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Segoe Script</family>
-        <pointsize>28</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: white;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Plain</enum>
-      </property>
-      <property name="text">
-       <string>Volume</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="settingsBackButton">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>91</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Segoe Script</family>
-        <pointsize>-1</pointsize>
-        <bold>true</bold>
-        <underline>false</underline>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-        color: white;
-        background-color: #4CAF50;
-        border: 2px solid #FFD700;
-        border-radius: 10px; 
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    QPushButton:hover {
-        background-color: #45a049; 
-        border: 2px solid #ffcc00;
-    }
-
-    QPushButton:pressed {
-        background-color: #388e3c; 
-        border: 2px solid #e6b800;
-    }
-
-    QPushButton:focus {
-        outline: none;
-    }</string>
-      </property>
-      <property name="text">
-       <string>BACK</string>
-      </property>
-     </widget>
-    </widget>
+    <widget class="QWidget" name="Settings"/>
     <widget class="QWidget" name="gameEnd">
      <widget class="QLabel" name="gameOverLabel">
       <property name="geometry">
@@ -4066,8 +3948,8 @@ QToolBox QWidget {
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>741</width>
+         <height>317</height>
         </rect>
        </property>
        <attribute name="label">
@@ -4304,41 +4186,13 @@ QToolBox QWidget {
          </rect>
         </property>
         <property name="text">
-         <string>Minimum Credit Required: 650</string>
+         <string>Minimum Credit Required: 750</string>
         </property>
        </widget>
       </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="ExtraQuiz"/>
-   </widget>
-   <widget class="QPushButton" name="settingsButton">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="text">
-     <string>Settings</string>
-    </property>
-    <property name="icon">
-     <iconset resource="resources.qrc">
-      <normaloff>:/icons/icons/test.png</normaloff>
-      <disabledoff>:/icons/icons/blank.png</disabledoff>
-      <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/test.png</iconset>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">

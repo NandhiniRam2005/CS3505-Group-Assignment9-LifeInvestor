@@ -83,7 +83,7 @@ choices = [
 answer = "Initial Public Offering"
 why = 'IPO means "Initial Public Offering"'
 difficulty = "easy"
-reward = 100
+reward = 300
 
 [[questions]]
 question = "If a stock splits 2-for-1, what happens to the share price (assuming all else equal)?"
@@ -96,7 +96,7 @@ choices = [
 answer = "It halves"
 why = "Stock splits increase the number of shares, but the value of the company stays the same, so the share price will be cut in half."
 difficulty = "hard"
-reward = 500
+reward = 4000
 
 [[questions]]
 question = "What does it mean to 'short' a stock?"
@@ -109,7 +109,7 @@ choices = [
 answer = "Bet that the stock price will go down"
 why = "Shorting a stock involves borrowing and selling it with the hope of buying it back at a lower price."
 difficulty = "medium"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "What is a dividend?"
@@ -122,7 +122,7 @@ choices = [
 answer = "A share of company profits paid to shareholders"
 why = "Dividends are payments made by a company to its shareholders from its profits."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "Which index is commonly used as a benchmark for the U.S. stock market?"
@@ -161,7 +161,7 @@ choices = [
 answer = "Positive news or strong earnings"
 why = "Good news about a company often makes investors more willing to buy its stock, increasing demand and raising the price."
 difficulty = "easy"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What does a 'bull market' refer to?"
@@ -174,7 +174,7 @@ choices = [
 answer = "A market in which prices are rising"
 why = "A bull market refers to a sustained period of rising stock prices."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is a P/E ratio?"
@@ -187,7 +187,7 @@ choices = [
 answer = "Price divided by earnings per share"
 why = "The price-to-earnings (P/E) ratio helps investors determine the market value of a stock compared to the company’s earnings."
 difficulty = "medium"
-reward = 300
+reward = 900
 
 [[questions]]
 question = "What does diversification help with in investing?"
@@ -200,7 +200,7 @@ choices = [
 answer = "Reducing investment risk"
 why = "Diversifying spreads your investment across various assets, reducing the impact of any one failing."
 difficulty = "easy"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is an ETF?"
@@ -226,7 +226,7 @@ choices = [
 answer = "A share in a company’s ownership"
 why = "A stock represents a piece of ownership in a company and entitles the holder to a portion of its profits."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What does IPO stand for?"
@@ -239,7 +239,7 @@ choices = [
 answer = "Initial Public Offering"
 why = "An IPO is when a company sells its shares to the public for the first time to raise capital."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is the difference between a stock and a bond?"
@@ -265,7 +265,7 @@ choices = [
 answer = "Its price changes frequently and unpredictably"
 why = "Volatile stocks experience large price swings in short periods, often due to news, earnings, or speculation."
 difficulty = "medium"
-reward = 200
+reward = 600
 
 [[questions]]
 question = "What is insider trading?"
@@ -278,7 +278,7 @@ choices = [
 answer = "Trading stocks based on non-public information"
 why = "Insider trading is illegal when someone uses confidential company information to gain an unfair market advantage."
 difficulty = "hard"
-reward = 400
+reward = 1200
 
 [[questions]]
 question = "Which type of stock typically pays regular dividends?"
@@ -304,7 +304,7 @@ choices = [
 answer = "A person who trades stocks on behalf of investors"
 why = "Stockbrokers execute buy and sell orders for clients and may offer investment advice."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 [[questions]]
 question = "What is a limit order?"
@@ -330,6 +330,6 @@ choices = [
 answer = "The number of shares traded during a period"
 why = "Volume refers to how many shares of a stock are bought and sold during a specific time frame, indicating activity and liquidity."
 difficulty = "easy"
-reward = 150
+reward = 400
 
 
