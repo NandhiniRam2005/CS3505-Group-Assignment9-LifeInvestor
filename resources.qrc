@@ -58,6 +58,10 @@
         <file>icons/onlineScam.png</file>
         <file>icons/petSick.png</file>
         <file>icons/basementFlooded.png</file>
+        <file>icons/brokeWindow.png</file>
+        <file>icons/bikeStolen.png</file>
+        <file>icons/deletedWorkFiles.png</file>
+        <file>icons/loanFine.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

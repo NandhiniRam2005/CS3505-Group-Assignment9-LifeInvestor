@@ -160,23 +160,23 @@ image = ":///icons/icons/basementFlooded.png"
 eventDesc = "You broke a neighbor’s window playing catch."
 price = -300
 type = "Bad"
-image = ""
+image = ":///icons/icons/brokeWindow.png"
 
 [[badEvents]]
 eventDesc = "Your bike was stolen."
 price = -450
 type = "Bad"
-image = ""
+image = ":///icons/icons/bikeStolen.png"
 
 [[badEvents]]
 eventDesc = "You accidentally deleted important work and had to pay for recovery."
 price = -700
 type = "Bad"
-image = ""
+image = ":///icons/icons/deletedWorkFiles.png"
 
 [[badEvents]]
 eventDesc = "You were fined for late loan payment."
 price = -600
 type = "Bad"
-image = ""
+image = ":///icons/icons/loanFine.png"
 
