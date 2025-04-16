@@ -261,70 +261,78 @@ private:
 public slots:
 
     /**
-     * @brief startQuiz
-     * @param category
-     * @param questionAmount
+     * Starts a quiz in the view
+     *
+     * @param category - The category of the quiz to be started
+     * @param questionAmount - How many questions should be in the quiz
      */
     void startQuiz(QuizCategory category, uint questionAmount);
 
     /**
-     * @brief showQuizData
-     * @param q
+     * Shows each question individually one by one.
+     *
+     * @param q - The question to be displayed
      */
     void showQuizData(Question q);
 
     /**
-     * @brief onStartClicked
+     * What should occur each time a new year starts.
      */
     void onStartClicked();
 
     /**
-     * @brief submitHelper
+     * helper slot for submitting responses to a quiz.
      */
     void submitHelper();
 
     /**
-     * @brief displayResult
-     * @param result
-     * @param explanation
+     * Displays the result of a quiz question. Whether the user was correct or not.
+     *
+     * @param result - Incorrect/Correct
+     * @param explanation - Why the correct answer is correct.
      */
     void displayResult(bool result, std::string explanation);
 
     /**
-     * @brief updateProgress
-     * @param progress
+     * Updates the progress bar of the quiz.
+     *
+     * @param progress - The current progress of the quiz.
      */
     void updateProgress(uint progress);
 
     /**
-     * @brief updateQuizInfo
-     * @param qI
+     * Recieves information about a quiz so that the user can learn. These are learning materials!
+     *
+     * @param qI - The information about the quiz
      */
     void updateQuizInfo(QuizInfo qI);
 
     /**
-     * @brief updateNetWorth
-     * @param netWorth
+     * Updates the networth view label
+     *
+     * @param netWorth - The new networth to display.
      */
     void updateNetWorth(double netWorth);
 
     /**
-     * @brief updateSavings
-     * @param newBalance
-     * @param interestRate
+     * Displays updates to the savings display.
+     *
+     * @param newBalance - The new savings amount.
+     * @param interestRate - The rate of interest on the account.
      */
     void updateSavings(double newBalance, double interestRate);
 
     //void updateChecking(double newBalance);
 
     /**
-     * @brief updateCD
-     * @param cdNumber
-     * @param newBalance
-     * @param interestRate
-     * @param termlength
-     * @param minimumDeposit
-     * @param yearsLeft
+     * Updates the cd display to display new values.
+     *
+     * @param cdNumber - The specific cd to update
+     * @param newBalance - The new balance that the cd should have.
+     * @param interestRate - The interest that the cd is accuring
+     * @param termlength - How long the cd will last for.
+     * @param minimumDeposit - How much money must be deposited
+     * @param yearsLeft - How many years the user has left on the cd if applicable.
      */
     void updateCD(int cdNumber,
                   double newBalance,
@@ -334,132 +342,148 @@ public slots:
                   int yearsLeft);
 
     /**
-     * @brief updateStock
-     * @param stockNumber
-     * @param newBalance
+     * Updates a specific stock in the view
+     *
+     * @param stockNumber - The specific stock
+     * @param newBalance - The new amount of money invested in the stock.
      */
     void updateStock(int stockNumber, double newBalance);
 
     /**
-     * @brief updateStockImage
-     * @param stockOneUp
-     * @param stockTwoUp
-     * @param stockThreeUp
+     * Updates all stock graphs to reflect growth/fall.
+     *
+     * @param stockOneUp - Did stock one go up in the past year?
+     * @param stockTwoUp - Did stock two go up in the past year?
+     * @param stockThreeUp - Did stock three go up in the past year?
      */
     void updateStockImage(bool stockOneUp, bool stockTwoUp, bool stockThreeUp);
 
     /**
-     * @brief updateLoan
-     * @param loanNumber
-     * @param newBalance
-     * @param interestRate
-     * @param available
-     * @param active
-     * @param yearsLeft
+     * Updates a specific loan in the view.
+     *
+     * @param loanNumber - The specific loan to update.
+     * @param newBalance - The new balance of the loan.
+     * @param interestRate - The rate of interest on the loan.
+     * @param available - According to the user's credit score is the loan available.
+     * @param active - Is the loan active?
+     * @param yearsLeft - How many years does the user have left to pay it off if applicable.
      */
     void updateLoan(
         int loanNumber, double newBalance, double interestRate, bool available, bool active, int yearsLeft);
 
     /**
-     * @brief updateBalance
-     * @param newAmount
+     * Update the checking account balance.
+     *
+     * @param newAmount - The new checking account balance recieved from the model.
      */
     void updateBalance(double newAmount);
 
     /**
-     * @brief updateStockPriceDisplay
-     * @param amount
-     * @param stockNumber
+     * Updates the stock price to display as the view dynamically shows how much the player will spend.
+     *
+     * @param amount - The amount it will cost.
+     * @param stockNumber - The specific stock they are adding to their cart.
      */
     void updateStockPriceDisplay(double amount, int stockNumber);
 
     /**
-     * @brief updateSellingStockPriceDisplay
-     * @param amount
-     * @param stockNumber
-     * @param tooMany
+     * Updates the the stock selling price that the user is adding to their sell cart.
+     *
+     * @param amount - The amount it will sell for.
+     * @param stockNumber - The stock they are selling.
+     * @param tooMany - If they are attempting to sell too many stocks!
      */
     void updateSellingStockPriceDisplay(double amount, int stockNumber, bool tooMany);
 
     /**
-     * @brief updateStockAmountOwned
-     * @param amount
-     * @param stockNumber
+     * Updates a label which shows how many stocks are owned by the user.
+     *
+     * @param amount - How many shares owned.
+     * @param stockNumber - The specific stock that should be updated
      */
     void updateStockAmountOwned(uint amount, int stockNumber);
 
     /**
-     * @brief showEndScreen
-     * @param questionsAnsweredCorrectly
-     * @param moneyEarned
+     * Displays the final quiz screen the end of quiz screen.
+     *
+     * @param questionsAnsweredCorrectly - The number of questions answered correctly.
+     * @param moneyEarned - How many money was earned throughout the quiz.
      */
     void showEndScreen(uint questionsAnsweredCorrectly, int moneyEarned);
 
     /**
-     * @brief enableSubmitButton
-     * @param checked
+     * Enabales submit button.
+     *
+     * @param checked - If a response has been logged.
      */
     void enableSubmitButton(bool checked);
 
     /**
-     * @brief displayPhone
+     * Displays the phone widget.
      */
     void displayPhone();
 
     /**
-     * @brief hidePhone
+     * Hides the phone widget.
      */
     void hidePhone();
 
     /**
-     * @brief returnToGame
-     * @param currentWidget
+     * Return to the game screen.
+     *
+     * @param currentWidget - What widget we are currently on.
      */
     void returnToGame(QWidget *currentWidget);
 
     /**
-     * @brief showErrorMessage
-     * @param errorMessage
+     * Shows an error message to the user.
+     *
+     * @param errorMessage - The error message to display.
      */
     void showErrorMessage(QString errorMessage);
 
     /**
-     * @brief revalidateAllStockDisplays
+     * Revalidates all stock displays to show if the user is trying to purchase/sell bad amounts of stock.
      */
     void revalidateAllStockDisplays();
 
     /**
-     * @brief newYear
-     * @param newTotals
-     * @param changes
-     * @param currentYear
-     * @param yearlyBills
+     * Creates a new year in the view.
+     *
+     * @param newTotals - Totals to update the view
+     * @param changes - The change in money since last year.
+     * @param currentYear - What year it is.
+     * @param yearlyBills - The bills that must be paid this year.
      */
     void newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills);
 
     /**
-     * @brief gameEnded
-     * @param reason
-     * @param imageName
+     * Displays the game ending screen.
+     *
+     * @param reason - The reason for the game ending.
+     * @param imageName - The image to display in the screen.
      */
     void gameEnded(QString reason, QString imageName);
 
     /**
-     * @brief showLifeEvent
-     * @param lifeEvent
+     * Displays a new life event.
+     *
+     * @param lifeEvent - The life event to display.
      */
     void showLifeEvent(LifeEvent lifeEvent);
 
     /**
-     * @brief showWarning
-     * @param warning
-     * @param image
+     * Shows a new warning to the user.
+     *
+     * @param warning - The warning.
+     * @param image - The image to go with the warning.
      */
     void showWarning(QString warning, QString image);
 
     /**
-     * @brief updateCreditScore
-     * @param score
+     * Updates the credit score in the view.
+     *
+     * @param score - The new score to display.
      */
     void updateCreditScore(int score);
 
