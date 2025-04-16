@@ -37,6 +37,10 @@ public:
     MainWindow(MainModel *model, QWidget *parent = nullptr);
     ~MainWindow();
     
+    /**
+     * Sets up connections for the life events
+     * @param model - the main model of the program
+     */
     void lifeEventsConnections(MainModel *model);
     
 private:

@@ -28,10 +28,13 @@ struct LifeEvent
 };
 
 class LifeEventHandler: public QObject
-
 {
     Q_OBJECT
 public:
+    /**
+     *
+     * @param parent
+     */
     explicit LifeEventHandler(QObject *parent = nullptr);
 
     /**
