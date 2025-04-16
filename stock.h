@@ -27,13 +27,13 @@ public:
     /**
      * Creates a stock with a given value, variance, and trend
      * @param value the value / price of a share of this stock
-     * @param variance the variance in returns for this stock (higher for more volitle returns, lower for more consistent returns)
+     * @param variance the variance in returns for this stock (higher for more volatile returns, lower for more consistent returns)
      * @param trend the trend in returns for this stock (how high the return should be on average)
      */
     Stock(double value, double variance, double trend);
 
     /**
-     * This method should be callled whenever a new year occurs to ensure
+     * This method should be called whenever a new year occurs to ensure
      * that any necessary modifications to the value of this Stock can be performed.
      */
     void nextYear() override;

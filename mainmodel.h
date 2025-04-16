@@ -48,7 +48,7 @@ public slots:
     void checkAnswer(std::string selectedChoice);
 
     /**
-     * Move on to the next quesiton of the quiz
+     * Move on to the next question of the quiz
      */
     void getNextQuestion();
 
@@ -185,7 +185,7 @@ signals:
      * Sends out the result of the current quiz question
      *
      * @param result - true if the correct answer was selected, otherwise false
-     * @param explaination - An explaination for why the correct answer is correct
+     * @param explaination - An explanation for why the correct answer is correct
      */
     void sendResult(bool result, std::string explanation);
 
@@ -199,9 +199,9 @@ signals:
 
     /**
      * Sends out the current amount of progress that has been made on this quiz
-     * @param progess a number 0-100 representing the percentage of the quiz that has been completed
+     * @param progress a number 0-100 representing the percentage of the quiz that has been completed
      */
-    void quizProgress(uint progess);
+    void quizProgress(uint progress);
 
     /**
      * Emitted whenever the user's net worth changes
@@ -298,7 +298,7 @@ signals:
     void showErrorMessage(QString errorMessage);
 
     /**
-     * Emitted when a new year occurrs
+     * Emitted when a new year ocurrs
      * @param newTotals A vector of doubles holding the balances of the checking account, credit score, etc.
      * @param changes The change of the totals between the current year and this year
      * @param currentYear The current year that it is

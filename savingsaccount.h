@@ -32,7 +32,7 @@ public:
     double getInterestRate();
 
     /**
-     * This method should be callled whenever a new year occurs to ensure
+     * This method should be called whenever a new year occurs to ensure
      * that any necessary modifications to the balance of this SavingsAccount can be performed.
      */
     void nextYear() override;

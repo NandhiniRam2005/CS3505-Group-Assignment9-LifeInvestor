@@ -5,7 +5,7 @@ The header file for QuizHandler.
 
 This class parses quizzes from the Question Bank toml files that they are stored in. It will randomly generate quizzes from
 a given category and provide a list of possible answers, a reward for the question, difficulty, etc. It will also have the answer
-to the question and an explaination for why the answer is correct. Instance methods can be called to progress through the quiz when needed.
+to the question and an explanation for why the answer is correct. Instance methods can be called to progress through the quiz when needed.
 
 By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
@@ -128,7 +128,7 @@ public:
     uint quizProgress();
 
     /**
-     * @return the total amound that the user has made taking this quiz so far.
+     * @return the total amount that the user has made taking this quiz so far.
      */
     int getAmountEarned();
 

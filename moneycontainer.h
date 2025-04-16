@@ -36,19 +36,19 @@ public:
     /**
      * deposits a given amount of money in this MoneyContainer
      * @param amount the amount to deposit
-     * @return true if the deposit was sucessful, and false otherwise.
+     * @return true if the deposit was successful, and false otherwise.
      */
     virtual bool deposit(double amount);
 
     /**
      * withdraws a given amount of money from this MoneyContainer
      * @param amount the amount to withdraw
-     * @return true if the withdrawal was sucessful, and false otherwise.
+     * @return true if the withdrawal was successful, and false otherwise.
      */
     virtual bool withdraw(double amount);
 
     /**
-     * This method should be callled whenever a new year occurs to ensure
+     * This method should be called whenever a new year occurs to ensure
      * that any necessary modifications to the balance of this MoneyContainer can be performed.
      */
     virtual void nextYear();

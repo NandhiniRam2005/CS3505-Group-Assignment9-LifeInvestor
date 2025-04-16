@@ -40,12 +40,12 @@ public:
     /**
      * Pays part of this loan off, reducing its balance.
      * @param amount The amount to pay
-     * @return true if the amount was sucessfully paid, false if something went wrong, like paying a negative amount, the loan not being active, etc.
+     * @return true if the amount was successfully paid, false if something went wrong, like paying a negative amount, the loan not being active, etc.
      */
     bool deposit(double amount) override;
 
     /**
-     * This method should be callled whenever a new year occurs to ensure
+     * This method should be called whenever a new year occurs to ensure
      * that any necessary modifications to the balance of this Loan can be performed.
      */
     void nextYear() override;
@@ -78,7 +78,7 @@ public:
 
     /**
      * Activates / takes out this loan
-     * @return True if it was sucessfully activated, false it the loan is not available
+     * @return True if it was successfully activated, false it the loan is not available
      */
     bool activate();
 };
