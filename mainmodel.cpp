@@ -2,6 +2,10 @@
 #include <QtCore/qdebug.h>
 #include "quizhandler.h"
 #include <iostream>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
 /*
 The source file for MainModel.
 

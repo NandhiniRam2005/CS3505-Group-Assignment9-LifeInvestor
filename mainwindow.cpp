@@ -1178,5 +1178,9 @@ void MainWindow::lifeEventsConnections(MainModel *model)
     connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
     connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
 }
+
+void MainWindow::databaseConnections(MainModel *model){
+
+}
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

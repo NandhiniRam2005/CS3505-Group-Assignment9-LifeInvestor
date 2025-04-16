@@ -274,6 +274,13 @@ private:
      */
     void mainWindowValueUpdateConnections(MainModel *model);
 
+    /**
+     * Sets up the database connections for communicating with a database.
+     *
+     * @param model - a reference to the model used to make these connections.
+     */
+    void databaseConnections(MainModel *model);
+
 public slots:
 
     /**
