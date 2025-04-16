@@ -5,6 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setApplicationName("Life Investor");
 
     // Create a custom palette
     QPalette palette;
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
     MainWindow window(&model);
     QIcon icon(":///icons/icons/lifeInvestIcon.png");
     a.setWindowIcon(icon);
+    window.setWindowTitle("Life Investor");
     window.show();
     return a.exec();
 }
