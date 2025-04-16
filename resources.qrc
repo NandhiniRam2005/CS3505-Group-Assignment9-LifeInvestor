@@ -63,6 +63,9 @@
         <file>icons/deletedWorkFiles.png</file>
         <file>icons/loanFine.png</file>
         <file>icons/casinoBackground.jpg</file>
+        <file>icons/casinoIcon.png</file>
+        <file>icons/quizIcon.png</file>
+        <file>icons/loanIcon.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
