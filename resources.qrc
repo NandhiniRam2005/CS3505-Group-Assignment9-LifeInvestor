@@ -54,6 +54,10 @@
         <file>icons/breakLeg.png</file>
         <file>icons/plottingRaccoon.png</file>
         <file>icons/annoyedBill.png</file>
+        <file>icons/lostPhone.png</file>
+        <file>icons/onlineScam.png</file>
+        <file>icons/petSick.png</file>
+        <file>icons/basementFlooded.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
