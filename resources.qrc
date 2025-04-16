@@ -62,6 +62,7 @@
         <file>icons/bikeStolen.png</file>
         <file>icons/deletedWorkFiles.png</file>
         <file>icons/loanFine.png</file>
+        <file>icons/casinoBackground.jpg</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
@@ -75,5 +76,6 @@
         <file>gifs/stocks.gif</file>
         <file>gifs/piggy.gif</file>
         <file>gifs/shark.gif</file>
+        <file>gifs/cupSwap.gif</file>
     </qresource>
 </RCC>

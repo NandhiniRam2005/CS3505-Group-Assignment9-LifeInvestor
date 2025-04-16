@@ -474,7 +474,7 @@ V</string>
      </widget>
     </widget>
     <widget class="QWidget" name="Casino">
-     <widget class="QLabel" name="label_18">
+     <widget class="QLabel" name="casinoTitle">
       <property name="geometry">
        <rect>
         <x>380</x>
@@ -485,6 +485,9 @@ V</string>
       </property>
       <property name="text">
        <string>CASINO</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="casinoBackButton">
@@ -587,6 +590,94 @@ V</string>
        <string>$1000</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="cup1">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>180</y>
+        <width>81</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cup 1</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cup2">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>180</y>
+        <width>81</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cup 2</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cup3">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>180</y>
+        <width>81</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cup 3</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="shuffleSpot">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>140</y>
+        <width>561</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/gifs/gifs/cupSwap.gif</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="casinoBackground">
+      <property name="geometry">
+       <rect>
+        <x>-3</x>
+        <y>5</y>
+        <width>811</width>
+        <height>531</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/icons/icons/casinoBackground.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>casinoBackground</zorder>
+     <zorder>casinoTitle</zorder>
+     <zorder>casinoBackButton</zorder>
+     <zorder>gambleButton</zorder>
+     <zorder>cup1</zorder>
+     <zorder>cup2</zorder>
+     <zorder>cup3</zorder>
+     <zorder>shuffleSpot</zorder>
     </widget>
     <widget class="QWidget" name="quizInfo">
      <widget class="QLabel" name="backgroundQuizStart">
