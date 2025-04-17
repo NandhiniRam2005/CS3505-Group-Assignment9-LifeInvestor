@@ -599,14 +599,14 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
         }
         case 9:{
             quizCategory = QuizCategory::loans;
-            // QPixmap pixmap(":///icons/icons/loanApp.png");
+            // QPixmap pixmap(":///icons/icons/loanIcon.png");
             // ui->App2->setIcon(pixmap);
             ui->App2->setEnabled(true);
             break;
         }
         case 8:{
             quizCategory = QuizCategory::gambling;
-            // QPixmap pixmap(":///icons/icons/gamblingApp.png");
+            // QPixmap pixmap(":///icons/icons/casinoIcon.png");
             // ui->App6->setIcon(pixmap);
             break;
         }
