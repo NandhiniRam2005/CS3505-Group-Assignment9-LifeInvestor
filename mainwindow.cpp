@@ -1238,7 +1238,7 @@ void MainWindow::extraQuizesPageConnections(MainModel *model)
     connect(ui->App5, &QPushButton::clicked, model, &MainModel::handleExtraQuizRequest);
 
     connect(model, &MainModel::quizzesRemainingChanged, this, [this](int remaining) {
-        ui->quizRemains->setText("Bonus Quizzes: " + QString::number(remaining));
+        ui->quizRemains->setText("Extra Quizzes Remaining: " + QString::number(remaining));
     });
 
     connect(model, &MainModel::quizStarted, this, [this]() {
