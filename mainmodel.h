@@ -200,6 +200,19 @@ public slots:
      */
     void checkCup(int cupNumber);
 
+    /**
+     * Queries our database to get the leaderboard as a collection of strings. Eventually returns that to the view.
+     */
+    void getLeaderboard();
+
+    /**
+     * Called when the user attempts to save their name, score, and rank to our leaderboard database. Database uses Sqlite
+     *
+     * @param name - The name that should be stored in the database.
+     * @param rank - The rank the player recieved
+     */
+    void saveGame(QString name, QString rank);
+
 
 signals:
     /**
@@ -401,6 +414,23 @@ signals:
      * Emmitted when the items in the shop change
      */
     void shopItemPurchased(int index);
+
+    /*
+     * Alerts the view that the leaderboard should be displayed
+     *
+     * @param data - The data that should be displayed in the leaderboard box.
+     */
+    void showLeaderBoard(QVector<QString> data);
+
+    /*
+     * Alerts the view that the name provided in the save name input is invalid (no name or name longer than 9 chars).
+     */
+    void invalidName();
+
+    /*
+     * Alerts the view that the name score and credit was succesfully saved.
+     */
+    void saved();
 
 private:
     QuizHandler *quizHandler;

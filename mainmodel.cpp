@@ -519,3 +519,71 @@ void MainModel::checkCup(int cupNumber)
 void MainModel::endGame(QString reasonForEnd, QString imageName) {
     emit gameEnded(reasonForEnd, imageName);
 }
+
+void MainModel::getLeaderboard(){
+    if (QSqlDatabase::contains(QSqlDatabase::defaultConnection))
+    {
+        QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
+    }
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("scores.db");
+
+    if (!db.open()) {
+        std::cout << "Error: Could not open database -" << std::endl;
+        return;
+    }
+    QSqlQuery selection(db);
+    QVector<QString> data;
+    data.push_back("Name                    Score                    Rank");
+    if (selection.exec("Select name, credit, rank from scores order by score desc")){
+        while(selection.next()){
+            int nameLength = selection.value(0).toString().length();
+            int numberSpaces = 28 - nameLength;
+            QString spaces = "";
+            for(int i = 0; i < numberSpaces; i++){
+                spaces.append(" ");
+            }
+            QString row = selection.value(0).toString() + spaces + selection.value(1).toString() + spaces + selection.value(2).toString();
+            data.push_back(row);
+        }
+    }
+    db.close();
+    emit showLeaderBoard(data);
+}
+
+void MainModel::saveGame(QString name, QString rank){
+    if(name.length() > 9 || name.isEmpty()){
+        emit invalidName();
+        return;
+    }
+    // Removes the connection if it already exists.
+    if (QSqlDatabase::contains(QSqlDatabase::defaultConnection))
+    {
+        QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
+    }
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("scores.db");
+    if (!db.open()) {
+        std::cout << "Error: Could not open database -" << std::endl;
+        return;
+    }
+    QSqlQuery createTable(db);
+
+    if(!createTable.exec("CREATE TABLE IF NOT EXISTS scores (scoreId INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, credit INTEGER NOT NULL, rank TEXT NOT NULL)")){
+        std::cout<< "Error executing create table query" << std::endl;
+    }
+
+    // We protected from injection attacks so dont even try it lol
+    QString insertQuery = "INSERT INTO scores (name, credit, rank) VALUES (:name, :credit, :rank)";
+    QSqlQuery insertScore(db);
+    insertScore.prepare(insertQuery);
+    insertScore.bindValue(":name", name);
+    insertScore.bindValue(":score", creditScore);
+    insertScore.bindValue(":rank", rank);
+    if(!insertScore.exec()){
+        std::cout<< "Error executing insert query" << std::endl;
+    }
+    db.close();
+    emit saved();
+}
