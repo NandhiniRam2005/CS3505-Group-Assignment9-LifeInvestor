@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QRandomGenerator>
+#include <QDir>
 /*
 The source file for MainModel.
 
