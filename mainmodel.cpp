@@ -459,7 +459,7 @@ bool MainModel::purchaseShopItem(int index)
     if(!item.isPurchased() && currentMoney >= item.getCost()) {
         currentMoney -= item.getCost();
         item.setPurchased(true);
-        emit shopItemsChanged();
+        emit shopItemPurchased(index);
         emit updateBalance(currentMoney);
         emit netWorthChanged(calculateNetWorth());
         return true;

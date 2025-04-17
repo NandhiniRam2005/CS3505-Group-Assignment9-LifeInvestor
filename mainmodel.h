@@ -400,7 +400,7 @@ signals:
     /**
      * Emmitted when the items in the shop change
      */
-    void shopItemsChanged();
+    void shopItemPurchased(int index);
 
 private:
     QuizHandler *quizHandler;
