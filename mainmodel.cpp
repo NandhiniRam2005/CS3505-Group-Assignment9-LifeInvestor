@@ -499,6 +499,7 @@ void MainModel::startGamble()
         emit updateBalance(currentMoney);
         emit netWorthChanged(calculateNetWorth());
         int newScore = creditScore - 10;
+        creditScore = creditScore - 10;
         emit creditScoreChanged(newScore);
         emit shuffleStarted();
     }
