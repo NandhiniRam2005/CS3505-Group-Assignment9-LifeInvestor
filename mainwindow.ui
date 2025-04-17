@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1891,8 +1891,8 @@ QPushButton:disabled {
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>260</y>
+        <x>540</x>
+        <y>130</y>
         <width>221</width>
         <height>51</height>
        </rect>
@@ -1907,8 +1907,8 @@ QPushButton:disabled {
      <widget class="QTextEdit" name="nameBox">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>310</y>
+        <x>540</x>
+        <y>180</y>
         <width>211</width>
         <height>51</height>
        </rect>
@@ -1917,8 +1917,8 @@ QPushButton:disabled {
      <widget class="QPushButton" name="saveButton">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>370</y>
+        <x>540</x>
+        <y>240</y>
         <width>100</width>
         <height>32</height>
        </rect>
