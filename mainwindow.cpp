@@ -665,15 +665,15 @@ void MainWindow::gameEnded(QString reason, QString imageName) {
         ui->endCredit->setStyleSheet("QLabel {color: red;   font-weight: bold; font-size: 30px;}");
     }
 
-    if(credit > 1000){
+    if(credit >=850){
         rankToDisplay = "World Renowned Investing Expert";
         ui->rank->setText("RANK: World Renowned Investing Expert");
     }
-    else if(credit > 900){
+    else if(credit > 800){
         rankToDisplay = "Investing Mogul";
         ui->rank->setText("RANK: Investing Mogul");
     }
-    else if(credit > 820){
+    else if(credit > 775){
         rankToDisplay = "Investing Pro";
          ui->rank->setText("RANK: Investing Pro");
     }

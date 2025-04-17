@@ -206,7 +206,9 @@ void MainModel::depositToLoan(double amount, int loanNumber)
                         loans[loanNumber].getAvailable(),
                         loans[loanNumber].getActive(),
                         loans[loanNumber].getYearsLeft());
-        creditScore+=12;
+        if(loans[loanNumber].getBalance() == -10000){
+            creditScore+=100;
+        }
         if (creditScore > 850)
             creditScore = 850;
         emit creditScoreChanged(creditScore);
