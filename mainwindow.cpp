@@ -677,15 +677,15 @@ void MainWindow::gameEnded(QString reason, QString imageName) {
         rankToDisplay = "Investing Pro";
          ui->rank->setText("RANK: Investing Pro");
     }
-    else if(credit > 750){
+    else if(credit > 739){
         rankToDisplay = "Responsible Citizen";
         ui->rank->setText("RANK: Responsible Citizen");
     }
-    else if(credit > 700){
+    else if(credit > 670){
         rankToDisplay = "Average Citizen";
         ui->rank->setText("RANK: Average Citizen");
     }
-    else if(credit > 650){
+    else if(credit > 630){
         rankToDisplay = "Bad Investor";
         ui->rank->setText("RANK: Bad Investor");
     }
