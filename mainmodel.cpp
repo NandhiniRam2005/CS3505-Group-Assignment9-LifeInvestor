@@ -48,8 +48,10 @@ MainModel::MainModel(QObject *parent)
     stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
     stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
 
-    shopItems.append(ShopItem("Car Insurance", 300));
-    shopItems.append(ShopItem("Health Insurance", 500));
+    shopItems.append(ShopItem("Auto Insurance", 5000));
+    shopItems.append(ShopItem("Health Insurance", 7000));
+    shopItems.append(ShopItem("Pet Insurance", 2000));
+    shopItems.append(ShopItem("Home Insurance", 10000));
 
 }
 
@@ -446,9 +448,9 @@ bool MainModel::purchaseShopItem(int index)
         item.setPurchased(true);
         emit shopItemsChanged();
         emit updateBalance(currentMoney);
+        emit netWorthChanged(calculateNetWorth());
         return true;
     }
-
     return false;
 }
 

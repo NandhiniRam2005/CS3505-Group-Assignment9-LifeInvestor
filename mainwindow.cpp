@@ -63,6 +63,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     lifeEventsConnections(model);
 
+    shopItemsConnections(model);
+
     connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
 
 
@@ -1220,6 +1222,27 @@ void MainWindow::lifeEventsConnections(MainModel *model)
 
     connect(this, &MainWindow::requestLifeEvent, model, &MainModel::randomLifeEvent);
     connect(model, &MainModel::displayLifeEvent, this, &MainWindow::showLifeEvent);
+}
+
+void MainWindow::shopItemsConnections(MainModel *model)
+{
+    connect(ui->autoInsurance, &QPushButton::clicked, this, [=]() {
+        emit shopItemClicked(0);
+    });
+
+    connect(ui->healthInsurance, &QPushButton::clicked, this, [=]() {
+        emit shopItemClicked(1);
+    });
+
+    connect(ui->petInsurance, &QPushButton::clicked, this, [=]() {
+        emit shopItemClicked(2);
+    });
+
+    connect(ui->homeInsurance, &QPushButton::clicked, this, [=]() {
+        emit shopItemClicked(3);
+    });
+
+    connect(this, &MainWindow::shopItemClicked, model, &MainModel::purchaseShopItem);
 }
 
 void MainWindow::databaseConnections(MainModel *model){

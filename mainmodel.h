@@ -33,6 +33,14 @@ public:
     explicit MainModel(QObject *parent = nullptr);
 
 public slots:
+
+    /**
+     * Purchases a shop item
+     * @param index the item to purchase
+     * @return true if the item was successfully purchased, false otherwise
+     */
+    bool purchaseShopItem(int index);
+
     /**
      * Calculate and return the current net worth of the user
      * @return The current net worth of the user
@@ -423,13 +431,6 @@ private:
     void endGame(QString reasonForEnd, QString imageName);
 
     QVector<ShopItem> shopItems;
-
-    /**
-     * Purchases a shop item
-     * @param index the item to purchase
-     * @return true if the item was successfully purchased, false otherwise
-     */
-    bool purchaseShopItem(int index);
 
 };
 

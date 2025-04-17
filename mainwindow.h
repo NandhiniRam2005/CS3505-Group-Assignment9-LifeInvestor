@@ -286,6 +286,8 @@ private:
      */
     QMovie* cupMovie;
 
+    void shopItemsConnections(MainModel *model);
+
 public slots:
 
     /**
@@ -677,5 +679,7 @@ signals:
      * Asks the model for a life event.
      */
     void requestLifeEvent();
+
+    void shopItemClicked(int index);
 };
 #endif // MAINWINDOW_H
