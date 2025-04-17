@@ -79,10 +79,23 @@ double MainModel::calculateNetWorth()
 
 void MainModel::randomLifeEvent() {
     LifeEvent lifeEvent = this->lifeEventHandler->getRandomLifeEvent();
+    if (checkInsurance(lifeEvent.category)) {
+        lifeEvent.price = -75;
+    }
     emit displayLifeEvent(lifeEvent);
     currentMoney = currentMoney + lifeEvent.price;
     emit updateBalance(currentMoney);
     emit netWorthChanged(calculateNetWorth());
+}
+
+bool MainModel::checkInsurance(std::string category) {
+    for (ShopItem shopItem: shopItems) {
+        if (shopItem.getName() == category && shopItem.isPurchased()) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void MainModel::quizRequested(QuizCategory category, uint length)

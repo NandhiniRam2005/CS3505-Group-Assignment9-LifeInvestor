@@ -24,6 +24,9 @@ void LifeEventDisplay::showLifeEvent(LifeEvent lifeEvent) {
         ui->lifeEventPrice->setStyleSheet("QLabel { color: red; font-weight: bold; font-size: 30px; }");
     }
 
+    if (lifeEvent.price == -75) {
+        ui->lifeEventLabel->setText(QString::fromStdString("Covered by insurance"));
+    }
     ui->lifeEventPrice->setText(QString::number(lifeEvent.price));
     QPixmap pixmap(QString::fromStdString(lifeEvent.image));
 

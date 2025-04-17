@@ -25,6 +25,7 @@ struct LifeEvent
     int price;
     std::string type;
     std::string image;
+    std::string category;
 };
 
 class LifeEventHandler: public QObject

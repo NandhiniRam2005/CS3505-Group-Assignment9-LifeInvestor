@@ -32,6 +32,14 @@ class MainModel : public QObject
 public:
     explicit MainModel(QObject *parent = nullptr);
 
+    /**
+     * Checks whether insurance is purchased for that specific category
+     * @param category the type of insurance
+     * @return true if insurance is purchased; false otherwise
+     */
+    bool checkInsurance(std::string category);
+
+
 public slots:
 
     /**
@@ -191,6 +199,7 @@ public slots:
      * @param cupNumber - The cup to be checked
      */
     void checkCup(int cupNumber);
+
 
 signals:
     /**

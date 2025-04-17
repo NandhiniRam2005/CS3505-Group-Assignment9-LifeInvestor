@@ -22,6 +22,8 @@ void LifeEventHandler::loadAllLifeEvents() {
             specificLifeEvent.price = *event->get_as<int>("price");
             specificLifeEvent.type = *event->get_as<std::string>("type");
             specificLifeEvent.image = *event->get_as<std::string>("image");
+            specificLifeEvent.category = *event->get_as<std::string>("category");
+
             lifeEvents.push_back(specificLifeEvent);
         }
     }

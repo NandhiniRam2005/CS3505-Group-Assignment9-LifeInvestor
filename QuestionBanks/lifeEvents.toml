@@ -3,19 +3,21 @@ eventDesc = "You hit it big in Vegas and won $5000!"
 price = 5000
 type = "Good"
 image = ":///icons/icons/vegas-jackpot.png"
-
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "A distant relative left you a generous inheritance."
 price = 4000
 type = "Good"
 image = ":///icons/icons/relative.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "You sold an old collectible online for a high price."
 price = 1200
 type = "Good"
 image = ":///icons/icons/collectible.png"
+category = "N/A"
 
 
 [[goodEvents]]
@@ -23,160 +25,187 @@ eventDesc = "Your side hustle took off!"
 price = 2000
 type = "Good"
 image = ":///icons/icons/side-hustle.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "You received a government grant for your project."
 price = 3500
 type = "Good"
 image = ":///icons/icons/government-grant.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "You won a community raffle."
 price = 800
 type = "Good"
 image = ":///icons/icons/community - raffle.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "Your investments performed exceptionally well."
 price = 3000
 type = "Good"
 image = ":///icons/icons/investment-gain.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "You found a rare coin while hiking."
 price = 600
 type = "Good"
 image = ":///icons/icons/rareCoin.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "You earned a bonus at work."
 price = 1500
 type = "Good"
 image = ":///icons/icons/workBonus.png"
+category = "N/A"
 
 [[goodEvents]]
 eventDesc = "You were overcharged last year and got a big tax refund."
 price = 2500
 type = "Good"
 image = ":///icons/icons/tax-refund.png"
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You found a $10 bill in an old coat pocket."
 price = 10
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You sold a couple of unused items online."
 price = 100
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You got cash back from a store promotion."
 price = 10
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You paid for a parking ticket you forgot about."
 price = -50
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You grabbed takeout instead of cooking."
 price = -15
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You bought snacks during a late-night craving."
 price = -15
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You bought gifts for a friend's birthday."
 price = -30
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You picked up a short gig helping someone move."
 price = 40
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You borrowed a book instead of buying one."
 price = 0
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You finally watched a tutorial on how to take a shower."
 price = 0
 type = "Neutral"
 image = ""
+category = "N/A"
 
 [[badEvents]]
 eventDesc = "You fell down the stairs and broke your leg. Hospital fees!"
 price = -5000
 type = "Bad"
 image = ":///icons/icons/breakLeg.png"
+category = "Health Insurance"
 
 [[badEvents]]
 eventDesc = "Your car broke down and needed major repairs."
 price = -1800
 type = "Bad"
 image = ":///icons/icons/car-breakdown.png"
+category = "Auto Insurance"
 
 [[badEvents]]
 eventDesc = "You lost your phone and had to replace it."
 price = -1000
 type = "Bad"
 image = ":///icons/icons/lostPhone.png"
+category = "N/A"
 
 [[badEvents]]
 eventDesc = "You were scammed online."
 price = -1500
 type = "Bad"
 image = ":///icons/icons/onlineScam.png"
+category = "N/A"
 
 [[badEvents]]
 eventDesc = "Your pet got sick and needed urgent care."
 price = -1200
 type = "Bad"
 image = ":///icons/icons/petSick.png"
+category = "Pet Insurance"
 
 [[badEvents]]
 eventDesc = "Your basement flooded."
 price = -2000
 type = "Bad"
 image = ":///icons/icons/basementFlooded.png"
+category = "Home Insurance"
 
 [[badEvents]]
 eventDesc = "You broke a neighbor’s window playing catch."
 price = -300
 type = "Bad"
 image = ":///icons/icons/brokeWindow.png"
+category = "N/A"
 
 [[badEvents]]
 eventDesc = "Your bike was stolen."
 price = -450
 type = "Bad"
 image = ":///icons/icons/bikeStolen.png"
+category = "Auto Insurance"
 
 [[badEvents]]
 eventDesc = "You accidentally deleted important work and had to pay for recovery."
 price = -700
 type = "Bad"
 image = ":///icons/icons/deletedWorkFiles.png"
+category = "N/A"
 
 [[badEvents]]
 eventDesc = "You were fined for late loan payment."
 price = -600
 type = "Bad"
 image = ":///icons/icons/loanFine.png"
+category = "N/A"
 
