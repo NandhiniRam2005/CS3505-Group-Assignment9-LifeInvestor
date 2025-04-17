@@ -36,14 +36,14 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>430</y>
+        <y>420</y>
         <width>201</width>
         <height>71</height>
        </rect>
@@ -271,6 +271,39 @@ V</string>
        <string/>
       </property>
      </widget>
+     <widget class="QPushButton" name="leaderBoardButton">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>470</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-radius: 20px; 
+    padding: 5px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="resources.qrc">
+        <normaloff>:/icons/icons/leaderboard.png</normaloff>:/icons/icons/leaderboard.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>200</width>
+        <height>250</height>
+       </size>
+      </property>
+     </widget>
      <zorder>titleBackground</zorder>
      <zorder>littlefloorshadow</zorder>
      <zorder>wallet</zorder>
@@ -280,6 +313,87 @@ V</string>
      <zorder>startButton</zorder>
      <zorder>howToPlay</zorder>
      <zorder>pigGif</zorder>
+     <zorder>leaderBoardButton</zorder>
+    </widget>
+    <widget class="QWidget" name="leaderBoardPage">
+     <widget class="QPushButton" name="leaderBoardBackButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>470</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe Script</family>
+        <pointsize>-1</pointsize>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+        color: white;
+        background-color: blue;
+        border: 2px solid black;
+        border-radius: 15px; 
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    QPushButton:hover {
+        background-color: #45a049; 
+        border: 2px solid green;
+    }
+
+    QPushButton:pressed {
+        background-color: #388e3c; 
+        border: 2px solid #e6b800;
+    }
+
+    QPushButton:focus {
+        outline: none;
+    }</string>
+      </property>
+      <property name="text">
+       <string>&lt;~ BACK</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="leaderBoard">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>100</y>
+        <width>711</width>
+        <height>361</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>60</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>38</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>SCORES</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="quizEnd">
      <widget class="QLabel" name="endLabel">
@@ -4449,8 +4563,8 @@ QToolBox QWidget {
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>100</width>
-         <height>30</height>
+         <width>741</width>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">

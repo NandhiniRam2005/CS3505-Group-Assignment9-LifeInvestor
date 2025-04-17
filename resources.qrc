@@ -66,6 +66,7 @@
         <file>icons/casinoIcon.png</file>
         <file>icons/quizIcon.png</file>
         <file>icons/loanIcon.png</file>
+        <file>icons/leaderboard.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
