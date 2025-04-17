@@ -1243,6 +1243,18 @@ void MainWindow::shopItemsConnections(MainModel *model)
     });
 
     connect(this, &MainWindow::shopItemClicked, model, &MainModel::purchaseShopItem);
+
+    connect(model, &MainModel::shopItemPurchased, this, [=](int index) {
+        if (index == 0) {
+            ui->autoInsurance->setEnabled(false);
+        } else if (index == 1) {
+            ui->healthInsurance->setEnabled(false);
+        } else if (index == 2) {
+            ui->petInsurance->setEnabled(false);
+        } else {
+            ui->homeInsurance->setEnabled(false);
+        }
+    });
 }
 
 void MainWindow::databaseConnections(MainModel *model){
