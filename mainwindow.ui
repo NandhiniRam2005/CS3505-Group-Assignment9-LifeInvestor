@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1898,7 +1898,7 @@ QPushButton:disabled {
        </rect>
       </property>
       <property name="text">
-       <string>Would you like to save your score? Enter your name and hit submit!</string>
+       <string>Would you like to save your score? Enter your name and hit save!</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
@@ -1914,7 +1914,7 @@ QPushButton:disabled {
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="submitScoreButton">
+     <widget class="QPushButton" name="saveButton">
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -1924,7 +1924,7 @@ QPushButton:disabled {
        </rect>
       </property>
       <property name="text">
-       <string>Submit</string>
+       <string>Save </string>
       </property>
      </widget>
     </widget>

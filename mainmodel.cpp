@@ -535,7 +535,7 @@ void MainModel::getLeaderboard(){
     QSqlQuery selection(db);
     QVector<QString> data;
     data.push_back("Name                    Score                    Rank");
-    if (selection.exec("Select name, credit, rank from scores order by score desc")){
+    if (selection.exec("Select name, credit, rank from scores order by credit desc")){
         while(selection.next()){
             int nameLength = selection.value(0).toString().length();
             int numberSpaces = 28 - nameLength;
@@ -546,6 +546,9 @@ void MainModel::getLeaderboard(){
             QString row = selection.value(0).toString() + spaces + selection.value(1).toString() + spaces + selection.value(2).toString();
             data.push_back(row);
         }
+    }
+    else{
+        qDebug() << "Error occurred while selecting data RIP";
     }
     db.close();
     emit showLeaderBoard(data);
@@ -579,7 +582,7 @@ void MainModel::saveGame(QString name, QString rank){
     QSqlQuery insertScore(db);
     insertScore.prepare(insertQuery);
     insertScore.bindValue(":name", name);
-    insertScore.bindValue(":score", creditScore);
+    insertScore.bindValue(":credit", creditScore);
     insertScore.bindValue(":rank", rank);
     if(!insertScore.exec()){
         std::cout<< "Error executing insert query" << std::endl;

@@ -142,6 +142,10 @@ private:
      * The length of the quiz which should be requested from the model.
      */
     uint quizLength;
+    /**
+     * The current rank being displayed on the board.
+     */
+    QString rankToDisplay;
 
     /**
      * Represents if the user has clicked start once in the view. Not to be stored in the model
@@ -515,6 +519,33 @@ public slots:
      */
     void updateCreditScore(int score);
 
+    /**
+     * This method contains code that should occur once the save button has been clicked.
+     */
+    void saveClicked();
+
+    /**
+     * Displays and updates the leaderboard textbrowser with given information.
+     *
+     * @param data - The data to be displayed in the textbrowser
+     */
+    void displayLeaderboard(QVector<QString> data);
+
+    /**
+     * Displays to the user that the name they inputted was invalid.
+     */
+    void displayInvalidName();
+
+    /**
+     * Displays to the user that their save attempt was successful/
+     */
+    void displaySaveSuccess();
+
+    /**
+     * Goes back to the start screen.
+     */
+    void leaderBoardBack();
+
 signals:
 
     /**
@@ -681,5 +712,14 @@ signals:
     void requestLifeEvent();
 
     void shopItemClicked(int index);
+
+    /**
+     * Signal to send to model causing it to attempt saving. Signal is needed to ensure information is passed along
+     * a button click
+     *
+     * @param name - The name of the current player.
+     * @param rank - the rank of the player.
+     */
+    void sendName(QString name, QString rank);
 };
 #endif // MAINWINDOW_H

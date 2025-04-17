@@ -65,6 +65,8 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     shopItemsConnections(model);
 
+    databaseConnections(model);
+
     connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
 
 
@@ -664,32 +666,39 @@ void MainWindow::gameEnded(QString reason, QString imageName) {
     }
 
     if(credit > 1000){
+        rankToDisplay = "World Renowned Investing Expert";
         ui->rank->setText("RANK: World Renowned Investing Expert");
     }
     else if(credit > 900){
+        rankToDisplay = "Investing Mogul";
         ui->rank->setText("RANK: Investing Mogul");
     }
     else if(credit > 820){
+        rankToDisplay = "Investing Pro";
          ui->rank->setText("RANK: Investing Pro");
     }
     else if(credit > 750){
+        rankToDisplay = "Responsible Citizen";
         ui->rank->setText("RANK: Responsible Citizen");
     }
     else if(credit > 700){
+        rankToDisplay = "Average Citizen";
         ui->rank->setText("RANK: Average Citizen");
     }
     else if(credit > 650){
-        ui->rank->setText("RANK: Bad investor");
+        rankToDisplay = "Bad Investor";
+        ui->rank->setText("RANK: Bad Investor");
     }
     else if(credit > 300){
+        rankToDisplay = "Gambler";
         ui->rank->setText("RANK: Gambler");
     }
     else{
+        rankToDisplay = "Nandhini";
         ui->rank->setText("RANK: Nandhini");
     }
 
     ui->rank->adjustSize();
-
     QPixmap pixmap(":///icons/icons/" + imageName);
     ui->endImage->setPixmap(pixmap);
 }
@@ -751,6 +760,35 @@ void MainWindow::showWarning(QString warning, QString image){
     warningDisplay.showWarning(warning, image);
 }
 
+void MainWindow::saveClicked(){
+    emit sendName(ui->nameBox->toPlainText(), rankToDisplay);
+}
+
+void MainWindow::displayLeaderboard(QVector<QString> data){
+    QString textToDisplay;
+    foreach (QString row, data) {
+        textToDisplay.append(row + "\n");
+    }
+    ui->leaderBoard->setText(textToDisplay);
+    ui->stackedWidget->setCurrentWidget(ui->leaderBoardPage);
+}
+
+void MainWindow::displayInvalidName(){
+    ui->nameBox->setText("");
+    ui->nameBox->setPlaceholderText("Name is invalid try again");
+}
+
+void MainWindow::displaySaveSuccess(){
+    ui->nameBox->setPlaceholderText("Saved Successfully!");
+    ui->nameBox->setText("");
+    ui->nameBox->setReadOnly(true);
+    ui->saveButton->setEnabled(false);
+}
+
+void MainWindow::leaderBoardBack(){
+    ui->stackedWidget->setCurrentWidget(ui->Start);
+}
+
 // CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void MainWindow::generalUISetup()
@@ -793,6 +831,7 @@ void MainWindow::generalUISetup()
     ui->loan2PaymentInput->setValidator(decimalValidator);
 
     lifeEventShown = true;
+    rankToDisplay = "";
 }
 
 void MainWindow::setUpGifs()
@@ -1259,6 +1298,13 @@ void MainWindow::shopItemsConnections(MainModel *model)
 
 void MainWindow::databaseConnections(MainModel *model){
 
+    connect(ui->saveButton, &QPushButton::clicked, this, &MainWindow::saveClicked);
+    connect(ui->leaderBoardButton, &QPushButton::clicked, model, &MainModel::getLeaderboard);
+    connect(model, &MainModel::showLeaderBoard, this, &MainWindow::displayLeaderboard);
+    connect(model, &MainModel::invalidName, this, &MainWindow::displayInvalidName);
+    connect(model, &MainModel::saved, this, &MainWindow::displaySaveSuccess);
+    connect(this, &MainWindow::sendName, model, &MainModel::saveGame);
+    connect(ui->leaderBoardBackButton, &QPushButton::clicked, this, &MainWindow::leaderBoardBack);
 }
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
