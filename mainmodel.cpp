@@ -538,7 +538,10 @@ void MainModel::getLeaderboard(){
     }
     QSqlQuery selection(db);
     QVector<QString> data;
-    data.push_back("Name                    Score                    Rank");
+    QVector<QString> names;
+    QVector<QString> credit;
+    QVector<QString> rank;
+    data.push_back("Name                    Credit                    Rank");
     if (selection.exec("Select name, credit, rank from scores order by credit desc")){
         while(selection.next()){
             int nameLength = selection.value(0).toString().length();
@@ -547,15 +550,18 @@ void MainModel::getLeaderboard(){
             for(int i = 0; i < numberSpaces; i++){
                 spaces.append(" ");
             }
-            QString row = selection.value(0).toString() + spaces + selection.value(1).toString() + spaces + selection.value(2).toString();
-            data.push_back(row);
+            names.push_back(selection.value(0).toString());
+            credit.push_back(selection.value(1).toString());
+            rank.push_back(selection.value(2).toString());
+            // QString row = selection.value(0).toString() + spaces + selection.value(1).toString() + spaces + selection.value(2).toString();
+            // data.push_back(row);
         }
     }
     else{
         qDebug() << "Error occurred while selecting data RIP";
     }
     db.close();
-    emit showLeaderBoard(data);
+    emit showLeaderBoard(names, credit, rank);
 }
 
 void MainModel::saveGame(QString name, QString rank){

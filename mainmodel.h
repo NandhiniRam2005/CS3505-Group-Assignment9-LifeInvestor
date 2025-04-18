@@ -420,7 +420,7 @@ signals:
      *
      * @param data - The data that should be displayed in the leaderboard box.
      */
-    void showLeaderBoard(QVector<QString> data);
+    void showLeaderBoard(QVector<QString> names, QVector<QString> credit, QVector<QString> rank);
 
     /*
      * Alerts the view that the name provided in the save name input is invalid (no name or name longer than 9 chars).

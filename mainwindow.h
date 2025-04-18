@@ -529,7 +529,7 @@ public slots:
      *
      * @param data - The data to be displayed in the textbrowser
      */
-    void displayLeaderboard(QVector<QString> data);
+    void displayLeaderboard(QVector<QString> names, QVector<QString> credit, QVector<QString> rank);
 
     /**
      * Displays to the user that the name they inputted was invalid.
