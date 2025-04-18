@@ -383,7 +383,7 @@ void MainModel::nextYear()
     else{
         yearsBeingBroke = 0;
     }
-    if(yearsBeingBroke > 3){
+    if(yearsBeingBroke > 0){
         endGame("You’ve been broke for so long (3 years), a raccoon claimed your identity and is doing better than you.", "broke.png");
         gameOver = true;
     }
