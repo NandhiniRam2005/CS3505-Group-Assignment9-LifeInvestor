@@ -72,6 +72,11 @@
         <file>icons/parkingTicket.png</file>
         <file>icons/takeout.png</file>
         <file>icons/cashback.png</file>
+        <file>icons/gift.png</file>
+        <file>icons/lateNightCravings.png</file>
+        <file>icons/move.png</file>
+        <file>icons/basketball.png</file>
+        <file>icons/borrowBook.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>

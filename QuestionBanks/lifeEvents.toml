@@ -108,35 +108,35 @@ category = "N/A"
 eventDesc = "You bought snacks during a late-night craving."
 price = -15
 type = "Neutral"
-image = ""
+image = ":///icons/icons/lateNightCravings.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You bought gifts for a friend's birthday."
 price = -30
 type = "Neutral"
-image = ""
+image = ":///icons/icons/gift.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You picked up a short gig helping someone move."
 price = 40
 type = "Neutral"
-image = ""
+image = ":///icons/icons/move.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You borrowed a book instead of buying one."
 price = 0
 type = "Neutral"
-image = ""
+image = ":///icons/icons/borrowBook.png"
 category = "N/A"
 
 [[neutralEvents]]
-eventDesc = "You finally watched a tutorial on how to take a shower."
-price = 0
+eventDesc = "You created a basketball team and joined a tournament."
+price = -50
 type = "Neutral"
-image = ""
+image = ":///icons/icons/basketball.png"
 category = "N/A"
 
 [[badEvents]]

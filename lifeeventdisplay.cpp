@@ -14,7 +14,8 @@ LifeEventDisplay::~LifeEventDisplay()
 }
 
 void LifeEventDisplay::showLifeEvent(LifeEvent lifeEvent) {
-    ui->lifeEventLabel->setText(QString::fromStdString(lifeEvent.text));
+
+    // ui->lifeEventLabel->setText(QString::fromStdString(lifeEvent.text));
 
     if (lifeEvent.type == "Good") {
         ui->lifeEventPrice->setStyleSheet("QLabel { color: #85bb65; font-weight: bold; font-size: 30px; }");
@@ -26,6 +27,8 @@ void LifeEventDisplay::showLifeEvent(LifeEvent lifeEvent) {
 
     if (lifeEvent.price == -75) {
         ui->lifeEventLabel->setText(QString::fromStdString("Covered by insurance"));
+
+
     }
     ui->lifeEventPrice->setText(QString::number(lifeEvent.price));
     QPixmap pixmap(QString::fromStdString(lifeEvent.image));
