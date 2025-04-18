@@ -379,9 +379,9 @@ V</string>
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>50</x>
         <y>60</y>
-        <width>231</width>
+        <width>721</width>
         <height>41</height>
        </rect>
       </property>
@@ -392,6 +392,9 @@ V</string>
       </property>
       <property name="text">
        <string>SCORES</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
      <widget class="QTextBrowser" name="leaderBoardRanks">

@@ -769,7 +769,17 @@ void MainWindow::displayLeaderboard(QVector<QString> names, QVector<QString> cre
     foreach (QString row, names) {
         textToDisplay.append(row + "\n");
     }
-    ui->leaderBoard->setText(textToDisplay);
+    ui->leaderBoardNames->setText(textToDisplay);
+    textToDisplay = "";
+    foreach (QString row, credit) {
+        textToDisplay.append(row + "\n");
+    }
+    ui->leaderBoardCredits->setText(textToDisplay);
+    textToDisplay = "";
+    foreach (QString row, rank) {
+        textToDisplay.append(row + "\n");
+    }
+    ui->leaderBoardRanks->setText(textToDisplay);
     ui->stackedWidget->setCurrentWidget(ui->leaderBoardPage);
 }
 
