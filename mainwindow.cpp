@@ -764,9 +764,9 @@ void MainWindow::saveClicked(){
     emit sendName(ui->nameBox->toPlainText(), rankToDisplay);
 }
 
-void MainWindow::displayLeaderboard(QVector<QString> data){
+void MainWindow::displayLeaderboard(QVector<QString> names, QVector<QString> credit, QVector<QString> rank){
     QString textToDisplay;
-    foreach (QString row, data) {
+    foreach (QString row, names) {
         textToDisplay.append(row + "\n");
     }
     ui->leaderBoard->setText(textToDisplay);
