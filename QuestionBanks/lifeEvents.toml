@@ -73,35 +73,35 @@ category = "N/A"
 eventDesc = "You found a $10 bill in an old coat pocket."
 price = 10
 type = "Neutral"
-image = ""
+image = ":///icons/icons/foundMoneyCoat.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You sold a couple of unused items online."
 price = 100
 type = "Neutral"
-image = ""
+image = ":///icons/icons/soldOnline.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You got cash back from a store promotion."
 price = 10
 type = "Neutral"
-image = ""
+image = ":///icons/icons/cashBack.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You paid for a parking ticket you forgot about."
 price = -50
 type = "Neutral"
-image = ""
+image = ":///icons/icons/parkingTicket.png"
 category = "N/A"
 
 [[neutralEvents]]
 eventDesc = "You grabbed takeout instead of cooking."
 price = -15
 type = "Neutral"
-image = ""
+image = ":///icons/icons/takeout.png"
 category = "N/A"
 
 [[neutralEvents]]
