@@ -23,37 +23,8 @@ April 22, 2025
 MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {
-    quizHandler = new QuizHandler(this);
-    lifeEventHandler = new LifeEventHandler(this);
 
-    currentMoney = 0;
-    creditScore = 650;
-    currentYear = 1;
-    tempYear = 1;
-    yearlyBills = 500;
-
-    savingsAccount = new SavingsAccount(0.004);
-
-    //checkingAccount = new MoneyContainer();
-
-    cdAccounts.push_back(CDAccount(0.035, 2, 500));
-    cdAccounts.push_back(CDAccount(0.040, 4, 750));
-    cdAccounts.push_back(CDAccount(0.045, 5, 1000));
-
-    loans.push_back(Loan(0.36, 10000, 0, 5));
-    loans.push_back(Loan(0.067, 10000, 750, 7));
-    loans[0].setAvailable(creditScore);
-    loans[1].setAvailable(creditScore);
-
-    stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
-    stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
-    stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
-
-    shopItems.append(ShopItem("Auto Insurance", 5000));
-    shopItems.append(ShopItem("Health Insurance", 7000));
-    shopItems.append(ShopItem("Pet Insurance", 2000));
-    shopItems.append(ShopItem("Home Insurance", 10000));
-
+    restartGame();
 }
 
 double MainModel::calculateNetWorth()
@@ -599,4 +570,52 @@ void MainModel::saveGame(QString name, QString rank){
     }
     db.close();
     emit saved();
+}
+
+void MainModel::restartGame(){
+    std::cout<<"resetting"<< std::endl;
+
+    if(quizHandler != nullptr){
+        delete quizHandler;
+    }
+    if(lifeEventHandler != nullptr){
+        delete lifeEventHandler;
+    }
+    if(savingsAccount != nullptr){
+        delete savingsAccount;
+    }
+
+    quizHandler = new QuizHandler(this);
+    lifeEventHandler = new LifeEventHandler(this);
+
+    currentMoney = 0;
+    creditScore = 650;
+    currentYear = 1;
+    tempYear = 1;
+    yearlyBills = 500;
+
+    savingsAccount = new SavingsAccount(0.004);
+
+    cdAccounts.clear();
+    cdAccounts.push_back(CDAccount(0.035, 2, 500));
+    cdAccounts.push_back(CDAccount(0.040, 4, 750));
+    cdAccounts.push_back(CDAccount(0.045, 5, 1000));
+
+    loans.clear();
+    loans.push_back(Loan(0.36, 10000, 0, 5));
+    loans.push_back(Loan(0.067, 10000, 750, 7));
+    loans[0].setAvailable(creditScore);
+    loans[1].setAvailable(creditScore);
+
+    stocks.clear();
+    stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
+    stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
+    stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
+
+    shopItems.clear();
+    shopItems.append(ShopItem("Auto Insurance", 5000));
+    shopItems.append(ShopItem("Health Insurance", 7000));
+    shopItems.append(ShopItem("Pet Insurance", 2000));
+    shopItems.append(ShopItem("Home Insurance", 10000));
+
 }

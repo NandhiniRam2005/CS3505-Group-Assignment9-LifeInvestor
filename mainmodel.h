@@ -213,6 +213,11 @@ public slots:
      */
     void saveGame(QString name, QString rank);
 
+    /**
+     * Resets the game state
+     */
+    void restartGame();
+
 
 signals:
     /**
@@ -433,8 +438,8 @@ signals:
     void saved();
 
 private:
-    QuizHandler *quizHandler;
-    LifeEventHandler *lifeEventHandler;
+    QuizHandler *quizHandler = nullptr;
+    LifeEventHandler *lifeEventHandler = nullptr;
 
     double currentMoney;
     int creditScore;
@@ -446,9 +451,9 @@ private:
     int correctCup = -1;
     bool isGamblingActive = false;
 
-    QWidget *currentWidget;
+    QWidget *currentWidget = nullptr;
 
-    SavingsAccount *savingsAccount;
+    SavingsAccount *savingsAccount = nullptr;
 
     QVector<CDAccount> cdAccounts;
 

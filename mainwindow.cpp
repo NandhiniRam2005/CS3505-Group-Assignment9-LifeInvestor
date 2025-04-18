@@ -69,6 +69,9 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
 
+    connect(ui->resetGameButton, &QPushButton::clicked, this, &MainWindow::restartGame);
+    connect(this, &MainWindow::resetGame, model, &MainModel::restartGame);
+
 
     //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
@@ -1315,6 +1318,11 @@ void MainWindow::databaseConnections(MainModel *model){
     connect(model, &MainModel::saved, this, &MainWindow::displaySaveSuccess);
     connect(this, &MainWindow::sendName, model, &MainModel::saveGame);
     connect(ui->leaderBoardBackButton, &QPushButton::clicked, this, &MainWindow::leaderBoardBack);
+}
+void MainWindow::restartGame(){
+    ui->stackedWidget->setCurrentWidget(ui->Start);
+    emit resetGame();
+    generalUISetup();
 }
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

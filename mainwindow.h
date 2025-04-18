@@ -498,6 +498,11 @@ public slots:
     void gameEnded(QString reason, QString imageName);
 
     /**
+     * handles the logic for restarting the game
+     */
+    void restartGame();
+
+    /**
      * Displays a new life event.
      *
      * @param lifeEvent - The life event to display.
@@ -721,5 +726,10 @@ signals:
      * @param rank - the rank of the player.
      */
     void sendName(QString name, QString rank);
+
+    /**
+     * Emitted when the game needs to restart
+     */
+    void resetGame();
 };
 #endif // MAINWINDOW_H
