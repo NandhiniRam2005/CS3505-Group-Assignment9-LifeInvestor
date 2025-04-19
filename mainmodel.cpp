@@ -1,13 +1,3 @@
-#include "mainmodel.h"
-#include <QtCore/qdebug.h>
-#include "quizhandler.h"
-#include <iostream>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QDebug>
-#include <QRandomGenerator>
-#include <QDir>
 /*
 The source file for MainModel.
 
@@ -18,8 +8,22 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#include "mainmodel.h"
+#include <QtCore/qdebug.h>
+#include "quizhandler.h"
+#include <iostream>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+#include <QRandomGenerator>
+#include <QDir>
+
 MainModel::MainModel(QObject *parent)
     : QObject{parent}
 {
@@ -33,8 +37,6 @@ MainModel::MainModel(QObject *parent)
     yearlyBills = 500;
 
     savingsAccount = new SavingsAccount(0.004);
-
-    //checkingAccount = new MoneyContainer();
 
     cdAccounts.push_back(CDAccount(0.035, 2, 500));
     cdAccounts.push_back(CDAccount(0.040, 4, 750));
@@ -69,7 +71,7 @@ double MainModel::calculateNetWorth()
     for (Stock stock : stocks)
         total += stock.getMoneyBalance();
 
-    // Only include ACTIVE loans
+    // Only includes acrive loans
     for (Loan loan : loans) {
         if (loan.getActive()) {
             total += loan.getBalance();
@@ -227,16 +229,6 @@ void MainModel::withdrawFromSavings(double amount)
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-/*void MainModel::withdrawFromChecking(double amount)
-{
-    if (checkingAccount->withdraw(amount)) {
-        currentMoney += amount;
-        emit updateBalance(currentMoney);
-        emit updateChecking(checkingAccount->getBalance());
-    } else
-        emit showErrorMessage("Input amount cannot be withdrawn");
-}*/
-
 void MainModel::withdrawFromCD(int cdNumber)
 {
     double amount = cdAccounts[cdNumber].getBalance();
@@ -319,9 +311,6 @@ void MainModel::nextYear()
     newTotals.push_back(savingsAccount->getBalance());
     emit updateSavings(savingsAccount->getBalance(), savingsAccount->getInterestRate());
 
-    //initialTotals.push_back(checkingAccount->getBalance());
-    //newTotals.push_back(checkingAccount->getBalance());
-
     initialCounter = 0;
     newCounter = 0;
     for (int i = 0; i < cdAccounts.count(); i++) {
@@ -400,7 +389,6 @@ void MainModel::nextYear()
         gameOver = true;
     }
 
-    // DONE SO YOU CAN SEE BOTH ENDINGS (LOAN overdue and broke) I want broke to only happen if you refuse to take out loans and such...
     if(currentMoney < 0){
         yearsBeingBroke++;
         if(yearsBeingBroke == 3 && !gameOver){
@@ -553,8 +541,6 @@ void MainModel::getLeaderboard(){
             names.push_back(selection.value(0).toString());
             credit.push_back(selection.value(1).toString());
             rank.push_back(selection.value(2).toString());
-            // QString row = selection.value(0).toString() + spaces + selection.value(1).toString() + spaces + selection.value(2).toString();
-            // data.push_back(row);
         }
     }
     else{
@@ -569,6 +555,7 @@ void MainModel::saveGame(QString name, QString rank){
         emit invalidName();
         return;
     }
+
     // Removes the connection if it already exists.
     if (QSqlDatabase::contains(QSqlDatabase::defaultConnection))
     {
@@ -587,7 +574,7 @@ void MainModel::saveGame(QString name, QString rank){
         std::cout<< "Error executing create table query" << std::endl;
     }
 
-    // We protected from injection attacks so dont even try it lol
+    // protected from injection attacks
     QString insertQuery = "INSERT INTO scores (name, credit, rank) VALUES (:name, :credit, :rank)";
     QSqlQuery insertScore(db);
     insertScore.prepare(insertQuery);

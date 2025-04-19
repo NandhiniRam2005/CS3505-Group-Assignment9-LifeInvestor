@@ -1,3 +1,19 @@
+/*
+The source file for StartScreenView.
+
+This class represents the start screen of the application, including interactive
+money bag physics elements using the Box2D engine. It handles user interaction,
+physics simulation, and rendering.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "startscreenview.h"
 #include <QPainter>
 #include <QMouseEvent>
@@ -97,7 +113,6 @@ void StartScreenView::paintEvent(QPaintEvent *) {
     QPixmap moneyBagPixmap(":/icons/icons/moneyBag.png");
 
     if (moneyBagPixmap.isNull()) {
-        // Fallback: draw a simple ellipse if pixmap not found
         painter.setBrush(Qt::yellow);
         painter.setPen(Qt::darkYellow);
         for (b2Body* bag : moneyBags) {
@@ -110,21 +125,13 @@ void StartScreenView::paintEvent(QPaintEvent *) {
         for (b2Body* bag : moneyBags) {
             b2Vec2 pos = bag->GetPosition();
             float size = 2.67f * scale;
-            float angle = bag->GetAngle() * (180.0f / b2_pi); // Convert radians to degrees
+            float angle = bag->GetAngle() * (180.0f / b2_pi);
 
-            // Save the current painter state
             painter.save();
-
-            // Translate to the center of the money bag
             painter.translate(pos.x * scale, pos.y * scale);
-            // Rotate the painter by the body's angle
             painter.rotate(angle);
-
-            // Draw the money bag pixmap centered at the origin.
             QRect rect(-size/2, -size/2, size, size);
             painter.drawPixmap(rect, moneyBagPixmap);
-
-            // Restore the painter's state for the next drawing operation.
             painter.restore();
         }
     }
@@ -132,7 +139,6 @@ void StartScreenView::paintEvent(QPaintEvent *) {
 
 void StartScreenView::mousePressEvent(QMouseEvent *event)
 {
-    // Convert the mouse position to physics world coordinates.
     b2Vec2 mousePos(event->pos().x() / scale, event->pos().y() / scale);
 
     // Check each money bag to see if it was clicked.
@@ -140,7 +146,6 @@ void StartScreenView::mousePressEvent(QMouseEvent *event)
         if (bag->GetFixtureList() && bag->GetFixtureList()->TestPoint(mousePos)) {
             dragging = true;
             draggedBag = bag;
-            // Initialize drag positions.
             lastDragPos = mousePos;
             prevDragPos = mousePos;
             draggedBag->SetAwake(false);
@@ -155,10 +160,8 @@ void StartScreenView::mouseMoveEvent(QMouseEvent *event)
 {
     if (dragging && draggedBag) {
         b2Vec2 mousePos(event->pos().x() / scale, event->pos().y() / scale);
-        // Record the previous drag position before updating.
         prevDragPos = lastDragPos;
         lastDragPos = mousePos;
-        // Update the money bag's position to the current mouse position.
         draggedBag->SetTransform(mousePos, 0);
         event->accept();
     } else {
@@ -170,10 +173,7 @@ void StartScreenView::mouseReleaseEvent(QMouseEvent *event)
 {
     if (dragging && draggedBag) {
         dragging = false;
-        draggedBag->SetAwake(true);
-        // Compute the velocity based on the difference between the last two positions.
         b2Vec2 velocity = lastDragPos - prevDragPos;
-        // Apply a scaling factor to enhance or reduce the throwing strength.
         draggedBag->SetLinearVelocity(8.0f * velocity);
         draggedBag = nullptr;
         event->accept();
@@ -182,7 +182,14 @@ void StartScreenView::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
-// Lifecycle management: When shown, hidden, or resized, update the physics world.
-void StartScreenView::showEvent(QShowEvent *) { initializePhysics(); }
-void StartScreenView::hideEvent(QHideEvent *) { cleanupPhysics(); }
-void StartScreenView::resizeEvent(QResizeEvent *) { initializePhysics(); }
+void StartScreenView::showEvent(QShowEvent *) {
+    initializePhysics();
+}
+
+void StartScreenView::hideEvent(QHideEvent *) {
+    cleanupPhysics();
+}
+
+void StartScreenView::resizeEvent(QResizeEvent *) {
+    initializePhysics();
+}

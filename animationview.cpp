@@ -1,3 +1,18 @@
+/*
+The source file for animationView.
+
+These classes are responsible for rendering and managing
+confetti and rain animations using the Box2D physics engine.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan
+Jake Heairld & Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "animationview.h"
 #include <QPainter>
 #include <QRandomGenerator>

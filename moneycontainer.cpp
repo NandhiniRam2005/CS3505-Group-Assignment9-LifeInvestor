@@ -1,3 +1,19 @@
+/*
+The source file for MoneyContainer.
+
+This class represents some kind of thing that can hold money in the LifeInvesting application.
+It has a balance, which can be changed by depositing or withdrawing, and the value can also change
+year-to-year through the nextYear method.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "moneycontainer.h"
 #include <cmath>
 

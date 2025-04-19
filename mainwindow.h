@@ -9,6 +9,8 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
 
@@ -204,6 +206,13 @@ private:
     void withdrawingConnectionsWindowToModel(MainModel *model);
 
     /**
+     * Connections for transitioning from start screen to teh main game screen's labels, warnings, misc/etc.
+     *
+     * @param model - a reference to the model used to make these connections.
+     */
+    void startToGameScreenTransitionsConnections(MainModel *model);
+
+    /**
      * Connections for buying stock.
      */
     void buyingStockUIConnections();
@@ -367,9 +376,8 @@ public slots:
      * Displays updates to the savings display.
      *
      * @param newBalance - The new savings amount.
-     * @param interestRate - The rate of interest on the account.
      */
-    void updateSavings(double newBalance, double interestRate);
+    void updateSavings(double newBalance);
 
     /**
      * Updates the cd display to display new values.
@@ -387,14 +395,6 @@ public slots:
                   int termlength,
                   double minimumDeposit,
                   int yearsLeft);
-
-    /**
-     * Updates a specific stock in the view
-     *
-     * @param stockNumber - The specific stock
-     * @param newBalance - The new amount of money invested in the stock.
-     */
-    void updateStock(int stockNumber, double newBalance);
 
     /**
      * Updates all stock graphs to reflect growth/fall.

@@ -1,4 +1,5 @@
 /*
+
 The header file for QuizHandler.
 
 This class parses quizzes from the Question Bank toml files that they are stored in. It will randomly generate quizzes from
@@ -8,6 +9,8 @@ to the question and an explanation for why the answer is correct. Instance metho
 By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
 
 April 22, 2025
 */
