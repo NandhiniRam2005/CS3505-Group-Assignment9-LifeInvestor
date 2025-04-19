@@ -1,6 +1,3 @@
-#ifndef MONEYCONTAINER_H
-#define MONEYCONTAINER_H
-
 /*
 The header file for MoneyContainer.
 
@@ -14,6 +11,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef MONEYCONTAINER_H
+#define MONEYCONTAINER_H
+
 class MoneyContainer
 {
 protected:
@@ -54,4 +55,4 @@ public:
     virtual void nextYear();
 };
 
-#endif // MONEYCONTAINER_H
+#endif

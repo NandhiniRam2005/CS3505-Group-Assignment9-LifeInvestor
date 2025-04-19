@@ -1,5 +1,3 @@
-#ifndef STOCK_H
-#define STOCK_H
 /*
 The header file for Stock.
 
@@ -13,6 +11,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef STOCK_H
+#define STOCK_H
+
 #include <QVector>
 #include "moneycontainer.h"
 
@@ -49,4 +51,4 @@ public:
     double getMoneyBalance();
 };
 
-#endif // STOCK_H
+#endif

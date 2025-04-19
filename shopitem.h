@@ -1,5 +1,3 @@
-#ifndef SHOPITEM_H
-#define SHOPITEM_H
 /*
 The header file for ShopItem.
 
@@ -12,6 +10,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef SHOPITEM_H
+#define SHOPITEM_H
+
 #include <QObject>
 
 class ShopItem
@@ -50,4 +52,4 @@ private:
     bool purchased;
 };
 
-#endif // SHOPITEM_H
+#endif

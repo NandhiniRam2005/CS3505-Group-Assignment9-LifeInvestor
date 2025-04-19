@@ -1,5 +1,3 @@
-#ifndef CDACCOUNT_H
-#define CDACCOUNT_H
 /*
 The header file for CDAccount.
 
@@ -12,6 +10,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef CDACCOUNT_H
+#define CDACCOUNT_H
+
 #include "moneycontainer.h"
 
 class CDAccount : public MoneyContainer
@@ -72,4 +74,4 @@ public:
     double getMinimumDeposit();
 };
 
-#endif // CDACCOUNT_H
+#endif

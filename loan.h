@@ -1,5 +1,3 @@
-#ifndef LOAN_H
-#define LOAN_H
 /*
 The header file for Loan.
 
@@ -13,6 +11,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef LOAN_H
+#define LOAN_H
+
 #include "moneycontainer.h"
 #include <QDebug>
 
@@ -83,4 +85,4 @@ public:
     bool activate();
 };
 
-#endif // LOAN_H
+#endif

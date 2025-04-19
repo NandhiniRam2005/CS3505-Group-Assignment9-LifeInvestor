@@ -1,5 +1,3 @@
-#ifndef SAVINGSACCOUNT_H
-#define SAVINGSACCOUNT_H
 /*
 The header file for Savings account.
 
@@ -12,6 +10,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef SAVINGSACCOUNT_H
+#define SAVINGSACCOUNT_H
+
 #include "moneycontainer.h"
 
 class SavingsAccount : public MoneyContainer
@@ -38,4 +40,4 @@ public:
     void nextYear() override;
 };
 
-#endif // SAVINGSACCOUNT_H
+#endif

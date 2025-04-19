@@ -8,7 +8,7 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan
 Jake Heairld & Joseph Hamilton
 
-April 15, 2025
+April 22, 2025
 */
 
 #ifndef ANIMATIONVIEW_H
@@ -71,12 +71,32 @@ public:
      * @param parent - the Parent widget.
      */
     explicit AnimationView(QWidget *parent = nullptr);
+
+    /**
+     * Starts confetti animation with confetti with Box 2D and initiating the timer.
+     */
     void startConfettiAnimation();
+
+    /**
+     * Starts confetti animation with rain with Box 2D and initiating the timer.
+     */
     void startRainAnimation();
+
+    /**
+     * Stops confetti animation with confetti with Box 2D and initiating the timer.
+     */
     void stopConfettiAnimation();
+
+    /**
+     * Stops confetti animation with rain with Box 2D and initiating the timer.
+     */
     void stopRainAnimation();
 
 protected:
+    /**
+     * Handles the paint event and renders all current animation objects.
+     * @param event - The paint event triggered by Qt.
+     */
     void paintEvent(QPaintEvent *event) override;
 
 private:
@@ -86,7 +106,14 @@ private:
     QVector<Animation *> rainList;
     double scale;
 
+    /**
+     * Clears all confetti elements from the Box2D view.
+     */
     void clearConfetti();
+
+    /**
+     * Clears all rain elements from the Box2D view.
+     */
     void clearRain();
 };
 

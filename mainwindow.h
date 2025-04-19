@@ -1,5 +1,3 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 /*
 The header file for MainWindow.
 
@@ -13,6 +11,10 @@ Jake Heairld, Joseph Hamilton
 
 April 22, 2025
 */
+
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
 #include <QButtonGroup>
 #include <QMainWindow>
 #include <QSoundEffect>
@@ -34,7 +36,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    /**
+     * Constructs the MainWindow widget.
+     * @param parent - the Parent widget.
+     */
     MainWindow(MainModel *model, QWidget *parent = nullptr);
+
+    /**
+     * Destrcutor of the MainWindow class.
+     */
     ~MainWindow();
     
     /**
@@ -286,11 +296,16 @@ private:
     void databaseConnections(MainModel *model);
 
     /**
+     * Connections for having the shop items work like buying and updating life events based on this.
+     *
+     * @param model - a reference to the model used to make these connections.
+     */
+    void shopItemsConnections(MainModel *model);
+
+    /**
      * The QMovie behind the cup swapping in the casino.
      */
     QMovie* cupMovie;
-
-    void shopItemsConnections(MainModel *model);
 
 public slots:
 
@@ -711,6 +726,9 @@ signals:
      */
     void requestLifeEvent();
 
+    /**
+     * Asks the model is teh shop item was clicked.
+     */
     void shopItemClicked(int index);
 
     /**
@@ -722,4 +740,5 @@ signals:
      */
     void sendName(QString name, QString rank);
 };
-#endif // MAINWINDOW_H
+
+#endif
