@@ -24,7 +24,6 @@ April 22, 2025
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , model(model)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->Start);

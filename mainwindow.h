@@ -135,7 +135,6 @@ private:
      * A warning display pointer used to display changing warnings.
      */
     warningdisplay warningDisplay;
-    MainModel* model;
 
     /**
      * Generates a string that represents the changes in the past year fiscally speaking.
