@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -65,8 +65,12 @@
        <iconset resource="resources.qrc">
         <normaloff>:/icons/icons/start.png</normaloff>
         <normalon>:/icons/icons/start.png</normalon>
-        <selectedoff>:/icons/icons/startClick.png</selectedoff>
-        <selectedon>:/icons/icons/startClick.png</selectedon>:/icons/icons/start.png</iconset>
+        <disabledoff>:/icons/icons/start.png</disabledoff>
+        <disabledon>:/icons/icons/start.png</disabledon>
+        <activeoff>:/icons/icons/start.png</activeoff>
+        <activeon>:/icons/icons/start.png</activeon>
+        <selectedoff>:/icons/icons/start.png</selectedoff>
+        <selectedon>:/icons/icons/start.png</selectedon>:/icons/icons/start.png</iconset>
       </property>
       <property name="iconSize">
        <size>

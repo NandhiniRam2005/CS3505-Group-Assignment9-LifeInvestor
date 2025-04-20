@@ -1269,7 +1269,6 @@ void MainWindow::restartGame(){
 void MainWindow::startToGameScreenTransitionsConnections(MainModel *model){
     // Start button image change when pressed
     connect(ui->startButton, &QPushButton::pressed, [=]() {
-        ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
         ui->startButton->setIconSize(QSize(200, 250));
     });
 
