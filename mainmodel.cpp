@@ -198,16 +198,6 @@ void MainModel::withdrawFromSavings(double amount)
         emit showErrorMessage("Input amount cannot be withdrawn");
 }
 
-/*void MainModel::withdrawFromChecking(double amount)
-{
-    if (checkingAccount->withdraw(amount)) {
-        currentMoney += amount;
-        emit updateBalance(currentMoney);
-        emit updateChecking(checkingAccount->getBalance());
-    } else
-        emit showErrorMessage("Input amount cannot be withdrawn");
-}*/
-
 void MainModel::withdrawFromCD(int cdNumber)
 {
     double amount = cdAccounts[cdNumber].getBalance();
@@ -595,27 +585,52 @@ void MainModel::restartGame(){
     yearlyBills = 500;
 
     savingsAccount = new SavingsAccount(0.004);
+    emit updateSavings(0, savingsAccount->getInterestRate());
 
     cdAccounts.clear();
     cdAccounts.push_back(CDAccount(0.035, 2, 500));
     cdAccounts.push_back(CDAccount(0.040, 4, 750));
     cdAccounts.push_back(CDAccount(0.045, 5, 1000));
-
+    for(int i = 0; i<cdAccounts.size(); i++){
+        emit updateCD(i,
+                      cdAccounts[i].getBalance(),
+                      cdAccounts[i].getInterestRate(),
+                      cdAccounts[i].getTermLength(),
+                      cdAccounts[i].getMinimumDeposit(),
+                      cdAccounts[i].getYearsRemaining());
+    }
     loans.clear();
+
     loans.push_back(Loan(0.36, 10000, 0, 5));
     loans.push_back(Loan(0.067, 10000, 750, 7));
     loans[0].setAvailable(creditScore);
     loans[1].setAvailable(creditScore);
+    for(int i = 0; i<loans.size(); i++){
+        emit updateLoan(i,
+                        loans[i].getBalance(),
+                        loans[i].getInterestRate(),
+                        loans[i].getAvailable(),
+                        loans[i].getActive(),
+                        loans[i].getYearsLeft());
+    }
 
     stocks.clear();
     stocks.push_back(Stock(190.42, 0.40, 1.29)); // Pear
     stocks.push_back(Stock(70.76, 0.33, 1.20)); // Coma-Cola
     stocks.push_back(Stock(27.18, 0.65, 1.08)); // CineKarl
-
+    for(int i = 0; i<stocks.size(); i++){
+        updateStock(i, 0);
+        sendPriceOfStocks(0, i);
+        emit numberOfStocksOwned(0, i);
+    }
     shopItems.clear();
     shopItems.append(ShopItem("Auto Insurance", 5000));
     shopItems.append(ShopItem("Health Insurance", 7000));
     shopItems.append(ShopItem("Pet Insurance", 2000));
     shopItems.append(ShopItem("Home Insurance", 10000));
+
+    emit updateBalance(0);
+    emit creditScoreChanged(650);
+    emit netWorthChanged(0);
 
 }

@@ -269,12 +269,6 @@ signals:
     void updateSavings(double newBalance, double interestRate);
 
     /**
-     * Emitted whenever the checking account updates
-     * @param newBalance the new balance of the checking account
-     */
-    void updateChecking(double newBalance);
-
-    /**
      * Emitted whenever a CD updates
      * @param cdNumber the CD that updated
      * @param newBalance the CD's new balance
