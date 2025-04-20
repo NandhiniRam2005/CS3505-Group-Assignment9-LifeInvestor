@@ -1277,13 +1277,9 @@ void MainWindow::restartGame(){
     updateStockImage(true, false, true);
     lifeEventShown = true;
     ui->autoInsurance->setEnabled(true);
-
     ui->healthInsurance->setEnabled(true);
-
     ui->petInsurance->setEnabled(true);
-
     ui->homeInsurance->setEnabled(true);
-
 }
 
 void MainWindow::startToGameScreenTransitionsConnections(MainModel *model){
