@@ -24,6 +24,7 @@ April 22, 2025
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , model(model)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->Start);
@@ -1262,8 +1263,27 @@ void MainWindow::databaseConnections(MainModel *model){
 }
 void MainWindow::restartGame(){
     ui->stackedWidget->setCurrentWidget(ui->Start);
+
     emit resetGame();
+
     generalUISetup();
+    revalidateAllStockDisplays();
+    ui->billbalance->setText("$500");
+
+    // Set current year label and button
+    ui->currentYear->setText("YEARS REMAINING: 14");
+    ui->nextYearButton->setText("End Year 1");
+    ui->continueButton->setText("Continute to Year 2");
+    updateStockImage(true, false, true);
+    lifeEventShown = true;
+    ui->autoInsurance->setEnabled(true);
+
+    ui->healthInsurance->setEnabled(true);
+
+    ui->petInsurance->setEnabled(true);
+
+    ui->homeInsurance->setEnabled(true);
+
 }
 
 void MainWindow::startToGameScreenTransitionsConnections(MainModel *model){

@@ -582,6 +582,7 @@ void MainModel::restartGame(){
     currentYear = 1;
     tempYear = 1;
     yearlyBills = 500;
+    yearsBeingBroke = 0;
 
     savingsAccount = new SavingsAccount(0.004);
     emit updateSavings(0, savingsAccount->getInterestRate());
@@ -631,5 +632,4 @@ void MainModel::restartGame(){
     emit updateBalance(0);
     emit creditScoreChanged(650);
     emit netWorthChanged(0);
-
 }
