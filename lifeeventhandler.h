@@ -1,5 +1,3 @@
-#ifndef LIFEEVENTHANDLER_H
-#define LIFEEVENTHANDLER_H
 /*
 The header file for LifeEventHandler.
 
@@ -11,8 +9,14 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#ifndef LIFEEVENTHANDLER_H
+#define LIFEEVENTHANDLER_H
+
 #include <QObject>
 
 /**
@@ -31,10 +35,11 @@ struct LifeEvent
 class LifeEventHandler: public QObject
 {
     Q_OBJECT
+
 public:
     /**
-     *
-     * @param parent
+     * Constructs the LifeEventHandler widget.
+     * @param parent - the Parent widget.
      */
     explicit LifeEventHandler(QObject *parent = nullptr);
 
@@ -47,6 +52,7 @@ public:
 private:
     std::string filePath;
     std::vector<LifeEvent> lifeEvents;
+
     /**
      * Loads all life events into a vector so they can be randomly selected later.
      */
@@ -54,4 +60,4 @@ private:
 
 };
 
-#endif // LIFEEVENTHANDLER_H
+#endif

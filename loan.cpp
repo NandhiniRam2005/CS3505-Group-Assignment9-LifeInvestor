@@ -1,3 +1,19 @@
+/*
+The source file for Loan.
+
+This class represents a Loan. Loans are given a starting balance, interest rate, minimum credit amount, and amount of years left
+to pay off. Loans will increase in balance each year until the loan is fully paid off, or until there are no more years left to
+pay off the loan.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "loan.h"
 #include "loan.h"
 

@@ -1,9 +1,3 @@
-#ifndef LIFEEVENTDISPLAY_H
-#define LIFEEVENTDISPLAY_H
-
-#include <QDialog>
-#include "lifeeventhandler.h"
-
 /*
 The header file for LifeEventHandler.
 
@@ -15,8 +9,17 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#ifndef LIFEEVENTDISPLAY_H
+#define LIFEEVENTDISPLAY_H
+
+#include <QDialog>
+#include "lifeeventhandler.h"
+
 namespace Ui {
 class LifeEventDisplay;
 }
@@ -26,6 +29,10 @@ class LifeEventDisplay : public QDialog
     Q_OBJECT
 
 public:
+    /**
+     * Constructs the LifeEventDisplay widget.
+     * @param parent - the Parent widget.
+     */
     explicit LifeEventDisplay(QWidget *parent = nullptr);
 
     /**
@@ -49,4 +56,4 @@ private:
     Ui::LifeEventDisplay *ui;
 };
 
-#endif // LIFEEVENTDISPLAY_H
+#endif

@@ -1,11 +1,3 @@
-#include <QMessageBox>
-#include "mainwindow.h"
-#include <QMovie>
-#include <QMediaPlayer>
-#include <QAudioOutput>
-#include "iostream"
-#include "ui_mainwindow.h"
-
 /*
 The source file for MainWindow.
 
@@ -17,8 +9,18 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#include <QMessageBox>
+#include "mainwindow.h"
+#include <QMovie>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include "ui_mainwindow.h"
+
 MainWindow::MainWindow(MainModel *model, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -67,47 +69,7 @@ MainWindow::MainWindow(MainModel *model, QWidget *parent)
 
     databaseConnections(model);
 
-    connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
-
-    connect(ui->resetGameButton, &QPushButton::clicked, this, &MainWindow::restartGame);
-    connect(this, &MainWindow::resetGame, model, &MainModel::restartGame);
-
-
-    //UNORGANIZED CONNECTION  I COULD NOT GROUP THESE WITH ANYTHING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->mainGame);
-        ui->cashBalance->show();
-        ui->creditLabel->show();
-        ui->networthLabel->show();
-    });
-
-    connect(model, &MainModel::netWorthChanged, this, &MainWindow::updateNetWorth);
-
-    connect(ui->App1, &QPushButton::clicked, this, [this]() {
-        ui->stackedWidget->setCurrentWidget(ui->Stocks);
-    });
-    connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
-
-    connect(ui->startButton, &QPushButton::pressed, [=]() {
-        ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
-        ui->startButton->setIconSize(QSize(200, 250));
-    });
-
-    connect(model, &MainModel::gameEnded, this, &MainWindow::gameEnded);
-
-    connect(model, &MainModel::updateBalance, this, &MainWindow::updateBalance);
-
-    // connection for showing error messages
-    connect(model, &MainModel::showErrorMessage, this, &MainWindow::showErrorMessage);
-
-    // Start button connections for pressed
-    connect(ui->startButton, &QPushButton::pressed, [=]() {
-        ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
-        ui->startButton->setIconSize(QSize(200, 250));
-    });
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+    startToGameScreenTransitionsConnections(model);
 }
 
 MainWindow::~MainWindow()
@@ -126,7 +88,7 @@ void MainWindow::showQuizData(Question question)
 
     if (buttonGroup->checkedButton()) {
         buttonGroup->setExclusive(
-            false); // Temporarily allow no selection so that we can unselect the prev radio button.
+            false);
         buttonGroup->checkedButton()->setChecked(false);
         buttonGroup->setExclusive(true);
     }
@@ -283,11 +245,9 @@ void MainWindow::updateBalance(double newAmount)
     else{
         ui->cashBalance->setStyleSheet("QLabel {  color: red;  font-weight: bold;	font-size: 30px;}");
     }
-
-
 }
 
-void MainWindow::updateSavings(double newBalance, double interestRate)
+void MainWindow::updateSavings(double newBalance)
 {
     ui->savingsAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
     ui->savingsAccountAmount->adjustSize();
@@ -298,11 +258,6 @@ void MainWindow::updateNetWorth(double netWorth)
     ui->networthLabel->setText("Net Worth: $" + QString::number(netWorth, 'f', 2));
     ui->networthLabel->setStyleSheet(netWorth < 0 ? "color: red; font-weight: bold; font-size: 30px;" : "color: #85bb65; font-weight: bold; font-size: 30px;");
 }
-
-/*void MainWindow::updateChecking(double newBalance)
-{
-    ui->checkingAccountAmount->setText("Balance: $" + QString::number(newBalance, 'f', 2));
-*/
 
 void MainWindow::updateCD(int cdNumber,
                           double newBalance,
@@ -341,8 +296,6 @@ void MainWindow::updateCD(int cdNumber,
         break;
     }
 }
-
-void MainWindow::updateStock(int stockNumber, double newBalance) {}
 
 void MainWindow::updateLoan(int loanNumber, double newBalance, double interestRate, bool available, bool active, int yearsLeft){
     QString balanceText = QString::number(-newBalance, 'f', 2);
@@ -396,7 +349,6 @@ void MainWindow::startQuiz(QuizCategory category, uint questionAmount){
     updateProgress(0);
     ui->stackedWidget->setCurrentWidget(ui->Quiz);
 }
-
 
 void MainWindow::showErrorMessage(QString errorMessage) {
     QMessageBox::warning(this, "Warning", errorMessage);
@@ -577,8 +529,6 @@ void MainWindow::updateStockImage(bool stockOneUp, bool stockTwoUp, bool stockTh
     }
 }
 
-
-
 void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int currentYear, double yearlyBills)
 {
     switch(14 - currentYear){
@@ -602,15 +552,11 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
         }
         case 9:{
             quizCategory = QuizCategory::loans;
-            // QPixmap pixmap(":///icons/icons/loanIcon.png");
-            // ui->App2->setIcon(pixmap);
             ui->App2->setEnabled(true);
             break;
         }
         case 8:{
             quizCategory = QuizCategory::gambling;
-            // QPixmap pixmap(":///icons/icons/casinoIcon.png");
-            // ui->App6->setIcon(pixmap);
             break;
         }
         default:{
@@ -622,6 +568,7 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
     emit requestQuiz(quizCategory, quizLength);
     onStartClicked();
     ui->billbalance->setText("$"+ QString::number(yearlyBills));
+
     // Set current year label and button
     ui->currentYear->setText("YEARS REMAINING: " + QString::number(15 - currentYear));
     ui->nextYearButton->setText("End Year " + QString::number(currentYear));
@@ -802,7 +749,7 @@ void MainWindow::leaderBoardBack(){
     ui->stackedWidget->setCurrentWidget(ui->Start);
 }
 
-// CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// CONNECTIONS ----------------------------------------------------------------------------------------------------------------------------------------
 
 void MainWindow::generalUISetup()
 {
@@ -853,7 +800,7 @@ void MainWindow::setUpGifs()
     ui->bankGif->setMovie(bankMovie);
     bankMovie->setScaledSize(ui->bankGif->size());
     connect(bankMovie, &QMovie::finished, [bankMovie]() {
-        bankMovie->setPaused(true); // Freeze on the last frame
+        bankMovie->setPaused(true);
     });
     bankMovie->start();
 
@@ -861,7 +808,7 @@ void MainWindow::setUpGifs()
     ui->stockGif->setMovie(stocksMovie);
     stocksMovie->setScaledSize(ui->stockGif->size());
     connect(stocksMovie, &QMovie::finished, [stocksMovie]() {
-        stocksMovie->setPaused(true); // freeze on the last frame
+        stocksMovie->setPaused(true);
     });
     stocksMovie->start();
 
@@ -877,7 +824,7 @@ void MainWindow::setUpGifs()
 
     cupMovie = new QMovie(":/gifs/gifs/cupSwap.gif");
     ui->shuffleSpot->setMovie(cupMovie);
-    // ensure we're at frame 0 initially
+
     cupMovie->jumpToFrame(0);
 }
 
@@ -890,7 +837,6 @@ void MainWindow::setupAudio()
     depositSound = new QSoundEffect(this);
     depositSound->setSource(QUrl("qrc:/sounds/sounds/cash-register.wav"));
 
-    //Experimental Music stuff
     QMediaPlayer *player = new QMediaPlayer;
     QAudioOutput *audioOutput = new QAudioOutput;
 
@@ -918,7 +864,6 @@ void MainWindow::quizConnections(MainModel *model)
 
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::onStartClicked);
 
-    //make a show quiz info, then make that button on page start quiz
     connect(ui->startQuizButton, &QPushButton::clicked, this, [this]() {
         startQuiz(quizCategory, quizLength);
     });
@@ -931,7 +876,6 @@ void MainWindow::quizConnections(MainModel *model)
     connect(model, &MainModel::quizProgress, this, &MainWindow::updateProgress);
     connect(model, &MainModel::quizFinished, this, &MainWindow::showEndScreen);
 
-    //DEVELOPMENT CONNECTION
     connect(ui->skipQuizButton, &QPushButton::clicked, this, [&] ()->void{
         showEndScreen(0,0);
     });
@@ -940,7 +884,6 @@ void MainWindow::quizConnections(MainModel *model)
 void MainWindow::depositingConnectionWindowToModel(MainModel *model)
 {
     connect(this, &MainWindow::depositToSavings, model, &MainModel::depositToSavings);
-    //connect(this, &MainWindow::depositToChecking, model, &MainModel::depositToChecking);
     connect(this, &MainWindow::depositToCD, model, &MainModel::depositToCD);
     connect(this, &MainWindow::depositToLoan, model, &MainModel::depositToLoan);
     connect(this, &MainWindow::buyStock, model, &MainModel::buyStock);
@@ -949,7 +892,6 @@ void MainWindow::depositingConnectionWindowToModel(MainModel *model)
 void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
 {
     connect(this, &MainWindow::withdrawFromSavings, model, &MainModel::withdrawFromSavings);
-    //connect(this, &MainWindow::withdrawFromChecking, model, &MainModel::withdrawFromChecking);
     connect(this, &MainWindow::withdrawFromCD, model, &MainModel::withdrawFromCD);
     connect(this, &MainWindow::sellStock, model, &MainModel::sellStock);
     connect(this, &MainWindow::activateLoan, model, &MainModel::activateLoan);
@@ -958,9 +900,7 @@ void MainWindow::withdrawingConnectionsWindowToModel(MainModel *model)
 void MainWindow::mainWindowValueUpdateConnections(MainModel *model)
 {
     connect(model, &MainModel::updateSavings, this, &MainWindow::updateSavings);
-    //connect(model, &MainModel::updateChecking, this, &MainWindow::updateChecking);
     connect(model, &MainModel::updateCD, this, &MainWindow::updateCD);
-    connect(model, &MainModel::updateStock, this, &MainWindow::updateStock);
     connect(model, &MainModel::updateLoan, this, &MainWindow::updateLoan);
     connect(model, &MainModel::creditScoreChanged, this, &MainWindow::updateCreditScore);
 }
@@ -1002,6 +942,11 @@ void MainWindow::sellingStockUIConnections()
 
 void MainWindow::visualIUpdatesStockConnections(MainModel *model)
 {
+    // To get to stocks page app 1
+    connect(ui->App1, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->Stocks);
+    });
+
     connect(this, &MainWindow::revalidateStockDisplay,this, &MainWindow::revalidateAllStockDisplays);
     connect(this, &MainWindow::revalidateSpecificStockDisplay,this, &MainWindow::updateStockPriceDisplay);
     connect(model, &MainModel::numberOfStocksOwned, this, &MainWindow::updateStockAmountOwned);
@@ -1073,10 +1018,6 @@ void MainWindow::cdPageConnections(MainModel *model)
         emit withdrawFromCD(2);
     });
 
-    // connect(ui->cd1DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-    // connect(ui->cd2DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-    // connect(ui->cd3DepositButton, &QPushButton::clicked, this, &MainWindow::displayDepositPage);
-
     connect(ui->cd1DepositButton, &QPushButton::clicked, this, [this]() {
         double amount = ui->cd1DepositInput->text().toDouble();
         emit depositToCD(amount, 0);
@@ -1119,8 +1060,6 @@ void MainWindow::savingsPageConnections(MainModel *model)
         emit savingsWithdrawAmountRead(updatedSavings);
         ui->savingsWithdrawInput->clear();
     });
-
-    //connect(this, &MainWindow::checkingWithdrawAmountRead, model, &MainModel::withdrawFromChecking);
 
     connect(this, &MainWindow::savingsWithdrawAmountRead, model, &MainModel::withdrawFromSavings);
 }
@@ -1190,12 +1129,13 @@ void MainWindow::casinoPageConnections(MainModel *model)
     connect(model, &MainModel::shuffleStarted, this, [this]() {
         if (cupMovie) {
             cupMovie->stop();
-            cupMovie->deleteLater(); // schedule for deletion
+            cupMovie->deleteLater();
             cupMovie = nullptr;
         }
 
         cupMovie = new QMovie(":/gifs/gifs/cupSwap.gif");
         ui->shuffleSpot->setMovie(cupMovie);
+
         // freeze on last frame and enable buttons
         connect(cupMovie, &QMovie::finished, this, [this]() {
             cupMovie->setPaused(true);
@@ -1204,9 +1144,9 @@ void MainWindow::casinoPageConnections(MainModel *model)
             ui->cup3->setEnabled(true);
             ui->gambleButton->setText("Pick a cup");
         });
-        // play gif
         cupMovie->start();
         ui->gambleButton->setText("Shuffling...");
+
         // disable buttons during shuffle
         ui->gambleButton->setDisabled(true);
         ui->cup1->setDisabled(true);
@@ -1221,6 +1161,7 @@ void MainWindow::casinoPageConnections(MainModel *model)
     connect(model, &MainModel::gambleResult, this, [this](bool won, int amount) {
         ui->gambleButton->setEnabled(true);
         ui->gambleButton->setText("$1000");
+
         // disable cup buttons
         ui->cup1->setEnabled(false);
         ui->cup2->setEnabled(false);
@@ -1324,5 +1265,34 @@ void MainWindow::restartGame(){
     emit resetGame();
     generalUISetup();
 }
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+void MainWindow::startToGameScreenTransitionsConnections(MainModel *model){
+    // Start button image change when pressed
+    connect(ui->startButton, &QPushButton::pressed, [=]() {
+        ui->startButton->setIcon(QIcon(":///icons/icons/startClick.png"));
+        ui->startButton->setIconSize(QSize(200, 250));
+    });
+
+    // Handles transition from start screen to main game view
+    connect(ui->continueButton, &QPushButton::clicked, this, [this]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainGame);
+        ui->cashBalance->show();
+        ui->creditLabel->show();
+        ui->networthLabel->show();
+    });
+
+    connect(model, &MainModel::updateBalance, this, &MainWindow::updateBalance);
+    connect(model, &MainModel::netWorthChanged, this, &MainWindow::updateNetWorth);
+
+    connect(model, &MainModel::returnToGame, this, &MainWindow::returnToGame);
+    connect(model, &MainModel::gameEnded, this, &MainWindow::gameEnded);
+
+    // connection for showing error messages/ warnings
+    connect(model, &MainModel::showErrorMessage, this, &MainWindow::showErrorMessage);
+    connect(model, &MainModel::displayWarning, this, &MainWindow::showWarning);
+
+    //connections for restart game button
+    connect(ui->resetGameButton, &QPushButton::clicked, this, &MainWindow::restartGame);
+    connect(this, &MainWindow::resetGame, model, &MainModel::restartGame);
+
+}

@@ -1,5 +1,3 @@
-#ifndef SHOPITEM_H
-#define SHOPITEM_H
 /*
 The header file for ShopItem.
 
@@ -10,8 +8,14 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#ifndef SHOPITEM_H
+#define SHOPITEM_H
+
 #include <QObject>
 
 class ShopItem
@@ -50,4 +54,4 @@ private:
     bool purchased;
 };
 
-#endif // SHOPITEM_H
+#endif

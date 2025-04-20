@@ -1,5 +1,3 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 /*
 The header file for MainWindow.
 
@@ -11,8 +9,14 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
 #include <QButtonGroup>
 #include <QMainWindow>
 #include <QSoundEffect>
@@ -34,7 +38,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    /**
+     * Constructs the MainWindow widget.
+     * @param parent - the Parent widget.
+     */
     MainWindow(MainModel *model, QWidget *parent = nullptr);
+
+    /**
+     * Destrcutor of the MainWindow class.
+     */
     ~MainWindow();
     
     /**
@@ -194,6 +206,13 @@ private:
     void withdrawingConnectionsWindowToModel(MainModel *model);
 
     /**
+     * Connections for transitioning from start screen to teh main game screen's labels, warnings, misc/etc.
+     *
+     * @param model - a reference to the model used to make these connections.
+     */
+    void startToGameScreenTransitionsConnections(MainModel *model);
+
+    /**
      * Connections for buying stock.
      */
     void buyingStockUIConnections();
@@ -286,11 +305,16 @@ private:
     void databaseConnections(MainModel *model);
 
     /**
+     * Connections for having the shop items work like buying and updating life events based on this.
+     *
+     * @param model - a reference to the model used to make these connections.
+     */
+    void shopItemsConnections(MainModel *model);
+
+    /**
      * The QMovie behind the cup swapping in the casino.
      */
     QMovie* cupMovie;
-
-    void shopItemsConnections(MainModel *model);
 
 public slots:
 
@@ -352,9 +376,8 @@ public slots:
      * Displays updates to the savings display.
      *
      * @param newBalance - The new savings amount.
-     * @param interestRate - The rate of interest on the account.
      */
-    void updateSavings(double newBalance, double interestRate);
+    void updateSavings(double newBalance);
 
     /**
      * Updates the cd display to display new values.
@@ -372,14 +395,6 @@ public slots:
                   int termlength,
                   double minimumDeposit,
                   int yearsLeft);
-
-    /**
-     * Updates a specific stock in the view
-     *
-     * @param stockNumber - The specific stock
-     * @param newBalance - The new amount of money invested in the stock.
-     */
-    void updateStock(int stockNumber, double newBalance);
 
     /**
      * Updates all stock graphs to reflect growth/fall.
@@ -716,6 +731,9 @@ signals:
      */
     void requestLifeEvent();
 
+    /**
+     * Asks the model is teh shop item was clicked.
+     */
     void shopItemClicked(int index);
 
     /**
@@ -732,4 +750,5 @@ signals:
      */
     void resetGame();
 };
-#endif // MAINWINDOW_H
+
+#endif

@@ -1,8 +1,23 @@
+/*
+The source file for QuizHandler.
+
+This class parses quizzes from the Question Bank toml files that they are stored in. It will randomly generate quizzes from
+a given category and provide a list of possible answers, a reward for the question, difficulty, etc. It will also have the answer
+to the question and an explanation for why the answer is correct. Instance methods can be called to progress through the quiz when needed.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "quizhandler.h"
 #include <cpptoml.h>
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 #include <stdexcept>
 
 const std::array<std::string, 6> QuizHandler::quizFileNames
@@ -48,16 +63,18 @@ std::vector<Question> QuizHandler::getAllQuestionsFromCategory(QuizCategory cate
 {
     std::vector<std::string> filePathsToParse;
     std::vector<Question> questionList;
+
     if (category != QuizCategory::mixOfAll) {
         filePathsToParse.push_back(getFilePath(category));
     } else {
-        for (std::string quizName : quizFileNames) {\
+        for (std::string quizName : quizFileNames) {
                 if(quizName == "tutorialQuiz"){
                     continue;
                 }
             filePathsToParse.push_back(PROJECT_PATH "QuestionBanks/" + quizName + ".toml");
         }
     }
+
     for (std::string &filepath : filePathsToParse) {
         auto file = cpptoml::parse_file(filepath);
         auto questions = file->get_table_array("questions");

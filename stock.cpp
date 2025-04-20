@@ -1,3 +1,19 @@
+/*
+The source file for Stock.
+
+This class represents a stock, each stock has a value, variance, and trend, which is used to calculate
+the value the stock will increase to in the next year. These parameters can be changed to make a stock
+'safer' or 'riskier'.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "stock.h"
 #include <QRandomGenerator>
 

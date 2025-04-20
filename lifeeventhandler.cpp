@@ -1,3 +1,19 @@
+/*
+The source file for LifeEventHandler.
+
+This class represents a Handles life events. It will randomly generate a life event when requested and return it.
+Life events have text information about the event, the amount of money the user's balance should change by, the type of the event
+and the image to display when the event happens.
+
+By Joel Rodriguez, Jacob Anderson,
+Adharsh Ramakrishnan, Nandhini Ramanathan,
+Jake Heairld, Joseph Hamilton
+
+Reviewed by Nandhini Ramanathan
+
+April 22, 2025
+*/
+
 #include "lifeeventhandler.h"
 #include <cpptoml.h>
 #include <QRandomGenerator>

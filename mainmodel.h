@@ -1,5 +1,3 @@
-#ifndef MAINMODEL_H
-#define MAINMODEL_H
 /*
 The header file for MainModel.
 
@@ -10,8 +8,14 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#ifndef MAINMODEL_H
+#define MAINMODEL_H
+
 #include <QObject>
 #include "cdaccount.h"
 #include "loan.h"
@@ -29,7 +33,13 @@ April 22, 2025
 class MainModel : public QObject
 {
     Q_OBJECT
+
 public:
+
+    /**
+     * Constructs the MainModel widget.
+     * @param parent - the Parent widget.
+     */
     explicit MainModel(QObject *parent = nullptr);
 
     /**
@@ -472,4 +482,4 @@ private:
 
 };
 
-#endif // MAINMODEL_H
+#endif

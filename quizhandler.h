@@ -1,6 +1,5 @@
-#ifndef QUIZHANDLER_H
-#define QUIZHANDLER_H
 /*
+
 The header file for QuizHandler.
 
 This class parses quizzes from the Question Bank toml files that they are stored in. It will randomly generate quizzes from
@@ -11,8 +10,14 @@ By Joel Rodriguez, Jacob Anderson,
 Adharsh Ramakrishnan, Nandhini Ramanathan,
 Jake Heairld, Joseph Hamilton
 
+Reviewed by Nandhini Ramanathan
+
 April 22, 2025
 */
+
+#ifndef QUIZHANDLER_H
+#define QUIZHANDLER_H
+
 #include <QObject>
 
 /**
@@ -59,7 +64,12 @@ Q_DECLARE_METATYPE(QuizInfo)
 class QuizHandler : public QObject
 {
     Q_OBJECT
+
 public:
+    /**
+     * Constructs the QuizHandler widget.
+     * @param parent - the Parent widget.
+     */
     explicit QuizHandler(QObject *parent = nullptr);
 
     /**
@@ -180,6 +190,7 @@ private:
             std::swap(vector[i], vector[swapIndex]);
         }
     }
+
     /**
      * Returns the filepath to the the quiz file of a given Quiz Category
      * @param category The QuizCategory to use
@@ -195,4 +206,4 @@ private:
     std::vector<Question> getAllQuestionsFromCategory(QuizCategory category);
 };
 
-#endif // QUIZHANDLER_H
+#endif
