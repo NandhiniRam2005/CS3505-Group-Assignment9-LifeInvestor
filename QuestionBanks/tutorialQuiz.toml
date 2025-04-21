@@ -1,6 +1,27 @@
 category = "Tutorial"
 
-categoryInfo = "Investinhg game!!"
+categoryInfo = """
+Your goal is to grow your net worth as much as possible over the course of 15 years. Here’s how to play:
+
+At the start of each year, you will take a quiz! Each correct answer earns you money!
+
+After the quiz, you’ll be able to invest or manage your hard-earned money using the phone menu. Click the top of the phone thing at the bottom of the screen to bring up the menu. Each option appears as an app on the phone.
+
+You can put your money into a savings account, one of three types of certificates of deposit (CDs), or the stock market! Each option has different levels of risk and return!
+
+If you need extra cash, you can take out a loan. But be careful—if you don’t pay off the loan before its term ends, the game will end. One of the loans requires you to have a higher credit score. Credit score can be increased by paying off loans and correctly answering quiz questions.
+
+You can also take up to three extra quizzes each year to earn more money.
+
+You also have the option to gamble your money! This is not financially viable but it is fun so do it anyway.
+
+There are random life events which you can get money from or lose money to. On the main screen, you can buy insurance which can protect you from some negative events.
+
+At the end of each year, you will be required to pay bills. Make sure you keep enough money to cover these expenses.
+
+The game will end early if you are broke for three years in a row or if you fail to pay off a loan in time! Otherwise, the game lasts for 15 years.
+
+Invest wisely, manage risks, and try to end the game with as much money as possible!"""
 
 learnMore = '''
 We could put learning information here
