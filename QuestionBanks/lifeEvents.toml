@@ -164,7 +164,7 @@ category = "N/A"
 eventDesc = "You were scammed online."
 price = -1500
 type = "Bad"
-image = ":///icons/icons/onlineScam.png"
+image = ":///icons/icons/scam.png"
 category = "N/A"
 
 [[badEvents]]
