@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -2981,7 +2981,7 @@ border-radius: 5px;}</string>
        <rect>
         <x>550</x>
         <y>300</y>
-        <width>167</width>
+        <width>175</width>
         <height>34</height>
        </rect>
       </property>
@@ -3014,7 +3014,7 @@ border-radius: 5px;}</string>
        <rect>
         <x>540</x>
         <y>460</y>
-        <width>167</width>
+        <width>175</width>
         <height>34</height>
        </rect>
       </property>
@@ -3388,7 +3388,7 @@ border-radius: 5px;}</string>
        <rect>
         <x>550</x>
         <y>140</y>
-        <width>167</width>
+        <width>175</width>
         <height>34</height>
        </rect>
       </property>
@@ -4691,7 +4691,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>303</height>
+         <height>301</height>
         </rect>
        </property>
        <attribute name="label">

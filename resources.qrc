@@ -76,6 +76,7 @@
         <file>icons/move.png</file>
         <file>icons/basketball.png</file>
         <file>icons/borrowBook.png</file>
+        <file>icons/scam.png</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/level-up-sound.wav</file>
