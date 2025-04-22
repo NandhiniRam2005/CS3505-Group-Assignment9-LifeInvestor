@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -2011,11 +2011,16 @@ QPushButton:disabled {
      <widget class="QPushButton" name="resetGameButton">
       <property name="geometry">
        <rect>
-        <x>290</x>
-        <y>480</y>
-        <width>100</width>
-        <height>32</height>
+        <x>300</x>
+        <y>40</y>
+        <width>181</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>23</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Restart</string>
@@ -2328,19 +2333,6 @@ border-radius: 5px;}</string>
        <number>0</number>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>111</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Quiz 0.0: tutorial</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="backgroundQuiz">
       <property name="geometry">
        <rect>
@@ -2386,7 +2378,6 @@ border-radius: 5px;}</string>
      <zorder>labelQuestion</zorder>
      <zorder>resultLabel</zorder>
      <zorder>quizProgress</zorder>
-     <zorder>label_4</zorder>
      <zorder>labelReward</zorder>
      <zorder>skipQuizButton</zorder>
     </widget>
@@ -4567,8 +4558,8 @@ QToolBox QWidget {
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>741</width>
-         <height>301</height>
+         <width>100</width>
+         <height>30</height>
         </rect>
        </property>
        <attribute name="label">
@@ -4682,7 +4673,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>301</height>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">
@@ -4819,7 +4810,7 @@ QToolBox QWidget {
       <x>20</x>
       <y>10</y>
       <width>761</width>
-      <height>39</height>
+      <height>49</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="mainInfoLayout">
