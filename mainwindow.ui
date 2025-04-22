@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>10</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -4114,7 +4114,7 @@ QTabBar::tab:!selected {
          <rect>
           <x>260</x>
           <y>40</y>
-          <width>281</width>
+          <width>351</width>
           <height>51</height>
          </rect>
         </property>
