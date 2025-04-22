@@ -552,11 +552,16 @@ void MainWindow::newYear(QVector<double> newTotals, QVector<double> changes, int
         }
         case 9:{
             quizCategory = QuizCategory::loans;
-            ui->App2->setEnabled(true);
+            QPixmap pixmap(":///icons/icons/loanIcon.png");
+            ui->App4->setIcon(pixmap);
+            ui->App4->setEnabled(true);
             break;
         }
         case 8:{
             quizCategory = QuizCategory::gambling;
+            QPixmap pixmap(":///icons/icons/casinoIcon.png");
+            ui->App6->setIcon(pixmap);
+            ui->App6->setEnabled(true);
             break;
         }
         default:{
@@ -789,6 +794,11 @@ void MainWindow::generalUISetup()
 
     ui->loan1PaymentInput->setValidator(decimalValidator);
     ui->loan2PaymentInput->setValidator(decimalValidator);
+
+    ui->App1->setEnabled(false);
+    ui->App2->setEnabled(false);
+    ui->App4->setEnabled(false);
+    ui->App6->setEnabled(false);
 
     lifeEventShown = true;
     rankToDisplay = "";

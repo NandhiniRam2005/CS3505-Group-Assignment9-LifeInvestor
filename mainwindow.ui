@@ -36,7 +36,7 @@
      <enum>QFrame::Shadow::Raised</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Start">
      <widget class="QPushButton" name="startButton">
@@ -1336,9 +1336,7 @@ QPushButton:disabled {
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/icons/icons/stockApp.png</normaloff>
-         <disabledoff>:/icons/icons/blank.png</disabledoff>
-         <disabledon>:/icons/icons/blank.png</disabledon>:/icons/icons/stockApp.png</iconset>
+         <normaloff>:/icons/icons/lock.png</normaloff>:/icons/icons/lock.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1370,7 +1368,7 @@ QPushButton:disabled {
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/icons/icons/cdApp.png</normaloff>:/icons/icons/cdApp.png</iconset>
+         <normaloff>:/icons/icons/lock.png</normaloff>:/icons/icons/lock.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1434,7 +1432,7 @@ QPushButton:disabled {
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/icons/icons/loanIcon.png</normaloff>:/icons/icons/loanIcon.png</iconset>
+         <normaloff>:/icons/icons/lock.png</normaloff>:/icons/icons/lock.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1498,7 +1496,7 @@ QPushButton:disabled {
        </property>
        <property name="icon">
         <iconset resource="resources.qrc">
-         <normaloff>:/icons/icons/casinoIcon.png</normaloff>:/icons/icons/casinoIcon.png</iconset>
+         <normaloff>:/icons/icons/lock.png</normaloff>:/icons/icons/lock.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -4691,7 +4689,7 @@ QToolBox QWidget {
          <x>0</x>
          <y>0</y>
          <width>741</width>
-         <height>301</height>
+         <height>303</height>
         </rect>
        </property>
        <attribute name="label">
