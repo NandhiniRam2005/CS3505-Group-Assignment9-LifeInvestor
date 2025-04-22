@@ -1289,6 +1289,8 @@ void MainWindow::restartGame(){
     ui->healthInsurance->setEnabled(true);
     ui->petInsurance->setEnabled(true);
     ui->homeInsurance->setEnabled(true);
+    ui->nameBox->setReadOnly(false);
+    ui->saveButton->setEnabled(true);
 }
 
 void MainWindow::startToGameScreenTransitionsConnections(MainModel *model){
